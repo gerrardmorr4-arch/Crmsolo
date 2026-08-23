@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
+Allow: /api/crm-news
 Disallow: /admin
-Disallow: /api/
 
 # Canonical Sitemap index
 Sitemap: https://crmsolo.online/sitemap.xml
