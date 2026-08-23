@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-primary: #14213D;
+  --color-accent: #FCA311;
+  --color-offwhite: #F8F9FA;
+  --color-nearblack: #1A1A1A;
+  --color-success: #2A9D8F;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-offwhite);
+  color: var(--color-nearblack);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* ==========================================
+   PRINT MEDIA QUERIES
+   Optimizes PDF downloads and physical prints:
+   Hides navigation, headers, footers, CTAs,
+   and focuses strictly on main content.
+   ========================================== */
+@media print {
+  /* Reset document for high-contrast, eco-friendly printing */
+  html, body {
+    background: #ffffff !important;
+    color: #111111 !important;
+    font-size: 11pt !important;
+    line-height: 1.5 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    width: 100% !important;
+  }
+
+  /* Hide non-content elements, navigation, headers, footers, ads, search, & action triggers */
+  header,
+  footer,
+  nav,
+  aside,
+  .no-print,
+  .print-hidden,
+  button,
+  form,
+  input,
+  select,
+  textarea,
+  [role="dialog"],
+  [aria-modal="true"],
+  .fixed,
+  .sticky,
+  /* Applet specific widgets to strip */
+  .join-newsletter-section,
+  .adsense-ad,
+  .sticky-cta-banner,
+  .top-disclaimer-banner,
+  .search-overlay,
+  .mobile-menu-overlay,
+  .filter-bar,
+  .share-buttons,
+  .back-to-top {
+    display: none !important;
+  }
+
+  /* Force main content container to take full printable page width */
+  main,
+  #root,
+  .printable-area,
+  article {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    float: none !important;
+    background: #ffffff !important;
+    color: #111111 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* When print preview modal is open, display only the preview sheet */
+  body.print-preview-active #root > *:not(.print-preview-modal-wrapper) {
+    display: none !important;
+  }
+
+  body.print-preview-active .print-preview-modal-wrapper {
+    display: block !important;
+    position: static !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    overflow: visible !important;
+  }
+
+  body.print-preview-active .print-preview-sheet {
+    display: block !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.print-preview-active .no-print,
+  body.print-preview-active .print-preview-toolbar {
+    display: none !important;
+  }
+
+  /* Typography formatting for crisp print readability */
+  h1, h2, h3, h4, h5, h6 {
+    color: #000000 !important;
+    page-break-after: avoid;
+    break-after: avoid;
+    font-weight: 800 !important;
+  }
+
+  h1 {
+    font-size: 22pt !important;
+    line-height: 1.2 !important;
+    margin-bottom: 12pt !important;
+  }
+
+  h2 {
+    font-size: 16pt !important;
+    line-height: 1.3 !important;
+    margin-top: 16pt !important;
+    margin-bottom: 8pt !important;
+  }
+
+  h3 {
+    font-size: 13pt !important;
+    margin-top: 12pt !important;
+    margin-bottom: 6pt !important;
+  }
+
+  p, li, td, th, span {
+    color: #1a1a1a !important;
+    font-size: 10.5pt !important;
+  }
+
+  /* Prevent awkward page breaks inside cards, sections, tables, blockquotes, and images */
+  article, section, .card, table, blockquote, figure, tr, img {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Responsive & Clean Table Formatting for Comparison Matrices & Checklists */
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 12pt !important;
+    margin-bottom: 12pt !important;
+    font-size: 10pt !important;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1 !important;
+    padding: 6pt 8pt !important;
+    text-align: left !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  th {
+    background-color: #f1f5f9 !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    font-size: 9pt !important;
+  }
+
+  /* Images fit printable area without clipping */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Ensure links remain legibly underlined */
+  a {
+    color: #000000 !important;
+    text-decoration: underline !important;
+  }
+
+  /* Custom badge styling in print */
+  .badge, .pill, [class*="badge"] {
+    border: 1px solid #94a3b8 !important;
+    background: #f8fafc !important;
+    color: #0f172a !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+  }
+
+  /* Force dark cards to print with light background & dark text for ink efficiency */
+  .bg-slate-900, .bg-slate-950, .bg-slate-800, .bg-primary, .bg-gray-900 {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #e2e8f0 !important;
+  }
+}

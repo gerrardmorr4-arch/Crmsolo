@@ -1,0 +1,44 @@
+[
+  {
+    "id": "why-solo-agents-need-different-crm",
+    "question": "Why do solo real estate agents need a different CRM than larger teams or brokerages?",
+    "answer": "Most enterprise CRMs (like Salesforce or standard HubSpot) are built for large admin teams, requiring complex databases, dedicated developers, and heavy overhead. As a solo producer, you don't have an IT department. You need a system that can be set up in under 30 minutes, integrates natively with your existing Gmail or Outlook inbox, and offers a clean mobile interface to manage client pipelines while hosting open houses or driving to listings.",
+    "category": "CRM Basics"
+  },
+  {
+    "id": "pipedrive-vs-streak-vs-fub",
+    "question": "How do Pipedrive, Streak, and Follow Up Boss differ for a solo realtor?",
+    "answer": "Each platform serves a different business style. **Streak** is built entirely inside Gmail, making it perfect for budget-conscious agents who want zero system overhead. **Pipedrive** is highly visual and customisable, excellent for agents who love structured visual boards and custom sales stages. **Follow Up Boss** is a lead conversion powerhouse that integrates natively with Zillow, Realtor.com, and local MLS systems, designed for agents who run heavy paid lead campaigns.",
+    "category": "Platform Comparisons"
+  },
+  {
+    "id": "streak-free-tier-limits",
+    "question": "Can I use Streak for free forever? What are the limitations?",
+    "answer": "Yes, Streak has a permanent 'Free' plan that includes basic CRM features, 500 email merges per month, and email tracking. However, it is limited to a single user, lacks automated contact sharing, and doesn't support advanced workflow automation or API integrations. For solo agents starting out or operating entirely out of their sphere of influence, the free tier is incredibly powerful.",
+    "category": "Pricing & Costs"
+  },
+  {
+    "id": "email-inbox-synchronization",
+    "question": "Do these CRMs sync with Gmail and Microsoft Outlook automatically?",
+    "answer": "Yes. **Streak** runs natively in Gmail and syncs effortlessly. **Pipedrive** offers advanced two-way email sync on its higher plans (Advanced and above), creating a full thread history inside client deal cards. **Follow Up Boss** syncs with both Google and Microsoft accounts, automatically tracking sent/received emails, calendar appointments, and phone call logs without manual copy-pasting.",
+    "category": "Features & Workflows"
+  },
+  {
+    "id": "zillow-realtor-lead-routing",
+    "question": "How does lead source routing work if I use Zillow or Realtor.com?",
+    "answer": "This is where **Follow Up Boss** dominates. It has built-in parsing for over 200 lead sources. When a lead comes in from Zillow, Realtor.com, or your website, Follow Up Boss ingests it in real-time, tags the source, and triggers an immediate auto-responder text or email drip to engage them within the critical first 60 seconds. Pipedrive and Streak can achieve similar results, but require middle-ware connectors like Zapier.",
+    "category": "Features & Workflows"
+  },
+  {
+    "id": "mobile-app-performance",
+    "question": "Which CRM has the best mobile app for agents on-the-go?",
+    "answer": "All three have dedicated mobile apps. **Follow Up Boss** offers the most robust mobile experience for handling incoming calls and texts with full communication history. **Pipedrive** is extremely clean for updating deal pipelines and scheduling follow-up activities. **Streak** has a mobile app that allows you to view pipelines and edit inbox tasks, though most power-users prefer using it on desktop where it integrates directly inside the Gmail browser tab.",
+    "category": "Usability"
+  },
+  {
+    "id": "post-close-reviews-automation",
+    "question": "Can I automate post-closing client reviews using these systems?",
+    "answer": "Yes! By setting up a custom stage in your pipeline (e.g., 'Escrow Closed') you can trigger a webhook or integration. For instance, in Pipedrive, moving a deal card to 'Closed Won' can automatically trigger a personalized email via Mailchimp or a CRM email template asking for a Google Business review, complete with a direct link.",
+    "category": "Features & Workflows"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "name": "CRMsolo",
+  "description": "The definitive CRM review, comparison, and ROI calculator platform for solo real estate agents.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
