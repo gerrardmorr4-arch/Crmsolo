@@ -381,6 +381,10 @@ export default function VideoTestimonials() {
                   alt={testimonial.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
                   loading="lazy"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450"><rect width="800" height="450" fill="%231e293b"/><text x="50%" y="50%" fill="%2394a3b8" font-family="sans-serif" font-size="24" text-anchor="middle" dominant-baseline="middle">CRM Video Review</text></svg>';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
 
@@ -439,7 +443,12 @@ export default function VideoTestimonials() {
                     <img 
                       src={testimonial.avatarUrl} 
                       alt={testimonial.agentName}
-                      className="w-8 h-8 rounded-full object-cover border border-slate-600" 
+                      className="w-8 h-8 rounded-full object-cover border border-slate-600 bg-slate-800" 
+                      loading="lazy"
+                      referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="48" fill="%23334155"/><text x="50%" y="50%" fill="%23cbd5e1" font-family="sans-serif" font-size="32" text-anchor="middle" dominant-baseline="middle">👤</text></svg>';
+                      }}
                     />
                     <div>
                       <div className="text-xs font-bold text-white flex items-center gap-1">
@@ -536,7 +545,7 @@ export default function VideoTestimonials() {
                   <div className="relative aspect-video bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 flex flex-col justify-between p-6 overflow-hidden border-b border-slate-800">
                     {/* Background Agent Photo Glow */}
                     <div className="absolute inset-0 opacity-25 mix-blend-overlay">
-                      <img src={activeVideo.thumbnailUrl} alt="" className="w-full h-full object-cover" />
+                      <img src={activeVideo.thumbnailUrl} alt="" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-slate-950/90 pointer-events-none"></div>
 
@@ -544,7 +553,7 @@ export default function VideoTestimonials() {
                     <div className="relative z-10 flex justify-between items-start">
                       <div className="flex items-center gap-3 bg-slate-950/80 px-3.5 py-2 rounded-xs border border-slate-700/80 backdrop-blur-md">
                         <div className="relative">
-                          <img src={activeVideo.avatarUrl} className="w-10 h-10 rounded-full object-cover border border-accent/40" alt={activeVideo.agentName} />
+                          <img src={activeVideo.avatarUrl} className="w-10 h-10 rounded-full object-cover border border-accent/40" alt={activeVideo.agentName} referrerPolicy="no-referrer" />
                           {isSpeaking && !isPaused && (
                             <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-emerald-500 rounded-full border-2 border-slate-950 animate-ping"></span>
                           )}
@@ -576,7 +585,7 @@ export default function VideoTestimonials() {
                         <div className={`absolute -inset-8 rounded-full bg-primary/20 transition-all duration-700 ${isSpeaking && !isPaused ? 'animate-pulse opacity-50' : 'opacity-0'}`}></div>
 
                         <div className="w-20 h-20 rounded-full bg-slate-900 border-2 border-accent text-slate-950 flex items-center justify-center shadow-2xl overflow-hidden relative group-hover:scale-105 transition">
-                          <img src={activeVideo.avatarUrl} alt={activeVideo.agentName} className="w-full h-full object-cover opacity-90 group-hover:opacity-100" />
+                          <img src={activeVideo.avatarUrl} alt={activeVideo.agentName} className="w-full h-full object-cover opacity-90 group-hover:opacity-100" referrerPolicy="no-referrer" />
                           <div className="absolute inset-0 bg-slate-950/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             {isSpeaking && !isPaused ? (
                               <Pause className="w-8 h-8 fill-accent text-accent" />

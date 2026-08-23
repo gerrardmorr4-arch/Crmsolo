@@ -67,30 +67,30 @@ export const initialSubscribers: EmailSubscriber[] = [
 ];
 
 export const defaultAdSenseSettings: AdSenseSettings = {
-  globalEnabled: true,
-  publisherId: 'ca-pub-1234567890123456',
-  headScript: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>',
+  globalEnabled: false,
+  publisherId: 'ca-pub-1587039209512710',
+  headScript: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1587039209512710" crossorigin="anonymous"></script>',
   headerBanner: {
-    enabled: true,
-    code: '<ins class="adsbygoogle"\n     style="display:inline-block;width:728px;height:90px"\n     data-ad-client="ca-pub-1234567890123456"\n     data-ad-slot="1111111111"></ins>\n<script>\n     (adsbygoogle = window.adsbygoogle || []).push({});\n</script>',
+    enabled: false,
+    code: '',
     fallbackImage: '',
     fallbackLink: '/calculator'
   },
   sidebarAd: {
-    enabled: true,
-    code: '<ins class="adsbygoogle"\n     style="display:inline-block;width:300px;height:250px"\n     data-ad-client="ca-pub-1234567890123456"\n     data-ad-slot="2222222222"></ins>\n<script>\n     (adsbygoogle = window.adsbygoogle || []).push({});\n</script>',
+    enabled: false,
+    code: '',
     fallbackImage: '',
     fallbackLink: '/'
   },
   inContentAd: {
-    enabled: true,
-    code: '<ins class="adsbygoogle"\n     style="display:block;text-align:center;"\n     data-ad-layout="in-article"\n     data-ad-format="fluid"\n     data-ad-client="ca-pub-1234567890123456"\n     data-ad-slot="3333333333"></ins>\n<script>\n     (adsbygoogle = window.adsbygoogle || []).push({});\n</script>',
+    enabled: false,
+    code: '',
     fallbackImage: '',
     fallbackLink: '/about'
   },
   footerBanner: {
-    enabled: true,
-    code: '<ins class="adsbygoogle"\n     style="display:inline-block;width:728px;height:90px"\n     data-ad-client="ca-pub-1234567890123456"\n     data-ad-slot="4444444444"></ins>\n<script>\n     (adsbygoogle = window.adsbygoogle || []).push({});\n</script>',
+    enabled: false,
+    code: '',
     fallbackImage: '',
     fallbackLink: '/'
   }
@@ -102,21 +102,17 @@ export function getAdSenseSettings(): AdSenseSettings {
     localStorage.setItem(ADSENSE_KEY, JSON.stringify(defaultAdSenseSettings));
     return defaultAdSenseSettings;
   }
-  const parsed: AdSenseSettings = JSON.parse(data);
-  // Ensure globalEnabled is true by default for ready ad spots and footerBanner is populated
-  let needsSave = false;
-  if (parsed.globalEnabled === undefined) {
-    parsed.globalEnabled = true;
-    needsSave = true;
+  try {
+    const parsed: AdSenseSettings = JSON.parse(data);
+    if (parsed.publisherId === 'ca-pub-1234567890123456') {
+      parsed.publisherId = 'ca-pub-1587039209512710';
+      parsed.globalEnabled = false;
+      localStorage.setItem(ADSENSE_KEY, JSON.stringify(parsed));
+    }
+    return parsed;
+  } catch (e) {
+    return defaultAdSenseSettings;
   }
-  if (!parsed.footerBanner) {
-    parsed.footerBanner = defaultAdSenseSettings.footerBanner;
-    needsSave = true;
-  }
-  if (needsSave) {
-    localStorage.setItem(ADSENSE_KEY, JSON.stringify(parsed));
-  }
-  return parsed;
 }
 
 export function saveAdSenseSettings(settings: AdSenseSettings): void {
