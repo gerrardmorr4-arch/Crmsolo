@@ -228,15 +228,16 @@ export default function App() {
 
     if (currentPath.startsWith('/reviews/')) {
       const slug = currentPath.replace('/reviews/', '');
-      const selectedCrm = reviews.find(r => r.slug === slug);
+      const selectedCrm = reviews.find(r => r.slug === slug || r.id === slug || r.slug.includes(slug) || slug.includes(r.id));
       if (selectedCrm) {
         return <ReviewDetail crm={selectedCrm} onNavigate={handleNavigate} />;
       }
     }
 
     // 4. Comparisons list & details
-    if (currentPath === '/compare' || currentPath.startsWith('/compare/')) {
-      const slug = currentPath === '/compare' ? null : currentPath.replace('/compare/', '');
+    if (currentPath === '/compare' || currentPath === '/comparisons' || currentPath.startsWith('/compare/') || currentPath.startsWith('/comparison/')) {
+      const rawSlug = currentPath.replace('/compare/', '').replace('/comparison/', '').replace('/compare', '').replace('/comparisons', '');
+      const slug = rawSlug && rawSlug !== '' ? rawSlug : null;
       return (
         <ComparisonDetail 
           comparisonSlug={slug}
@@ -248,8 +249,9 @@ export default function App() {
     }
 
     // 5. Guides list & details
-    if (currentPath === '/guides' || currentPath.startsWith('/guides/')) {
-      const slug = currentPath === '/guides' ? null : currentPath.replace('/guides/', '');
+    if (currentPath === '/guides' || currentPath.startsWith('/guides/') || currentPath === '/guide' || currentPath.startsWith('/guide/')) {
+      const rawSlug = currentPath.replace('/guides/', '').replace('/guide/', '').replace('/guides', '').replace('/guide', '');
+      const slug = rawSlug && rawSlug !== '' ? rawSlug : null;
       return (
         <GuideDetail 
           guideSlug={slug}
