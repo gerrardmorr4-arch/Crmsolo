@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI, Type } from '@google/genai';
 
@@ -423,19 +424,76 @@ For agents seeking immediate performance lifts, we recommend selecting a platfor
     };
   }
 
-  // Serve explicit SEO crawlers endpoints
-  app.get('/robots.txt', (req, res) => {
-    const robotsPath = path.join(process.cwd(), 'public', 'robots.txt');
+  // Serve explicit SEO crawlers endpoints with full resilience
+  app.get(['/robots.txt', '/robots'], (req, res) => {
+    const candidatePaths = [
+      path.join(process.cwd(), 'public', 'robots.txt'),
+      path.join(process.cwd(), 'dist', 'robots.txt'),
+      path.join(__dirname, 'public', 'robots.txt'),
+      path.join(__dirname, 'robots.txt')
+    ];
+    const robotsPath = candidatePaths.find(p => fs.existsSync(p));
+
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.setHeader('Cache-Control', 'public, max-age=3600');
-    res.sendFile(robotsPath);
+    res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+    if (robotsPath) {
+      res.sendFile(robotsPath);
+    } else {
+      res.send("User-agent: *\nAllow: /\nAllow: /api/crm-news\nDisallow: /admin\n\nSitemap: https://crmsolo.online/sitemap.xml\n");
+    }
   });
 
-  app.get('/sitemap.xml', (req, res) => {
-    const sitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml');
+  app.get(['/ads.txt'], (req, res) => {
+    const candidatePaths = [
+      path.join(process.cwd(), 'public', 'ads.txt'),
+      path.join(process.cwd(), 'dist', 'ads.txt'),
+      path.join(__dirname, 'public', 'ads.txt'),
+      path.join(__dirname, 'ads.txt')
+    ];
+    const adsPath = candidatePaths.find(p => fs.existsSync(p));
+
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+    if (adsPath) {
+      res.sendFile(adsPath);
+    } else {
+      res.send("google.com, pub-1587039209512710, DIRECT, f08c47fec0942fa0\n");
+    }
+  });
+
+  app.get(['/sitemap.xml', '/sitemap', '/sitemap_index.xml', '/sitemaps.xml', '/sitemap-index.xml'], (req, res) => {
+    const candidatePaths = [
+      path.join(process.cwd(), 'public', 'sitemap.xml'),
+      path.join(process.cwd(), 'dist', 'sitemap.xml'),
+      path.join(__dirname, 'public', 'sitemap.xml'),
+      path.join(__dirname, 'sitemap.xml')
+    ];
+    const sitemapPath = candidatePaths.find(p => fs.existsSync(p));
+
     res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-    res.setHeader('Cache-Control', 'public, max-age=3600');
-    res.sendFile(sitemapPath);
+    res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+    if (sitemapPath) {
+      res.sendFile(sitemapPath);
+    } else {
+      res.status(404).send('<!-- Sitemap file not found -->');
+    }
+  });
+
+  // Catch duplicate-prefix attempts like /https://crmsolo.online/sitemap.xml
+  app.get(['/*sitemap.xml*', '/*sitemap*'], (req, res, next) => {
+    if (req.path.includes('sitemap')) {
+      const candidatePaths = [
+        path.join(process.cwd(), 'public', 'sitemap.xml'),
+        path.join(process.cwd(), 'dist', 'sitemap.xml')
+      ];
+      const sitemapPath = candidatePaths.find(p => fs.existsSync(p));
+      if (sitemapPath) {
+        res.setHeader('Content-Type', 'application/xml; charset=utf-8');
+        res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
+        return res.sendFile(sitemapPath);
+      }
+    }
+    next();
   });
 
   // Serve static files in production / Vite middleware in dev
