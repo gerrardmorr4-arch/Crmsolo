@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Mail, BookOpen, Calculator, Layers, Info, Check, Sparkles, Star, ChevronRight, ChevronUp, ChevronDown, Lock, Search, FileText, ArrowRight, Award, Home } from 'lucide-react';
+import { Menu, X, Mail, BookOpen, Calculator, Layers, Info, Check, Sparkles, Star, ChevronRight, ChevronUp, ChevronDown, Lock, Search, FileText, ArrowRight, Award, Home, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { getAdSenseSettings, getReviews, getComparisons, getGuides, getBlogPosts } from '../lib/storage';
 import AdSenseAd from './AdSenseAd';
@@ -82,6 +82,14 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
           path: `/blog/${segments[1]}`
         });
       }
+    } else if (firstSeg === 'blueprints') {
+      crumbs.push({ label: 'Automation Blueprints', path: '/blueprints' });
+      if (segments[1]) {
+        crumbs.push({
+          label: segments[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+          path: `/blueprints/${segments[1]}`
+        });
+      }
     } else if (firstSeg === 'calculator') {
       crumbs.push({ label: 'ROI Calculator', path: '/calculator' });
     } else if (firstSeg === 'about') {
@@ -162,6 +170,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
 
   const navLinks = [
     { name: 'CRM Directory', path: '/directory', icon: Award },
+    { name: 'Blueprints Hub', path: '/blueprints', icon: Zap },
     { name: 'Buyer\'s Guides', path: '/buyer-guide', icon: BookOpen },
     { name: 'ROI Calculator', path: '/calculator', icon: Calculator },
     { name: 'Feature Checklist', path: '/checklist', icon: Check },

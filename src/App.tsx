@@ -11,6 +11,7 @@ import FeatureChecklist from './components/FeatureChecklist';
 import AdminPortal from './pages/AdminPortal';
 import { Directory } from './pages/Directory';
 import { BuyerGuide } from './pages/BuyerGuide';
+import BlueprintsPage from './pages/BlueprintsPage';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useSEO } from './lib/seo';
 
@@ -54,6 +55,10 @@ export default function App() {
     topTitle = 'Tested CRM Reviews for Solo Realtors';
     topDescription = 'Read our honest verdicts and hands-on reviews of Pipedrive, Streak, Follow Up Boss, Copper, and Wise Agent.';
     topKeywords = ['tested crm reviews', 'honest crm review', 'pipedrive review', 'streak review', 'follow up boss review'];
+  } else if (currentPath === '/blueprints' || currentPath.startsWith('/blueprints/')) {
+    topTitle = 'Real Estate CRM Automation Blueprints (2026 Free Workflows)';
+    topDescription = 'Actionable step-by-step CRM automation workflows, speed-to-lead scripts, Kanban escrow tracking, and Pinterest traffic blueprints for solo realtors.';
+    topKeywords = ['real estate crm blueprints', 'realtor automation workflow', 'speed to lead scripts', 'escrow kanban board'];
   }
 
   useSEO({
@@ -210,6 +215,17 @@ export default function App() {
           guides={guides}
           onSelectGuide={(slug) => handleNavigate(`/guides/${slug}`)}
           onNavigateToDirectory={() => handleNavigate('/directory')}
+        />
+      );
+    }
+
+    // 2.96 Real Estate Automation Blueprints Hub
+    if (currentPath === '/blueprints' || currentPath.startsWith('/blueprints/')) {
+      const slug = currentPath === '/blueprints' ? null : currentPath.replace('/blueprints/', '');
+      return (
+        <BlueprintsPage 
+          blueprintSlug={slug}
+          onNavigate={handleNavigate}
         />
       );
     }

@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { CRMReview, CRMGuide, BlogPost } from '../types';
 import { useSEO } from '../lib/seo';
 import ROICalculator from '../components/ROICalculator';
-import { ArrowRight, Calculator, CheckCircle2, ChevronRight, ChevronLeft, HelpCircle, ShieldAlert, Sparkles, Star, TrendingUp } from 'lucide-react';
+import { ArrowRight, Calculator, CheckCircle2, ChevronRight, ChevronLeft, HelpCircle, ShieldAlert, Sparkles, Star, TrendingUp, Zap, Download, Copy, Clock } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
 import FAQSection from '../components/FAQSection';
 import CRMNewsSection from '../components/CRMNewsSection';
@@ -12,6 +12,7 @@ import VideoTestimonials from '../components/VideoTestimonials';
 import AgentProfileQuiz from '../components/AgentProfileQuiz';
 import AdSenseAd from '../components/AdSenseAd';
 import faqData from '../data/faqs.json';
+import { automationBlueprints } from '../data/blueprintsData';
 
 interface HomeProps {
   reviews: CRMReview[];
@@ -430,6 +431,75 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
               Configure Your Checklist <ArrowRight className="w-4 h-4" />
             </button>
           </div>
+        </div>
+      </section>
+
+      {/* Real Estate Automation Blueprints Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b-2 border-primary pb-4">
+          <div>
+            <div className="inline-flex items-center gap-1.5 bg-accent text-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-xs mb-2">
+              <Zap className="w-3 h-3 fill-primary" /> Turnkey Systems
+            </div>
+            <h2 className="text-3xl md:text-4xl font-black text-primary font-display uppercase tracking-tight">
+              SOLO AGENT CRM AUTOMATION BLUEPRINTS
+            </h2>
+            <p className="text-gray-500 text-sm max-w-2xl mt-1">
+              Tested webhook workflows, 2-minute speed-to-lead scripts, and escrow Kanban boards you can deploy into your CRM today.
+            </p>
+          </div>
+
+          <button
+            onClick={() => onNavigate('/blueprints')}
+            className="inline-flex items-center gap-1.5 text-xs font-black uppercase tracking-widest text-primary hover:text-accent transition cursor-pointer shrink-0"
+          >
+            Explore All 6 Blueprints <ArrowRight className="w-4 h-4" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {automationBlueprints.slice(0, 3).map((bp) => (
+            <div
+              key={bp.id}
+              onClick={() => onNavigate(`/blueprints/${bp.slug}`)}
+              className="bg-white p-6 rounded-xl border-2 border-gray-200 hover:border-accent hover:shadow-lg transition-all duration-200 cursor-pointer flex flex-col justify-between space-y-4 group text-left"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="text-[10px] font-mono font-bold uppercase px-2.5 py-0.5 rounded-full bg-primary/5 text-primary">
+                    {bp.category}
+                  </span>
+                  <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full flex items-center gap-1">
+                    <Clock className="w-3 h-3" /> {bp.timeToDeploy}
+                  </span>
+                </div>
+
+                <h3 className="text-lg font-bold text-primary font-display group-hover:text-accent transition-colors leading-snug">
+                  {bp.title}
+                </h3>
+
+                <p className="text-xs text-gray-500 line-clamp-3 leading-relaxed">
+                  {bp.summary}
+                </p>
+
+                <div className="pt-2">
+                  <div className="text-[11px] text-gray-600 font-semibold bg-gray-50 p-2.5 rounded-lg border border-gray-100 flex items-center gap-1.5">
+                    <TrendingUp className="w-3.5 h-3.5 text-accent shrink-0" />
+                    <span className="truncate">{bp.roiImpact}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-xs">
+                <span className="text-[11px] text-gray-400 font-mono">
+                  {bp.steps.length} Steps • Ready Scripts
+                </span>
+                <span className="font-black uppercase tracking-wider text-primary group-hover:text-accent flex items-center gap-1 text-[11px]">
+                  Launch Blueprint <ChevronRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
