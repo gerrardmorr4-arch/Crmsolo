@@ -90,6 +90,14 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
           path: `/blueprints/${segments[1]}`
         });
       }
+    } else if (firstSeg === 'planning-tools') {
+      crumbs.push({ label: 'Planning Tools Directory', path: '/planning-tools' });
+      if (segments[1]) {
+        crumbs.push({
+          label: segments[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+          path: `/planning-tools/${segments[1]}`
+        });
+      }
     } else if (firstSeg === 'calculator') {
       crumbs.push({ label: 'ROI Calculator', path: '/calculator' });
     } else if (firstSeg === 'about') {
@@ -170,6 +178,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
 
   const navLinks = [
     { name: 'CRM Directory', path: '/directory', icon: Award },
+    { name: 'Planning Tools', path: '/planning-tools', icon: Layers },
     { name: 'Blueprints Hub', path: '/blueprints', icon: Zap },
     { name: 'Buyer\'s Guides', path: '/buyer-guide', icon: BookOpen },
     { name: 'ROI Calculator', path: '/calculator', icon: Calculator },
@@ -615,6 +624,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
           <div className="md:col-span-2 space-y-2">
             <h4 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Quick Tools</h4>
             <ul className="space-y-1.5 pt-1">
+              <li><button onClick={() => onNavigate('/planning-tools')} className="text-accent font-bold hover:text-white transition">Planning Directory (22)</button></li>
               <li><button onClick={() => onNavigate('/calculator')} className="hover:text-white transition">ROI Calculator</button></li>
               <li><button onClick={() => onNavigate('/checklist')} className="hover:text-white transition">Feature Checklist</button></li>
               <li><button onClick={() => onNavigate('/compare/best-crm-for-solo-real-estate-agents')} className="hover:text-white transition">Solo Pillar comparison</button></li>
@@ -623,8 +633,11 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
           </div>
 
           <div className="md:col-span-3 space-y-2">
-            <h4 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Independently Reviewed</h4>
+            <h4 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Planning & CRM Reviews</h4>
             <ul className="space-y-1.5 pt-1">
+              <li><button onClick={() => onNavigate('/planning-tools/agile-project-management')} className="hover:text-white transition">Agile Tools (193)</button></li>
+              <li><button onClick={() => onNavigate('/planning-tools/project-management')} className="hover:text-white transition">Project Management (899)</button></li>
+              <li><button onClick={() => onNavigate('/planning-tools/time-tracking')} className="hover:text-white transition">Time Tracking (754)</button></li>
               <li><button onClick={() => onNavigate('/reviews/pipedrive-for-real-estate-agents')} className="hover:text-white transition">Pipedrive Review</button></li>
               <li><button onClick={() => onNavigate('/reviews/streak-for-real-estate-agents')} className="hover:text-white transition">Streak Review</button></li>
               <li><button onClick={() => onNavigate('/reviews/followupboss-for-real-estate-agents')} className="hover:text-white transition">Follow Up Boss Review</button></li>

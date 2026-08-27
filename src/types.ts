@@ -146,3 +146,34 @@ export interface EmailSubscriber {
   status: 'Active' | 'Unsubscribed';
 }
 
+export interface PlanningToolItem {
+  name: string;
+  rating: number; // 0-5
+  pricingStarting: string;
+  bestFor: string;
+  keyFeatures: string[];
+  pros: string[];
+  cons: string[];
+  geoCompliance: string[]; // e.g. ["US / SOC 2", "EU / GDPR", "UK / ICO", "APAC / IRAP"]
+}
+
+export interface PlanningCategory {
+  id: string;
+  slug: string;
+  name: string;
+  toolCount: number; // Exact bracket number
+  tagline: string;
+  description: string;
+  evaluationCriteria: string[];
+  marketOverview: string;
+  geoFocus: {
+    regions: string[];
+    topComplianceStandards: string[];
+    typicalCurrencySupport: string[];
+    regionalDeploymentNotes: string;
+  };
+  topTools: PlanningToolItem[];
+  faqs: Array<{ question: string; answer: string }>;
+  keyBuyerTakeaways: string[];
+}
+

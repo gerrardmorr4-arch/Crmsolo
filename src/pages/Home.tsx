@@ -503,6 +503,66 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
         </div>
       </section>
 
+      {/* Planning Tools & Project Management Directory Showcase */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="bg-slate-900 text-white rounded-2xl p-8 md:p-12 shadow-xl border border-slate-800 relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-8 border-b border-slate-800">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">
+                <Sparkles className="w-3.5 h-3.5" />
+                5,973+ Tools Indexed Across 22 Categories
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black font-display uppercase tracking-tight text-white">
+                PLANNING TOOLS &amp; SOFTWARE DIRECTORY
+              </h2>
+              <p className="text-slate-300 text-sm md:text-base max-w-2xl mt-2 leading-relaxed">
+                Objective benchmark reviews, feature scoring, and GEO compliance for Agile (193), Time Tracking (754), Project Management (899), Gantt Charts (147), and Job Costing (173).
+              </p>
+            </div>
+
+            <button
+              onClick={() => onNavigate('/planning-tools')}
+              className="px-6 py-4 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs uppercase tracking-widest rounded-xl transition duration-150 active:scale-95 flex items-center gap-2 shrink-0 cursor-pointer shadow-lg shadow-emerald-500/20"
+            >
+              Explore All 22 Categories <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Quick Category Badges Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-8">
+            {[
+              { name: 'Project Management', count: 899, slug: 'project-management' },
+              { name: 'Time Tracking', count: 754, slug: 'time-tracking' },
+              { name: 'Task Management', count: 673, slug: 'task-management' },
+              { name: 'Time and Expenses', count: 357, slug: 'time-and-expenses' },
+              { name: 'Project Planning', count: 313, slug: 'project-planning' },
+              { name: 'Project Tracking', count: 305, slug: 'project-tracking' },
+              { name: 'PPM', count: 285, slug: 'project-portfolio-management' },
+              { name: 'Strategic Planning', count: 240, slug: 'strategic-planning' },
+              { name: 'PSA', count: 239, slug: 'professional-services-automation' },
+              { name: 'Agile Management', count: 193, slug: 'agile-project-management' },
+              { name: 'IT Project Mgmt', count: 173, slug: 'it-project-management' },
+              { name: 'Job Costing', count: 173, slug: 'job-costing' }
+            ].map((cat, idx) => (
+              <div
+                key={idx}
+                onClick={() => onNavigate(`/planning-tools/${cat.slug}`)}
+                className="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-emerald-400/50 p-3.5 rounded-xl transition-all cursor-pointer group"
+              >
+                <div className="text-xs font-bold text-slate-200 group-hover:text-emerald-400 transition-colors line-clamp-1">
+                  {cat.name}
+                </div>
+                <div className="text-[11px] font-extrabold text-emerald-400 mt-1">
+                  ({cat.count})
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* 3. ROI Calculator Embedded Showcase */}
       <section id="roi-calc-section" className="bg-gray-100/50 border-y border-gray-200 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-10">

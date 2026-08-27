@@ -12,6 +12,9 @@ import AdminPortal from './pages/AdminPortal';
 import { Directory } from './pages/Directory';
 import { BuyerGuide } from './pages/BuyerGuide';
 import BlueprintsPage from './pages/BlueprintsPage';
+import { PlanningToolsHub } from './pages/PlanningToolsHub';
+import { PlanningCategoryDetail } from './pages/PlanningCategoryDetail';
+import { PLANNING_CATEGORIES, getPlanningCategoryBySlug } from './data/planningToolsData';
 import ErrorBoundary from './components/ErrorBoundary';
 import { useSEO } from './lib/seo';
 
@@ -59,6 +62,10 @@ export default function App() {
     topTitle = 'Real Estate CRM Automation Blueprints (2026 Free Workflows)';
     topDescription = 'Actionable step-by-step CRM automation workflows, speed-to-lead scripts, Kanban escrow tracking, and Pinterest traffic blueprints for solo realtors.';
     topKeywords = ['real estate crm blueprints', 'realtor automation workflow', 'speed to lead scripts', 'escrow kanban board'];
+  } else if (currentPath === '/planning-tools' || currentPath.startsWith('/planning-tools/')) {
+    topTitle = 'Top Planning Tools & Project Management Software Directory (2026 Index)';
+    topDescription = 'Explore 22 verified planning tool categories including Agile, Gantt, Time Tracking, Job Costing, and PPM. Compare 5,900+ software tools with GEO compliance.';
+    topKeywords = ['planning tools', 'project management directory', 'agile tools', 'gantt chart software', 'time tracking software'];
   }
 
   useSEO({
@@ -228,6 +235,27 @@ export default function App() {
           onNavigate={handleNavigate}
         />
       );
+    }
+
+    // 2.97 Planning Tools Directory & Category Reviews
+    if (currentPath === '/planning-tools') {
+      return (
+        <PlanningToolsHub onNavigate={handleNavigate} />
+      );
+    }
+
+    if (currentPath.startsWith('/planning-tools/')) {
+      const slug = currentPath.replace('/planning-tools/', '');
+      const category = getPlanningCategoryBySlug(slug);
+      if (category) {
+        return (
+          <PlanningCategoryDetail 
+            category={category} 
+            allCategories={PLANNING_CATEGORIES} 
+            onNavigate={handleNavigate} 
+          />
+        );
+      }
     }
 
     // 3. Reviews list & details
