@@ -81,6 +81,11 @@ export interface BlogPost {
   author: string;
   publishDate: string;
   category: string;
+  readTime?: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  targetKeywords?: string[];
+  featuredTools?: Array<{ name: string; url: string; badge?: string }>;
 }
 
 export interface CalculatorInputs {
@@ -151,6 +156,9 @@ export interface PlanningToolItem {
   rating: number; // 0-5
   pricingStarting: string;
   bestFor: string;
+  websiteUrl: string;
+  trialUrl?: string;
+  featuredBadge?: string;
   keyFeatures: string[];
   pros: string[];
   cons: string[];

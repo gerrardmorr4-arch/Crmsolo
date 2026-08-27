@@ -1,5 +1,6 @@
 import { CRMReview, CRMComparison, CRMGuide, BlogPost, AdSenseSettings, BacklinkPartner, EmailSubscriber } from '../types';
 import { initialReviews, initialComparisons, initialGuides, initialBlogPosts } from '../data/initialData';
+import { PLANNING_BLOG_ARTICLES } from '../data/planningBlogArticles';
 
 const REVIEWS_KEY = 'crmsolo_reviews';
 const COMPARISONS_KEY = 'crmsolo_comparisons';
@@ -238,15 +239,21 @@ export function saveGuides(guides: CRMGuide[]): void {
 }
 
 export function getBlogPosts(): BlogPost[] {
+  const allBaselinePosts = [...initialBlogPosts, ...PLANNING_BLOG_ARTICLES];
   const data = localStorage.getItem(BLOG_POSTS_KEY);
   if (!data) {
-    localStorage.setItem(BLOG_POSTS_KEY, JSON.stringify(initialBlogPosts));
-    return initialBlogPosts;
+    localStorage.setItem(BLOG_POSTS_KEY, JSON.stringify(allBaselinePosts));
+    return allBaselinePosts;
   }
   const posts: BlogPost[] = JSON.parse(data);
-  let updated = false;
-  const remediated = posts.map(p => {
-    const fresh = initialBlogPosts.find(f => f.id === p.id);
+  // Ensure all baseline planning & CRM articles exist in the retrieved array
+  const existingIds = new Set(posts.map(p => p.id));
+  const missingBaseline = allBaselinePosts.filter(b => !existingIds.has(b.id));
+  const combined = [...posts, ...missingBaseline];
+
+  let updated = missingBaseline.length > 0;
+  const remediated = combined.map(p => {
+    const fresh = allBaselinePosts.find(f => f.id === p.id);
     if (fresh) {
       const pWords = p.content ? p.content.trim().split(/\s+/).filter(Boolean).length : 0;
       const pExcerptLen = p.excerpt ? p.excerpt.length : 0;
@@ -255,7 +262,11 @@ export function getBlogPosts(): BlogPost[] {
         return {
           ...p,
           excerpt: fresh.excerpt,
-          content: fresh.content
+          content: fresh.content,
+          metaTitle: fresh.metaTitle,
+          metaDescription: fresh.metaDescription,
+          targetKeywords: fresh.targetKeywords,
+          featuredTools: fresh.featuredTools
         };
       }
     }
