@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Mail, BookOpen, Calculator, Layers, Info, Check, Sparkles, Star, ChevronRight, ChevronUp, ChevronDown, Lock, Search, FileText, ArrowRight, Award, Home, Zap } from 'lucide-react';
+import { Menu, X, Mail, BookOpen, Calculator, Layers, Info, Check, Sparkles, Star, ChevronRight, ChevronUp, ChevronDown, Lock, Search, FileText, ArrowRight, Award, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { getAdSenseSettings, getReviews, getComparisons, getGuides, getBlogPosts } from '../lib/storage';
+import { getAdSenseSettings } from '../lib/storage';
 import AdSenseAd from './AdSenseAd';
 import JoinAgentNewsletter from './JoinAgentNewsletter';
 import NavSearchBar from './NavSearchBar';
 import PrintFooter from './PrintFooter';
+import Breadcrumbs from './Breadcrumbs';
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -24,101 +25,6 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolledPast, setScrolledPast] = useState(false);
   const [ctaCollapsed, setCtaCollapsed] = useState(false);
-
-  // Dynamic Breadcrumbs computation based on currentPath
-  const breadcrumbs = React.useMemo(() => {
-    if (!currentPath || currentPath === '/') return [];
-
-    const crumbs: { label: string; path: string }[] = [
-      { label: 'Home', path: '/' }
-    ];
-
-    const segments = currentPath.split('/').filter(Boolean);
-    if (segments.length === 0) return [];
-
-    const firstSeg = segments[0];
-
-    if (firstSeg === 'directory' || firstSeg === 'category') {
-      crumbs.push({ label: 'Software Directory', path: '/directory' });
-    } else if (firstSeg === 'buyer-guide' || firstSeg === 'buyers-guide') {
-      crumbs.push({ label: "Buyer's Guide Hub", path: '/buyer-guide' });
-    } else if (firstSeg === 'reviews') {
-      crumbs.push({ label: 'CRM Reviews', path: '/reviews' });
-      if (segments[1]) {
-        const reviews = getReviews();
-        const review = reviews.find(r => r.slug === segments[1]);
-        crumbs.push({
-          label: review ? review.name : segments[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-          path: `/reviews/${segments[1]}`
-        });
-      }
-    } else if (firstSeg === 'compare') {
-      crumbs.push({ label: 'Comparisons', path: '/compare' });
-      if (segments[1]) {
-        const comparisons = getComparisons();
-        const comp = comparisons.find(c => c.slug === segments[1]);
-        crumbs.push({
-          label: comp ? comp.title : segments[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-          path: `/compare/${segments[1]}`
-        });
-      }
-    } else if (firstSeg === 'guides') {
-      crumbs.push({ label: 'Guides & Workbooks', path: '/guides' });
-      if (segments[1]) {
-        const guides = getGuides();
-        const guide = guides.find(g => g.slug === segments[1]);
-        crumbs.push({
-          label: guide ? guide.title : segments[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-          path: `/guides/${segments[1]}`
-        });
-      }
-    } else if (firstSeg === 'blog') {
-      crumbs.push({ label: 'Blog', path: '/blog' });
-      if (segments[1]) {
-        const blogs = getBlogPosts();
-        const blog = blogs.find(b => b.slug === segments[1]);
-        crumbs.push({
-          label: blog ? blog.title : segments[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-          path: `/blog/${segments[1]}`
-        });
-      }
-    } else if (firstSeg === 'blueprints') {
-      crumbs.push({ label: 'Automation Blueprints', path: '/blueprints' });
-      if (segments[1]) {
-        crumbs.push({
-          label: segments[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-          path: `/blueprints/${segments[1]}`
-        });
-      }
-    } else if (firstSeg === 'planning-tools') {
-      crumbs.push({ label: 'Planning Tools Directory', path: '/planning-tools' });
-      if (segments[1]) {
-        crumbs.push({
-          label: segments[1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-          path: `/planning-tools/${segments[1]}`
-        });
-      }
-    } else if (firstSeg === 'calculator') {
-      crumbs.push({ label: 'ROI Calculator', path: '/calculator' });
-    } else if (firstSeg === 'about') {
-      crumbs.push({ label: 'About CRMsolo', path: '/about' });
-    } else if (firstSeg === 'admin') {
-      crumbs.push({ label: 'Admin Portal', path: '/admin' });
-    } else if (firstSeg === 'contact') {
-      crumbs.push({ label: 'Contact Us', path: '/contact' });
-    } else if (firstSeg === 'privacy-policy') {
-      crumbs.push({ label: 'Privacy Policy', path: '/privacy-policy' });
-    } else if (firstSeg === 'affiliate-disclosure') {
-      crumbs.push({ label: 'Affiliate Disclosure', path: '/affiliate-disclosure' });
-    } else {
-      crumbs.push({
-        label: firstSeg.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
-        path: `/${firstSeg}`
-      });
-    }
-
-    return crumbs;
-  }, [currentPath]);
 
   // Load and inject Google AdSense headScript dynamically when enabled
   useEffect(() => {
@@ -439,42 +345,8 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
         )}
       </AnimatePresence>
 
-      {/* Dynamic Breadcrumb Navigation Bar */}
-      {breadcrumbs.length > 0 && (
-        <nav aria-label="Breadcrumb" className="bg-gray-100/90 border-b border-gray-200/80 py-2.5 px-4 sm:px-6 lg:px-8 text-xs text-gray-500 font-medium transition-all">
-          <div className="max-w-7xl mx-auto flex items-center gap-1.5 overflow-x-auto whitespace-nowrap no-scrollbar">
-            {breadcrumbs.map((crumb, idx) => {
-              const isLast = idx === breadcrumbs.length - 1;
-              const isHome = idx === 0;
-
-              return (
-                <React.Fragment key={crumb.path + idx}>
-                  {idx > 0 && (
-                    <ChevronRight className="w-3.5 h-3.5 text-gray-400 shrink-0" />
-                  )}
-                  {isLast ? (
-                    <span 
-                      className="text-primary font-bold truncate max-w-[280px] sm:max-w-md md:max-w-lg font-display" 
-                      aria-current="page"
-                      title={crumb.label}
-                    >
-                      {crumb.label}
-                    </span>
-                  ) : (
-                    <button
-                      onClick={() => onNavigate(crumb.path)}
-                      className="hover:text-primary transition flex items-center gap-1 cursor-pointer hover:underline text-gray-600 font-semibold"
-                    >
-                      {isHome && <Home className="w-3.5 h-3.5 text-accent" />}
-                      <span>{crumb.label}</span>
-                    </button>
-                  )}
-                </React.Fragment>
-              );
-            })}
-          </div>
-        </nav>
-      )}
+      {/* Semantic Schema.org Breadcrumb Navigation */}
+      <Breadcrumbs currentPath={currentPath} onNavigate={onNavigate} />
 
       {/* Main Content Stage */}
       <main className="flex-grow">

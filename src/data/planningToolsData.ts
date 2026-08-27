@@ -1,4 +1,7 @@
 import { PlanningCategory } from '../types';
+import { ALL_INDEXED_TOOLS, getToolsByCategorySlug, searchAllTools } from './indexedToolsDirectory';
+
+export { ALL_INDEXED_TOOLS, getToolsByCategorySlug, searchAllTools };
 
 export const PLANNING_CATEGORIES: PlanningCategory[] = [
   {
@@ -1406,7 +1409,13 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
 ];
 
 export function getPlanningCategoryBySlug(slug: string): PlanningCategory | undefined {
-  return PLANNING_CATEGORIES.find((cat) => cat.slug === slug || cat.id === slug);
+  const category = PLANNING_CATEGORIES.find((cat) => cat.slug === slug || cat.id === slug);
+  if (!category) return undefined;
+  const indexed = getToolsByCategorySlug(category.slug || category.id);
+  return {
+    ...category,
+    indexedTools: indexed.length > 0 ? indexed : category.topTools
+  };
 }
 
 export function getTotalPlanningToolsCount(): number {

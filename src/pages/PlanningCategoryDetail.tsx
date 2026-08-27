@@ -1,22 +1,23 @@
-import React from 'react';
-import { PlanningCategory } from '../types';
+import React, { useState, useMemo } from 'react';
+import { PlanningCategory, PlanningToolItem } from '../types';
 import { useSEO } from '../lib/seo';
+import { getToolsByCategorySlug } from '../data/indexedToolsDirectory';
 import { 
   ArrowLeft, 
   ExternalLink, 
   Globe2, 
   ShieldCheck, 
   Star, 
-  CheckCircle2, 
-  Layers, 
-  Sparkles, 
-  DollarSign, 
-  Calendar, 
-  ChevronRight,
   BookOpen,
   Check,
-  Building2,
-  TrendingUp
+  Search,
+  Filter,
+  Sparkles,
+  Layers,
+  ArrowUpRight,
+  SlidersHorizontal,
+  Server,
+  DollarSign
 } from 'lucide-react';
 
 interface PlanningCategoryDetailProps {
@@ -30,6 +31,9 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
   allCategories,
   onNavigate
 }) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [tierFilter, setTierFilter] = useState<'all' | 'freemium' | 'paid' | 'open-source'>('all');
+
   // Dynamic SEO & GEO
   useSEO({
     title: `Best ${category.name} Software (${category.toolCount}) - 2026 Reviews & Pricing`,
@@ -44,18 +48,45 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
     ogType: 'article'
   }, [category]);
 
+  // Combine top tools and all indexed tools for this category
+  const allCategoryTools = useMemo(() => {
+    const fromIndex = getToolsByCategorySlug(category.slug || category.id);
+    const existingNames = new Set(fromIndex.map(t => t.name.toLowerCase()));
+    const extras = category.topTools.filter(t => !existingNames.has(t.name.toLowerCase()));
+    return [...fromIndex, ...extras];
+  }, [category]);
+
+  // Filtered tools based on search and tier filter
+  const filteredTools = useMemo(() => {
+    return allCategoryTools.filter(tool => {
+      const matchesSearch = searchQuery.trim() === '' || 
+        tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        tool.bestFor.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        tool.keyFeatures.some(f => f.toLowerCase().includes(searchQuery.toLowerCase()));
+
+      const matchesTier = 
+        tierFilter === 'all' ? true :
+        tierFilter === 'freemium' ? (tool.pricingTier === 'Freemium' || tool.pricingTier === 'Free' || tool.pricingStarting.toLowerCase().includes('free')) :
+        tierFilter === 'paid' ? (tool.pricingTier === 'Paid' || tool.pricingTier === 'Enterprise Quote') :
+        tierFilter === 'open-source' ? (tool.pricingTier === 'Open-Source' || tool.pricingStarting.toLowerCase().includes('open-source')) :
+        true;
+
+      return matchesSearch && matchesTier;
+    });
+  }, [allCategoryTools, searchQuery, tierFilter]);
+
   // Schema.org SoftwareApplication List Structured Data
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     'name': `Top ${category.name} Tools & Software (${category.toolCount})`,
     'description': category.description,
-    'itemListElement': category.topTools.map((tool, index) => ({
+    'itemListElement': allCategoryTools.map((tool, index) => ({
       '@type': 'SoftwareApplication',
       'position': index + 1,
       'name': tool.name,
       'applicationCategory': category.name,
-      'operatingSystem': 'Web, Cloud, iOS, Android',
+      'operatingSystem': tool.deployment || 'Web, Cloud, iOS, Android',
       'aggregateRating': {
         '@type': 'AggregateRating',
         'ratingValue': tool.rating,
@@ -106,13 +137,13 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
               Verified 2026 Audit
             </span>
             <span className="bg-slate-800 text-slate-300 text-xs font-mono px-3 py-1 rounded-full border border-slate-700">
-              {category.toolCount} Tools Indexed
+              {category.toolCount} Tools Audited
             </span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl font-extrabold font-display tracking-tight text-white mb-4">
             {category.name}{' '}
-            <span className="text-emerald-400">({category.toolCount})</span>
+            <span className="text-emerald-400 font-mono">({category.toolCount})</span>
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 max-w-3xl leading-relaxed mb-6">
@@ -138,25 +169,25 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
         
         {/* Top Evaluated Platforms Header */}
         <section>
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
             <div>
               <h2 className="text-2xl font-bold text-slate-900 font-display">
-                Top Rated {category.name} Platforms
+                Featured {category.name} Platforms ({category.topTools.length})
               </h2>
               <p className="text-xs text-slate-500">
-                Direct official website links, verified user ratings, and feature breakdowns.
+                In-depth editorial evaluations, verified user ratings, pros/cons, and direct official platform links.
               </p>
             </div>
             <button
               onClick={() => onNavigate('/blog')}
-              className="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-700"
+              className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-700 self-start sm:self-auto"
             >
               <BookOpen className="w-4 h-4" />
               Read In-Depth Guides &rarr;
             </button>
           </div>
 
-          {/* Tools Cards Grid */}
+          {/* Featured Tools Cards Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {category.topTools.map((tool, index) => (
               <div
@@ -217,6 +248,32 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
                     ))}
                   </div>
 
+                  {/* Pros and Cons */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div className="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100">
+                      <div className="font-bold text-emerald-900 mb-1 text-[11px] uppercase tracking-wide">Pros:</div>
+                      <ul className="space-y-1 text-emerald-800 text-[11px]">
+                        {tool.pros.map((p, pIdx) => (
+                          <li key={pIdx} className="flex items-start gap-1.5">
+                            <span className="text-emerald-600 font-bold">+</span>
+                            <span>{p}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="bg-rose-50/50 p-3 rounded-xl border border-rose-100">
+                      <div className="font-bold text-rose-900 mb-1 text-[11px] uppercase tracking-wide">Cons:</div>
+                      <ul className="space-y-1 text-rose-800 text-[11px]">
+                        {tool.cons.map((c, cIdx) => (
+                          <li key={cIdx} className="flex items-start gap-1.5">
+                            <span className="text-rose-500 font-bold">-</span>
+                            <span>{c}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
                   {/* GEO & Security Standards */}
                   {tool.geoCompliance && tool.geoCompliance.length > 0 && (
                     <div className="flex flex-wrap gap-1.5 items-center">
@@ -233,33 +290,159 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
                 {/* Card Action Buttons (Direct Official Links) */}
                 <div className="pt-5 mt-5 border-t border-slate-100 flex items-center justify-between gap-3">
                   <span className="text-xs text-slate-500 font-medium">
-                    Deployment: Cloud, Web, Mobile
+                    Deployment: {tool.deployment || 'Cloud, Web, Mobile'}
                   </span>
 
                   <div className="flex items-center gap-2">
-                    {tool.websiteUrl ? (
+                    {tool.websiteUrl && (
                       <a
                         href={tool.websiteUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold rounded-xl shadow-xs transition group"
                       >
-                        <span>Visit {tool.name.split(' ')[0]}</span>
+                        <span>Visit Website</span>
                         <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                       </a>
-                    ) : (
-                      <button
-                        onClick={() => onNavigate('/compare')}
-                        className="px-4 py-2 bg-slate-900 text-white text-xs font-bold rounded-xl"
-                      >
-                        Compare Tool
-                      </button>
                     )}
                   </div>
                 </div>
               </div>
             ))}
           </div>
+        </section>
+
+        {/* Complete Listing of Tools Section */}
+        <section className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-xs space-y-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="bg-emerald-100 text-emerald-800 text-xs font-bold font-mono px-2.5 py-0.5 rounded-full">
+                  Category Directory Index
+                </span>
+                <span className="text-xs text-slate-500 font-mono">
+                  {category.toolCount} Tools Audited in Database
+                </span>
+              </div>
+              <h2 className="text-2xl font-bold text-slate-900 font-display">
+                All Audited {category.name} Software ({category.toolCount})
+              </h2>
+              <p className="text-xs text-slate-500 mt-1">
+                Browse verified software profiles, deployment architectures, pricing tiers, and direct official links from our {category.name} benchmark ({category.toolCount}).
+              </p>
+            </div>
+
+            {/* Filter and Search Bar */}
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="relative min-w-[220px]">
+                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  placeholder={`Search ${category.name}...`}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-9 pr-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white transition"
+                />
+              </div>
+
+              <div className="flex items-center bg-slate-100 p-1 rounded-xl text-xs">
+                <button
+                  onClick={() => setTierFilter('all')}
+                  className={`px-3 py-1 rounded-lg font-medium transition ${tierFilter === 'all' ? 'bg-white text-slate-900 shadow-xs font-bold' : 'text-slate-600 hover:text-slate-900'}`}
+                >
+                  All ({allCategoryTools.length})
+                </button>
+                <button
+                  onClick={() => setTierFilter('freemium')}
+                  className={`px-3 py-1 rounded-lg font-medium transition ${tierFilter === 'freemium' ? 'bg-white text-slate-900 shadow-xs font-bold' : 'text-slate-600 hover:text-slate-900'}`}
+                >
+                  Free / Trial
+                </button>
+                <button
+                  onClick={() => setTierFilter('paid')}
+                  className={`px-3 py-1 rounded-lg font-medium transition ${tierFilter === 'paid' ? 'bg-white text-slate-900 shadow-xs font-bold' : 'text-slate-600 hover:text-slate-900'}`}
+                >
+                  Commercial
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Directory Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredTools.map((tool, tIdx) => (
+              <div
+                key={tIdx}
+                className="bg-slate-50/70 hover:bg-white rounded-xl border border-slate-200/80 hover:border-emerald-500/40 p-4 transition-all duration-200 flex flex-col justify-between group shadow-xs hover:shadow-sm"
+              >
+                <div className="space-y-2.5">
+                  <div className="flex items-start justify-between gap-2">
+                    <div>
+                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                        {tool.name}
+                      </h4>
+                      <div className="flex items-center gap-2 mt-0.5">
+                        <span className="flex items-center gap-1 text-[11px] font-bold text-amber-600">
+                          <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
+                          {tool.rating}
+                        </span>
+                        <span className="text-slate-300">•</span>
+                        <span className="text-[11px] font-mono text-slate-600 font-semibold">
+                          {tool.pricingStarting}
+                        </span>
+                      </div>
+                    </div>
+
+                    {tool.featuredBadge && (
+                      <span className="text-[9px] bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full font-mono shrink-0">
+                        {tool.featuredBadge}
+                      </span>
+                    )}
+                  </div>
+
+                  <p className="text-xs text-slate-600 line-clamp-2">
+                    {tool.bestFor}
+                  </p>
+
+                  <div className="text-[11px] text-slate-500 flex items-center gap-1.5 font-mono">
+                    <Server className="w-3 h-3 text-slate-400" />
+                    <span className="truncate">{tool.deployment || 'Cloud / Web / Mobile'}</span>
+                  </div>
+                </div>
+
+                <div className="pt-3 mt-3 border-t border-slate-200/60 flex items-center justify-between gap-2">
+                  {tool.trialUrl ? (
+                    <a
+                      href={tool.trialUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[11px] font-bold text-slate-600 hover:text-emerald-600 transition"
+                    >
+                      Free Trial &rarr;
+                    </a>
+                  ) : (
+                    <span className="text-[11px] text-slate-400">Verified Platform</span>
+                  )}
+
+                  <a
+                    href={tool.websiteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-700 bg-emerald-50 hover:bg-emerald-100 px-2.5 py-1 rounded-lg transition"
+                  >
+                    <span>Visit Site</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {filteredTools.length === 0 && (
+            <div className="text-center py-10 bg-slate-50 rounded-xl border border-slate-200 text-slate-500 text-xs">
+              No software matching your search query was found in this category.
+            </div>
+          )}
         </section>
 
         {/* Technical Evaluation Criteria & Benchmark Section */}

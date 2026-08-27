@@ -512,7 +512,7 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-3">
                 <Sparkles className="w-3.5 h-3.5" />
-                5,973+ Tools Indexed Across 22 Categories
+                5,873 Tools Indexed Across 22 Categories
               </div>
               <h2 className="text-3xl md:text-5xl font-black font-display uppercase tracking-tight text-white">
                 PLANNING TOOLS &amp; SOFTWARE DIRECTORY

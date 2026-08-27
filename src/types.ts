@@ -163,6 +163,10 @@ export interface PlanningToolItem {
   pros: string[];
   cons: string[];
   geoCompliance: string[]; // e.g. ["US / SOC 2", "EU / GDPR", "UK / ICO", "APAC / IRAP"]
+  deployment?: string;
+  pricingTier?: 'Free' | 'Freemium' | 'Paid' | 'Open-Source' | 'Enterprise Quote';
+  categoryName?: string;
+  categorySlug?: string;
 }
 
 export interface PlanningCategory {
@@ -181,6 +185,7 @@ export interface PlanningCategory {
     regionalDeploymentNotes: string;
   };
   topTools: PlanningToolItem[];
+  indexedTools?: PlanningToolItem[];
   faqs: Array<{ question: string; answer: string }>;
   keyBuyerTakeaways: string[];
 }
