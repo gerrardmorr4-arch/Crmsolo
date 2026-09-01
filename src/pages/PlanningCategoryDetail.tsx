@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { PlanningCategory, PlanningToolItem } from '../types';
 import { useSEO } from '../lib/seo';
 import { getToolsByCategorySlug } from '../data/indexedToolsDirectory';
+import { generatePlanningCategoryPDF } from '../lib/pdfGenerator';
 import { 
   ArrowLeft, 
   ExternalLink, 
@@ -17,7 +18,8 @@ import {
   ArrowUpRight,
   SlidersHorizontal,
   Server,
-  DollarSign
+  DollarSign,
+  Download
 } from 'lucide-react';
 
 interface PlanningCategoryDetailProps {
@@ -101,6 +103,20 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
     }))
   };
 
+  const [pdfGenerating, setPdfGenerating] = useState(false);
+
+  const handleDownloadPDF = () => {
+    setPdfGenerating(true);
+    try {
+      const doc = generatePlanningCategoryPDF(category);
+      doc.save(`${category.slug}-software-benchmark-report.pdf`);
+    } catch (err) {
+      console.error('Failed to generate Category PDF:', err);
+    } finally {
+      setPdfGenerating(false);
+    }
+  };
+
   const otherCategories = allCategories
     .filter(c => c.id !== category.id)
     .slice(0, 6);
@@ -150,16 +166,27 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
             {category.description}
           </p>
 
-          {/* Quick GEO Summary Badges */}
-          <div className="flex flex-wrap items-center gap-3 text-xs">
-            <span className="inline-flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300">
-              <Globe2 className="w-4 h-4 text-emerald-400" />
-              GEO Regions: {category.geoFocus.regions.join(' • ')}
-            </span>
-            <span className="inline-flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              Compliance: {category.geoFocus.topComplianceStandards.join(', ')}
-            </span>
+          {/* Quick GEO Summary Badges & PDF Download */}
+          <div className="flex flex-wrap items-center justify-between gap-4 mt-6 pt-6 border-t border-slate-800">
+            <div className="flex flex-wrap items-center gap-3 text-xs">
+              <span className="inline-flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300">
+                <Globe2 className="w-4 h-4 text-emerald-400" />
+                GEO Regions: {category.geoFocus.regions.join(' • ')}
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 text-slate-300">
+                <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                Compliance: {category.geoFocus.topComplianceStandards.join(', ')}
+              </span>
+            </div>
+
+            <button
+              onClick={handleDownloadPDF}
+              disabled={pdfGenerating}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl shadow-sm transition active:scale-95 cursor-pointer disabled:opacity-50"
+            >
+              <Download className="w-4 h-4" />
+              {pdfGenerating ? 'Generating Benchmark PDF...' : 'Download Category PDF Report'}
+            </button>
           </div>
         </div>
       </header>
@@ -178,13 +205,23 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
                 In-depth editorial evaluations, verified user ratings, pros/cons, and direct official platform links.
               </p>
             </div>
-            <button
-              onClick={() => onNavigate('/blog')}
-              className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-700 self-start sm:self-auto"
-            >
-              <BookOpen className="w-4 h-4" />
-              Read In-Depth Guides &rarr;
-            </button>
+            <div className="flex items-center gap-3 self-start sm:self-auto">
+              <button
+                onClick={handleDownloadPDF}
+                disabled={pdfGenerating}
+                className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition border border-slate-200 disabled:opacity-50"
+              >
+                <Download className="w-3.5 h-3.5 text-emerald-600" />
+                {pdfGenerating ? 'Generating...' : 'Export PDF'}
+              </button>
+              <button
+                onClick={() => onNavigate('/blog')}
+                className="inline-flex items-center gap-1 text-xs font-bold text-emerald-600 hover:text-emerald-700"
+              >
+                <BookOpen className="w-4 h-4" />
+                Read Guides &rarr;
+              </button>
+            </div>
           </div>
 
           {/* Featured Tools Cards Grid */}

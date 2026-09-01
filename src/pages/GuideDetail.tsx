@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { CRMGuide } from '../types';
 import Markdown from '../components/Markdown';
-import { BookOpen, User, Calendar, List, ChevronRight, HelpCircle, ArrowLeft, Filter, Download, DollarSign, Printer, Check } from 'lucide-react';
+import { BookOpen, User, Calendar, List, ChevronRight, HelpCircle, ArrowLeft, Filter, Download, DollarSign, Printer, Check, FileText } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
 import { useSEO } from '../lib/seo';
 import AdSenseAd from '../components/AdSenseAd';
 import { useCRMFilterPreferences } from '../lib/useCRMFilterPreferences';
 import TableOfContents, { TocItem } from '../components/TableOfContents';
+import { generateGuidePDF } from '../lib/pdfGenerator';
 
 interface GuideDetailProps {
   guideSlug: string | null;
@@ -203,112 +204,18 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
 
   const tocItems = generateToc(currentGuide.content);
 
-  const handleDownloadPDF = () => {
-    const printWindow = window.open('', '_blank');
-    if (!printWindow) {
-      alert('Please allow popups to export the PDF guide.');
-      return;
-    }
+  const [pdfGenerating, setPdfGenerating] = useState(false);
 
-    const title = currentGuide.title;
-    const contentHtml = `
-      <html>
-        <head>
-          <title>${title} - CRMsolo Guide PDF</title>
-          <style>
-            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Space+Grotesk:wght@700&display=swap');
-            body {
-              font-family: 'Inter', sans-serif;
-              color: #111111;
-              line-height: 1.6;
-              padding: 40px;
-              max-width: 800px;
-              margin: 0 auto;
-            }
-            .header {
-              border-bottom: 3px solid #111111;
-              padding-bottom: 20px;
-              margin-bottom: 30px;
-            }
-            .brand {
-              font-family: 'Space Grotesk', sans-serif;
-              font-size: 14px;
-              font-weight: 800;
-              text-transform: uppercase;
-              letter-spacing: 1px;
-              color: #E2B13C;
-              background: #111111;
-              display: inline-block;
-              padding: 4px 8px;
-            }
-            h1 {
-              font-family: 'Space Grotesk', sans-serif;
-              font-size: 28px;
-              margin-top: 15px;
-              margin-bottom: 10px;
-              line-height: 1.2;
-            }
-            .meta {
-              font-size: 11px;
-              color: #666666;
-              text-transform: uppercase;
-              letter-spacing: 0.5px;
-            }
-            h2, h3 {
-              font-family: 'Space Grotesk', sans-serif;
-              border-bottom: 1px solid #eeeeee;
-              padding-bottom: 8px;
-              margin-top: 30px;
-            }
-            p, li {
-              font-size: 13px;
-            }
-            ul {
-              padding-left: 20px;
-            }
-            .footer {
-              margin-top: 50px;
-              border-top: 1px solid #eeeeee;
-              padding-top: 15px;
-              font-size: 10px;
-              color: #888888;
-              text-align: center;
-            }
-            @media print {
-              .no-print { display: none; }
-              body { padding: 20px; }
-            }
-          </style>
-        </head>
-        <body>
-          <div class="header">
-            <div class="brand">CRMsolo Playbook Blueprint</div>
-            <h1>${title}</h1>
-            <div class="meta">By ${currentGuide.author} | Updated: ${currentGuide.lastUpdated} | Category: ${currentGuide.category}</div>
-          </div>
-          <div class="content">
-            ${currentGuide.content
-              .replace(/### (.*)/g, '<h3>$1</h3>')
-              .replace(/## (.*)/g, '<h2>$1</h2>')
-              .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-              .replace(/\*(.*?)\*/g, '<em>$1</em>')
-              .replace(/\n\n/g, '<p></p>')
-              .replace(/\n\* (.*)/g, '<ul><li>$1</li></ul>')
-              .replace(/<\/ul>\s*<ul>/g, '')}
-          </div>
-          <div class="footer">
-            &copy; ${new Date().getFullYear()} CRMsolo (crmsolo.online). Strictly for independent realtor training.
-          </div>
-          <script>
-            window.onload = function() {
-              window.print();
-            }
-          </script>
-        </body>
-      </html>
-    `;
-    printWindow.document.write(contentHtml);
-    printWindow.document.close();
+  const handleDownloadPDF = () => {
+    setPdfGenerating(true);
+    try {
+      const doc = generateGuidePDF(currentGuide);
+      doc.save(`${currentGuide.slug}-playbook-worksheet.pdf`);
+    } catch (err) {
+      console.error('Failed to generate Guide PDF:', err);
+    } finally {
+      setPdfGenerating(false);
+    }
   };
 
   const handleDownloadMarkdown = () => {
@@ -370,9 +277,10 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
           <div className="flex flex-wrap gap-2">
             <button
               onClick={handleDownloadPDF}
-              className="px-4 py-2 bg-primary hover:bg-primary/95 text-accent font-black text-[10px] uppercase tracking-widest rounded-xs flex items-center gap-1.5 cursor-pointer shadow-xs transition"
+              disabled={pdfGenerating}
+              className="px-4 py-2 bg-primary hover:bg-primary/95 text-accent font-black text-[10px] uppercase tracking-widest rounded-xs flex items-center gap-1.5 cursor-pointer shadow-xs transition active:scale-95 disabled:opacity-50"
             >
-              <Printer className="w-3.5 h-3.5" /> Save as PDF Worksheet
+              <Download className="w-3.5 h-3.5" /> {pdfGenerating ? 'Generating PDF...' : 'Download PDF Guide'}
             </button>
             <button
               onClick={handleDownloadMarkdown}

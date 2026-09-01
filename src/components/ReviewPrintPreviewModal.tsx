@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { CRMReview } from '../types';
 import Markdown from './Markdown';
-import { X, Printer, Shield, Star, Award, Check, Calendar, Globe, Sparkles } from 'lucide-react';
+import { X, Printer, Shield, Star, Award, Check, Calendar, Globe, Sparkles, Download, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { generateReviewPDF } from '../lib/pdfGenerator';
 
 interface ReviewPrintPreviewModalProps {
   isOpen: boolean;
@@ -38,8 +39,22 @@ export default function ReviewPrintPreviewModal({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
+  const [downloading, setDownloading] = useState(false);
+
   const handlePrint = () => {
     window.print();
+  };
+
+  const handleDownloadPDF = () => {
+    setDownloading(true);
+    try {
+      const doc = generateReviewPDF(crm);
+      doc.save(`${crm.slug}-crmsolo-review-evaluation.pdf`);
+    } catch (err) {
+      console.error('Failed to generate PDF:', err);
+    } finally {
+      setDownloading(false);
+    }
   };
 
   if (!isOpen) return null;
@@ -87,10 +102,18 @@ export default function ReviewPrintPreviewModal({
               <div className="flex items-center gap-2">
                 <button
                   type="button"
-                  onClick={handlePrint}
-                  className="px-4 py-2 bg-accent hover:bg-accent/90 text-primary font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5 cursor-pointer transition active:scale-95"
+                  onClick={handleDownloadPDF}
+                  disabled={downloading}
+                  className="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5 cursor-pointer transition active:scale-95 disabled:opacity-50"
                 >
-                  <Printer className="w-4 h-4" /> Print / Save as PDF
+                  <Download className="w-4 h-4" /> {downloading ? 'Generating PDF...' : 'Download PDF'}
+                </button>
+                <button
+                  type="button"
+                  onClick={handlePrint}
+                  className="px-3.5 py-2 bg-accent hover:bg-accent/90 text-primary font-bold text-xs rounded-xl shadow-sm flex items-center gap-1.5 cursor-pointer transition active:scale-95"
+                >
+                  <Printer className="w-4 h-4" /> Print
                 </button>
                 <button
                   type="button"
