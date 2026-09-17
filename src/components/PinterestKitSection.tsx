@@ -6,7 +6,7 @@ export default function PinterestKitSection() {
   const [selectedTheme, setSelectedTheme] = useState<'navy' | 'emerald' | 'amber' | 'dark'>('navy');
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
-  const targetSite = 'https://crmsolo.com';
+  const targetSite = 'https://crmsolo.online';
 
   const pinTemplates = [
     {
@@ -201,7 +201,7 @@ export default function PinterestKitSection() {
     // Footer Domain
     ctx.fillStyle = '#64748b';
     ctx.font = 'bold 28px sans-serif';
-    ctx.fillText('crmsolo.com • The Solo Agent Tech Authority', 500, 1420);
+    ctx.fillText('crmsolo.online • The Solo Agent Tech Authority', 500, 1420);
 
     // Download PNG
     const link = document.createElement('a');

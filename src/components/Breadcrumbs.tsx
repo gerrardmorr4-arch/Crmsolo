@@ -193,7 +193,8 @@ export default function Breadcrumbs({
   }
 
   // Generate Google-compliant Schema.org BreadcrumbList JSON-LD
-  const origin = typeof window !== 'undefined' ? window.location.origin : 'https://crmsolo.com';
+  const isDev = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.endsWith('.run.app'));
+  const origin = isDev ? window.location.origin : 'https://crmsolo.online';
   const breadcrumbListJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',

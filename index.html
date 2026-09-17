@@ -53,7 +53,10 @@
           },
           "potentialAction": {
             "@type": "SearchAction",
-            "target": "https://crmsolo.online/reviews?q={search_term_string}",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://crmsolo.online/reviews?q={search_term_string}"
+            },
             "query-input": "required name=search_term_string"
           }
         },
@@ -76,8 +79,13 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1587039209512710"
             crossorigin="anonymous"></script>
 
-    <!-- AgentLane Analytics / Snippet -->
-    <script src="https://cdn.agentlane.com/v1/snippet.js" data-domain="dom-69afsedgtvdb"></script>
+    <!-- AgentLane Analytics / AI WebMCP Snippet -->
+    <script>
+      window.__WEBMCP_CONFIG__ = {
+        domainPublicId: "dom-69afsedgtvdb"
+      };
+    </script>
+    <script defer src="https://cdn.agentlane.com/v1/snippet.js" data-domain="dom-69afsedgtvdb"></script>
   </head>
   <body>
     <div id="root">

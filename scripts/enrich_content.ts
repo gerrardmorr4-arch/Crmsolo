@@ -86,7 +86,7 @@ enrichedGuides.forEach((g, i) => {
 });
 
 // Output updated files
-const blogPostsFilePath = path.join(__dirname, '../src/data/twentyBlogPosts.ts');
+const blogPostsFilePath = path.join(process.cwd(), 'src/data/twentyBlogPosts.ts');
 const blogPostsFileContent = `import { BlogPost } from '../types';\n\nexport const twentyBlogPosts: BlogPost[] = ${JSON.stringify(enrichedBlogPosts, null, 2)};\n`;
 fs.writeFileSync(blogPostsFilePath, blogPostsFileContent, 'utf-8');
 

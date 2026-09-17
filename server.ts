@@ -7,13 +7,55 @@ import { GoogleGenAI, Type } from '@google/genai';
 
 async function startServer() {
   const app = express();
-  const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+  const PORT = 3000;
+
+  // Trust reverse proxies (Cloud Run, Cloudflare, Sevalla, Nginx) so req.protocol and req.hostname reflect real client
+  app.set('trust proxy', true);
 
   app.use(express.json());
 
   // Health Check Endpoints for Cloud Hosting & Deployment Monitors (Sevalla / Cloud Run)
   app.get(['/health', '/api/health'], (req, res) => {
     res.status(200).json({ status: 'ok', service: 'CRMsolo', timestamp: new Date().toISOString() });
+  });
+
+  // 1. Canonical Domain & HTTPS 301 Permanent Redirect Middleware
+  // Resolves Google Search Console "Page with redirect" warnings:
+  // - Single-hop 301 from http://crmsolo.online/ -> https://crmsolo.online/
+  // - Single-hop 301 from https://www.crmsolo.online/ -> https://crmsolo.online/
+  // - Single-hop 301 from http://www.crmsolo.online/ -> https://crmsolo.online/ (eliminates redirect chains)
+  // - Consolidates legacy crmsolo.com to canonical crmsolo.online
+  app.use((req, res, next) => {
+    const hostHeader = req.headers['x-forwarded-host'] || req.headers.host || '';
+    const rawHost = Array.isArray(hostHeader) ? hostHeader[0] : hostHeader;
+    const hostname = rawHost.split(':')[0].toLowerCase();
+
+    // Skip localhost, 127.0.0.1, internal endpoints, and cloud run dev preview domains
+    if (!hostname || hostname === 'localhost' || hostname === '127.0.0.1' || hostname.endsWith('.run.app') || hostname.endsWith('.internal')) {
+      return next();
+    }
+
+    const protoHeader = req.headers['x-forwarded-proto'] || req.protocol || 'https';
+    const proto = (Array.isArray(protoHeader) ? protoHeader[0] : protoHeader).toLowerCase();
+    const isHttp = proto === 'http';
+    const isWww = hostname.startsWith('www.');
+    const isCrmsolo = hostname.includes('crmsolo.');
+
+    // If request comes via http://, www., or old .com domain, perform an immediate single-hop 301 Permanent Redirect
+    if (isCrmsolo && (isWww || isHttp || hostname.endsWith('.com'))) {
+      const canonicalHost = 'crmsolo.online';
+      const cleanPath = req.originalUrl || req.url || '/';
+      const destination = `https://${canonicalHost}${cleanPath}`;
+
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+      return res.redirect(301, destination);
+    }
+
+    // Set canonical security & transport headers for all production requests
+    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    next();
   });
 
   // API Route: Download Pinterest SEO & Viral Traffic Kit (.txt / .md)
@@ -23,34 +65,34 @@ async function startServer() {
 
     const kitText = `================================================================================
 CRMSOLO OFFICIAL PINTEREST & GOOGLE SEO VIRAL TRAFFIC KIT (2026 EDITION)
-Target Site: https://crmsolo.com (CRM Reviews, ROI Calculator & Solo Agent Guides)
+Target Site: https://crmsolo.online (CRM Reviews, ROI Calculator & Solo Agent Guides)
 Category: Real Estate Marketing / CRM Automation / Solo Realtor Tools
 Generated: ${new Date().toISOString().split('T')[0]}
 ================================================================================
 
 [PIN TEMPLATE 1: HIGH-INTENT CRM COMPARISON]
 Title: Top 5 Real Estate CRMs for Solo Agents (2026 Comparison)
-Destination URL: https://crmsolo.com/reviews
+Destination URL: https://crmsolo.online/reviews
 Description: Stop overpaying for bloated enterprise CRMs. Compare Pipedrive, Streak, and Follow Up Boss side-by-side. Save 10+ hours a week with automated speed-to-lead follow-ups and custom pipeline tracking! #RealEstateCRM #RealtorTools #RealEstateMarketing #SoloAgent #Pipedrive #FollowUpBoss
 
 [PIN TEMPLATE 2: FREE ROI CALCULATOR]
 Title: How Much Time & Money Is Your Real Estate CRM Costing You?
-Destination URL: https://crmsolo.com/calculator
+Destination URL: https://crmsolo.online/calculator
 Description: Calculate your annual commission recovery value and weekly time saved in under 60 seconds! Free interactive CRM ROI savings calculator built specifically for independent real estate brokers and solo agents. #RealtorROI #RealEstateTech #CRMCalculator #RealEstateLeadGen #RealtorLife
 
 [PIN TEMPLATE 3: 25-30 CRM AUTOMATION & SEO HACKS]
 Title: 25-30 Proven Real Estate CRM & Pinterest Traffic Hacks (2026 SEO Playbook)
-Destination URL: https://crmsolo.com/blog/25-30-real-estate-crm-pinterest-traffic-hacks-seo-playbook
+Destination URL: https://crmsolo.online/blog/25-30-real-estate-crm-pinterest-traffic-hacks-seo-playbook
 Description: Discover 25-30 actionable SEO and Pinterest lead generation strategies for solo realtors. Learn how to structure visual pipelines, automate open house follow-ups, and convert Pinterest impressions into buyer consultations. #RealEstateSEO #PinterestForRealtors #LeadGeneration #RealEstateMarketing #RealtorAutomation
 
 [PIN TEMPLATE 4: PIPEDRIVE VS FOLLOW UP BOSS]
 Title: Pipedrive vs Follow Up Boss: Which CRM Wins for Solo Realtors?
-Destination URL: https://crmsolo.com/comparison/pipedrive-vs-followupboss-for-solo-realtors
+Destination URL: https://crmsolo.online/comparison/pipedrive-vs-followupboss-for-solo-realtors
 Description: Pipedrive vs Follow Up Boss head-to-head review. Which CRM gives solo agents the fastest speed-to-lead and highest return on investment? Read the unbiased breakdown before buying. #PipedriveVsFollowUpBoss #RealtorCRM #RealEstateSoftware #AgentTools
 
 [PIN TEMPLATE 5: STREAK GMAIL CRM FOR REALTORS]
 Title: Run Your Entire Real Estate Business Inside Gmail (Streak CRM Setup)
-Destination URL: https://crmsolo.com/reviews/streak-for-real-estate-agents
+Destination URL: https://crmsolo.online/reviews/streak-for-real-estate-agents
 Description: How to manage real estate buyers, listing pipelines, and escrow dates directly inside your Gmail inbox for $0/mo. Step-by-step Streak CRM guide for solo real estate agents. #StreakCRM #GmailForRealtors #FreeRealtorCRM #RealEstateProductivity
 
 ================================================================================
@@ -429,8 +471,7 @@ For agents seeking immediate performance lifts, we recommend selecting a platfor
     const candidatePaths = [
       path.join(process.cwd(), 'public', 'robots.txt'),
       path.join(process.cwd(), 'dist', 'robots.txt'),
-      path.join(__dirname, 'public', 'robots.txt'),
-      path.join(__dirname, 'robots.txt')
+      path.join(process.cwd(), 'robots.txt')
     ];
     const robotsPath = candidatePaths.find(p => fs.existsSync(p));
 
@@ -447,8 +488,7 @@ For agents seeking immediate performance lifts, we recommend selecting a platfor
     const candidatePaths = [
       path.join(process.cwd(), 'public', 'ads.txt'),
       path.join(process.cwd(), 'dist', 'ads.txt'),
-      path.join(__dirname, 'public', 'ads.txt'),
-      path.join(__dirname, 'ads.txt')
+      path.join(process.cwd(), 'ads.txt')
     ];
     const adsPath = candidatePaths.find(p => fs.existsSync(p));
 
@@ -461,12 +501,12 @@ For agents seeking immediate performance lifts, we recommend selecting a platfor
     }
   });
 
-  app.get(['/sitemap.xml', '/sitemap', '/sitemap_index.xml', '/sitemaps.xml', '/sitemap-index.xml'], (req, res) => {
+  // Canonical XML Sitemap Endpoint
+  app.get('/sitemap.xml', (req, res) => {
     const candidatePaths = [
       path.join(process.cwd(), 'public', 'sitemap.xml'),
       path.join(process.cwd(), 'dist', 'sitemap.xml'),
-      path.join(__dirname, 'public', 'sitemap.xml'),
-      path.join(__dirname, 'sitemap.xml')
+      path.join(process.cwd(), 'sitemap.xml')
     ];
     const sitemapPath = candidatePaths.find(p => fs.existsSync(p));
 
@@ -479,19 +519,17 @@ For agents seeking immediate performance lifts, we recommend selecting a platfor
     }
   });
 
+  // 301 Permanent Redirect for secondary or alternate sitemap variations to canonical /sitemap.xml
+  app.get(['/sitemap', '/sitemap_index.xml', '/sitemaps.xml', '/sitemap-index.xml'], (req, res) => {
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    return res.redirect(301, '/sitemap.xml');
+  });
+
   // Catch duplicate-prefix attempts like /https://crmsolo.online/sitemap.xml
-  app.get(['/*sitemap.xml*', '/*sitemap*'], (req, res, next) => {
-    if (req.path.includes('sitemap')) {
-      const candidatePaths = [
-        path.join(process.cwd(), 'public', 'sitemap.xml'),
-        path.join(process.cwd(), 'dist', 'sitemap.xml')
-      ];
-      const sitemapPath = candidatePaths.find(p => fs.existsSync(p));
-      if (sitemapPath) {
-        res.setHeader('Content-Type', 'application/xml; charset=utf-8');
-        res.setHeader('Cache-Control', 'public, max-age=3600, s-maxage=3600');
-        return res.sendFile(sitemapPath);
-      }
+  app.use((req, res, next) => {
+    if (req.path.includes('sitemap.xml') && req.path !== '/sitemap.xml') {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+      return res.redirect(301, '/sitemap.xml');
     }
     next();
   });
@@ -512,7 +550,8 @@ For agents seeking immediate performance lifts, we recommend selecting a platfor
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on http://0.0.0.0:${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
+    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
   });
 }
 

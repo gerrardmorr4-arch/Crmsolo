@@ -59,13 +59,19 @@ export function updateMetaTags(options: SEOOptions) {
     jsonLdSchema
   } = options;
 
-  // Normalize canonical URL to HTTPS and strip trailing hash/search if needed
+  // Canonical root origin for CRMsolo production (guarantees www & http variations always report canonical)
+  const CANONICAL_BASE = 'https://crmsolo.online';
+
+  // Normalize canonical URL to strictly HTTPS and canonical domain (https://crmsolo.online)
   let cleanCanonical = canonicalUrl;
   if (!cleanCanonical && typeof window !== 'undefined') {
-    const origin = window.location.origin.replace(/^http:\/\//i, 'https://');
-    cleanCanonical = `${origin}${window.location.pathname}`;
+    const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.endsWith('.run.app');
+    const baseOrigin = isDev ? window.location.origin.replace(/^http:\/\//i, 'https://') : CANONICAL_BASE;
+    cleanCanonical = `${baseOrigin}${window.location.pathname}`;
   } else if (cleanCanonical) {
-    cleanCanonical = cleanCanonical.replace(/^http:\/\//i, 'https://');
+    cleanCanonical = cleanCanonical
+      .replace(/^http:\/\//i, 'https://')
+      .replace(/https:\/\/(www\.)?crmsolo\.(online|com)/i, CANONICAL_BASE);
   }
 
   // 1. Update Title
