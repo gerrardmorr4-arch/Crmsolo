@@ -366,16 +366,22 @@ export default function App() {
 
     // 7. Static Pages
     if (currentPath === '/about') {
-      return <StaticPages pageType="about" onUpdateCMS={reloadCmsData} />;
+      return <StaticPages pageType="about" onUpdateCMS={reloadCmsData} onNavigate={handleNavigate} />;
+    }
+    if (currentPath === '/methodology' || currentPath === '/about/methodology') {
+      return <StaticPages pageType="methodology" onUpdateCMS={reloadCmsData} onNavigate={handleNavigate} />;
     }
     if (currentPath === '/contact') {
-      return <StaticPages pageType="contact" onUpdateCMS={reloadCmsData} />;
+      return <StaticPages pageType="contact" onUpdateCMS={reloadCmsData} onNavigate={handleNavigate} />;
     }
     if (currentPath === '/privacy-policy' || currentPath === '/privacy') {
-      return <StaticPages pageType="privacy" onUpdateCMS={reloadCmsData} />;
+      return <StaticPages pageType="privacy" onUpdateCMS={reloadCmsData} onNavigate={handleNavigate} />;
+    }
+    if (currentPath === '/terms' || currentPath === '/terms-of-service') {
+      return <StaticPages pageType="terms" onUpdateCMS={reloadCmsData} onNavigate={handleNavigate} />;
     }
     if (currentPath === '/affiliate-disclosure' || currentPath === '/affiliate') {
-      return <StaticPages pageType="affiliate" onUpdateCMS={reloadCmsData} />;
+      return <StaticPages pageType="affiliate" onUpdateCMS={reloadCmsData} onNavigate={handleNavigate} />;
     }
 
     // 404 Fallback

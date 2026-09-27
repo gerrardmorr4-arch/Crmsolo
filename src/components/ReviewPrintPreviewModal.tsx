@@ -148,7 +148,7 @@ export default function ReviewPrintPreviewModal({
                   </div>
                   <div className="text-right sm:text-right space-y-0.5">
                     <div className="text-[10px] font-bold uppercase tracking-wider text-success flex items-center sm:justify-end gap-1">
-                      <Shield className="w-3 h-3 text-success" /> Verified Independent Report
+                      <Shield className="w-3 h-3 text-success" /> Independent Editorial Assessment
                     </div>
                     <div className="text-[10px] text-gray-400 font-mono">
                       Date Printed: {todayStr}
