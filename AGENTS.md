@@ -9,7 +9,6 @@ esbuild bundle of `server.ts` for Cloud Run/VPS style hosting.
 npm run build        # vite build + prerender + esbuild server bundle
 npm run lint         # tsc --noEmit
 npm run verify:seo   # checks the prerendered output in dist/
-npm run test:api     # exercises the /api/crm-news handler
 npm run dev          # Express + Vite middleware on :3000
 ```
 

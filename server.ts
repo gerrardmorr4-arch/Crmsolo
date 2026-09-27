@@ -4,7 +4,6 @@ import path from 'path';
 import fs from 'fs';
 import { createServer as createViteServer } from 'vite';
 import { GoogleGenAI, Type } from '@google/genai';
-import { getFallbackNews } from './src/lib/newsFallback';
 
 async function startServer() {
   const app = express();
@@ -211,177 +210,6 @@ Your response must be high-quality and directly useful to independent agents on-
     }
   });
 
-  // Outside startServer() or at module level to keep cache between hot-reloads
-  let crmNewsCache: any = null;
-  let crmNewsCacheTime = 0;
-  let quotaExhaustedUntil = 0;
-  const CACHE_DURATION = 4 * 60 * 60 * 1000; // Cache for 4 hours to avoid API quota hits
-
-  // API Route: CRM Industry News with Search Grounding
-  app.get('/api/crm-news', async (req, res) => {
-    const forceRefresh = req.query.force === 'true';
-    const now = Date.now();
-
-    // If quota is exhausted or rate limited, return cached or curated fallback news directly without calling Gemini
-    if (now < quotaExhaustedUntil) {
-      if (crmNewsCache) {
-        return res.json({
-          ...crmNewsCache,
-          message: 'Intel search grounding is operating on cached headlines.',
-          isFromCache: true
-        });
-      }
-      const fallback = getFallbackNews('Intel search grounding is operating on curated standby dataset.');
-      crmNewsCache = fallback;
-      crmNewsCacheTime = now;
-      return res.json({
-        ...fallback,
-        isFromCache: true
-      });
-    }
-
-    // Serve cached data if available and not expired (and not forced)
-    if (!forceRefresh && crmNewsCache && (now - crmNewsCacheTime < CACHE_DURATION)) {
-      console.log('Serving grounded CRM news from memory cache.');
-      return res.json({
-        ...crmNewsCache,
-        isFromCache: true
-      });
-    }
-
-    try {
-      const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) {
-        console.warn('GEMINI_API_KEY not configured. Serving high-quality fallback news.');
-        return res.json(getFallbackNews('GEMINI_API_KEY is not configured in environment. Displaying curated news.'));
-      }
-
-      // Initialize GoogleGenAI
-      const ai = new GoogleGenAI({
-        apiKey: apiKey,
-        httpOptions: {
-          headers: {
-            'User-Agent': 'aistudio-build',
-          }
-        }
-      });
-
-      console.log('Fetching live grounded CRM news via Gemini search grounding...');
-      const response = await ai.models.generateContent({
-        model: 'gemini-3.6-flash',
-        contents: `Search for recent real news, headlines, product releases, acquisitions, features, or press articles specifically about:
-1. Pipedrive CRM
-2. Streak CRM
-3. Follow Up Boss CRM
-
-Use Google Search Grounding to find real, actual, current updates.
-Return ONLY a valid JSON object with a "news" array containing 5-6 news items.
-
-Format example:
-{
-  "news": [
-    {
-      "title": "Headline title",
-      "source": "Source or Publisher Name",
-      "url": "https://example.com",
-      "date": "Month Year",
-      "summary": "2-3 sentence summary for real estate agents.",
-      "targetCrm": "Pipedrive",
-      "sentiment": "Positive"
-    }
-  ]
-}`,
-        config: {
-          systemInstruction: `You are an expert real estate technology reporter. Use the Google Search tool to find actual real-time news and feature updates about Pipedrive, Streak, and Follow Up Boss. Output MUST be valid JSON with a top-level "news" array. Do not include markdown formatting or backticks.`,
-          tools: [{ googleSearch: {} }]
-        }
-      });
-
-      let text = response.text;
-      if (!text) {
-        throw new Error('No content returned from Gemini Search Grounding.');
-      }
-
-      // Clean markdown code block markers if present
-      if (text.includes('```')) {
-        text = text.replace(/```json/gi, '').replace(/```/g, '').trim();
-      }
-
-      const firstBrace = text.indexOf('{');
-      const lastBrace = text.lastIndexOf('}');
-      if (firstBrace !== -1 && lastBrace !== -1) {
-        text = text.substring(firstBrace, lastBrace + 1);
-      }
-
-      const parsedData = JSON.parse(text);
-      const newsItems = (parsedData.news || []).map((item: any) => ({
-        title: item.title || 'CRM Platform Update',
-        source: item.source || 'Industry News',
-        url: item.url || '#',
-        date: item.date || 'Recent',
-        summary: item.summary || 'Recent product or industry update.',
-        targetCrm: item.targetCrm || 'General',
-        sentiment: item.sentiment || 'Positive'
-      }));
-
-      if (newsItems.length === 0) {
-        throw new Error('No news items found in search response.');
-      }
-      
-      // Extract search grounding metadata to return queries and sources if available
-      const groundingMetadata = response.candidates?.[0]?.groundingMetadata;
-      const searchQueries = groundingMetadata?.webSearchQueries || [];
-      const sources = groundingMetadata?.groundingChunks?.map((chunk: any) => ({
-        title: chunk?.web?.title || 'Web Reference',
-        uri: chunk?.web?.uri || '#'
-      })) || [];
-
-      // Save to memory cache
-      crmNewsCache = {
-        news: newsItems,
-        searchQueries: searchQueries,
-        sources: sources,
-        isGrounded: true
-      };
-      crmNewsCacheTime = now;
-
-      res.json({
-        ...crmNewsCache,
-        isFromCache: false
-      });
-
-    } catch (error: any) {
-      const isQuotaError = error?.status === 'RESOURCE_EXHAUSTED' || 
-                           (typeof error?.message === 'string' && (error.message.includes('429') || error.message.includes('quota') || error.message.includes('RESOURCE_EXHAUSTED')));
-
-      if (isQuotaError) {
-        quotaExhaustedUntil = Date.now() + 6 * 60 * 60 * 1000; // Pause API calls for 6 hours
-        console.log('[CRM News API] Gemini API quota limit active. Pausing API calls for 6 hours; serving curated dataset standby.');
-      } else {
-        console.log('[CRM News API] Grounded search standby mode:', error?.message || 'Serving curated dataset.');
-      }
-      
-      if (crmNewsCache) {
-        return res.json({
-          ...crmNewsCache,
-          message: isQuotaError ? 'Intel search grounding is operating on cached headlines.' : 'Intel search grounding is in standby mode. Displaying cached headlines.',
-          isFromCache: true
-        });
-      }
-
-      // If we don't have cache, construct the fallback and cache it for 12 hours to avoid spamming the API
-      const fallback = getFallbackNews(isQuotaError ? 'Intel search grounding is operating on curated standby dataset.' : 'Intel search grounding is in standby. Showing curated news.');
-      crmNewsCache = fallback;
-      crmNewsCacheTime = now;
-
-      res.json({
-        ...fallback,
-        isFromCache: true
-      });
-    }
-  });
-
-
   // Helper function for curated fallback real estate SEO articles
   function getFallbackArticle(topic: string, keywords: string[], tone: string, category: string) {
     const title = `How to Leverage ${topic || 'CRM Automation'} for Elite Real Estate Performance`;
@@ -426,7 +254,7 @@ For agents seeking immediate performance lifts, we recommend selecting a platfor
     if (robotsPath) {
       res.sendFile(robotsPath);
     } else {
-      res.send("User-agent: *\nAllow: /\nAllow: /api/crm-news\nDisallow: /admin\n\nSitemap: https://crmsolo.online/sitemap.xml\n");
+      res.send("User-agent: *\nAllow: /\nDisallow: /admin\n\nSitemap: https://crmsolo.online/sitemap.xml\n");
     }
   });
 
