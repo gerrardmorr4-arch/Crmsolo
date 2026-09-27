@@ -1,3 +1,4 @@
+import NavLink from '../components/NavLink';
 import React, { useState } from 'react';
 import { CRMGuide } from '../types';
 import { 
@@ -161,7 +162,13 @@ export const BuyerGuide: React.FC<BuyerGuidePageProps> = ({
                 </div>
 
                 <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-emerald-700 transition">
-                  {guide.title}
+                  <NavLink
+                    to={`/guides/${guide.slug}`}
+                    onNavigate={onSelectGuide}
+                    className="hover:text-emerald-700 transition"
+                  >
+                    {guide.title}
+                  </NavLink>
                 </h3>
 
                 <p className="text-xs sm:text-sm text-slate-600 line-clamp-3 leading-relaxed">

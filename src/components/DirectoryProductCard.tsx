@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NavLink from './NavLink';
 import { CRMReview } from '../types';
 import { 
   Star, 
@@ -91,9 +92,13 @@ export const DirectoryProductCard: React.FC<DirectoryProductCardProps> = ({
 
               <div>
                 <div className="flex flex-wrap items-center gap-2">
-                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 hover:text-emerald-700 transition cursor-pointer"
-                      onClick={() => onNavigateToReview(review.slug)}>
-                    {review.name}
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 hover:text-emerald-700 transition cursor-pointer">
+                    <NavLink
+                      to={`/reviews/${review.slug}`}
+                      onNavigate={onNavigateToReview}
+                    >
+                      {review.name}
+                    </NavLink>
                   </h3>
                   <span className="text-xs px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-medium">
                     Updated {review.lastUpdated}

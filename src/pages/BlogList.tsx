@@ -1,3 +1,4 @@
+import NavLink from '../components/NavLink';
 import { useState, useMemo } from 'react';
 import { BlogPost } from '../types';
 import Markdown from '../components/Markdown';
@@ -151,7 +152,13 @@ export default function BlogList({ blogSlug, blogs, onNavigate }: BlogListProps)
                 </div>
 
                 <h2 className="text-xl font-bold text-primary font-display group-hover:text-accent transition-colors leading-snug">
-                  {blog.title}
+                  <NavLink
+                    to={`/blog/${blog.slug}`}
+                    onNavigate={onNavigate}
+                    className="hover:text-accent transition-colors"
+                  >
+                    {blog.title}
+                  </NavLink>
                 </h2>
 
                 <p className="text-xs text-gray-600 leading-relaxed line-clamp-3">

@@ -1,3 +1,4 @@
+import NavLink from '../components/NavLink';
 import { CRMReview, CRMComparison } from '../types';
 import { Check, X, ShieldAlert, Award, Star, HelpCircle, ArrowUpRight, ArrowRight, Sparkles, AlertCircle, ChevronRight, Download, Printer } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
@@ -278,7 +279,15 @@ export default function ComparisonDetail({ comparisonSlug, comparisons, reviews,
                 className="bg-white p-4 rounded-xl border border-gray-100 hover:border-accent hover:shadow-sm cursor-pointer transition flex items-center justify-between"
               >
                 <div>
-                  <strong className="text-xs text-primary font-display block">{comp.title.replace(' (2026)', '')}</strong>
+                  <strong className="text-xs text-primary font-display block">
+                    <NavLink
+                      to={`/compare/${comp.slug}`}
+                      onNavigate={onNavigate}
+                      className="hover:text-accent transition-colors"
+                    >
+                      {comp.title.replace(' (2026)', '')}
+                    </NavLink>
+                  </strong>
                   <span className="text-[10px] text-gray-400 mt-0.5 block">Category winner walk-throughs</span>
                 </div>
                 <ChevronRight className="w-4 h-4 text-gray-400 shrink-0 ml-2" />

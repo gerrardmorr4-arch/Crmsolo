@@ -180,7 +180,18 @@ export default function BlueprintsPage({ blueprintSlug, onNavigate }: Blueprints
                   </div>
 
                   <h3 className="text-sm font-bold text-primary font-display leading-snug">
-                    {bp.title}
+                    <a
+                      href={`/blueprints/${bp.slug}`}
+                      className="hover:text-accent transition-colors"
+                      onClick={(event) => {
+                        if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+                        event.preventDefault();
+                        setActiveBlueprintId(bp.id);
+                        window.history.pushState(null, '', `/blueprints/${bp.slug}`);
+                      }}
+                    >
+                      {bp.title}
+                    </a>
                   </h3>
 
                   <p className="text-xs text-gray-500 mt-1 line-clamp-2 leading-relaxed">

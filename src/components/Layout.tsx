@@ -1,3 +1,4 @@
+import NavLink from './NavLink';
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Mail, BookOpen, Calculator, Layers, Info, Check, Sparkles, Star, ChevronRight, ChevronUp, ChevronDown, Lock, Search, FileText, ArrowRight, Award, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -176,9 +177,10 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
             {navLinks.map((link) => {
               const isActive = currentPath === link.path || currentPath.startsWith(link.path + '/');
               return (
-                <button
+                <NavLink
                   key={link.path}
-                  onClick={() => onNavigate(link.path)}
+                  to={link.path}
+                  onNavigate={onNavigate}
                   className={`px-3 py-2 text-xs font-black uppercase tracking-widest transition-all cursor-pointer border-b-2 ${
                     isActive
                       ? 'text-primary border-accent'
@@ -186,7 +188,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
                   }`}
                 >
                   {link.name}
-                </button>
+                </NavLink>
               );
             })}
           </nav>
@@ -285,12 +287,11 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
                     const isActive = currentPath === link.path || (link.path !== '/' && currentPath.startsWith(link.path));
                     const Icon = link.icon;
                     return (
-                      <button
+                      <NavLink
                         key={link.path}
-                        onClick={() => {
-                          onNavigate(link.path);
-                          setMobileMenuOpen(false);
-                        }}
+                        to={link.path}
+                        onNavigate={onNavigate}
+                        afterNavigate={() => setMobileMenuOpen(false)}
                         className={`w-full flex items-center justify-between px-3.5 py-3 rounded-xl text-left text-xs font-bold tracking-wide transition cursor-pointer ${
                           isActive
                             ? 'bg-primary text-white shadow-xs'
@@ -302,7 +303,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
                           <span>{link.name}</span>
                         </div>
                         <ChevronRight className={`w-4 h-4 ${isActive ? 'text-accent' : 'text-gray-300'}`} />
-                      </button>
+                      </NavLink>
                     );
                   })}
                 </div>
@@ -496,33 +497,33 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
           <div className="md:col-span-2 space-y-2">
             <h4 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Quick Tools</h4>
             <ul className="space-y-1.5 pt-1">
-              <li><button onClick={() => onNavigate('/planning-tools')} className="text-accent font-bold hover:text-white transition">Planning Directory (22)</button></li>
-              <li><button onClick={() => onNavigate('/calculator')} className="hover:text-white transition">ROI Calculator</button></li>
-              <li><button onClick={() => onNavigate('/checklist')} className="hover:text-white transition">Feature Checklist</button></li>
-              <li><button onClick={() => onNavigate('/compare/best-crm-for-solo-real-estate-agents')} className="hover:text-white transition">Solo Pillar comparison</button></li>
-              <li><button onClick={() => onNavigate('/about')} className="hover:text-white transition">E-E-A-T Methodology</button></li>
+              <li><NavLink to='/planning-tools' onNavigate={onNavigate} className="text-accent font-bold hover:text-white transition">Planning Directory (22)</NavLink></li>
+              <li><NavLink to='/calculator' onNavigate={onNavigate} className="hover:text-white transition">ROI Calculator</NavLink></li>
+              <li><NavLink to='/checklist' onNavigate={onNavigate} className="hover:text-white transition">Feature Checklist</NavLink></li>
+              <li><NavLink to='/compare/best-crm-for-solo-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Solo Pillar comparison</NavLink></li>
+              <li><NavLink to='/about' onNavigate={onNavigate} className="hover:text-white transition">E-E-A-T Methodology</NavLink></li>
             </ul>
           </div>
 
           <div className="md:col-span-3 space-y-2">
             <h4 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Planning & CRM Reviews</h4>
             <ul className="space-y-1.5 pt-1">
-              <li><button onClick={() => onNavigate('/planning-tools/agile-project-management')} className="hover:text-white transition">Agile Tools (8)</button></li>
-              <li><button onClick={() => onNavigate('/planning-tools/project-management')} className="hover:text-white transition">Project Management (3)</button></li>
-              <li><button onClick={() => onNavigate('/planning-tools/time-tracking')} className="hover:text-white transition">Time Tracking (5)</button></li>
-              <li><button onClick={() => onNavigate('/reviews/pipedrive-for-real-estate-agents')} className="hover:text-white transition">Pipedrive Review</button></li>
-              <li><button onClick={() => onNavigate('/reviews/streak-for-real-estate-agents')} className="hover:text-white transition">Streak Review</button></li>
-              <li><button onClick={() => onNavigate('/reviews/followupboss-for-real-estate-agents')} className="hover:text-white transition">Follow Up Boss Review</button></li>
+              <li><NavLink to='/planning-tools/agile-project-management' onNavigate={onNavigate} className="hover:text-white transition">Agile Tools (8)</NavLink></li>
+              <li><NavLink to='/planning-tools/project-management' onNavigate={onNavigate} className="hover:text-white transition">Project Management (3)</NavLink></li>
+              <li><NavLink to='/planning-tools/time-tracking' onNavigate={onNavigate} className="hover:text-white transition">Time Tracking (5)</NavLink></li>
+              <li><NavLink to='/reviews/pipedrive-for-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Pipedrive Review</NavLink></li>
+              <li><NavLink to='/reviews/streak-for-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Streak Review</NavLink></li>
+              <li><NavLink to='/reviews/followupboss-for-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Follow Up Boss Review</NavLink></li>
             </ul>
           </div>
 
           <div className="md:col-span-3 space-y-2">
             <h4 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Legal & Admin</h4>
             <ul className="space-y-1.5 pt-1">
-              <li><button onClick={() => onNavigate('/admin')} className="text-accent font-bold hover:underline flex items-center gap-1"><Lock className="w-3 h-3" /> Admin Portal</button></li>
-              <li><button onClick={() => onNavigate('/privacy-policy')} className="hover:text-white transition">Privacy Policy</button></li>
-              <li><button onClick={() => onNavigate('/affiliate-disclosure')} className="hover:text-white transition">Affiliate Disclosure</button></li>
-              <li><button onClick={() => onNavigate('/contact')} className="hover:text-white transition">Contact Us</button></li>
+              <li><NavLink to='/admin' onNavigate={onNavigate} className="text-accent font-bold hover:underline flex items-center gap-1"><Lock className="w-3 h-3" /> Admin Portal</NavLink></li>
+              <li><NavLink to='/privacy-policy' onNavigate={onNavigate} className="hover:text-white transition">Privacy Policy</NavLink></li>
+              <li><NavLink to='/affiliate-disclosure' onNavigate={onNavigate} className="hover:text-white transition">Affiliate Disclosure</NavLink></li>
+              <li><NavLink to='/contact' onNavigate={onNavigate} className="hover:text-white transition">Contact Us</NavLink></li>
             </ul>
           </div>
 
@@ -537,7 +538,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
             </p>
           </div>
           <div className="flex gap-4 shrink-0 text-gray-400">
-            <button onClick={() => onNavigate('/')} className="hover:text-white">Home</button>
+            <NavLink to='/' onNavigate={onNavigate} className="hover:text-white">Home</NavLink>
           </div>
         </div>
       </footer>

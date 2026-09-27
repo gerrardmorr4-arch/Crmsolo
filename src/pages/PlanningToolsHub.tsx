@@ -1,3 +1,4 @@
+import NavLink from '../components/NavLink';
 import React, { useState, useMemo } from 'react';
 import { PLANNING_CATEGORIES, getTotalPlanningToolsCount, ALL_INDEXED_TOOLS } from '../data/planningToolsData';
 import { useSEO } from '../lib/seo';
@@ -333,10 +334,10 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
             {/* Categories Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredCategories.map((category) => (
-                <div
+                <NavLink
                   key={category.id}
-                  id={`card-${category.id}`}
-                  onClick={() => onNavigate(`/planning-tools/${category.slug}`)}
+                  to={`/planning-tools/${category.slug}`}
+                  onNavigate={onNavigate}
                   className="group bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-emerald-500/60 transition-all duration-200 cursor-pointer flex flex-col justify-between"
                 >
                   <div>
@@ -390,7 +391,7 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
                       <ChevronRight className="w-4 h-4" />
                     </span>
                   </div>
-                </div>
+                </NavLink>
               ))}
             </div>
           </>
@@ -456,12 +457,13 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
                     <div className="flex items-start justify-between gap-2">
                       <div>
                         {tool.categorySlug && (
-                          <button
-                            onClick={() => onNavigate(`/planning-tools/${tool.categorySlug}`)}
+                          <NavLink
+                            to={`/planning-tools/${tool.categorySlug}`}
+                            onNavigate={onNavigate}
                             className="text-[11px] font-bold text-emerald-600 hover:text-emerald-700 uppercase font-mono block mb-1"
                           >
                             {tool.categoryName || 'Planning Tool'} &rarr;
-                          </button>
+                          </NavLink>
                         )}
                         <h4 className="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
                           {tool.name}
