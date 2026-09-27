@@ -150,6 +150,14 @@ export function resolveBreadcrumbs(currentPath: string, customCrumbs?: Breadcrum
       crumbs.push({ label: 'Contact Us', path: '/contact' });
       break;
 
+    case 'methodology':
+      crumbs.push({ label: 'Review Methodology', path: '/methodology' });
+      break;
+
+    case 'terms':
+      crumbs.push({ label: 'Terms of Service', path: '/terms' });
+      break;
+
     case 'privacy-policy':
       crumbs.push({ label: 'Privacy Policy', path: '/privacy-policy' });
       break;
