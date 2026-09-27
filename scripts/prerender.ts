@@ -61,6 +61,37 @@ const STATIC_ROUTES = [
 /** Routes that must never be indexed. */
 const NOINDEX_ROUTES = new Set(['/admin']);
 
+/**
+ * CRM blog posts shorter than this (in words, after markdown/HTML stripping) are
+ * still published and prerendered, but are held out of the sitemap and marked
+ * noindex. Roughly half the CRM posts currently fall under this line; they
+ * compete with nothing and dilute the section until they are expanded. Raising
+ * the content above the threshold automatically restores them to the sitemap on
+ * the next build, so this list needs no maintenance.
+ */
+const THIN_CONTENT_WORDS = 150;
+
+/**
+ * CRM blog posts that substantially duplicate the /planning-tools section, which
+ * targets a different audience (project management software rather than real
+ * estate CRM). Kept live for inbound links but excluded from the sitemap and
+ * marked noindex so they stop competing with the CRM cluster.
+ */
+const OFF_TOPIC_POST_SLUGS = new Set([
+  'scrum-master-certifications-guide-2026'
+]);
+
+/** Strips markdown syntax and counts remaining word tokens. */
+function countWords(markdown: string): number {
+  return markdown
+    .replace(/```[\s\S]*?```/g, ' ')
+    .replace(/[#*_>`|]/g, ' ')
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/<[^>]+>/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean).length;
+}
+
 interface RouteEntry {
   path: string;
   /** URL that should be treated as the one true location for this content. */
@@ -69,16 +100,31 @@ interface RouteEntry {
 }
 
 /** Canonical content routes: hubs plus every dynamic detail page. */
-function collectCanonicalRoutes(): string[] {
-  const routes = new Set<string>(STATIC_ROUTES);
-  initialReviews.forEach(r => routes.add(`/reviews/${r.slug}`));
-  initialComparisons.forEach(c => routes.add(`/compare/${c.slug}`));
-  initialGuides.forEach(g => routes.add(`/guides/${g.slug}`));
-  [...initialBlogPosts, ...PLANNING_BLOG_ARTICLES].forEach(b => routes.add(`/blog/${b.slug}`));
-  automationBlueprints.forEach(b => routes.add(`/blueprints/${b.slug}`));
-  PLANNING_CATEGORIES.forEach(c => routes.add(`/planning-tools/${c.slug}`));
-  routes.add('/admin');
-  return [...routes].sort();
+function collectCanonicalRoutes(): RouteEntry[] {
+  const entries = new Map<string, RouteEntry>();
+  const add = (route: string, noindex = false) => {
+    entries.set(route, { path: route, canonicalPath: route, noindex });
+  };
+
+  STATIC_ROUTES.forEach(r => add(r, NOINDEX_ROUTES.has(r)));
+
+  initialReviews.forEach(r => add(`/reviews/${r.slug}`));
+  initialComparisons.forEach(c => add(`/compare/${c.slug}`));
+  initialGuides.forEach(g => add(`/guides/${g.slug}`));
+  automationBlueprints.forEach(b => add(`/blueprints/${b.slug}`));
+  PLANNING_CATEGORIES.forEach(c => add(`/planning-tools/${c.slug}`));
+
+  // Thin-content rule applies to the CRM blog only. The planning articles are
+  // just as short, but that section is out of scope here and its indexing is a
+  // separate decision, so it is left untouched.
+  initialBlogPosts.forEach(b => {
+    const thin = countWords(b.content) < THIN_CONTENT_WORDS;
+    add(`/blog/${b.slug}`, thin || OFF_TOPIC_POST_SLUGS.has(b.slug));
+  });
+  PLANNING_BLOG_ARTICLES.forEach(b => add(`/blog/${b.slug}`));
+
+  add('/admin', true);
+  return [...entries.values()].sort((a, b) => a.path.localeCompare(b.path));
 }
 
 /**
@@ -221,9 +267,11 @@ function mirrorHubsIntoDirectories(written: string[]) {
   return mirrored;
 }
 
-function generateSitemap(routes: string[]) {
-  // /admin is intentionally excluded: it is noindexed and not a landing page.
-  const indexable = routes.filter(r => !NOINDEX_ROUTES.has(r));
+function generateSitemap(entries: RouteEntry[]) {
+  // Anything marked noindex — /admin, plus thin or off-topic blog posts — is
+  // deliberately withheld. Advertising a noindex URL in the sitemap sends
+  // crawlers conflicting signals and is reported as an error in Search Console.
+  const indexable = entries.filter(e => !e.noindex).map(e => e.path);
   const today = new Date().toISOString().slice(0, 10);
   const priorityFor = (r: string) => {
     if (r === '/') return '1.0';
@@ -233,7 +281,7 @@ function generateSitemap(routes: string[]) {
   };
   const changefreqFor = (r: string) => (r === '/' || r.startsWith('/blog/') ? 'weekly' : 'monthly');
 
-  const entries = indexable
+  const urlEntries = indexable
     .map(route => [
       '  <url>',
       `    <loc>${escapeXml(`${ORIGIN}${route === '/' ? '/' : route}`)}</loc>`,
@@ -247,7 +295,7 @@ function generateSitemap(routes: string[]) {
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    entries,
+    urlEntries,
     '</urlset>',
     ''
   ].join('\n');
@@ -356,11 +404,10 @@ async function main() {
   };
 
   const written: string[] = [];
-  for (const route of routes) {
+  for (const entry of routes) {
     // Canonical routes already report their own URL, so the client-generated
     // canonical is used as-is.
-    const entry: RouteEntry = { path: route, canonicalPath: route, noindex: NOINDEX_ROUTES.has(route) };
-    written.push(writeRouteFile(route, await renderAndSerialize(entry)));
+    written.push(writeRouteFile(entry.path, await renderAndSerialize(entry)));
   }
 
   for (const alias of collectAliasRoutes()) {
