@@ -16,12 +16,86 @@ import { PlanningToolsHub } from './pages/PlanningToolsHub';
 import { PlanningCategoryDetail } from './pages/PlanningCategoryDetail';
 import { PLANNING_CATEGORIES, getPlanningCategoryBySlug } from './data/planningToolsData';
 import ErrorBoundary from './components/ErrorBoundary';
-import { useSEO } from './lib/seo';
-
-
+import { useSEO, resetSeoTitlePriority } from './lib/seo';
 import { getReviews, getComparisons, getGuides, getBlogPosts } from './lib/storage';
 import { CRMReview, CRMComparison, CRMGuide, BlogPost } from './types';
 import { Calculator, Eye, HelpCircle, ArrowRight, Award } from 'lucide-react';
+
+interface RouteFallback {
+  match: (path: string) => boolean;
+  title: string;
+  description: string;
+  keywords: string[];
+}
+
+const DEFAULT_ROUTE_FALLBACK: Omit<RouteFallback, 'match'> = {
+  title: 'Best Real Estate CRM Software Directory (2026 Reviews & Pricing)',
+  description: 'Browse, compare, and filter top Real Estate Customer Relationship Management (CRM) tools. Read verified buyer reviews, pricing models, and feature checklists.',
+  keywords: ['real estate crm', 'real estate software directory', 'realtor crm reviews', 'crm pricing', 'pipedrive', 'follow up boss', 'streak']
+};
+
+const ROUTE_FALLBACKS: RouteFallback[] = [
+  {
+    match: p => p === '/directory' || p === '/category/crm' || p === '/category',
+    title: 'Best Real Estate CRM Software Directory (2026 Reviews & Pricing)',
+    description: 'Explore top verified real estate CRM software with side-by-side comparison tables, filter by price and deployment, and read expert ratings.',
+    keywords: ['best real estate crm', 'real estate crm directory', 'realtor software comparison', 'getapp real estate crm']
+  },
+  {
+    match: p => p === '/buyer-guide' || p === '/buyers-guide',
+    title: "Real Estate CRM Buyer's Guides & Frameworks (2026)",
+    description: 'In-depth procurement guides, pricing audits, speed-to-lead automation workflows, and CRM checklists for independent agents.',
+    keywords: ['crm buyer guide', 'real estate software guide', 'crm pricing evaluation', 'speed to lead automation']
+  },
+  {
+    match: p => p === '/calculator',
+    title: 'CRM ROI Savings Calculator for Solo Realtors',
+    description: 'Calculate exactly how many weekly hours you can save and your deal recovery value by automating workflows in Pipedrive, Streak, or Follow Up Boss.',
+    keywords: ['crm calculator', 'realtor roi calculator', 'real estate automation savings']
+  },
+  {
+    match: p => p === '/checklist',
+    title: 'Solo Agent CRM Feature Checklist',
+    description: 'Interactive feature comparisons checklist specifically for independent real estate brokers. Filter by Pipedrive, Streak, and Follow Up Boss.',
+    keywords: ['crm feature checklist', 'solo realtor crm comparison', 'realtor tools grid']
+  },
+  {
+    match: p => p === '/reviews',
+    title: 'Tested CRM Reviews for Solo Realtors',
+    description: 'Read our honest verdicts and hands-on reviews of Pipedrive, Streak, Follow Up Boss, Copper, and Wise Agent.',
+    keywords: ['tested crm reviews', 'honest crm review', 'pipedrive review', 'streak review', 'follow up boss review']
+  },
+  {
+    match: p => p === '/compare' || p === '/comparisons',
+    title: 'Real Estate CRM Head-to-Head Comparisons (2026)',
+    description: 'Side-by-side CRM comparisons for solo agents: Pipedrive vs Streak, Follow Up Boss vs Real Geeks, and more, scored on pricing, pipelines, and lead conversion.',
+    keywords: ['crm comparison', 'pipedrive vs streak', 'follow up boss vs real geeks', 'real estate crm comparison']
+  },
+  {
+    match: p => p === '/guides' || p === '/guide',
+    title: 'Real Estate CRM Guides & Workbooks for Solo Agents',
+    description: 'Practical CRM selection guides, pricing audits, onboarding workbooks, and lead automation playbooks written for independent agents.',
+    keywords: ['real estate crm guide', 'crm selection guide', 'realtor workflow guide', 'crm onboarding workbook']
+  },
+  {
+    match: p => p === '/blog',
+    title: 'Real Estate CRM & Automation Blog for Solo Agents',
+    description: 'Actionable articles on real estate CRM workflows, speed-to-lead automation, SEO for realtors, and solo agent productivity.',
+    keywords: ['real estate crm blog', 'realtor automation blog', 'real estate seo', 'solo agent productivity']
+  },
+  {
+    match: p => p === '/blueprints' || p.startsWith('/blueprints/'),
+    title: 'Real Estate CRM Automation Blueprints (2026 Free Workflows)',
+    description: 'Actionable step-by-step CRM automation workflows, speed-to-lead scripts, Kanban escrow tracking, and Pinterest traffic blueprints for solo realtors.',
+    keywords: ['real estate crm blueprints', 'realtor automation workflow', 'speed to lead scripts', 'escrow kanban board']
+  },
+  {
+    match: p => p === '/planning-tools' || p.startsWith('/planning-tools/'),
+    title: 'Top Planning Tools & Project Management Software Directory (2026 Index)',
+    description: 'Explore 22 verified planning tool categories including Agile, Gantt, Time Tracking, Job Costing, and PPM. Compare 5,900+ software tools with GEO compliance.',
+    keywords: ['planning tools', 'project management directory', 'agile tools', 'gantt chart software', 'time tracking software']
+  }
+];
 
 export default function App() {
   // Routing state
@@ -33,51 +107,23 @@ export default function App() {
   const [guides, setGuides] = useState<CRMGuide[]>(getGuides());
   const [blogs, setBlogs] = useState<BlogPost[]>(getBlogPosts());
 
-  // Set meta tags for non-page-component routes and global fallbacks
-  let topTitle = 'Best Real Estate CRM Software Directory (2026 Reviews & Pricing)';
-  let topDescription = 'Browse, compare, and filter top Real Estate Customer Relationship Management (CRM) tools. Read verified buyer reviews, pricing models, and feature checklists.';
-  let topKeywords = ['real estate crm', 'real estate software directory', 'realtor crm reviews', 'crm pricing', 'pipedrive', 'follow up boss', 'streak'];
-
-  if (currentPath === '/directory' || currentPath === '/category/crm') {
-    topTitle = 'Best Real Estate CRM Software Directory (2026 Reviews & Pricing)';
-    topDescription = 'Explore top verified real estate CRM software with side-by-side comparison tables, filter by price and deployment, and read expert ratings.';
-    topKeywords = ['best real estate crm', 'real estate crm directory', 'realtor software comparison', 'getapp real estate crm'];
-  } else if (currentPath === '/buyer-guide' || currentPath === '/buyers-guide') {
-    topTitle = "Real Estate CRM Buyer's Guides & Frameworks (2026)";
-    topDescription = "In-depth procurement guides, pricing audits, speed-to-lead automation workflows, and CRM checklists for independent agents.";
-    topKeywords = ['crm buyer guide', 'real estate software guide', 'crm pricing evaluation', 'speed to lead automation'];
-  } else if (currentPath === '/calculator') {
-    topTitle = 'CRM ROI Savings Calculator for Solo Realtors';
-    topDescription = 'Calculate exactly how many weekly hours you can save and your deal recovery value by automating workflows in Pipedrive, Streak, or Follow Up Boss.';
-    topKeywords = ['crm calculator', 'realtor roi calculator', 'real estate automation savings'];
-  } else if (currentPath === '/checklist') {
-    topTitle = 'Solo Agent CRM Feature Checklist';
-    topDescription = 'Interactive feature comparisons checklist specifically for independent real estate brokers. Filter by Pipedrive, Streak, and Follow Up Boss.';
-    topKeywords = ['crm feature checklist', 'solo realtor crm comparison', 'realtor tools grid'];
-  } else if (currentPath === '/reviews') {
-    topTitle = 'Tested CRM Reviews for Solo Realtors';
-    topDescription = 'Read our honest verdicts and hands-on reviews of Pipedrive, Streak, Follow Up Boss, Copper, and Wise Agent.';
-    topKeywords = ['tested crm reviews', 'honest crm review', 'pipedrive review', 'streak review', 'follow up boss review'];
-  } else if (currentPath === '/blueprints' || currentPath.startsWith('/blueprints/')) {
-    topTitle = 'Real Estate CRM Automation Blueprints (2026 Free Workflows)';
-    topDescription = 'Actionable step-by-step CRM automation workflows, speed-to-lead scripts, Kanban escrow tracking, and Pinterest traffic blueprints for solo realtors.';
-    topKeywords = ['real estate crm blueprints', 'realtor automation workflow', 'speed to lead scripts', 'escrow kanban board'];
-  } else if (currentPath === '/planning-tools' || currentPath.startsWith('/planning-tools/')) {
-    topTitle = 'Top Planning Tools & Project Management Software Directory (2026 Index)';
-    topDescription = 'Explore 22 verified planning tool categories including Agile, Gantt, Time Tracking, Job Costing, and PPM. Compare 5,900+ software tools with GEO compliance.';
-    topKeywords = ['planning tools', 'project management directory', 'agile tools', 'gantt chart software', 'time tracking software'];
-  }
+  // Route-level fallback metadata for non-component routes and global defaults.
+  // Page components refine these values via their own useSEO call; the fallback
+  // flag keeps this lower-priority so it never clobbers a page's own metadata.
+  const routeFallback = ROUTE_FALLBACKS.find(f => f.match(currentPath)) ?? DEFAULT_ROUTE_FALLBACK;
 
   useSEO({
-    title: topTitle,
-    description: topDescription,
-    keywords: topKeywords,
-    ogType: 'website'
+    title: routeFallback.title,
+    description: routeFallback.description,
+    keywords: routeFallback.keywords,
+    ogType: 'website',
+    fallback: true
   }, [currentPath]);
 
   // Intercept browser back/forward buttons
   useEffect(() => {
     const handlePopState = () => {
+      resetSeoTitlePriority();
       setCurrentPath(window.location.pathname);
       window.scrollTo(0, 0);
     };
@@ -87,6 +133,7 @@ export default function App() {
 
   // Custom navigation handler
   const handleNavigate = (path: string) => {
+    resetSeoTitlePriority();
     window.history.pushState(null, '', path);
     setCurrentPath(path);
     window.scrollTo(0, 0);

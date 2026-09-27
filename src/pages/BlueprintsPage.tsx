@@ -53,11 +53,17 @@ export default function BlueprintsPage({ blueprintSlug, onNavigate }: Blueprints
 
   // Handle SEO
   useSEO({
-    title: activeBlueprint ? `${activeBlueprint.title} (Step-by-Step Blueprint)` : 'Real Estate CRM Automation Blueprints (2026)',
-    description: activeBlueprint ? activeBlueprint.tagline : 'Actionable, step-by-step CRM automation workflows, speed-to-lead scripts, Kanban escrow tracking, and Pinterest traffic blueprints for solo realtors.',
+    // The hub (/blueprints, no slug) and its detail pages must not share a
+    // title; only a slug-selected blueprint gets the per-item title.
+    title: blueprintSlug && activeBlueprint
+      ? `${activeBlueprint.title} (Step-by-Step Blueprint)`
+      : 'Real Estate CRM Automation Blueprints (2026 Free Workflows)',
+    description: blueprintSlug && activeBlueprint
+      ? activeBlueprint.tagline
+      : 'Actionable, step-by-step CRM automation workflows, speed-to-lead scripts, Kanban escrow tracking, and Pinterest traffic blueprints for solo realtors.',
     keywords: ['real estate crm blueprint', 'speed to lead automation', 'realtor workflow templates', 'pipedrive blueprint', 'follow up boss scripts', 'real estate lead funnel'],
     ogType: 'article'
-  }, [activeBlueprintId]);
+  }, [activeBlueprintId, blueprintSlug]);
 
   const handleCopy = (text: string, id: string) => {
     navigator.clipboard.writeText(text);
