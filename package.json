@@ -8,7 +8,6 @@
     "build": "vite build && tsx scripts/prerender.ts && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "prerender": "tsx scripts/prerender.ts",
     "verify:seo": "node scripts/verify-prerender.mjs",
-    "test:api": "tsx scripts/test-crm-news-api.mts",
     "preview": "vite preview",
     "clean": "rm -rf dist server.cjs",
     "lint": "tsc --noEmit",

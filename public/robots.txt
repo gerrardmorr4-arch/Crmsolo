@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Allow: /api/crm-news
 Disallow: /admin
 
 # Canonical Sitemap index

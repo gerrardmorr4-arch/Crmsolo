@@ -6,7 +6,6 @@ import ROICalculator from '../components/ROICalculator';
 import { ArrowRight, Calculator, CheckCircle2, ChevronRight, ChevronLeft, HelpCircle, ShieldAlert, Sparkles, Star, TrendingUp, Zap, Download, Copy, Clock } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
 import FAQSection from '../components/FAQSection';
-import CRMNewsSection from '../components/CRMNewsSection';
 import AgentTestimonials from '../components/AgentTestimonials';
 import VideoTestimonials from '../components/VideoTestimonials';
 import AgentProfileQuiz from '../components/AgentProfileQuiz';
@@ -682,9 +681,6 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
 
       {/* What Agents Are Saying Testimonial Carousel */}
       <AgentTestimonials />
-
-      {/* CRM Industry News & Grounding Section */}
-      <CRMNewsSection />
 
       {/* FAQ Hub Section */}
       <FAQSection />

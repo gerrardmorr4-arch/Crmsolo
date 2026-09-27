@@ -1,6 +1,6 @@
 # CRMSolo - Real Estate CRM Comparison & Revenue ROI Engine
 
-CRMSolo is a full-stack web application designed for independent real estate agents and brokers to compare leading CRMs (Pipedrive, Streak, Follow Up Boss), calculate ROI and deal recovery potential, and stay updated with live CRM industry news powered by Google Gemini Search Grounding.
+CRMSolo is a full-stack web application designed for independent real estate agents and brokers to compare leading CRMs (Pipedrive, Streak, Follow Up Boss) and calculate ROI and deal recovery potential.
 
 ---
 
