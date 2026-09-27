@@ -114,14 +114,19 @@ function collectCanonicalRoutes(): RouteEntry[] {
   automationBlueprints.forEach(b => add(`/blueprints/${b.slug}`));
   PLANNING_CATEGORIES.forEach(c => add(`/planning-tools/${c.slug}`));
 
-  // Thin-content rule applies to the CRM blog only. The planning articles are
-  // just as short, but that section is out of scope here and its indexing is a
-  // separate decision, so it is left untouched.
+  // Thin-content rule applies to blog detail pages generally. Both the CRM posts
+  // and the planning articles are short; the planning set is the thinner of the
+  // two (median ~90 words against ~130), so both are held to the same threshold.
+  // Neither section is deleted — noindexed pages stay prerendered and reachable,
+  // and expanding an article above the threshold returns it to the sitemap.
   initialBlogPosts.forEach(b => {
     const thin = countWords(b.content) < THIN_CONTENT_WORDS;
     add(`/blog/${b.slug}`, thin || OFF_TOPIC_POST_SLUGS.has(b.slug));
   });
-  PLANNING_BLOG_ARTICLES.forEach(b => add(`/blog/${b.slug}`));
+  PLANNING_BLOG_ARTICLES.forEach(b => {
+    const thin = countWords(b.content) < THIN_CONTENT_WORDS;
+    add(`/blog/${b.slug}`, thin);
+  });
 
   add('/admin', true);
   return [...entries.values()].sort((a, b) => a.path.localeCompare(b.path));

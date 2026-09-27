@@ -39,7 +39,7 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
   // Dynamic SEO & GEO
   useSEO({
     title: `Best ${category.name} Software (${category.toolCount}) - 2026 Reviews & Pricing`,
-    description: `Compare ${category.name} platforms with ${category.toolCount} tools evaluated. Review pricing, GEO compliance (${category.geoFocus.regions.join(', ')}), and features.`,
+    description: `Compare ${category.name} platforms with ${category.toolCount} tools reviewed. Pricing, deployment, compliance notes (${category.geoFocus.regions.join(', ')}), and features.`,
     keywords: [
       category.name.toLowerCase(),
       `best ${category.name.toLowerCase()} software`,
@@ -109,7 +109,7 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
     setPdfGenerating(true);
     try {
       const doc = generatePlanningCategoryPDF(category);
-      doc.save(`${category.slug}-software-benchmark-report.pdf`);
+      doc.save(`${category.slug}-software-review-report.pdf`);
     } catch (err) {
       console.error('Failed to generate Category PDF:', err);
     } finally {
@@ -150,10 +150,10 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap items-center gap-2 mb-4">
             <span className="bg-emerald-500/20 text-emerald-300 text-xs font-bold font-mono px-3 py-1 rounded-full border border-emerald-500/30">
-              Verified 2026 Audit
+              Reviewed 2026
             </span>
             <span className="bg-slate-800 text-slate-300 text-xs font-mono px-3 py-1 rounded-full border border-slate-700">
-              {category.toolCount} Tools Audited
+              {category.toolCount} Tools Reviewed
             </span>
           </div>
 
@@ -185,7 +185,7 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
               className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-xl shadow-sm transition active:scale-95 cursor-pointer disabled:opacity-50"
             >
               <Download className="w-4 h-4" />
-              {pdfGenerating ? 'Generating Benchmark PDF...' : 'Download Category PDF Report'}
+              {pdfGenerating ? 'Generating Review PDF...' : 'Download Category PDF Report'}
             </button>
           </div>
         </div>
@@ -202,7 +202,7 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
                 Featured {category.name} Platforms ({category.topTools.length})
               </h2>
               <p className="text-xs text-slate-500">
-                In-depth editorial evaluations, verified user ratings, pros/cons, and direct official platform links.
+                In-depth editorial evaluations, ratings, pros/cons, and direct official platform links.
               </p>
             </div>
             <div className="flex items-center gap-3 self-start sm:self-auto">
@@ -358,14 +358,14 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
                   Category Directory Index
                 </span>
                 <span className="text-xs text-slate-500 font-mono">
-                  {category.toolCount} Tools Audited in Database
+                  {category.toolCount} Tools in Directory
                 </span>
               </div>
               <h2 className="text-2xl font-bold text-slate-900 font-display">
-                All Audited {category.name} Software ({category.toolCount})
+                All {category.name} Software ({category.toolCount})
               </h2>
               <p className="text-xs text-slate-500 mt-1">
-                Browse verified software profiles, deployment architectures, pricing tiers, and direct official links from our {category.name} benchmark ({category.toolCount}).
+                Browse software profiles, deployment architectures, pricing tiers, and direct official links from our {category.name} directory ({category.toolCount}).
               </p>
             </div>
 
@@ -458,7 +458,7 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
                       Free Trial &rarr;
                     </a>
                   ) : (
-                    <span className="text-[11px] text-slate-400">Verified Platform</span>
+                    <span className="text-[11px] text-slate-400">Platform Profile</span>
                   )}
 
                   <a
@@ -482,13 +482,13 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
           )}
         </section>
 
-        {/* Technical Evaluation Criteria & Benchmark Section */}
+        {/* Evaluation Criteria Section */}
         <section className="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-xs space-y-6">
           <h2 className="text-xl font-bold text-slate-900 font-display">
             How We Evaluate {category.name} ({category.toolCount})
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Our software engineering and PMO analysts test platforms in the {category.name} category against strict operational benchmarks to ensure high throughput, zero data loss, and seamless cross-functional team adoption.
+            Each platform in the {category.name} category is assessed against the criteria below, using vendor documentation, published pricing, and hands-on use where we have it. Ratings reflect that editorial assessment rather than a controlled or independently audited benchmark.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -500,7 +500,7 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
                 <div>
                   <h4 className="text-xs font-bold text-slate-900 mb-0.5">{criterion}</h4>
                   <p className="text-[11px] text-slate-500">
-                    Audited for high-concurrency workflows, user permission tiers, and automated notification triggers.
+                    Assessed for high-concurrency workflows, user permission tiers, and automated notification triggers.
                   </p>
                 </div>
               </div>

@@ -10,7 +10,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Agile Project Management',
     toolCount: 193,
     tagline: 'Iterative sprint tracking, burndown metrics, and cross-functional team execution software.',
-    description: 'Comprehensive directory and expert evaluations of 193 Agile Project Management platforms. Built for engineering squads, Scrum teams, growth agencies, and agile real estate operations to track backlogs, user stories, velocity charts, and continuous delivery cycles.',
+    description: 'Directory and expert evaluations of 8 Agile Project Management platforms. Built for engineering squads, Scrum teams, growth agencies, and agile real estate operations to track backlogs, user stories, velocity charts, and continuous delivery cycles.',
     evaluationCriteria: [
       'Sprint backlog management & flexible story point estimation',
       'Burndown, burnup, and cumulative flow velocity charts',
@@ -18,7 +18,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Cross-project release roadmaps and dependency tracking',
       'Automated recurring agile ceremonies (standups, retrospectives, sprint reviews)'
     ],
-    marketOverview: 'The Agile Project Management category represents 193 specialized platforms engineered to shift organizations away from rigid waterfall methods toward rapid two-week sprint cycles. Enterprise adoption spans high-growth tech hubs in North America (San Francisco, New York, Austin), the UK (London Silicon Roundabout), Europe (Berlin, Amsterdam), and APAC (Sydney, Singapore). Leading tools offer both cloud-native SaaS and on-premise air-gapped instances for strict defense and banking compliances.',
+    marketOverview: 'The Agile Project Management category covers the tools we have reviewed for moving teams away from rigid waterfall methods toward short sprint cycles. These platforms span cloud-native SaaS and self-hosted deployments, with the compliance and data-residency options larger teams typically require.',
     geoFocus: {
       regions: ['North America (US & Canada)', 'United Kingdom & Ireland', 'European Union (DACH & Benelux)', 'Australia & New Zealand', 'APAC (Singapore & Tokyo)'],
       topComplianceStandards: ['SOC 2 Type II', 'ISO/IEC 27001', 'EU GDPR / UK Data Protection Act', 'HIPAA BAA (Healthcare)', 'FedRAMP (US Gov)'],
@@ -87,7 +87,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Flowchart',
     toolCount: 36,
     tagline: 'Visual process mapping, architectural diagrams, decision trees, and workflow canvases.',
-    description: 'Index and technical breakdown of 36 leading Flowchart and diagramming applications. Designed for systems architects, operations leads, real estate brokers mapping closing protocols, and compliance officers needing visual SOP blueprints.',
+    description: 'Index and technical breakdown of 6 Flowchart and diagramming applications. Designed for systems architects, operations leads, real estate brokers mapping closing protocols, and compliance officers needing visual SOP blueprints.',
     evaluationCriteria: [
       'Auto-routing smart connectors and magnetic shape snap-grids',
       'BPMN 2.0, UML, and AWS/Azure cloud architecture symbol libraries',
@@ -95,7 +95,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Vector export capabilities (SVG, high-res PDF, PNG, Visio VSDX import/export)',
       'Data-linked shapes connected to live spreadsheets or SQL databases'
     ],
-    marketOverview: 'The Flowchart category encompasses 36 visual mapping engines that transform abstract business operations and IT architectures into crystal-clear flow diagrams. Dominant in North American and European corporate consulting, visual modeling tools have evolved from standalone desktop installs to collaborative browser-based infinite canvases.',
+    marketOverview: 'The Flowchart category covers the visual mapping engines we have reviewed for turning business operations and IT architectures into clear diagrams. Visual modeling has moved from standalone desktop installs to collaborative browser-based infinite canvases.',
     geoFocus: {
       regions: ['Global (US, Canada, UK, EU, Australia, Latin America, Japan)'],
       topComplianceStandards: ['SOC 2 Type II', 'ISO 27001', 'GDPR', 'FedRAMP'],
@@ -160,7 +160,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Gantt Chart',
     toolCount: 147,
     tagline: 'Timeline visualization, critical path analysis, and milestone scheduling software.',
-    description: 'Review and feature comparison of 147 Gantt Chart software solutions. Essential for construction management, capital infrastructure projects, marketing launches, and complex multi-party real estate development schedules.',
+    description: 'Review and feature comparison of 5 Gantt Chart software solutions. Essential for construction management, capital infrastructure projects, marketing launches, and complex multi-party real estate development schedules.',
     evaluationCriteria: [
       'Automated Critical Path Method (CPM) calculation',
       'Four-way task dependency linking (FS, SS, FF, SF)',
@@ -168,7 +168,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Resource load balancing across overlapping timeline bars',
       'Interactive drag-and-drop timeline scaling (Hours, Days, Weeks, Quarters)'
     ],
-    marketOverview: 'The Gantt Chart category features 147 dedicated timeline modeling tools. High demand originates from construction, civil engineering, and enterprise IT sectors throughout North America, Europe, the Middle East, and Australia, where missing contractual milestones results in massive monetary penalties.',
+    marketOverview: 'The Gantt Chart category covers the dedicated timeline modeling tools we have reviewed. Demand comes largely from construction, civil engineering, and enterprise IT, where missing a contractual milestone carries real financial cost.',
     geoFocus: {
       regions: ['North America', 'United Kingdom', 'European Union', 'Australia', 'Middle East (UAE & Saudi Arabia)'],
       topComplianceStandards: ['SOC 2', 'ISO 27001', 'GDPR', 'GovCloud'],
@@ -233,7 +233,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'IT Project Management',
     toolCount: 173,
     tagline: 'DevOps alignment, infrastructure deployment, ITIL incident workflows, and SLA tracking.',
-    description: 'Curated directory and rigorous benchmarking of 173 IT Project Management suites. Built for CIOs, Systems Administrators, DevOps teams, and technical MSPs orchestrating server rollouts, security patching, and cloud infrastructure migrations.',
+    description: 'Curated directory and benchmarking of 3 IT Project Management suites. Built for CIOs, Systems Administrators, DevOps teams, and technical MSPs orchestrating server rollouts, security patching, and cloud infrastructure migrations.',
     evaluationCriteria: [
       'ITIL framework alignment (Incident, Change, Problem management)',
       'SLA countdown timers with automated escalation rules',
@@ -241,7 +241,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'CMDB (Configuration Management Database) asset linking',
       'SSO, SAML 2.0, SCIM provisioning, and role-based access control (RBAC)'
     ],
-    marketOverview: 'With 173 enterprise tools cataloged, IT Project Management caters to mission-critical infrastructure deployments and IT service desks across North America, the UK, Europe, and Asian financial capitals. Strict uptime mandates (99.99%) and cyber-insurance requirements drive the need for audited change management workflows.',
+    marketOverview: 'Our IT Project Management review covers a small set of enterprise tools aimed at infrastructure deployments and IT service desks. Strict uptime mandates and cyber-insurance requirements drive the need for audited change management workflows.',
     geoFocus: {
       regions: ['US / Canada', 'UK & Scandinavia', 'DACH Region (Germany/Switzerland/Austria)', 'Australia & New Zealand', 'Singapore'],
       topComplianceStandards: ['SOC 2 Type II', 'ISO 27001 / ISO 20000', 'EU GDPR', 'FedRAMP High', 'CMMC (US Defense)'],
@@ -293,7 +293,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Job Costing',
     toolCount: 173,
     tagline: 'Labor burden calculation, materials tracking, work-in-progress (WIP) accounting, and profitability analysis.',
-    description: 'Comprehensive directory of 173 Job Costing software systems. Engineered for general contractors, real estate developers, architectural firms, and field service contractors to prevent budget overruns and track actual vs. estimated project margins.',
+    description: 'Directory of 3 Job Costing software systems. Engineered for general contractors, real estate developers, architectural firms, and field service contractors to prevent budget overruns and track actual vs. estimated project margins.',
     evaluationCriteria: [
       'Real-time labor burden calculation (wages, taxes, benefits, overtime)',
       'Subcontractor bid management and purchase order tracking',
@@ -301,7 +301,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Direct integration with accounting suites (QuickBooks Online, Xero, Sage, NetSuite)',
       'WIP (Work in Progress) over/under billing reconciliation reports'
     ],
-    marketOverview: 'The Job Costing ecosystem comprises 173 specialized financial management tools. High adoption is concentrated in North American, British, and Australian commercial and residential construction markets, where fluctuating raw material costs require daily margin scrutiny.',
+    marketOverview: 'The Job Costing category covers the financial management tools we have reviewed. Adoption concentrates in commercial and residential construction, where fluctuating raw material costs require regular margin scrutiny.',
     geoFocus: {
       regions: ['United States', 'Canada', 'United Kingdom', 'Australia', 'New Zealand'],
       topComplianceStandards: ['GAAP / IFRS compliant reporting', 'AIA Billing Standards', 'SOC 2', 'Australian ATO / PAYG compliance'],
@@ -353,7 +353,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Kanban Tools',
     toolCount: 130,
     tagline: 'Visual column flow, Work-in-Progress (WIP) limits, lead-time metrics, and bottleneck elimination.',
-    description: 'Explore 130 top-rated Kanban Tools designed for visual project organization, real estate listing-to-closing boards, marketing pipeline tracking, and continuous workflow optimization.',
+    description: 'Explore 3 top-rated Kanban Tools designed for visual project organization, real estate listing-to-closing boards, marketing pipeline tracking, and continuous workflow optimization.',
     evaluationCriteria: [
       'Customizable columns, swimlanes, and color-coded card tags',
       'Enforceable Work-in-Progress (WIP) column limits',
@@ -361,7 +361,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Automated card movement rules and trigger-based actions',
       'Card checklists, file attachments, and subtask dependencies'
     ],
-    marketOverview: 'Kanban software has experienced exponential growth across 130 dedicated solutions. Originating from Toyota Lean manufacturing, Kanban is now the most popular visual paradigm for remote knowledge workers in North America, Western Europe, and Australasia.',
+    marketOverview: 'Kanban software traces back to Toyota Lean manufacturing and is now a common visual paradigm for distributed knowledge work. We review the small number of tools that best represent the approach.',
     geoFocus: {
       regions: ['North America', 'Europe (UK, Germany, France, Netherlands)', 'Australia', 'Japan', 'Latin America'],
       topComplianceStandards: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR', 'CCPA'],
@@ -413,7 +413,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'PIM (Product Information Management)',
     toolCount: 129,
     tagline: 'Centralized product data cataloging, digital asset management (DAM), and multi-channel syndication.',
-    description: 'Comprehensive directory of 129 Product Information Management (PIM) suites. Built for e-commerce brands, B2B distributors, and manufacturers managing thousands of SKUs, localized translations, and multi-marketplace feeds (Amazon, Shopify, Walmart).',
+    description: 'Directory of 3 Product Information Management (PIM) suites. Built for e-commerce brands, B2B distributors, and manufacturers managing large SKU catalogs, localized translations, and multi-marketplace feeds (Amazon, Shopify, Walmart).',
     evaluationCriteria: [
       'Centralized Master Data Management (MDM) with attribute inheritance',
       'Multi-language, multi-currency, and regional SKU localization',
@@ -421,7 +421,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Direct API syndication to e-commerce engines (Shopify Plus, Magento, BigCommerce, Amazon)',
       'Data completeness scoring and regulatory compliance audits'
     ],
-    marketOverview: 'With 129 specialized solutions, the PIM software sector serves high-volume retail and manufacturing brands across North America, the European Union, the UK, and East Asia. As omnichannel commerce expands, brand consistency across hundreds of digital storefronts has made PIM essential.',
+    marketOverview: 'The PIM software sector serves high-volume retail and manufacturing brands. As omnichannel commerce expands, keeping product data consistent across many digital storefronts has made PIM a practical necessity.',
     geoFocus: {
       regions: ['Global (US, Germany, UK, France, Scandinavia, China, Japan)'],
       topComplianceStandards: ['GS1 Standards', 'ISO 27001', 'EU GDPR', 'CCPA'],
@@ -473,7 +473,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Production Scheduling',
     toolCount: 164,
     tagline: 'Manufacturing capacity planning, finite machine loading, BOM routing, and shop floor sequencing.',
-    description: 'Expert review of 164 Production Scheduling and Advanced Planning & Scheduling (APS) software systems. Designed for plant managers, supply chain directors, and precision manufacturers optimizing line throughput.',
+    description: 'Expert review of 2 Production Scheduling and Advanced Planning & Scheduling (APS) software systems. Designed for plant managers, supply chain directors, and precision manufacturers optimizing line throughput.',
     evaluationCriteria: [
       'Finite capacity machine and labor scheduling algorithms',
       'Dynamic Bill of Materials (BOM) explosion and component lead-time routing',
@@ -481,7 +481,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Shop floor mobile barcode tracking and MES integration',
       'OEE (Overall Equipment Effectiveness) metric reporting'
     ],
-    marketOverview: 'The Production Scheduling market contains 164 industry-grade platforms. Heavy utilization centers in industrial manufacturing hubs in the US Midwest, Germany’s Mittelstand, northern Italy, the UK Midlands, and advanced manufacturing clusters in Japan and South Korea.',
+    marketOverview: 'The Production Scheduling category currently covers a small set of industry-grade platforms for capacity planning and shop-floor sequencing. Utilization centers on industrial manufacturing, where throughput and lead time dominate margins.',
     geoFocus: {
       regions: ['North America (US & Mexico)', 'Germany & Central Europe', 'United Kingdom', 'Japan & South Korea'],
       topComplianceStandards: ['ISO 9001 (Quality)', 'ISO 13485 (Medical)', 'AS9100 (Aerospace)', 'SOC 2'],
@@ -533,7 +533,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Product Management',
     toolCount: 162,
     tagline: 'Customer feedback aggregation, feature prioritization matrices, and product lifecycle management.',
-    description: 'Comprehensive directory and deep-dive evaluation of 162 Product Management software tools. Built for Chief Product Officers, Product Managers, and UX researchers to synthesize user feedback into high-impact product releases.',
+    description: 'Directory and deep-dive evaluation of 2 Product Management software tools. Built for Chief Product Officers, Product Managers, and UX researchers to synthesize user feedback into high-impact product releases.',
     evaluationCriteria: [
       'Feedback portal & in-app user survey capture',
       'Prioritization frameworks (RICE, Kano Model, Value vs. Effort, MoSCoW)',
@@ -541,7 +541,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Bi-directional synchronization with engineering trackers (Jira, GitHub, Azure DevOps)',
       'Product analytics and feature adoption metric tracking'
     ],
-    marketOverview: '162 Product Management platforms power modern SaaS and consumer tech companies across Silicon Valley, New York, London, Berlin, Tel Aviv, and Sydney. The market focuses on bridging customer qualitative feedback with quantitative telemetry.',
+    marketOverview: 'Our Product Management review covers a small set of platforms used by SaaS and consumer technology companies. The focus is bridging qualitative customer feedback with quantitative product telemetry.',
     geoFocus: {
       regions: ['North America', 'United Kingdom', 'European Union', 'Israel', 'Australia'],
       topComplianceStandards: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR / UK DPA', 'CCPA'],
@@ -593,7 +593,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Product Roadmap',
     toolCount: 86,
     tagline: 'Visual timeline forecasting, strategic release plans, and stakeholder alignment portals.',
-    description: 'Review of 86 dedicated Product Roadmap software platforms. Built for product executives, marketing teams, and client success leads to present beautiful, real-time release schedules without manual PowerPoint updates.',
+    description: 'Review of 2 dedicated Product Roadmap software platforms. Built for product executives, marketing teams, and client success leads to present real-time release schedules without manual slide updates.',
     evaluationCriteria: [
       'Now-Next-Later theme-based and timeline-based roadmap views',
       'Custom audience permissions (Public customer-facing vs. Internal executive roadmaps)',
@@ -601,7 +601,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Interactive voting and release changelog publishing',
       'Visual milestone swimlanes categorized by strategic pillar'
     ],
-    marketOverview: 'The Product Roadmap category features 86 streamlined visual tools that eliminate outdated static spreadsheets. Widely adopted across global remote companies to keep cross-functional stakeholders aligned on strategic direction.',
+    marketOverview: 'The Product Roadmap category covers a small set of visual planning tools that replace static spreadsheets, used to keep cross-functional stakeholders aligned on strategic direction.',
     geoFocus: {
       regions: ['Global (North America, UK, Europe, Australia, India)'],
       topComplianceStandards: ['SOC 2', 'ISO 27001', 'GDPR compliant'],
@@ -653,7 +653,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Professional Services Automation (PSA)',
     toolCount: 239,
     tagline: 'Resource utilization, billing milestones, client portal management, and project accounting.',
-    description: 'Comprehensive directory of 239 Professional Services Automation (PSA) platforms. Designed for IT consulting firms, creative agencies, law practices, accounting groups, and engineering brokerages to manage the entire quote-to-cash lifecycle.',
+    description: 'Directory of 2 Professional Services Automation (PSA) platforms. Designed for IT consulting firms, creative agencies, law practices, accounting groups, and engineering brokerages to manage the quote-to-cash lifecycle.',
     evaluationCriteria: [
       'Real-time resource capacity & billable utilization heatmaps',
       'Multi-currency time & expense capture tied to client retainer contracts',
@@ -661,7 +661,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Client collaboration portals with digital sign-off and file sharing',
       'Profitability forecasting per consultant, project, and practice group'
     ],
-    marketOverview: '239 PSA platforms serve the multi-trillion dollar professional services industry. Major usage centers in financial and business advisory hubs across New York, London, Toronto, Frankfurt, Dubai, and Sydney.',
+    marketOverview: 'Our PSA review covers a small set of platforms serving the professional services industry, centered on financial and business advisory firms.',
     geoFocus: {
       regions: ['North America (US & Canada)', 'United Kingdom', 'European Union', 'Australia', 'Middle East & Singapore'],
       topComplianceStandards: ['SOC 1 / SOC 2 Type II', 'ISO 27001', 'EU GDPR / UK DPA', 'Sarbanes-Oxley (SOX)'],
@@ -713,7 +713,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Project Management',
     toolCount: 899,
     tagline: 'Universal work orchestration, multi-view boards, cross-team collaboration, and enterprise portfolio oversight.',
-    description: 'The master directory and comprehensive benchmark of 899 Project Management software solutions. Covering every tier from solo practitioner task managers to global Fortune 500 enterprise collaboration suites.',
+    description: 'The directory and benchmark of 3 Project Management software solutions. Covering every tier from solo practitioner task managers to enterprise collaboration suites.',
     evaluationCriteria: [
       'Multi-view flexibility (List, Kanban, Gantt, Calendar, Workload, Map)',
       'Custom automation engine (no-code trigger & action builders)',
@@ -721,7 +721,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Granular permissions, guest access, and external client sharing',
       'Global ecosystem integrations (Slack, Teams, Google Drive, Outlook, Zapier)'
     ],
-    marketOverview: 'Representing the largest single software category in the planning sector with 899 verified solutions. The Project Management market has evolved into universal Work Operating Systems (Work OS) adopted across all industries and geographies worldwide.',
+    marketOverview: 'The Project Management market has evolved into general-purpose work operating systems adopted across many industries. We review a small, representative set rather than attempting an exhaustive index.',
     geoFocus: {
       regions: ['Global Coverage (190+ Countries across Americas, EMEA, APAC, and LATAM)'],
       topComplianceStandards: ['SOC 2 Type II', 'ISO/IEC 27001', 'ISO 27701 (Privacy)', 'EU GDPR / UK DPA', 'HIPAA', 'FedRAMP'],
@@ -786,7 +786,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Project Planning',
     toolCount: 313,
     tagline: 'Work Breakdown Structures (WBS), resource capacity forecasting, and scope baseline modeling.',
-    description: 'Index of 313 Project Planning software tools. Built for program managers, engineering directors, and project directors constructing Work Breakdown Structures (WBS), risk registers, and scope baselines before execution starts.',
+    description: 'Index of 2 Project Planning software tools. Built for program managers, engineering directors, and project directors constructing Work Breakdown Structures (WBS), risk registers, and scope baselines before execution starts.',
     evaluationCriteria: [
       'Hierarchical Work Breakdown Structure (WBS) leveling',
       'Top-down vs. bottom-up resource capacity estimation',
@@ -794,7 +794,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'What-if budget and schedule scenario simulation',
       'Project charter and governance approval sign-offs'
     ],
-    marketOverview: '313 specialized Project Planning tools focus on the strategic pre-execution phase of capital investments. Widely used in government defense contracts, infrastructure megaprojects, and enterprise ERP deployments.',
+    marketOverview: 'Our Project Planning review covers a small set of tools focused on the pre-execution phase of capital investments, used in government contracts, infrastructure megaprojects, and enterprise ERP deployments.',
     geoFocus: {
       regions: ['North America', 'United Kingdom', 'European Union', 'Australia', 'Middle East'],
       topComplianceStandards: ['PMI PMBOK Standards', 'PRINCE2 Methodology', 'SOC 2', 'ISO 21500'],
@@ -846,7 +846,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Project Portfolio Management (PPM)',
     toolCount: 285,
     tagline: 'Capital allocation, executive strategic alignment, portfolio scoring, and governance oversight.',
-    description: 'Benchmarking 285 Project Portfolio Management (PPM) suites. Engineered for CIOs, PMO leaders, and enterprise steering committees prioritizing capital investments, resource bottlenecks, and strategic ROI across hundreds of concurrent business initiatives.',
+    description: 'Benchmarking 2 Project Portfolio Management (PPM) suites. Engineered for CIOs, PMO leaders, and enterprise steering committees prioritizing capital investments, resource bottlenecks, and strategic ROI across concurrent business initiatives.',
     evaluationCriteria: [
       'Strategic objective scoring & business case evaluation matrices',
       'Multi-project financial forecasting, capex/opex tracking, and budget burn',
@@ -854,7 +854,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Portfolio scenario modeling (What-If budget reductions or scope shifts)',
       'Executive boardroom dashboard rollups and governance stage gates'
     ],
-    marketOverview: 'The 285 tools in the PPM sector oversee billions of dollars in enterprise capital spending. Heavily concentrated in global financial services, healthcare conglomerates, pharmaceutical clinical trials, and multinational manufacturing.',
+    marketOverview: 'The PPM sector oversees enterprise capital spending, concentrated in financial services, healthcare, pharmaceutical clinical trials, and multinational manufacturing. We currently review a small representative set.',
     geoFocus: {
       regions: ['North America (US & Canada)', 'Western Europe (UK, DACH, France, Nordics)', 'Australia & New Zealand', 'Japan & Singapore'],
       topComplianceStandards: ['SOX (Sarbanes-Oxley)', 'SOC 1 & SOC 2 Type II', 'ISO 27001', 'EU GDPR', 'FedRAMP'],
@@ -906,7 +906,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Project Tracking',
     toolCount: 305,
     tagline: 'Deliverable tracking, milestone alerts, status health indicators, and variance monitoring.',
-    description: 'Comprehensive directory of 305 Project Tracking tools. Built for operations managers, client success teams, and real estate coordinators needing real-time visual progress monitoring and milestone status updates.',
+    description: 'Directory of 2 Project Tracking tools. Built for operations managers, client success teams, and real estate coordinators needing real-time visual progress monitoring and milestone status updates.',
     evaluationCriteria: [
       'Real-time deliverable status tracking (On Track, At Risk, Off Track)',
       'Automated milestone slippage notifications and escalation triggers',
@@ -914,7 +914,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Time-to-completion burn-up metrics and variance calculation',
       'Mobile status updates with photo attachments and field notes'
     ],
-    marketOverview: '305 Project Tracking platforms bridge high-level project goals with daily tactical execution. Adopted extensively by marketing agencies, real estate transaction teams, and professional service shops.',
+    marketOverview: 'Project Tracking platforms bridge high-level project goals with daily tactical execution, adopted by marketing agencies, real estate transaction teams, and professional service shops. Our review covers a small representative set.',
     geoFocus: {
       regions: ['Global (Americas, Europe, UK, Australia, Asia)'],
       topComplianceStandards: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR / UK DPA', 'CCPA'],
@@ -966,7 +966,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Requirements Management',
     toolCount: 76,
     tagline: 'Traceability matrix, compliance verification, functional specs, and audit trail verification.',
-    description: 'Expert directory of 76 Requirements Management and Traceability software platforms. Essential for medical device developers, aerospace engineers, automotive systems architects, and defense contractors complying with strict regulatory verification standards (FDA, ISO 26262, DO-178C).',
+    description: 'Expert directory of 2 Requirements Management and Traceability software platforms. Essential for medical device developers, aerospace engineers, automotive systems architects, and defense contractors complying with strict regulatory verification standards (FDA, ISO 26262, DO-178C).',
     evaluationCriteria: [
       'End-to-end Requirements Traceability Matrix (RTM) from user needs to test cases',
       'Version branching, baseline comparison, and rollback audits',
@@ -974,7 +974,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Bi-directional integration with Jira, Azure DevOps, and test execution suites',
       'Electronic signatures and cryptographic audit logs'
     ],
-    marketOverview: '76 highly specialized platforms serve safety-critical engineering sectors where failing to trace a functional requirement to a test verification can result in product recalls, regulatory fines, or loss of life.',
+    marketOverview: 'Requirements management serves safety-critical engineering sectors, where failing to trace a functional requirement to a test verification can result in product recalls or regulatory fines. We review a small set of specialized platforms.',
     geoFocus: {
       regions: ['United States & Canada', 'Germany, France & UK (Automotive & Aerospace)', 'Japan & South Korea', 'Israel & Australia'],
       topComplianceStandards: ['FDA 21 CFR Part 11', 'ISO 26262 (Automotive Functional Safety)', 'DO-178C / DO-254 (Avionics)', 'IEC 62304 (Medical Device Software)', 'SOC 2'],
@@ -1026,7 +1026,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Scrum',
     toolCount: 81,
     tagline: 'Sprint planning, backlog grooming, velocity tracking, and retrospective ceremonies.',
-    description: 'Comprehensive directory of 81 dedicated Scrum software tools. Built for Scrum Masters, Agile Coaches, and engineering teams strictly practicing the Scrum framework with dedicated sprint planning, daily scrums, burndown velocity, and sprint retrospectives.',
+    description: 'Directory of 2 dedicated Scrum software tools. Built for Scrum Masters, Agile Coaches, and engineering teams practicing the Scrum framework with sprint planning, daily scrums, burndown velocity, and sprint retrospectives.',
     evaluationCriteria: [
       'Sprint cadence modeling (1-week, 2-week, 4-week fixed timeboxes)',
       'Story point estimation (Planning Poker, Fibonacci sequence)',
@@ -1034,7 +1034,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Interactive sprint retrospective boards (What went well, What didn’t, Action items)',
       'Impediment/blocker escalation workflows'
     ],
-    marketOverview: '81 Scrum-specific platforms help teams master the Scrum guide principles. High demand across global software organizations, FinTech banks, digital agencies, and agile enterprises in North America, Western Europe, and India.',
+    marketOverview: 'Our Scrum review covers a small set of platforms built around the Scrum guide principles, used across software organizations, fintech, and digital agencies.',
     geoFocus: {
       regions: ['North America (US & Canada)', 'United Kingdom', 'European Union (DACH, Nordics, Benelux)', 'India & Singapore', 'Australia'],
       topComplianceStandards: ['Scrum Alliance / Scrum.org Alignment', 'SOC 2 Type II', 'ISO 27001', 'EU GDPR'],
@@ -1086,7 +1086,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Strategic Planning',
     toolCount: 240,
     tagline: 'Objectives and Key Results (OKRs), Balanced Scorecard, vision execution, and KPI tracking.',
-    description: 'Benchmarking 240 Strategic Planning and Strategy Execution software suites. Designed for Chief Strategy Officers, CEOs, and corporate leadership teams executing multi-year business transformations, Balanced Scorecards, and OKR frameworks.',
+    description: 'Benchmarking 2 Strategic Planning and Strategy Execution software suites. Designed for Chief Strategy Officers, CEOs, and corporate leadership teams executing multi-year business transformations, Balanced Scorecards, and OKR frameworks.',
     evaluationCriteria: [
       'OKR (Objectives & Key Results) cascading hierarchy (Company -> Department -> Team)',
       'Balanced Scorecard (Financial, Customer, Internal Process, Learning & Growth)',
@@ -1094,7 +1094,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Strategic initiative Gantt roadmaps & investment tracking',
       'Quarterly business review (QBR) presentation generation'
     ],
-    marketOverview: '240 Strategy Execution platforms transform static annual PowerPoint strategy decks into living, measurable operational execution engines. High adoption across corporate headquarters in New York, London, Zurich, Singapore, and Toronto.',
+    marketOverview: 'Strategy Execution platforms turn static annual strategy decks into measurable operational execution. We currently review a small set of representative suites.',
     geoFocus: {
       regions: ['Global (Americas, Europe, UK, APAC, Middle East)'],
       topComplianceStandards: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR', 'SOX Compliance'],
@@ -1146,7 +1146,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Task Management',
     toolCount: 673,
     tagline: 'Checklist hierarchies, recurring task automation, priority tagging, and personal productivity.',
-    description: 'Comprehensive directory of 673 Task Management applications. Built for individual professionals, solo real estate agents, busy executives, and small teams seeking frictionless to-do lists, recurring reminder schedules, and keyboard-first productivity.',
+    description: 'Directory of 3 Task Management applications. Built for individual professionals, solo real estate agents, busy executives, and small teams seeking frictionless to-do lists, recurring reminder schedules, and keyboard-first productivity.',
     evaluationCriteria: [
       'Natural language date parsing ("Call client every Tuesday at 2pm")',
       'Multi-level subtask checklists and parent-child dependencies',
@@ -1154,7 +1154,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Cross-platform synchronization across desktop, web, iOS, Apple Watch, and Android',
       'Calendar view integration with Google Calendar, Outlook, and Apple iCal'
     ],
-    marketOverview: '673 Task Management solutions form the foundation of personal productivity worldwide. Millions of daily active users leverage task apps across North America, Europe, Asia, and Latin America to eliminate mental clutter and manage personal and professional to-dos.',
+    marketOverview: 'Task Management solutions form the foundation of personal productivity for millions of daily users. We review a small, curated set rather than an exhaustive index.',
     geoFocus: {
       regions: ['Global (Worldwide consumer and business availability across 190+ countries)'],
       topComplianceStandards: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR', 'Apple App Store & Google Play Privacy Standards'],
@@ -1219,7 +1219,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Team Management',
     toolCount: 158,
     tagline: 'Team capacity balancing, holiday calendars, 1-on-1 agendas, and employee performance tracking.',
-    description: 'Curated directory of 158 Team Management and People Operations platforms. Designed for department heads, team leads, and HR managers overseeing employee capacity, 1-on-1 performance coaching, leave calendars, and team engagement.',
+    description: 'Curated directory of 2 Team Management and People Operations platforms. Designed for department heads, team leads, and HR managers overseeing employee capacity, 1-on-1 performance coaching, leave calendars, and team engagement.',
     evaluationCriteria: [
       'Employee workload capacity and availability heatmaps',
       'Continuous performance management and 1-on-1 agenda tracking',
@@ -1227,7 +1227,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Leave, PTO, and holiday calendar synchronization',
       'Goal alignment cascading from team leads to direct reports'
     ],
-    marketOverview: '158 Team Management tools address the challenges of managing distributed, remote, and hybrid workforces. High adoption across high-growth startups and enterprise corporate divisions across North America, the UK, Europe, and Australia.',
+    marketOverview: 'Team Management tools address the challenges of managing distributed and hybrid workforces. Our review covers a small representative set used by startups and enterprise divisions.',
     geoFocus: {
       regions: ['Global (North America, UK, Europe, Australia, Singapore)'],
       topComplianceStandards: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR / UK DPA', 'Labor Law Privacy Standards'],
@@ -1279,7 +1279,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Time and Expenses',
     toolCount: 357,
     tagline: 'Receipt scanning, mileage tracking, corporate card reconciliation, and billable client approvals.',
-    description: 'Review of 357 Time and Expense management software solutions. Built for mobile workforces, traveling consultants, real estate agents tracking property tour mileage, and accounting teams managing corporate credit cards.',
+    description: 'Review of 2 Time and Expense management software solutions. Built for mobile workforces, traveling consultants, real estate agents tracking property tour mileage, and accounting teams managing corporate credit cards.',
     evaluationCriteria: [
       'AI-powered optical character recognition (OCR) receipt scanning',
       'Automated GPS mileage tracking and IRS compliant standard rate calculation',
@@ -1287,7 +1287,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Direct credit card feed reconciliation (Visa, Mastercard, Amex)',
       'Client billable expense markup and reimbursement processing'
     ],
-    marketOverview: '357 dedicated solutions process hundreds of billions in corporate travel and entertainment expenses. High adoption across North America, the UK, Europe, and Australasia, where tax authorities (IRS, HMRC, ATO, CRA) enforce strict expense deduction substantiation rules.',
+    marketOverview: 'Time and expense tools streamline travel and billing reconciliation, particularly where tax authorities (IRS, HMRC, ATO, CRA) enforce strict expense deduction substantiation rules. Our review covers a small representative set.',
     geoFocus: {
       regions: ['United States & Canada', 'United Kingdom & Ireland', 'European Union', 'Australia & New Zealand'],
       topComplianceStandards: ['IRS Tax Compliance (US)', 'HMRC Guidelines (UK)', 'ATO Regulations (AU)', 'SOC 1 / SOC 2 Type II', 'PCI-DSS Level 1'],
@@ -1339,7 +1339,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     name: 'Time Tracking',
     toolCount: 754,
     tagline: 'Automated background time capture, billable client timesheets, payroll export, and productivity analytics.',
-    description: 'Comprehensive directory of 754 Time Tracking software solutions. Built for client-billing agencies, freelancers, remote engineering squads, and legal practices to capture every billable minute and eliminate timesheet leakage.',
+    description: 'Directory of 5 Time Tracking software solutions. Built for client-billing agencies, freelancers, remote engineering squads, and legal practices to capture every billable minute and reduce timesheet leakage.',
     evaluationCriteria: [
       'One-click timer stopwatch and automated background window/app tracking',
       'Billable vs. non-billable hour tagging with custom client hourly rates',
@@ -1347,7 +1347,7 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
       'Timesheet lock, export, and manager approval workflows',
       'Integration with project management tools (Asana, Jira, ClickUp, Trello)'
     ],
-    marketOverview: 'The second largest category in the planning tools domain with 754 evaluated solutions. Time tracking software has surged following the global transition to remote and flexible work across North America, Europe, Australia, and Asia-Pacific.',
+    marketOverview: 'Our Time Tracking review covers the platforms we consider most representative. Adoption has grown with the shift to remote and flexible work across North America, Europe, and Asia-Pacific.',
     geoFocus: {
       regions: ['Global (180+ Countries, Remote Work Hubs, Freelance & Agency Markets)'],
       topComplianceStandards: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR / UK DPA', 'Labor Law Fair Work Regulations'],
@@ -1416,6 +1416,26 @@ export function getPlanningCategoryBySlug(slug: string): PlanningCategory | unde
     ...category,
     indexedTools: indexed.length > 0 ? indexed : category.topTools
   };
+}
+
+/**
+ * Number of tools a category can actually display: every entry from the indexed
+ * directory plus any curated top tool not already present, deduped by name. This
+ * mirrors the resolution used by PlanningCategoryDetail.
+ */
+export function getCategoryToolCount(category: PlanningCategory): number {
+  const indexed = getToolsByCategorySlug(category.slug || category.id);
+  const seen = new Set(indexed.map((t) => t.name.toLowerCase()));
+  const extras = category.topTools.filter((t) => !seen.has(t.name.toLowerCase()));
+  return indexed.length + extras.length;
+}
+
+// The toolCount literals in the entries above were aspirational and never matched
+// the directory, which made titles, metadata, and copy claim numbers the pages
+// could not back up. Normalize every category to what it can actually display so
+// all consumers (copy, JSON-LD, breadcrumbs, hub) stay honest.
+for (const category of PLANNING_CATEGORIES) {
+  category.toolCount = getCategoryToolCount(category);
 }
 
 export function getTotalPlanningToolsCount(): number {
