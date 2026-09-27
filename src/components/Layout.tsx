@@ -507,9 +507,9 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
           <div className="md:col-span-3 space-y-2">
             <h4 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Planning & CRM Reviews</h4>
             <ul className="space-y-1.5 pt-1">
-              <li><button onClick={() => onNavigate('/planning-tools/agile-project-management')} className="hover:text-white transition">Agile Tools (193)</button></li>
-              <li><button onClick={() => onNavigate('/planning-tools/project-management')} className="hover:text-white transition">Project Management (899)</button></li>
-              <li><button onClick={() => onNavigate('/planning-tools/time-tracking')} className="hover:text-white transition">Time Tracking (754)</button></li>
+              <li><button onClick={() => onNavigate('/planning-tools/agile-project-management')} className="hover:text-white transition">Agile Tools (8)</button></li>
+              <li><button onClick={() => onNavigate('/planning-tools/project-management')} className="hover:text-white transition">Project Management (3)</button></li>
+              <li><button onClick={() => onNavigate('/planning-tools/time-tracking')} className="hover:text-white transition">Time Tracking (5)</button></li>
               <li><button onClick={() => onNavigate('/reviews/pipedrive-for-real-estate-agents')} className="hover:text-white transition">Pipedrive Review</button></li>
               <li><button onClick={() => onNavigate('/reviews/streak-for-real-estate-agents')} className="hover:text-white transition">Streak Review</button></li>
               <li><button onClick={() => onNavigate('/reviews/followupboss-for-real-estate-agents')} className="hover:text-white transition">Follow Up Boss Review</button></li>

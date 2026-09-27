@@ -11,6 +11,7 @@ import VideoTestimonials from '../components/VideoTestimonials';
 import AgentProfileQuiz from '../components/AgentProfileQuiz';
 import AdSenseAd from '../components/AdSenseAd';
 import faqData from '../data/faqs.json';
+import { PLANNING_CATEGORIES } from '../data/planningToolsData';
 import { automationBlueprints } from '../data/blueprintsData';
 
 interface HomeProps {
@@ -517,7 +518,7 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
                 PLANNING TOOLS &amp; SOFTWARE DIRECTORY
               </h2>
               <p className="text-slate-300 text-sm md:text-base max-w-2xl mt-2 leading-relaxed">
-                Objective benchmark reviews, feature scoring, and GEO compliance for Agile (193), Time Tracking (754), Project Management (899), Gantt Charts (147), and Job Costing (173).
+                Objective reviews, feature scoring, and compliance notes for Agile (8), Time Tracking (5), Project Management (3), Gantt Charts (5), and Job Costing (3).
               </p>
             </div>
 
@@ -531,20 +532,23 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
 
           {/* Quick Category Badges Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-8">
-            {[
-              { name: 'Project Management', count: 899, slug: 'project-management' },
-              { name: 'Time Tracking', count: 754, slug: 'time-tracking' },
-              { name: 'Task Management', count: 673, slug: 'task-management' },
-              { name: 'Time and Expenses', count: 357, slug: 'time-and-expenses' },
-              { name: 'Project Planning', count: 313, slug: 'project-planning' },
-              { name: 'Project Tracking', count: 305, slug: 'project-tracking' },
-              { name: 'PPM', count: 285, slug: 'project-portfolio-management' },
-              { name: 'Strategic Planning', count: 240, slug: 'strategic-planning' },
-              { name: 'PSA', count: 239, slug: 'professional-services-automation' },
-              { name: 'Agile Management', count: 193, slug: 'agile-project-management' },
-              { name: 'IT Project Mgmt', count: 173, slug: 'it-project-management' },
-              { name: 'Job Costing', count: 173, slug: 'job-costing' }
-            ].map((cat, idx) => (
+            {([
+              ['project-management', 'Project Mgmt'],
+              ['time-tracking', 'Time Tracking'],
+              ['task-management', 'Task Mgmt'],
+              ['time-and-expenses', 'Time & Expenses'],
+              ['project-planning', 'Project Planning'],
+              ['project-tracking', 'Project Tracking'],
+              ['project-portfolio-management', 'PPM'],
+              ['strategic-planning', 'Strategic Planning'],
+              ['professional-services-automation', 'PSA'],
+              ['agile-project-management', 'Agile Mgmt'],
+              ['it-project-management', 'IT Project Mgmt'],
+              ['job-costing', 'Job Costing']
+            ] as Array<[string, string]>).map(([slug, label]) => {
+              const cat = PLANNING_CATEGORIES.find(c => c.slug === slug);
+              return cat ? { name: label, count: cat.toolCount, slug } : null;
+            }).filter((c): c is { name: string; count: number; slug: string } => c !== null).map((cat, idx) => (
               <div
                 key={idx}
                 onClick={() => onNavigate(`/planning-tools/${cat.slug}`)}

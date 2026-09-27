@@ -56,7 +56,7 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
   // SEO & GEO Optimization
   useSEO({
     title: `Best Planning Tools & Project Management Software Directory (${totalTools.toLocaleString()} Tools Indexed)`,
-    description: `Explore 22 verified planning tool categories including Project Management (899), Time Tracking (754), Agile (193), and Gantt Charts (147). Global GEO compliance (US, UK, EU, CA, AU) and expert software ratings.`,
+    description: `Compare ${totalTools} closely reviewed planning tools across 22 categories, from Project Management and Time Tracking to Agile and Gantt Charts. Compare pricing, deployment model, compliance posture (US, UK, EU, CA, AU), and ratings.`,
     keywords: [
       'planning tools',
       'project management software',
@@ -122,7 +122,7 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     'name': 'Directory of Top Planning Tools and Project Management Software',
-    'description': `Comprehensive index and review benchmark of ${totalTools.toLocaleString()} planning software solutions across 22 specialized categories.`,
+    'description': `Index and review of ${totalTools.toLocaleString()} planning software solutions across 22 specialized categories.`,
     'numberOfItems': PLANNING_CATEGORIES.length,
     'itemListElement': PLANNING_CATEGORIES.map((cat, index) => ({
       '@type': 'ListItem',
@@ -154,7 +154,7 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
             Planning Tools & Project Management Directory
           </h1>
           <p className="text-lg sm:text-xl text-slate-300 max-w-3xl leading-relaxed mb-8">
-            Expert benchmarks, verified buyer reviews, and regional GEO compliance audits across all <strong>22 specialized planning software categories</strong>.
+            Editorial evaluations, comparison data, and regional compliance notes across all <strong>22 specialized planning software categories</strong>.
           </p>
 
           {/* Quick Stats Grid */}
@@ -165,7 +165,7 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
             </div>
             <div className="bg-slate-800/60 border border-slate-700/80 rounded-xl p-4">
               <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400">{totalTools.toLocaleString()}</div>
-              <div className="text-xs text-slate-300 mt-1">Verified Software Tools</div>
+              <div className="text-xs text-slate-300 mt-1">Software Tools Reviewed</div>
             </div>
             <div className="bg-slate-800/60 border border-slate-700/80 rounded-xl p-4">
               <div className="text-2xl sm:text-3xl font-extrabold text-amber-400">100%</div>
@@ -233,16 +233,16 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
             </div>
             <div>
               <h2 className="text-sm font-bold text-emerald-950">
-                Multi-Region GEO & Data Residency Benchmarking (US, UK, EU, CA, AU)
+                Multi-Region Compliance & Data Residency Notes (US, UK, EU, CA, AU)
               </h2>
               <p className="text-xs text-emerald-800 mt-0.5 max-w-2xl">
-                Every software category includes verified assessments for SOC 2 Type II, EU/UK GDPR sovereignty, Australian Privacy Principles, and local currency billing ($ USD, £ GBP, € EUR, A$ AUD).
+                Every software category lists the compliance and data-residency posture we were able to confirm for each tool, along with supported billing currencies.
               </p>
             </div>
           </div>
           <div className="flex items-center gap-2 text-xs font-semibold text-emerald-800 bg-white/80 px-3 py-1.5 rounded-lg border border-emerald-200">
             <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            <span>Audited & Updated for 2026</span>
+            <span>Reviewed &amp; Updated for 2026</span>
           </div>
         </div>
 
@@ -406,14 +406,14 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
                     Master Directory Index
                   </span>
                   <span className="text-xs text-slate-500 font-mono">
-                    {totalTools.toLocaleString()} Total Evaluated Platforms
+                    {totalTools.toLocaleString()} Tools Reviewed
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900">
-                  Verified Software Directory &amp; Ratings
+                  Software Directory &amp; Ratings
                 </h3>
                 <p className="text-xs text-slate-500">
-                  Direct official website links, verified user ratings, pricing structures, and deployment models from across all 22 planning categories.
+                  Direct official website links, ratings, pricing structures, and deployment models from across all 22 planning categories.
                 </p>
               </div>
 
@@ -505,7 +505,7 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
                         Free Trial &rarr;
                       </a>
                     ) : (
-                      <span className="text-xs text-slate-400">Verified Platform</span>
+                      <span className="text-xs text-slate-400">Platform Profile</span>
                     )}
 
                     <a
@@ -545,7 +545,7 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
               Our 2026 Planning & Project Management Evaluation Methodology
             </h2>
             <p className="text-sm text-slate-600 leading-relaxed mb-6">
-              Our technical review board benchmarks all <strong>{totalTools.toLocaleString()} planning software platforms</strong> through objective, multi-factor testing. We measure core execution capabilities (Gantt calculation speed, WIP limit enforcement, sprint burndown accuracy) alongside regional regulatory compliance across the United States, Canada, the United Kingdom, the European Union, and Australia.
+              Our planning software review covers the <strong>{totalTools.toLocaleString()} platforms</strong> listed in this directory. For each tool we record pricing, deployment model, notable features, and the compliance or data-residency information the vendor publishes. We do not claim independent performance testing of every platform; where a rating or comparison is subjective, it reflects our editorial assessment rather than a controlled benchmark.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-slate-100">
@@ -555,7 +555,7 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
                   1. Execution Precision
                 </h4>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  We audit real-world calculation accuracy for Critical Path Method (CPM), Earned Value Management (EVM), and finite machine scheduling.
+                  We review each tool's documented support for methods such as Critical Path Method (CPM), Earned Value Management (EVM), and finite machine scheduling.
                 </p>
               </div>
               <div>
