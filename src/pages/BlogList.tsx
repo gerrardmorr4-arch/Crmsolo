@@ -74,10 +74,10 @@ export default function BlogList({ blogSlug, blogs, onNavigate }: BlogListProps)
             <span>Verified Technical Analysis</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold text-primary font-display tracking-tight">
-            Planning &amp; Enterprise Software Directory Blog
+            Real Estate CRM &amp; Automation Blog for Solo Agents
           </h1>
           <p className="text-gray-600 text-base max-w-2xl mx-auto leading-relaxed">
-            In-depth architectural comparisons, benchmark data, and tactical implementation playbooks across 22 planning categories and 50+ enterprise platforms.
+            Hands-on CRM workflows, pipeline setup, lead automation, and cost breakdowns for independent realtors working in Pipedrive, Streak, and Follow Up Boss.
           </p>
         </div>
 
