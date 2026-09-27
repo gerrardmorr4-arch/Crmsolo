@@ -94,7 +94,7 @@ Instead of managing an overwhelming spreadsheet or a legacy system like Salesfor
 
 ### The Power of Custom Fields
 
-In our testing, we found it incredibly easy to adapt Pipedrive for real estate. By creating custom fields at the **Deal** level, you can track critical variables directly on each card:
+Pipedrive is easy to adapt for real estate. By creating custom fields at the **Deal** level, you can track critical variables directly on each card:
 *   **Property Type** (Residential, Commercial, Land)
 *   **Listing Price / Target Budget**
 *   **MLS ID**
@@ -200,7 +200,7 @@ Instead of forcing you to copy and paste client information into an external sys
 
 ### The Power of Inbox Integration
 
-In our testing, we found that Streak completely eliminates database friction:
+Streak is built to eliminate database friction:
 *   **Convert Emails in One Click:** When a new lead emails you from an open house or portal, you can create a "Box" (deal card) directly from the Gmail thread without leaving the page.
 *   **Aesthetic Spreadsheets:** The pipeline view acts like a beautiful spreadsheet embedded in Gmail. You can group columns by contract stages, budget, or contingency timelines.
 *   **Snippet Efficiency:** Streak includes native "Snippets" (email templates) that you can load instantly with text shortcuts, perfect for sending buyer disclosure guidelines or scheduler links in 3 seconds.
