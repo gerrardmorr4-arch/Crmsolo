@@ -1,3 +1,4 @@
+import NavLink from '../components/NavLink';
 import { useState, useEffect } from 'react';
 import { CRMGuide } from '../types';
 import Markdown from '../components/Markdown';
@@ -138,7 +139,13 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
                   </span>
                 </div>
                 <h3 className="text-xl font-bold text-primary font-display leading-snug">
-                  {guide.title}
+                  <NavLink
+                    to={`/guides/${guide.slug}`}
+                    onNavigate={onNavigate}
+                    className="hover:text-accent transition-colors"
+                  >
+                    {guide.title}
+                  </NavLink>
                 </h3>
                 <p className="text-xs text-gray-500 leading-relaxed line-clamp-3">
                   {guide.excerpt}
