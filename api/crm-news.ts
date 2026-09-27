@@ -1,23 +1,90 @@
 /**
  * Vercel Serverless Function backing GET /api/crm-news.
  *
- * The Express server in server.ts only runs locally; on Vercel the deployment
- * is static, so without this function the widget's request fell through to the
- * SPA rewrite and returned 404 (Search Console: "Submitted URL not found (404)").
+ * The Express server in server.ts only runs locally; on Vercel the deployment is
+ * static, so without this function the widget's request fell through to the SPA
+ * rewrite and returned 404 (Search Console: "Submitted URL not found (404)").
+ *
+ * This module is deliberately self-contained: it must not import from outside
+ * `api/`. Vercel compiles this file on its own, and a relative import reaching
+ * into `../src` is not reliably traced into the deployed function bundle, which
+ * fails at module load with FUNCTION_INVOCATION_FAILED before the handler runs.
+ * The curated dataset below mirrors src/lib/newsFallback.ts, which stays the
+ * source used by the local Express server. Keep the two in sync.
  */
-import { getFallbackNews, NewsItem, NewsPayload } from '../src/lib/newsFallback';
+import type { IncomingMessage, ServerResponse } from 'http';
 
-// Minimal structural types for the Node/Vercel request+response pair, so the
-// function needs no additional type dependency and stays framework-agnostic.
-interface ApiRequest {
-  method?: string;
-  query: Record<string, string | string[] | undefined>;
+export interface NewsItem {
+  title: string;
+  source: string;
+  url: string;
+  date: string;
+  summary: string;
+  targetCrm: string;
+  sentiment: string;
 }
 
-interface ApiResponse {
-  setHeader(name: string, value: string): void;
-  status(code: number): ApiResponse;
-  json(body: unknown): void;
+export interface NewsPayload {
+  news: NewsItem[];
+  searchQueries: string[];
+  sources: { title: string; uri: string }[];
+  message: string;
+  isGrounded: boolean;
+}
+
+function getFallbackNews(message: string): NewsPayload {
+  return {
+    news: [
+      {
+        title: 'Follow Up Boss Unveils Advanced Lead Parsing Engines',
+        source: 'RealTrends',
+        url: 'https://realtrends.com',
+        date: 'July 2026',
+        summary: 'Follow Up Boss announced enhanced ingestion layers that instantly parse leads from over 200 sources including Zillow and Realtor.com. This enables solo agents to initiate automations in under 15 seconds.',
+        targetCrm: 'Follow Up Boss',
+        sentiment: 'Positive'
+      },
+      {
+        title: 'Pipedrive Integrates Native Email Copilot for Client Communications',
+        source: 'Pipedrive Official Blog',
+        url: 'https://pipedrive.com/blog',
+        date: 'June 2026',
+        summary: 'Pipedrive rolled out its new AI-driven writing assistant, enabling agents to instantly draft professional deal follow-ups, contract inquiries, and cold outreach drafts right from their visual pipelines.',
+        targetCrm: 'Pipedrive',
+        sentiment: 'Positive'
+      },
+      {
+        title: 'Streak CRM Upgrades Offline Sync & Safari Extensions for macOS Power Users',
+        source: 'MacRumors / TechNews',
+        url: 'https://streak.com',
+        date: 'May 2026',
+        summary: 'Streak deployed an upgraded engine inside their browser extensions, bringing near-instant offline caching and flawless background synchronicity for agents working in regions with intermittent cell signals.',
+        targetCrm: 'Streak',
+        sentiment: 'Positive'
+      },
+      {
+        title: '2026 National Association of Realtors Technology Survey Results Published',
+        source: 'NAR Research',
+        url: 'https://nar.realtor',
+        date: 'April 2026',
+        summary: 'The annual report indicates over 68% of solo brokers now prioritize single-user integrated CRMs (Pipedrive, Streak) over complex enterprise suites, citing setup speed and mobile-friendliness as core factors.',
+        targetCrm: 'General',
+        sentiment: 'Neutral'
+      }
+    ],
+    searchQueries: [
+      'Pipedrive CRM latest features 2026',
+      'Streak CRM updates 2026',
+      'Follow Up Boss lead routing enhancements'
+    ],
+    sources: [
+      { title: 'Pipedrive Product Updates', uri: 'https://www.pipedrive.com/en/blog/category/product-updates' },
+      { title: 'Streak CRM Changelog', uri: 'https://www.streak.com/changelog' },
+      { title: 'Follow Up Boss Release Notes', uri: 'https://news.followupboss.com' }
+    ],
+    message,
+    isGrounded: false
+  };
 }
 
 const CACHE_DURATION = 4 * 60 * 60 * 1000; // 4 hours, matching the dev server
@@ -37,12 +104,13 @@ function extractJson(text: string): string {
 }
 
 async function fetchGroundedNews(): Promise<Omit<NewsPayload, 'message'>> {
-  // Imported lazily so the fallback path never pays the SDK load cost.
+  // Imported lazily so the fallback path never pays the SDK load cost, and so a
+  // bundling problem in the SDK cannot break module load for the whole function.
   const { GoogleGenAI } = await import('@google/genai');
   const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY! });
 
   const response = await ai.models.generateContent({
-    model: 'gemini-3.6-flash',
+    model: 'gemini-2.5-flash',
     contents: `Search for recent real news, headlines, product releases, acquisitions, features, or press articles specifically about:
 1. Pipedrive CRM
 2. Streak CRM
@@ -99,32 +167,45 @@ Format example:
   };
 }
 
+interface ApiRequest extends IncomingMessage {
+  query?: Record<string, string | string[] | undefined>;
+}
+
+interface ApiResponse extends ServerResponse {
+  status(code: number): ApiResponse;
+  json(body: unknown): void;
+}
+
 export default async function handler(req: ApiRequest, res: ApiResponse) {
-  if (req.method !== 'GET') {
-    res.setHeader('Allow', 'GET');
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
-  const forceQuery = Array.isArray(req.query.force) ? req.query.force[0] : req.query.force;
-  const forceRefresh = forceQuery === 'true';
-  const now = Date.now();
-
   try {
+    if (req.method !== 'GET') {
+      res.setHeader('Allow', 'GET');
+      res.status(405).json({ error: 'Method not allowed' });
+      return;
+    }
+
+    const forceQuery = Array.isArray(req.query?.force) ? req.query?.force[0] : req.query?.force;
+    const forceRefresh = forceQuery === 'true';
+    const now = Date.now();
+
     if (now < quotaExhaustedUntil) {
       if (crmNewsCache) {
         res.setHeader('Cache-Control', 'public, s-maxage=300');
-        return res.json({ ...crmNewsCache, isFromCache: true });
+        res.status(200).json({ ...crmNewsCache, isFromCache: true });
+        return;
       }
       const fallback = getFallbackNews('Intel search grounding is operating on curated standby dataset.');
       crmNewsCache = fallback;
       crmNewsCacheTime = now;
       res.setHeader('Cache-Control', 'public, s-maxage=300');
-      return res.json({ ...fallback, isFromCache: true });
+      res.status(200).json({ ...fallback, isFromCache: true });
+      return;
     }
 
     if (!forceRefresh && crmNewsCache && now - crmNewsCacheTime < CACHE_DURATION) {
       res.setHeader('Cache-Control', 'public, s-maxage=3600');
-      return res.json({ ...crmNewsCache, isFromCache: true });
+      res.status(200).json({ ...crmNewsCache, isFromCache: true });
+      return;
     }
 
     if (!process.env.GEMINI_API_KEY) {
@@ -132,7 +213,8 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
       crmNewsCache = fallback;
       crmNewsCacheTime = now;
       res.setHeader('Cache-Control', 'public, s-maxage=3600');
-      return res.json(fallback);
+      res.status(200).json(fallback);
+      return;
     }
 
     const live = await fetchGroundedNews();
@@ -140,20 +222,22 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
     crmNewsCache = { ...live, message: '' };
     crmNewsCacheTime = now;
     res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
-    return res.json({
+    res.status(200).json({
       ...live,
       sources: live.sources.length ? live.sources : curated.sources,
       searchQueries: live.searchQueries.length ? live.searchQueries : curated.searchQueries,
       isFromCache: false
     });
   } catch (err) {
+    const now = Date.now();
     const isQuotaError = /quota|rate|429|exceed/i.test(String(err));
     if (isQuotaError) quotaExhaustedUntil = now + 60 * 60 * 1000;
     console.warn('[crm-news] live fetch failed, serving curated fallback:', err);
 
     if (crmNewsCache) {
       res.setHeader('Cache-Control', 'public, s-maxage=300');
-      return res.json({ ...crmNewsCache, isFromCache: true });
+      res.status(200).json({ ...crmNewsCache, isFromCache: true });
+      return;
     }
     const fallback = getFallbackNews(
       isQuotaError
@@ -163,6 +247,6 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
     crmNewsCache = fallback;
     crmNewsCacheTime = now;
     res.setHeader('Cache-Control', 'public, s-maxage=300');
-    return res.json(fallback);
+    res.status(200).json(fallback);
   }
 }
