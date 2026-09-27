@@ -54,7 +54,10 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
     description: seoDescription,
     keywords: seoKeywords,
     ogType: 'article',
-    category: 'Product Guides'
+    category: 'Product Guides',
+    // Supplying the author lets seo.ts emit BlogPosting structured data for
+    // guide detail pages, matching the blog detail pages.
+    author: currentGuide?.author
   }, [guideSlug, currentGuide]);
 
   // If viewing list of all guides (State 1)

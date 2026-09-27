@@ -1,15 +1,33 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
         {
-          "key": "X-Robots-Tag",
-          "value": "all"
-        },
-        {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
+        }
+      ]
+    },
+    {
+      "source": "/admin",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/api/crm-news",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, s-maxage=3600, stale-while-revalidate=86400"
         }
       ]
     },
@@ -53,22 +71,44 @@
       ]
     }
   ],
-  "rewrites": [
+  "redirects": [
     {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.crmsolo.online" }],
+      "destination": "https://crmsolo.online/$1",
+      "permanent": true
     },
     {
-      "source": "/robots.txt",
-      "destination": "/robots.txt"
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.crmsolo.com" }],
+      "destination": "https://crmsolo.online/$1",
+      "permanent": true
     },
     {
-      "source": "/ads.txt",
-      "destination": "/ads.txt"
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "crmsolo.com" }],
+      "destination": "https://crmsolo.online/$1",
+      "permanent": true
     },
     {
-      "source": "/((?!api/|.*\\..*).*)",
-      "destination": "/index.html"
+      "source": "/sitemap",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap_index.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemaps.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap-index.xml",
+      "destination": "/sitemap.xml",
+      "permanent": true
     }
   ]
 }
