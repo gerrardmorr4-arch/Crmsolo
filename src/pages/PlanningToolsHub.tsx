@@ -57,7 +57,7 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
   // SEO & GEO Optimization
   useSEO({
     title: `Best Planning Tools & PM Software Directory (2026)`,
-    description: `Compare ${totalTools} closely reviewed planning tools across 22 categories, from Project Management and Time Tracking to Agile and Gantt Charts. Compare pricing, deployment model, compliance posture (US, UK, EU, CA, AU), and ratings.`,
+    description: `Compare ${totalTools} reviewed planning and project management tools across 22 categories on 2026 pricing, deployment, compliance (US, UK, EU, CA, AU), and ratings.`,
     keywords: [
       'planning tools',
       'project management software',

@@ -41,7 +41,7 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
   const seoDescription = isListView 
     ? 'Hands-on guidebooks and system configuration blueprints for solo brokers and new real estate agents. Step-by-step setup walkthroughs.' 
     : currentGuide 
-      ? currentGuide.excerpt 
+      ? (currentGuide.metaDescription || currentGuide.excerpt)
       : 'Step-by-step real estate CRM playbook.';
 
   const seoKeywords = isListView

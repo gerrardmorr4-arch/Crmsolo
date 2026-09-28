@@ -39,7 +39,7 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
   // Dynamic SEO & GEO
   useSEO({
     title: `Best ${category.name} Software (${category.toolCount}) - 2026`,
-    description: `Compare ${category.name} platforms with ${category.toolCount} tools reviewed. Pricing, deployment, compliance notes (${category.geoFocus.regions.join(', ')}), and features.`,
+    description: `Compare ${category.toolCount} ${category.name} tools on 2026 pricing, deployment, and compliance.`,
     keywords: [
       category.name.toLowerCase(),
       `best ${category.name.toLowerCase()} software`,

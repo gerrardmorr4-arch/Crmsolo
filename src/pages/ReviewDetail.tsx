@@ -43,7 +43,7 @@ export default function ReviewDetail({ crm, onNavigate }: ReviewDetailProps) {
 
   useSEO({
     title: `${crm.name} CRM Review: Real Estate Agent Verdict`,
-    description: `Our review of ${crm.name} for solo real estate agents. Rated ${crm.overallScore}/10. ${crm.oneLinePitch}`,
+    description: `Our review of ${crm.name} for solo real estate agents, rated ${crm.overallScore}/10: pricing, best features, and who it fits.`,
     keywords: [crm.name.toLowerCase(), `${crm.name.toLowerCase()} crm`, `${crm.name.toLowerCase()} review`, 'real estate crm', 'solo realtor crm'],
     ogType: 'article',
     category: 'CRM Comparisons',

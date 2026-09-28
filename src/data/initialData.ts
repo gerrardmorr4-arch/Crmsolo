@@ -1107,6 +1107,7 @@ export const initialGuides: CRMGuide[] = [
     "slug": "ultimate-real-estate-crm-buyers-guide-2026",
     "title": "The Ultimate Real Estate CRM Buyer's Guide (2026 Edition)",
     "metaTitle": "Ultimate Real Estate CRM Buyer's Guide (2026)",
+    "metaDescription": "A comprehensive, GetApp-style buyer's guide to real estate CRMs: core features, pricing models, deployment options, and how to evaluate vendors.",
     "excerpt": "A comprehensive, GetApp-style directory buyer's guide for realtors. Discover core features, pricing models, deployment options, and selection criteria.",
     "category": "Buyer's Guide",
     "author": "Eugene Boniface (Chief Analyst)",
