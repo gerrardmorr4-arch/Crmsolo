@@ -84,9 +84,9 @@ export const DirectoryFilterSidebar: React.FC<DirectoryFilterSidebarProps> = ({
 
       {/* Pricing Model */}
       <div>
-        <h4 className="text-xs uppercase font-bold text-slate-400 tracking-wider mb-2.5">
+        <h3 className="text-xs uppercase font-bold text-slate-400 tracking-wider mb-2.5">
           Pricing Model
-        </h4>
+        </h3>
         <div className="space-y-1.5">
           {[
             { id: 'all', label: 'All Pricing Models' },
@@ -119,9 +119,9 @@ export const DirectoryFilterSidebar: React.FC<DirectoryFilterSidebarProps> = ({
       {/* Starting Price Range */}
       <div>
         <div className="flex items-center justify-between mb-2">
-          <h4 className="text-xs uppercase font-bold text-slate-400 tracking-wider">
+          <h3 className="text-xs uppercase font-bold text-slate-400 tracking-wider">
             Max Starting Price
-          </h4>
+          </h3>
           <span className="text-xs font-bold text-slate-900">
             {filters.maxStartingPrice >= 300 ? 'Any Budget' : `$${filters.maxStartingPrice}/mo`}
           </span>
@@ -148,9 +148,9 @@ export const DirectoryFilterSidebar: React.FC<DirectoryFilterSidebarProps> = ({
 
       {/* Minimum Score */}
       <div>
-        <h4 className="text-xs uppercase font-bold text-slate-400 tracking-wider mb-2.5">
+        <h3 className="text-xs uppercase font-bold text-slate-400 tracking-wider mb-2.5">
           Minimum Rating
-        </h4>
+        </h3>
         <div className="grid grid-cols-3 gap-2">
           {[
             { score: 0, label: 'All' },
@@ -176,9 +176,9 @@ export const DirectoryFilterSidebar: React.FC<DirectoryFilterSidebarProps> = ({
 
       {/* Must-Have Features */}
       <div>
-        <h4 className="text-xs uppercase font-bold text-slate-400 tracking-wider mb-2.5">
+        <h3 className="text-xs uppercase font-bold text-slate-400 tracking-wider mb-2.5">
           Must-Have Features
-        </h4>
+        </h3>
         <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
           {availableFeatures.slice(0, 10).map((feature) => {
             const isChecked = filters.selectedFeatures.includes(feature);
@@ -204,9 +204,9 @@ export const DirectoryFilterSidebar: React.FC<DirectoryFilterSidebarProps> = ({
 
       {/* Deployment & Platform */}
       <div>
-        <h4 className="text-xs uppercase font-bold text-slate-400 tracking-wider mb-2.5">
+        <h3 className="text-xs uppercase font-bold text-slate-400 tracking-wider mb-2.5">
           Deployment & Platform
-        </h4>
+        </h3>
         <div className="space-y-1.5">
           {['Web / Cloud', 'iOS App', 'Android App', 'Chrome Extension', 'Mac App'].map((dep) => {
             const isChecked = filters.selectedDeployments.includes(dep);
@@ -232,9 +232,9 @@ export const DirectoryFilterSidebar: React.FC<DirectoryFilterSidebarProps> = ({
 
       {/* Agent Stage / Persona */}
       <div>
-        <h4 className="text-xs uppercase font-bold text-slate-400 tracking-wider mb-2.5">
+        <h3 className="text-xs uppercase font-bold text-slate-400 tracking-wider mb-2.5">
           Target Practitioner
-        </h4>
+        </h3>
         <div className="space-y-1.5">
           {['Solo Realtor', 'New Real Estate Agent', 'Independent Broker', 'High-Volume Lead Buyer', 'Google Workspace Realtor'].map((agent) => {
             const isChecked = filters.selectedAgents.includes(agent);

@@ -225,7 +225,7 @@ export const Directory: React.FC<DirectoryPageProps> = ({
                 <BookOpen className="w-4 h-4" />
                 <span>Buyer's Resource</span>
               </div>
-              <h4 className="text-base font-bold mb-1.5">New to Real Estate CRMs?</h4>
+              <h2 className="text-base font-bold mb-1.5">New to Real Estate CRMs?</h2>
               <p className="text-xs text-slate-300 mb-4 leading-relaxed">
                 Read our in-depth 2026 Buyer's Guide to understand core features, pricing structures, and speed-to-lead benchmarks.
               </p>
@@ -303,7 +303,7 @@ export const Directory: React.FC<DirectoryPageProps> = ({
                 <SlidersHorizontal className="w-4 h-4" />
                 <span>Head-to-Head Hub</span>
               </div>
-              <h5 className="font-bold text-sm mb-1">Pre-Built CRM Comparisons</h5>
+              <h4 className="font-bold text-sm mb-1">Pre-Built CRM Comparisons</h4>
               <p className="text-xs text-emerald-200/80 mb-3">
                 See detailed breakdowns comparing Pipedrive, Streak, Follow Up Boss, Copper, and Wise Agent.
               </p>

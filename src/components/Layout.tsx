@@ -495,7 +495,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
           </div>
 
           <div className="md:col-span-2 space-y-2">
-            <h4 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Quick Tools</h4>
+            <h3 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Quick Tools</h3>
             <ul className="space-y-1.5 pt-1">
               <li><NavLink to='/planning-tools' onNavigate={onNavigate} className="text-accent font-bold hover:text-white transition">Planning Directory (22)</NavLink></li>
               <li><NavLink to='/calculator' onNavigate={onNavigate} className="hover:text-white transition">ROI Calculator</NavLink></li>
@@ -506,7 +506,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
           </div>
 
           <div className="md:col-span-3 space-y-2">
-            <h4 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Planning & CRM Reviews</h4>
+            <h3 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Planning & CRM Reviews</h3>
             <ul className="space-y-1.5 pt-1">
               <li><NavLink to='/planning-tools/agile-project-management' onNavigate={onNavigate} className="hover:text-white transition">Agile Tools (8)</NavLink></li>
               <li><NavLink to='/planning-tools/project-management' onNavigate={onNavigate} className="hover:text-white transition">Project Management (3)</NavLink></li>
@@ -518,7 +518,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
           </div>
 
           <div className="md:col-span-3 space-y-2">
-            <h4 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Legal & Admin</h4>
+            <h3 className="text-white font-black tracking-widest uppercase text-[10px] border-l-2 border-accent pl-2">Legal & Admin</h3>
             <ul className="space-y-1.5 pt-1">
               <li><NavLink to='/admin' onNavigate={onNavigate} className="text-accent font-bold hover:underline flex items-center gap-1"><Lock className="w-3 h-3" /> Admin Portal</NavLink></li>
               <li><NavLink to='/privacy-policy' onNavigate={onNavigate} className="hover:text-white transition">Privacy Policy</NavLink></li>

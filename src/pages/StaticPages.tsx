@@ -15,12 +15,12 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
   const activeTab = pageType === 'methodology' ? 'methodology' : 'about';
 
   let seoTitle = 'About Us';
-  let seoDescription = 'Learn more about our review methodology and team.';
+  let seoDescription = 'Learn how CRMsolo evaluates real estate CRM software, who writes our reviews, and the editorial standards behind every rating.';
   let seoKeywords = ['about crmsolo', 'crm reviewers', 'realtor tool reviews'];
 
   if (pageType === 'contact') {
     seoTitle = 'Contact Us';
-    seoDescription = 'Get in touch with our team of CRM reviewers and brokers.';
+    seoDescription = 'Get in touch with the CRMsolo editorial team for review corrections, partnership questions, or advertising enquiries.';
     seoKeywords = ['contact crmsolo', 'realtor crm questions', 'advertise'];
   } else if (pageType === 'privacy') {
     seoTitle = 'Privacy Policy';
@@ -111,7 +111,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
                 EB
               </div>
               <div className="space-y-1 text-center md:text-left">
-                <h4 className="font-bold text-primary font-display text-base">Eugene Boniface, Founder &amp; Chief Analyst</h4>
+                <h2 className="font-bold text-primary font-display text-base">Eugene Boniface, Founder &amp; Chief Analyst</h2>
                 <p className="text-xs text-gray-600 leading-relaxed">
                   Eugene Boniface is an independent real estate technology practitioner and founder of CRMsolo. Based in Ferrol, Spain, Eugene reviews sales management tools, CRM automation platforms, and lead pipeline software to help solo brokers streamline daily workflows without corporate clutter.
                 </p>
@@ -123,7 +123,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
             </div>
 
             <div className="space-y-3">
-              <h3 className="font-display font-bold text-lg text-primary">Why independent agents trust CRMsolo:</h3>
+              <h2 className="font-display font-bold text-lg text-primary">Why independent agents trust CRMsolo:</h2>
               <ul className="space-y-2.5 text-xs text-gray-600">
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
@@ -155,28 +155,28 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
 
             <div className="divide-y divide-gray-100">
               <div className="py-4 space-y-1">
-                <h3 className="font-display font-bold text-primary text-sm">1. Mobile Utility (30% Weight)</h3>
+                <h2 className="font-display font-bold text-primary text-sm">1. Mobile Utility (30% Weight)</h2>
                 <p className="text-xs text-gray-500">
                   Solo agents close deals on the move. We look at mobile app latency, offline note synchronization, and how many taps it takes to log a buyer call outcome.
                 </p>
               </div>
 
               <div className="py-4 space-y-1">
-                <h3 className="font-display font-bold text-primary text-sm">2. Real Estate Customization Fit (25% Weight)</h3>
+                <h2 className="font-display font-bold text-primary text-sm">2. Real Estate Customization Fit (25% Weight)</h2>
                 <p className="text-xs text-gray-500">
                   CRMs are built for corporate SaaS teams by default. We assess how easily you can add residential property variables (appraisal contingencies, MLS numbers, listing addresses) without paying for enterprise developer upgrades.
                 </p>
               </div>
 
               <div className="py-4 space-y-1">
-                <h3 className="font-display font-bold text-primary text-sm">3. Value for Money / Tier Transparency (25% Weight)</h3>
+                <h2 className="font-display font-bold text-primary text-sm">3. Value for Money / Tier Transparency (25% Weight)</h2>
                 <p className="text-xs text-gray-500">
                   We look at the exact cost of the email sync and automatic follow-up templates tiers. We highlight and warn agents against "pricing traps" where adding basic contact features triggers severe, unexpected price jumps.
                 </p>
               </div>
 
               <div className="py-4 space-y-1">
-                <h3 className="font-display font-bold text-primary text-sm">4. Ease of Daily Habit Formation (20% Weight)</h3>
+                <h2 className="font-display font-bold text-primary text-sm">4. Ease of Daily Habit Formation (20% Weight)</h2>
                 <p className="text-xs text-gray-500">
                   The best CRM is the one you actually use. We assess visual clutter, cognitive load, and whether updating deal boards feels intuitive or like tedious data-entry chores.
                 </p>
@@ -206,7 +206,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
           {formSubmitted ? (
             <div className="p-6 bg-success/15 border border-success/30 rounded-2xl text-center space-y-3 animate-in zoom-in duration-150">
               <span className="text-4xl">📬</span>
-              <h3 className="text-lg font-bold text-primary font-display">Message Sent Successfully!</h3>
+              <h2 className="text-lg font-bold text-primary font-display">Message Sent Successfully!</h2>
               <p className="text-xs text-gray-600 max-w-sm mx-auto">
                 Thank you for reaching out. Eugene reads every email and will get back to your broker address within 24 hours.
               </p>
@@ -292,17 +292,17 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
             Welcome to CRMsolo (crmsolo.online). Your privacy is of paramount importance to us. This Privacy Policy documents how we handle user-input variables inside our interactive tools, such as the CRM ROI Calculator, as well as general browser cookie logging.
           </p>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">1. Calculator Inputs Anonymity</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">1. Calculator Inputs Anonymity</h2>
           <p>
             When you enter your average leads, commissions, wages, and tool spends in the CRM ROI Calculator, this data is computed completely on your client-side browser device. CRMsolo does not collect, log, or transmit these metrics to our server logs unless you explicitly request a shared URL.
           </p>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">2. Cookies and Tracking</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">2. Cookies and Tracking</h2>
           <p>
             We integrate standard analytics scripts (such as Google Analytics 4) to monitor general site activity, calculator starts, and affiliate referral link click tracking. These analytics services do not collect personally identifiable broker details.
           </p>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">3. Third-Party Referral Disclosures</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">3. Third-Party Referral Disclosures</h2>
           <p>
             Clicking on any CRM signup button routes you to our affiliate partner sites (Pipedrive, HubSpot, Zoho). These portals utilize standard partner tracking cookies to trace referral credits. Please review their independent privacy policy procedures.
           </p>
@@ -324,7 +324,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
             In compliance with the Federal Trade Commission (FTC) guidelines, CRMsolo (crmsolo.online) maintains full disclosure and transparency regarding our monetization partners.
           </p>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">Our Affiliate Partnerships</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">Our Affiliate Partnerships</h2>
           <p>
             CRMsolo operates as an independent editorial review platform. To fund our research, server operations, and free diagnostic tools, we participate in several software referral programs:
           </p>
@@ -335,7 +335,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
             <li><strong>Zoho Partner Alliance:</strong> We receive credits when brokers establish custom workspace databases.</li>
           </ul>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">Why This Does Not Affect Rankings</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">Why This Does Not Affect Rankings</h2>
           <p>
             Partnership status does not determine our scores. Overall ratings and scorecard breakdowns reflect the editorial judgement described on our methodology page, and the CRM ROI Calculator applies the same formulas and pricing tiers to every system regardless of who pays referral splits. We always warn readers of the "HubSpot professional trap" and openly document Zoho's setup complexity.
           </p>
@@ -362,7 +362,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
             These terms govern your use of crmsolo.online (the "site"). By using the site you accept them. If you do not accept them, please do not use the site.
           </p>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">Content and accuracy</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">Content and accuracy</h2>
           <p>
             The site publishes editorial assessments of real estate software. Our ratings and comparisons reflect our own judgement against the criteria described on our{' '}
             <NavLink to="/methodology" onNavigate={onNavigate} className="text-accent font-bold hover:underline">methodology page</NavLink>. They are opinions, not statements of fact, and they are not a controlled or independently audited benchmark.
@@ -371,34 +371,34 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
             Software pricing, features and terms change frequently and are set by the vendors, not by us. Information here may become out of date, and we do not warrant that it is accurate, complete or current. Always confirm pricing and feature availability with the vendor before purchasing.
           </p>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">Affiliate links</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">Affiliate links</h2>
           <p>
             Some outbound links are affiliate links, and we may earn a commission if you sign up through them. This does not change what you pay. See our{' '}
             <NavLink to="/affiliate-disclosure" onNavigate={onNavigate} className="text-accent font-bold hover:underline">affiliate disclosure</NavLink>{' '}
             for detail on how the site is funded.
           </p>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">Third-party names</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">Third-party names</h2>
           <p>
             Product and company names mentioned on the site are trademarks of their respective owners. Their use here is for identification and editorial comment only, and does not imply any affiliation with or endorsement by those owners.
           </p>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">Acceptable use</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">Acceptable use</h2>
           <p>
             You may read, cite and link to the site. You may not scrape it at scale, republish substantial portions as your own, attempt to disrupt it, or use it in a way that breaks applicable law.
           </p>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">Limitation of liability</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">Limitation of liability</h2>
           <p>
             The site is provided "as is" and without warranties of any kind. To the extent permitted by law, we are not liable for any loss arising from your use of the site or from decisions you make based on it, including software purchasing decisions. Nothing here limits liability that cannot lawfully be limited.
           </p>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">Changes</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">Changes</h2>
           <p>
             We may update these terms. The current version is always the one published on this page.
           </p>
 
-          <h3 className="font-display font-bold text-primary text-base mt-4">Contact</h3>
+          <h2 className="font-display font-bold text-primary text-base mt-4">Contact</h2>
           <p>
             Questions about these terms: <a href="mailto:Eugeneboniface4@yahoo.com" className="text-accent font-bold hover:underline">Eugeneboniface4@yahoo.com</a>, or see our{' '}
             <NavLink to="/contact" onNavigate={onNavigate} className="text-accent font-bold hover:underline">contact page</NavLink>.

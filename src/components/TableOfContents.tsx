@@ -130,9 +130,9 @@ export default function TableOfContents({
         <div className="flex items-center justify-between pb-2.5 border-b border-gray-100">
           <div className="flex items-center gap-2">
             <List className="w-4 h-4 text-accent" />
-            <h3 className="text-xs font-bold text-primary font-display uppercase tracking-wider">
+            <h2 className="text-xs font-bold text-primary font-display uppercase tracking-wider">
               {title}
-            </h3>
+            </h2>
           </div>
           <span className="text-[10px] font-mono text-gray-400 font-semibold bg-gray-50 px-2 py-0.5 rounded-md border border-gray-100">
             {items.length} Topics

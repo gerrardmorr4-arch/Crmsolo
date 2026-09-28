@@ -1,0 +1,18 @@
+name: SEO
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  seo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run lint
+      - run: bun run build
+      - run: bun run verify:seo
+      - run: bun run check:seo

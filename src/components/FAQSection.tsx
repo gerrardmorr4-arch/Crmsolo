@@ -176,9 +176,9 @@ export default function FAQSection() {
                         <span className="text-[8px] font-black uppercase tracking-widest text-primary/45 block mb-0.5">
                           {faq.category}
                         </span>
-                        <h4 className="text-sm md:text-base font-black text-primary font-display uppercase tracking-tight">
+                        <h3 className="text-sm md:text-base font-black text-primary font-display uppercase tracking-tight">
                           {faq.question}
-                        </h4>
+                        </h3>
                       </div>
                     </div>
                     

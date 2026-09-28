@@ -43,7 +43,7 @@ export default function ReviewDetail({ crm, onNavigate }: ReviewDetailProps) {
 
   useSEO({
     title: `${crm.name} CRM Review: Real Estate Agent Verdict`,
-    description: `Our review of ${crm.name} for solo real estate agents. Rated ${crm.overallScore}/10. ${crm.oneLinePitch}`,
+    description: `Our review of ${crm.name} for solo real estate agents, rated ${crm.overallScore}/10: pricing, best features, and who it fits.`,
     keywords: [crm.name.toLowerCase(), `${crm.name.toLowerCase()} crm`, `${crm.name.toLowerCase()} review`, 'real estate crm', 'solo realtor crm'],
     ogType: 'article',
     category: 'CRM Comparisons',
@@ -155,7 +155,7 @@ export default function ReviewDetail({ crm, onNavigate }: ReviewDetailProps) {
           
           {/* 2. Rating Criteria Breakdown */}
           <div id="scorecard" className="scroll-mt-28 bg-white p-6 rounded-2xl border border-gray-100 shadow-xs space-y-4">
-            <h3 className="text-lg font-bold text-primary font-display">Review Criteria Scorecard</h3>
+            <h2 className="text-lg font-bold text-primary font-display">Review Criteria Scorecard</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { label: 'Ease of Use', value: crm.ratingBreakdown.easeOfUse },

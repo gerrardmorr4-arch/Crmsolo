@@ -29,7 +29,7 @@ interface RouteFallback {
 }
 
 const DEFAULT_ROUTE_FALLBACK: Omit<RouteFallback, 'match'> = {
-  title: 'Best Real Estate CRM Software Directory (2026 Reviews & Pricing)',
+  title: 'Best Real Estate CRM Software Directory (2026)',
   description: 'Browse, compare, and filter top Real Estate Customer Relationship Management (CRM) tools. Read our buyer reviews, pricing models, and feature checklists.',
   keywords: ['real estate crm', 'real estate software directory', 'realtor crm reviews', 'crm pricing', 'pipedrive', 'follow up boss', 'streak']
 };
@@ -37,7 +37,7 @@ const DEFAULT_ROUTE_FALLBACK: Omit<RouteFallback, 'match'> = {
 const ROUTE_FALLBACKS: RouteFallback[] = [
   {
     match: p => p === '/directory' || p === '/category/crm' || p === '/category',
-    title: 'Best Real Estate CRM Software Directory (2026 Reviews & Pricing)',
+    title: 'Best Real Estate CRM Software Directory (2026)',
     description: 'Explore top verified real estate CRM software with side-by-side comparison tables, filter by price and deployment, and read expert ratings.',
     keywords: ['best real estate crm', 'real estate crm directory', 'realtor software comparison', 'getapp real estate crm']
   },
@@ -85,7 +85,7 @@ const ROUTE_FALLBACKS: RouteFallback[] = [
   },
   {
     match: p => p === '/blueprints' || p.startsWith('/blueprints/'),
-    title: 'Real Estate CRM Automation Blueprints (2026 Free Workflows)',
+    title: 'Real Estate CRM Automation Blueprints (2026)',
     description: 'Actionable step-by-step CRM automation workflows, speed-to-lead scripts, Kanban escrow tracking, and Pinterest traffic blueprints for solo realtors.',
     keywords: ['real estate crm blueprints', 'realtor automation workflow', 'speed to lead scripts', 'escrow kanban board']
   },

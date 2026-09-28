@@ -212,7 +212,7 @@ export const DirectoryProductCard: React.FC<DirectoryProductCardProps> = ({
           {isExpandedSpecs && (
             <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl text-xs">
               <div>
-                <h5 className="font-bold text-slate-900 mb-2">Category Score Breakdown</h5>
+                <h4 className="font-bold text-slate-900 mb-2">Category Score Breakdown</h4>
                 <div className="space-y-1.5">
                   <div className="flex justify-between">
                     <span className="text-slate-600">Ease of Use:</span>
@@ -234,7 +234,7 @@ export const DirectoryProductCard: React.FC<DirectoryProductCardProps> = ({
               </div>
 
               <div>
-                <h5 className="font-bold text-slate-900 mb-2">Editor's Take</h5>
+                <h4 className="font-bold text-slate-900 mb-2">Editor's Take</h4>
                 <p className="text-slate-600 leading-relaxed line-clamp-4">
                   {review.verdict}
                 </p>

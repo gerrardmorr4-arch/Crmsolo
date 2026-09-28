@@ -9,6 +9,7 @@ esbuild bundle of `server.ts` for Cloud Run/VPS style hosting.
 npm run build        # vite build + prerender + esbuild server bundle
 npm run lint         # tsc --noEmit
 npm run verify:seo   # checks the prerendered output in dist/
+npm run check:seo    # enforces title/description/heading limits in dist/
 npm run dev          # Express + Vite middleware on :3000
 ```
 
@@ -18,6 +19,13 @@ Always run `verify:seo` after touching anything under `src/lib/seo.ts`,
 - every sitemap URL resolves to a page with a unique title
 - a canonical link, an H1, and a substantial body
 - valid, non-empty JSON-LD
+
+`check:seo` enforces the SEO audit limits over every indexable page: title at
+most 60 characters, meta description 70-160 characters, and no skipped heading
+levels. The `.github/workflows/seo.yml` job runs lint, build, `verify:seo`, and
+`check:seo` on every pull request. Titles that need a shorter form without
+losing the on-page wording use the optional `metaTitle`/`metaDescription`
+fields on the data objects rather than editing the visible copy.
 
 ## Deployment topology
 

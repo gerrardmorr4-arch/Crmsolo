@@ -117,9 +117,12 @@ export function updateMetaTags(options: SEOOptions) {
   priorityStore[TITLE_PRIORITY_KEY] = Math.max(currentPriority, isFallback ? 0 : 1);
 
   // 2. Update Title
-  const siteSuffix = " | SoloAgent CRM Hub";
-  const fullTitle = title.endsWith(siteSuffix) ? title : `${title}${siteSuffix}`;
-  document.title = fullTitle;
+  // Keep the rendered <title> within the 60-character SEO limit. Drop the
+  // brand suffix when the base title is already long, so the meaningful words
+  // survive and the title stays unique.
+  const siteSuffix = " | CRMsolo";
+  const withSuffix = title.endsWith(siteSuffix) ? title : `${title}${siteSuffix}`;
+  document.title = withSuffix.length <= 60 ? withSuffix : title;
 
   // Helper helper to get or create a meta tag
   const setMetaTag = (attributeName: string, attributeValue: string, content: string) => {
