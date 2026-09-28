@@ -3,12 +3,11 @@ import { ALL_INDEXED_TOOLS, getToolsByCategorySlug, searchAllTools } from './ind
 
 export { ALL_INDEXED_TOOLS, getToolsByCategorySlug, searchAllTools };
 
-export const PLANNING_CATEGORIES: PlanningCategory[] = [
+const PLANNING_CATEGORY_DEFS: Omit<PlanningCategory, 'toolCount'>[] = [
   {
     id: 'agile-project-management',
     slug: 'agile-project-management',
     name: 'Agile Project Management',
-    toolCount: 193,
     tagline: 'Iterative sprint tracking, burndown metrics, and cross-functional team execution software.',
     description: 'Directory and expert evaluations of 8 Agile Project Management platforms. Built for engineering squads, Scrum teams, growth agencies, and agile real estate operations to track backlogs, user stories, velocity charts, and continuous delivery cycles.',
     evaluationCriteria: [
@@ -85,7 +84,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'flowchart',
     slug: 'flowchart',
     name: 'Flowchart',
-    toolCount: 36,
     tagline: 'Visual process mapping, architectural diagrams, decision trees, and workflow canvases.',
     description: 'Index and technical breakdown of 6 Flowchart and diagramming applications. Designed for systems architects, operations leads, real estate brokers mapping closing protocols, and compliance officers needing visual SOP blueprints.',
     evaluationCriteria: [
@@ -158,7 +156,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'gantt-chart',
     slug: 'gantt-chart',
     name: 'Gantt Chart',
-    toolCount: 147,
     tagline: 'Timeline visualization, critical path analysis, and milestone scheduling software.',
     description: 'Review and feature comparison of 5 Gantt Chart software solutions. Essential for construction management, capital infrastructure projects, marketing launches, and complex multi-party real estate development schedules.',
     evaluationCriteria: [
@@ -231,7 +228,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'it-project-management',
     slug: 'it-project-management',
     name: 'IT Project Management',
-    toolCount: 173,
     tagline: 'DevOps alignment, infrastructure deployment, ITIL incident workflows, and SLA tracking.',
     description: 'Curated directory and benchmarking of 3 IT Project Management suites. Built for CIOs, Systems Administrators, DevOps teams, and technical MSPs orchestrating server rollouts, security patching, and cloud infrastructure migrations.',
     evaluationCriteria: [
@@ -291,7 +287,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'job-costing',
     slug: 'job-costing',
     name: 'Job Costing',
-    toolCount: 173,
     tagline: 'Labor burden calculation, materials tracking, work-in-progress (WIP) accounting, and profitability analysis.',
     description: 'Directory of 3 Job Costing software systems. Engineered for general contractors, real estate developers, architectural firms, and field service contractors to prevent budget overruns and track actual vs. estimated project margins.',
     evaluationCriteria: [
@@ -351,7 +346,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'kanban-tools',
     slug: 'kanban-tools',
     name: 'Kanban Tools',
-    toolCount: 130,
     tagline: 'Visual column flow, Work-in-Progress (WIP) limits, lead-time metrics, and bottleneck elimination.',
     description: 'Explore 3 top-rated Kanban Tools designed for visual project organization, real estate listing-to-closing boards, marketing pipeline tracking, and continuous workflow optimization.',
     evaluationCriteria: [
@@ -411,7 +405,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'pim',
     slug: 'pim',
     name: 'PIM (Product Information Management)',
-    toolCount: 129,
     tagline: 'Centralized product data cataloging, digital asset management (DAM), and multi-channel syndication.',
     description: 'Directory of 3 Product Information Management (PIM) suites. Built for e-commerce brands, B2B distributors, and manufacturers managing large SKU catalogs, localized translations, and multi-marketplace feeds (Amazon, Shopify, Walmart).',
     evaluationCriteria: [
@@ -471,7 +464,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'production-scheduling',
     slug: 'production-scheduling',
     name: 'Production Scheduling',
-    toolCount: 164,
     tagline: 'Manufacturing capacity planning, finite machine loading, BOM routing, and shop floor sequencing.',
     description: 'Expert review of 2 Production Scheduling and Advanced Planning & Scheduling (APS) software systems. Designed for plant managers, supply chain directors, and precision manufacturers optimizing line throughput.',
     evaluationCriteria: [
@@ -531,7 +523,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'product-management',
     slug: 'product-management',
     name: 'Product Management',
-    toolCount: 162,
     tagline: 'Customer feedback aggregation, feature prioritization matrices, and product lifecycle management.',
     description: 'Directory and deep-dive evaluation of 2 Product Management software tools. Built for Chief Product Officers, Product Managers, and UX researchers to synthesize user feedback into high-impact product releases.',
     evaluationCriteria: [
@@ -591,7 +582,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'product-roadmap',
     slug: 'product-roadmap',
     name: 'Product Roadmap',
-    toolCount: 86,
     tagline: 'Visual timeline forecasting, strategic release plans, and stakeholder alignment portals.',
     description: 'Review of 2 dedicated Product Roadmap software platforms. Built for product executives, marketing teams, and client success leads to present real-time release schedules without manual slide updates.',
     evaluationCriteria: [
@@ -651,7 +641,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'professional-services-automation',
     slug: 'professional-services-automation',
     name: 'Professional Services Automation (PSA)',
-    toolCount: 239,
     tagline: 'Resource utilization, billing milestones, client portal management, and project accounting.',
     description: 'Directory of 2 Professional Services Automation (PSA) platforms. Designed for IT consulting firms, creative agencies, law practices, accounting groups, and engineering brokerages to manage the quote-to-cash lifecycle.',
     evaluationCriteria: [
@@ -711,7 +700,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'project-management',
     slug: 'project-management',
     name: 'Project Management',
-    toolCount: 899,
     tagline: 'Universal work orchestration, multi-view boards, cross-team collaboration, and enterprise portfolio oversight.',
     description: 'The directory and benchmark of 3 Project Management software solutions. Covering every tier from solo practitioner task managers to enterprise collaboration suites.',
     evaluationCriteria: [
@@ -784,7 +772,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'project-planning',
     slug: 'project-planning',
     name: 'Project Planning',
-    toolCount: 313,
     tagline: 'Work Breakdown Structures (WBS), resource capacity forecasting, and scope baseline modeling.',
     description: 'Index of 2 Project Planning software tools. Built for program managers, engineering directors, and project directors constructing Work Breakdown Structures (WBS), risk registers, and scope baselines before execution starts.',
     evaluationCriteria: [
@@ -844,7 +831,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'project-portfolio-management',
     slug: 'project-portfolio-management',
     name: 'Project Portfolio Management (PPM)',
-    toolCount: 285,
     tagline: 'Capital allocation, executive strategic alignment, portfolio scoring, and governance oversight.',
     description: 'Benchmarking 2 Project Portfolio Management (PPM) suites. Engineered for CIOs, PMO leaders, and enterprise steering committees prioritizing capital investments, resource bottlenecks, and strategic ROI across concurrent business initiatives.',
     evaluationCriteria: [
@@ -904,7 +890,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'project-tracking',
     slug: 'project-tracking',
     name: 'Project Tracking',
-    toolCount: 305,
     tagline: 'Deliverable tracking, milestone alerts, status health indicators, and variance monitoring.',
     description: 'Directory of 2 Project Tracking tools. Built for operations managers, client success teams, and real estate coordinators needing real-time visual progress monitoring and milestone status updates.',
     evaluationCriteria: [
@@ -964,7 +949,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'requirements-management',
     slug: 'requirements-management',
     name: 'Requirements Management',
-    toolCount: 76,
     tagline: 'Traceability matrix, compliance verification, functional specs, and audit trail verification.',
     description: 'Expert directory of 2 Requirements Management and Traceability software platforms. Essential for medical device developers, aerospace engineers, automotive systems architects, and defense contractors complying with strict regulatory verification standards (FDA, ISO 26262, DO-178C).',
     evaluationCriteria: [
@@ -1024,7 +1008,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'scrum',
     slug: 'scrum',
     name: 'Scrum',
-    toolCount: 81,
     tagline: 'Sprint planning, backlog grooming, velocity tracking, and retrospective ceremonies.',
     description: 'Directory of 2 dedicated Scrum software tools. Built for Scrum Masters, Agile Coaches, and engineering teams practicing the Scrum framework with sprint planning, daily scrums, burndown velocity, and sprint retrospectives.',
     evaluationCriteria: [
@@ -1084,7 +1067,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'strategic-planning',
     slug: 'strategic-planning',
     name: 'Strategic Planning',
-    toolCount: 240,
     tagline: 'Objectives and Key Results (OKRs), Balanced Scorecard, vision execution, and KPI tracking.',
     description: 'Benchmarking 2 Strategic Planning and Strategy Execution software suites. Designed for Chief Strategy Officers, CEOs, and corporate leadership teams executing multi-year business transformations, Balanced Scorecards, and OKR frameworks.',
     evaluationCriteria: [
@@ -1144,7 +1126,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'task-management',
     slug: 'task-management',
     name: 'Task Management',
-    toolCount: 673,
     tagline: 'Checklist hierarchies, recurring task automation, priority tagging, and personal productivity.',
     description: 'Directory of 3 Task Management applications. Built for individual professionals, solo real estate agents, busy executives, and small teams seeking frictionless to-do lists, recurring reminder schedules, and keyboard-first productivity.',
     evaluationCriteria: [
@@ -1217,7 +1198,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'team-management',
     slug: 'team-management',
     name: 'Team Management',
-    toolCount: 158,
     tagline: 'Team capacity balancing, holiday calendars, 1-on-1 agendas, and employee performance tracking.',
     description: 'Curated directory of 2 Team Management and People Operations platforms. Designed for department heads, team leads, and HR managers overseeing employee capacity, 1-on-1 performance coaching, leave calendars, and team engagement.',
     evaluationCriteria: [
@@ -1277,7 +1257,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'time-and-expenses',
     slug: 'time-and-expenses',
     name: 'Time and Expenses',
-    toolCount: 357,
     tagline: 'Receipt scanning, mileage tracking, corporate card reconciliation, and billable client approvals.',
     description: 'Review of 2 Time and Expense management software solutions. Built for mobile workforces, traveling consultants, real estate agents tracking property tour mileage, and accounting teams managing corporate credit cards.',
     evaluationCriteria: [
@@ -1337,7 +1316,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'time-tracking',
     slug: 'time-tracking',
     name: 'Time Tracking',
-    toolCount: 754,
     tagline: 'Automated background time capture, billable client timesheets, payroll export, and productivity analytics.',
     description: 'Directory of 5 Time Tracking software solutions. Built for client-billing agencies, freelancers, remote engineering squads, and legal practices to capture every billable minute and reduce timesheet leakage.',
     evaluationCriteria: [
@@ -1408,6 +1386,16 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
   }
 ];
 
+/**
+ * Every category with toolCount derived from the directory. Counts are computed
+ * here rather than authored in the entries above so titles, metadata, and copy
+ * cannot claim numbers the pages are unable to back up.
+ */
+export const PLANNING_CATEGORIES: PlanningCategory[] = PLANNING_CATEGORY_DEFS.map((category) => ({
+  ...category,
+  toolCount: getCategoryToolCount(category),
+}));
+
 export function getPlanningCategoryBySlug(slug: string): PlanningCategory | undefined {
   const category = PLANNING_CATEGORIES.find((cat) => cat.slug === slug || cat.id === slug);
   if (!category) return undefined;
@@ -1423,20 +1411,13 @@ export function getPlanningCategoryBySlug(slug: string): PlanningCategory | unde
  * directory plus any curated top tool not already present, deduped by name. This
  * mirrors the resolution used by PlanningCategoryDetail.
  */
-export function getCategoryToolCount(category: PlanningCategory): number {
+export function getCategoryToolCount(category: Omit<PlanningCategory, 'toolCount'>): number {
   const indexed = getToolsByCategorySlug(category.slug || category.id);
   const seen = new Set(indexed.map((t) => t.name.toLowerCase()));
   const extras = category.topTools.filter((t) => !seen.has(t.name.toLowerCase()));
   return indexed.length + extras.length;
 }
 
-// The toolCount literals in the entries above were aspirational and never matched
-// the directory, which made titles, metadata, and copy claim numbers the pages
-// could not back up. Normalize every category to what it can actually display so
-// all consumers (copy, JSON-LD, breadcrumbs, hub) stay honest.
-for (const category of PLANNING_CATEGORIES) {
-  category.toolCount = getCategoryToolCount(category);
-}
 
 export function getTotalPlanningToolsCount(): number {
   return PLANNING_CATEGORIES.reduce((acc, cat) => acc + cat.toolCount, 0);
