@@ -236,7 +236,7 @@ export const DirectoryFilterSidebar: React.FC<DirectoryFilterSidebarProps> = ({
           Target Practitioner
         </h3>
         <div className="space-y-1.5">
-          {['Solo Realtor', 'New Real Estate Agent', 'Independent Broker', 'High-Volume Lead Buyer', 'Google Workspace Realtor'].map((agent) => {
+          {['Solo Agent', 'New Real Estate Agent', 'Independent Broker', 'High-Volume Lead Buyer', 'Google Workspace Agent'].map((agent) => {
             const isChecked = filters.selectedAgents.includes(agent);
             return (
               <label

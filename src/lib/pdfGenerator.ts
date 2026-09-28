@@ -129,7 +129,7 @@ export function generateROICalculatorPDF(data: ROIPDFData): jsPDF {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
   doc.setTextColor(71, 85, 105);
-  doc.text(`+${data.additionalDealsPerYear.toFixed(1)} Extra Closed Escrows/Year`, 100, y + 12);
+  doc.text(`+${data.additionalDealsPerYear.toFixed(1)} Extra Closed Closings/Year`, 100, y + 12);
   doc.text(`$${Math.round(data.additionalAnnualRevenue).toLocaleString()} Extra Commission GCI`, 100, y + 18);
   doc.text(`${data.hoursSavedPerWeek.toFixed(1)} hrs/wk saved ($${Math.round(data.annualValueTimeSaved).toLocaleString()}/yr time value)`, 100, y + 24);
 

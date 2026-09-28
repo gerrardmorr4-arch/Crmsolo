@@ -143,7 +143,7 @@ export default function JoinAgentNewsletter({ className = '', source = 'Footer N
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-lg font-bold text-white font-display uppercase tracking-wide">
-                    Welcome to the Solo Realtor VIP Digest!
+                    Welcome to the Solo Agent VIP Digest!
                   </h3>
                   <p className="text-xs text-slate-300 leading-relaxed max-w-md mx-auto">
                     Your email has been added to our subscriber database. Keep an eye on your inbox for our latest CRM benchmark breakdown.
@@ -192,14 +192,14 @@ export default function JoinAgentNewsletter({ className = '', source = 'Footer N
                       <option value="Solo Agent">Solo Agent</option>
                       <option value="Independent Broker">Independent Broker</option>
                       <option value="Small Team Lead">Small Team Lead</option>
-                      <option value="New Realtor">New Realtor (&lt;1 Year)</option>
+                      <option value="New Agent">New Agent (&lt;1 Year)</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
                   <label className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 block mb-1">
-                    Realtor Email Address <span className="text-accent">*</span>
+                    Agent Email Address <span className="text-accent">*</span>
                   </label>
                   <div className="relative">
                     <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -207,7 +207,7 @@ export default function JoinAgentNewsletter({ className = '', source = 'Footer N
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="realtor@yourbrokerage.com"
+                      placeholder="agent@youragency.com"
                       required
                       className="w-full pl-10 pr-4 py-3 bg-slate-950 border border-slate-700 rounded-xs text-white placeholder-slate-500 text-xs focus:outline-none focus:border-accent font-medium"
                     />

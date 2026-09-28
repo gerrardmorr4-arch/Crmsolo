@@ -15,8 +15,8 @@ export default function PinterestKitSection() {
       title: 'Top 5 Real Estate CRMs for Solo Agents (2026 Comparison)',
       subtitle: 'Compare Pipedrive, Streak, and Follow Up Boss side-by-side.',
       destinationUrl: `${targetSite}/reviews`,
-      description: 'Stop overpaying for bloated enterprise CRMs. Compare Pipedrive, Streak, and Follow Up Boss side-by-side. Save 10+ hours a week with automated speed-to-lead follow-ups and custom pipeline tracking! #RealEstateCRM #RealtorTools #RealEstateMarketing #SoloAgent #Pipedrive #FollowUpBoss',
-      tags: ['#RealEstateCRM', '#RealtorTools', '#Pipedrive', '#FollowUpBoss', '#SoloRealtor']
+      description: 'Stop overpaying for bloated enterprise CRMs. Compare Pipedrive, Streak, and Follow Up Boss side-by-side. Save 10+ hours a week with automated speed-to-lead follow-ups and custom pipeline tracking! #RealEstateCRM #AgentTools #RealEstateMarketing #SoloAgent #Pipedrive #FollowUpBoss',
+      tags: ['#RealEstateCRM', '#AgentTools', '#Pipedrive', '#FollowUpBoss', '#SoloAgent']
     },
     {
       id: 'pin-2',
@@ -24,8 +24,8 @@ export default function PinterestKitSection() {
       title: 'How Much Time & Money Is Your Real Estate CRM Costing You?',
       subtitle: 'Calculate your commission recovery value in under 60 seconds.',
       destinationUrl: `${targetSite}/calculator`,
-      description: 'Calculate your annual commission recovery value and weekly time saved in under 60 seconds! Free interactive CRM ROI savings calculator built specifically for independent real estate brokers and solo agents. #RealtorROI #RealEstateTech #CRMCalculator #RealEstateLeadGen #RealtorLife',
-      tags: ['#RealtorROI', '#RealEstateTech', '#CRMCalculator', '#LeadGen', '#RealtorLife']
+      description: 'Calculate your annual commission recovery value and weekly time saved in under 60 seconds! Free interactive CRM ROI savings calculator built specifically for independent real estate brokers and solo agents. #AgentROI #RealEstateTech #CRMCalculator #RealEstateLeadGen #AgentLife',
+      tags: ['#AgentROI', '#RealEstateTech', '#CRMCalculator', '#LeadGen', '#AgentLife']
     },
     {
       id: 'pin-3',
@@ -33,38 +33,38 @@ export default function PinterestKitSection() {
       title: '25-30 Proven Real Estate CRM & Pinterest Traffic Hacks (2026 SEO Playbook)',
       subtitle: 'Turn Google SEO and Pinterest impressions into active home buyers.',
       destinationUrl: `${targetSite}/blog/25-30-real-estate-crm-pinterest-traffic-hacks-seo-playbook`,
-      description: 'Discover 25-30 actionable SEO and Pinterest lead generation strategies for solo realtors. Learn how to structure visual pipelines, automate open house follow-ups, and convert Pinterest impressions into buyer consultations. #RealEstateSEO #PinterestForRealtors #LeadGeneration #RealEstateMarketing #RealtorAutomation',
-      tags: ['#RealEstateSEO', '#PinterestForRealtors', '#LeadGen', '#RealtorMarketing', '#Automation']
+      description: 'Discover 25-30 actionable SEO and Pinterest lead generation strategies for solo agents. Learn how to structure visual pipelines, automate open house follow-ups, and convert Pinterest impressions into buyer consultations. #RealEstateSEO #PinterestForAgents #LeadGeneration #RealEstateMarketing #AgentAutomation',
+      tags: ['#RealEstateSEO', '#PinterestForAgents', '#LeadGen', '#AgentMarketing', '#Automation']
     },
     {
       id: 'pin-4',
       badge: 'PIPEDRIVE VS FOLLOW UP BOSS',
-      title: 'Pipedrive vs Follow Up Boss: Which CRM Wins for Solo Realtors?',
+      title: 'Pipedrive vs Follow Up Boss: Which CRM Wins for Solo Agents?',
       subtitle: 'Head-to-head review: speed-to-lead and highest return on investment.',
-      destinationUrl: `${targetSite}/comparison/pipedrive-vs-followupboss-for-solo-realtors`,
-      description: 'Pipedrive vs Follow Up Boss head-to-head review. Which CRM gives solo agents the fastest speed-to-lead and highest return on investment? Read the unbiased breakdown before buying. #PipedriveVsFollowUpBoss #RealtorCRM #RealEstateSoftware #AgentTools',
-      tags: ['#PipedriveVsFollowUpBoss', '#RealtorCRM', '#RealEstateSoftware', '#AgentTools']
+      destinationUrl: `${targetSite}/comparison/pipedrive-vs-followupboss-for-solo-agents`,
+      description: 'Pipedrive vs Follow Up Boss head-to-head review. Which CRM gives solo agents the fastest speed-to-lead and highest return on investment? Read the unbiased breakdown before buying. #PipedriveVsFollowUpBoss #AgentCRM #RealEstateSoftware #AgentTools',
+      tags: ['#PipedriveVsFollowUpBoss', '#AgentCRM', '#RealEstateSoftware', '#AgentTools']
     },
     {
       id: 'pin-5',
       badge: 'FREE GMAIL WORKFLOW',
       title: 'Run Your Entire Real Estate Business Inside Gmail (Streak CRM Setup)',
-      subtitle: 'Manage buyers, listing pipelines, and escrow dates right inside your inbox.',
+      subtitle: 'Manage buyers, listing pipelines, and closing dates right inside your inbox.',
       destinationUrl: `${targetSite}/reviews/streak-for-real-estate-agents`,
-      description: 'How to manage real estate buyers, listing pipelines, and escrow dates directly inside your Gmail inbox for $0/mo. Step-by-step Streak CRM guide for solo real estate agents. #StreakCRM #GmailForRealtors #FreeRealtorCRM #RealEstateProductivity',
-      tags: ['#StreakCRM', '#GmailForRealtors', '#FreeRealtorCRM', '#RealEstateProductivity']
+      description: 'How to manage real estate buyers, listing pipelines, and closing dates directly inside your Gmail inbox for $0/mo. Step-by-step Streak CRM guide for solo real estate agents. #StreakCRM #GmailForAgents #FreeAgentCRM #RealEstateProductivity',
+      tags: ['#StreakCRM', '#GmailForAgents', '#FreeAgentCRM', '#RealEstateProductivity']
     }
   ];
 
   const keywords2530 = [
     'real estate crm for solo agents', 'pipedrive real estate setup', 'follow up boss review',
-    'streak crm for realtors', 'best crm for independent real estate brokers', 'real estate lead generation',
-    'realtor marketing tips 2026', 'real estate automation tools', 'open house follow up email templates',
+    'streak crm for agents', 'best crm for independent real estate brokers', 'real estate lead generation',
+    'agent marketing tips 2026', 'real estate automation tools', 'open house follow up email templates',
     'speed to lead real estate', 'real estate crm ROI calculator', 'buyer pipeline template',
-    'seller listing presentation crm', 'real estate text automations', 'pinterest for realtors',
+    'seller listing presentation crm', 'real estate text automations', 'pinterest for agents',
     'real estate seo guide', 'real estate email marketing', 'crm feature comparison',
-    'solo realtor workflow', 'real estate escrow tracking', 'real estate tech stack 2026',
-    'lead conversion rate real estate', 'zillow lead automation', 'realtor productivity hacks',
+    'solo agent workflow', 'real estate closing tracking', 'real estate tech stack 2026',
+    'lead conversion rate real estate', 'portal lead automation', 'agent productivity hacks',
     'real estate sphere of influence newsletter'
   ];
 
@@ -183,7 +183,7 @@ export default function PinterestKitSection() {
 
     ctx.fillStyle = '#f8fafc';
     ctx.font = 'bold 36px sans-serif';
-    ctx.fillText('• 100% Free Solo Realtor Reviews', 120, y + 130);
+    ctx.fillText('• 100% Free Solo Agent Reviews', 120, y + 130);
     ctx.fillText('• Speed-to-Lead Automation Checklists', 120, y + 200);
     ctx.fillText('• Interactive Commission ROI Calculator', 120, y + 270);
 

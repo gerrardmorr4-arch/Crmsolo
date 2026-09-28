@@ -515,7 +515,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
         { email: 'jenkins.realestate@gmail.com', dateSubscribed: 'Jul 18, 2026', status: 'Active' },
         { email: 'vance.luxury@realty.com', dateSubscribed: 'Jul 15, 2026', status: 'Active' },
         { email: 'solo.broker.florida@gmail.com', dateSubscribed: 'Jul 10, 2026', status: 'Active' },
-        { email: 'realtor.sam@outlook.com', dateSubscribed: 'Jul 05, 2026', status: 'Unsubscribed' }
+        { email: 'agent.sam@outlook.com', dateSubscribed: 'Jul 05, 2026', status: 'Unsubscribed' }
       ];
       localStorage.setItem('crmsolo_subscribers', JSON.stringify(mockSubs));
       setSubscribers(mockSubs);
@@ -587,7 +587,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
     }> = [];
 
     const targetKeywords = [
-      'crm', 'real estate', 'realtor', 'broker', 'agent', 'solo',
+      'crm', 'real estate', 'agent', 'broker', 'agent', 'solo',
       'pipedrive', 'streak', 'follow up boss', 'lead', 'pipeline', 'eugene boniface'
     ];
 
@@ -625,7 +625,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
       const missingKeywords = targetKeywords.filter(kw => !fullText.includes(kw));
 
       if (detectedKeywords.length === 0) {
-        issues.push('Missing target real estate keywords (CRM, realtor, broker, etc.)');
+        issues.push('Missing target real estate keywords (CRM, agent, broker, etc.)');
         score -= 30;
       } else if (detectedKeywords.length < 2) {
         warnings.push('Low target keyword density (only 1 keyword found)');
@@ -871,7 +871,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
       if (!excerpt || excerpt.trim().length < 70) {
         const cleanContent = g.content.replace(/#|\*|`|>|\[|\]/g, '').trim();
         const firstSentence = cleanContent.split('.')[0] || '';
-        excerpt = `${g.title}: ${firstSentence.substring(0, 110)}... Comprehensive guide for solo realtors and brokers.`;
+        excerpt = `${g.title}: ${firstSentence.substring(0, 110)}... Comprehensive guide for solo agents and brokers.`;
         fixedCount++;
       }
       return { ...g, excerpt };
@@ -1403,7 +1403,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                   <label className="text-[11px] font-bold text-primary uppercase tracking-wider block">Target SEO Keywords (Comma Separated)</label>
                   <input
                     type="text"
-                    placeholder="e.g., local real estate SEO, Google Business Profile, solo realtors"
+                    placeholder="e.g., local real estate SEO, Google Business Profile, solo agents"
                     className="w-full bg-white border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-accent/20 focus:border-accent"
                     value={aiKeywords}
                     onChange={(e) => setAiKeywords(e.target.value)}
@@ -1644,7 +1644,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
               <div className="border-b border-gray-100 pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                 <div>
                   <h2 className="text-xl font-bold text-primary font-display flex items-center gap-2">
-                    <Users className="w-5 h-5 text-accent" /> Realtor Email Listing &amp; Subscribers
+                    <Users className="w-5 h-5 text-accent" /> Agent Email Listing &amp; Subscribers
                   </h2>
                   <p className="text-xs text-gray-500">Monitor organic email captures submitted from footer forms. Export leads for outbound drip campaigns.</p>
                 </div>
@@ -1762,7 +1762,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
               {/* Subscribers Table Grid */}
               <div className="border border-gray-100 rounded-2xl overflow-hidden bg-white shadow-xs">
                 <div className="bg-gray-50 px-6 py-3.5 border-b border-gray-100 grid grid-cols-12 text-[10px] font-black uppercase tracking-wider text-primary">
-                  <span className="col-span-6 md:col-span-7">Realtor Email Address</span>
+                  <span className="col-span-6 md:col-span-7">Agent Email Address</span>
                   <span className="col-span-3 md:col-span-3">Date Subscribed</span>
                   <span className="col-span-2 md:col-span-1 text-center">Status</span>
                   <span className="col-span-1 md:col-span-1 text-right">Action</span>
@@ -1938,7 +1938,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                   </div>
                   <ul className="space-y-3 text-xs text-gray-600 leading-relaxed list-disc pl-4">
                     <li>
-                      <strong>Intrusive Lead Gating:</strong> Forcing users to supply personal details, brokerage size, and emails before viewing a basic calculator outcome.
+                      <strong>Intrusive Lead Gating:</strong> Forcing users to supply personal details, agency size, and emails before viewing a basic calculator outcome.
                     </li>
                     <li>
                       <strong>Enterprise &amp; Team Bias:</strong> Over-promoting expensive routing and AI features because of affiliate compensation structures, completely ignoring that a solo agent is a "team of one."
@@ -1961,10 +1961,10 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                       <strong>Transparent Local Math:</strong> Showing the ROI arithmetic behind each estimate, based on real estate response speeds.
                     </li>
                     <li>
-                      <strong>Instant Interactive Checklists:</strong> Choosing exact criteria (such as Gmail sync or escrow timers) instead of reading 3000-word feature lists.
+                      <strong>Instant Interactive Checklists:</strong> Choosing exact criteria (such as Gmail sync or closing timers) instead of reading 3000-word feature lists.
                     </li>
                     <li>
-                      <strong>Clear Actionable Workbooks:</strong> Offering clean, downloadable training sheets that realtors can print out in their cars.
+                      <strong>Clear Actionable Workbooks:</strong> Offering clean, downloadable training sheets that agents can print out in their cars.
                     </li>
                     <li>
                       <strong>Honest Commission Disclosures:</strong> Gaining buyer trust through direct E-E-A-T transparency notices.
@@ -1993,7 +1993,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                     <span className="text-success text-sm font-bold">✓</span>
                     <div>
                       <h4 className="font-bold text-primary mb-1">Un-gated standalone ROI Calculator</h4>
-                      <p className="leading-relaxed">Solves the paywall gap. Realtors calculate deal recovery multipliers and weekly automated administrative hour saves without sharing any personal information.</p>
+                      <p className="leading-relaxed">Solves the paywall gap. Agents calculate deal recovery multipliers and weekly automated administrative hour saves without sharing any personal information.</p>
                     </div>
                   </div>
 

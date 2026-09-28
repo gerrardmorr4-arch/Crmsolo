@@ -139,7 +139,7 @@ export default function ReviewPrintPreviewModal({
                       <span className="text-xl">🏆</span>
                       <span className="text-xl font-black font-display tracking-tight text-primary">CRMsolo</span>
                       <span className="text-[9px] font-mono uppercase bg-accent text-primary px-2 py-0.5 font-bold rounded-xs">
-                        Solo Realtor Intelligence
+                        Solo Agent Intelligence
                       </span>
                     </div>
                     <p className="text-[10px] text-gray-500 font-mono mt-1">

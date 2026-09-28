@@ -122,7 +122,7 @@ export const Directory: React.FC<DirectoryPageProps> = ({
 
       // Target Agents Match
       if (filters.selectedAgents.length > 0) {
-        const crmAgents = crm.targetAgents || ['Solo Realtor'];
+        const crmAgents = crm.targetAgents || ['Solo Agent'];
         const hasAgent = filters.selectedAgents.some((reqAgent) =>
           crmAgents.includes(reqAgent)
         );
@@ -199,7 +199,7 @@ export const Directory: React.FC<DirectoryPageProps> = ({
               </h1>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                Discover, compare, and filter the top Customer Relationship Management (CRM) software for independent realtors, solo brokers, and high-velocity real estate practitioners. Browse our reviews, pricing models, and feature checklists.
+                Discover, compare, and filter the top Customer Relationship Management (CRM) software for independent agents, solo brokers, and high-velocity real estate practitioners. Browse our reviews, pricing models, and feature checklists.
               </p>
 
               {/* Trust & Methodology Badges */}
@@ -379,7 +379,7 @@ export const Directory: React.FC<DirectoryPageProps> = ({
                     What is the difference between a general CRM and a real estate CRM?
                   </h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    General CRMs (like Salesforce or standard HubSpot) use enterprise sales terms like "Accounts" and "Opportunities." Real estate CRMs (like Follow Up Boss, Wise Agent, and Real Geeks) come pre-built with MLS listing numbers, escrow contingency timelines, buyer property preferences, and automated speed-to-lead text drips from portals like Zillow.
+                    General CRMs (like Salesforce or standard HubSpot) use enterprise sales terms like "Accounts" and "Opportunities." Real estate CRMs (like Follow Up Boss, Wise Agent, and Real Geeks) come pre-built with listing reference numbers, closing condition timelines, buyer property preferences, and automated speed-to-lead text drips from portals like the major portals.
                   </p>
                 </div>
 

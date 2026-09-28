@@ -31,7 +31,7 @@ interface RouteFallback {
 const DEFAULT_ROUTE_FALLBACK: Omit<RouteFallback, 'match'> = {
   title: 'Best Real Estate CRM Software Directory (2026)',
   description: 'Browse, compare, and filter top Real Estate Customer Relationship Management (CRM) tools. Read our buyer reviews, pricing models, and feature checklists.',
-  keywords: ['real estate crm', 'real estate software directory', 'realtor crm reviews', 'crm pricing', 'pipedrive', 'follow up boss', 'streak']
+  keywords: ['real estate crm', 'real estate software directory', 'agent crm reviews', 'crm pricing', 'pipedrive', 'follow up boss', 'streak']
 };
 
 const ROUTE_FALLBACKS: RouteFallback[] = [
@@ -39,7 +39,7 @@ const ROUTE_FALLBACKS: RouteFallback[] = [
     match: p => p === '/directory' || p === '/category/crm' || p === '/category',
     title: 'Best Real Estate CRM Software Directory (2026)',
     description: 'Explore top verified real estate CRM software with side-by-side comparison tables, filter by price and deployment, and read expert ratings.',
-    keywords: ['best real estate crm', 'real estate crm directory', 'realtor software comparison', 'getapp real estate crm']
+    keywords: ['best real estate crm', 'real estate crm directory', 'agent software comparison', 'getapp real estate crm']
   },
   {
     match: p => p === '/buyer-guide' || p === '/buyers-guide',
@@ -49,19 +49,19 @@ const ROUTE_FALLBACKS: RouteFallback[] = [
   },
   {
     match: p => p === '/calculator',
-    title: 'CRM ROI Savings Calculator for Solo Realtors',
+    title: 'CRM ROI Savings Calculator for Solo Agents',
     description: 'Calculate exactly how many weekly hours you can save and your deal recovery value by automating workflows in Pipedrive, Streak, or Follow Up Boss.',
-    keywords: ['crm calculator', 'realtor roi calculator', 'real estate automation savings']
+    keywords: ['crm calculator', 'agent roi calculator', 'real estate automation savings']
   },
   {
     match: p => p === '/checklist',
     title: 'Solo Agent CRM Feature Checklist',
     description: 'Interactive feature comparisons checklist specifically for independent real estate brokers. Filter by Pipedrive, Streak, and Follow Up Boss.',
-    keywords: ['crm feature checklist', 'solo realtor crm comparison', 'realtor tools grid']
+    keywords: ['crm feature checklist', 'solo agent crm comparison', 'agent tools grid']
   },
   {
     match: p => p === '/reviews',
-    title: 'Tested CRM Reviews for Solo Realtors',
+    title: 'Tested CRM Reviews for Solo Agents',
     description: 'Read our honest verdicts and detailed reviews of Pipedrive, Streak, Follow Up Boss, Copper, and Wise Agent.',
     keywords: ['tested crm reviews', 'honest crm review', 'pipedrive review', 'streak review', 'follow up boss review']
   },
@@ -75,19 +75,19 @@ const ROUTE_FALLBACKS: RouteFallback[] = [
     match: p => p === '/guides' || p === '/guide',
     title: 'Real Estate CRM Guides & Workbooks for Solo Agents',
     description: 'Practical CRM selection guides, pricing breakdowns, onboarding workbooks, and lead automation playbooks written for independent agents.',
-    keywords: ['real estate crm guide', 'crm selection guide', 'realtor workflow guide', 'crm onboarding workbook']
+    keywords: ['real estate crm guide', 'crm selection guide', 'agent workflow guide', 'crm onboarding workbook']
   },
   {
     match: p => p === '/blog',
     title: 'Real Estate CRM & Automation Blog for Solo Agents',
-    description: 'Actionable articles on real estate CRM workflows, speed-to-lead automation, SEO for realtors, and solo agent productivity.',
-    keywords: ['real estate crm blog', 'realtor automation blog', 'real estate seo', 'solo agent productivity']
+    description: 'Actionable articles on real estate CRM workflows, speed-to-lead automation, SEO for agents, and solo agent productivity.',
+    keywords: ['real estate crm blog', 'agent automation blog', 'real estate seo', 'solo agent productivity']
   },
   {
     match: p => p === '/blueprints' || p.startsWith('/blueprints/'),
     title: 'Real Estate CRM Automation Blueprints (2026)',
-    description: 'Actionable step-by-step CRM automation workflows, speed-to-lead scripts, Kanban escrow tracking, and Pinterest traffic blueprints for solo realtors.',
-    keywords: ['real estate crm blueprints', 'realtor automation workflow', 'speed to lead scripts', 'escrow kanban board']
+    description: 'Actionable step-by-step CRM automation workflows, speed-to-lead scripts, Kanban closing tracking, and Pinterest traffic blueprints for solo agents.',
+    keywords: ['real estate crm blueprints', 'agent automation workflow', 'speed to lead scripts', 'closing kanban board']
   },
   {
     match: p => p === '/planning-tools' || p.startsWith('/planning-tools/'),

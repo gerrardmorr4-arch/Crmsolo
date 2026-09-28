@@ -81,7 +81,7 @@ export default function NewsletterSignup() {
             Get the Solo Agent Pipeline Blueprint
           </h3>
           <p className="text-gray-300 text-xs md:text-sm max-w-lg mx-auto leading-relaxed">
-            Join other independent, high-producing solo realtors. Get low-frequency strategies, pricing traps to avoid, and custom workbook sheets directly in your inbox.
+            Join other independent, high-producing solo agents. Get low-frequency strategies, pricing traps to avoid, and custom workbook sheets directly in your inbox.
           </p>
         </div>
 
@@ -110,7 +110,7 @@ export default function NewsletterSignup() {
                 </span>
                 <input
                   type="email"
-                  placeholder="Enter your realtor email address..."
+                  placeholder="Enter your agent email address..."
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);

@@ -642,7 +642,7 @@ const PLANNING_CATEGORY_DEFS: Omit<PlanningCategory, 'toolCount'>[] = [
     slug: 'professional-services-automation',
     name: 'Professional Services Automation (PSA)',
     tagline: 'Resource utilization, billing milestones, client portal management, and project accounting.',
-    description: 'Directory of 2 Professional Services Automation (PSA) platforms. Designed for IT consulting firms, creative agencies, law practices, accounting groups, and engineering brokerages to manage the quote-to-cash lifecycle.',
+    description: 'Directory of 2 Professional Services Automation (PSA) platforms. Designed for IT consulting firms, creative agencies, law practices, accounting groups, and engineering agencies to manage the quote-to-cash lifecycle.',
     evaluationCriteria: [
       'Real-time resource capacity & billable utilization heatmaps',
       'Multi-currency time & expense capture tied to client retainer contracts',
@@ -974,7 +974,7 @@ const PLANNING_CATEGORY_DEFS: Omit<PlanningCategory, 'toolCount'>[] = [
         websiteUrl: 'https://todoist.com',
         trialUrl: 'https://todoist.com/auth/signup',
         featuredBadge: '#1 Task App in the World',
-        keyFeatures: ['Natural language input ("Submit escrow docs next Friday at 4pm p1")', 'Filters & custom labels', 'Karma productivity streaks', 'Two-way Google Calendar sync'],
+        keyFeatures: ['Natural language input ("Submit closing docs next Friday at 4pm p1")', 'Filters & custom labels', 'Karma productivity streaks', 'Two-way Google Calendar sync'],
         pros: ['Unmatched natural language task entry speed', 'Flawless sync across every device (Mac, Windows, iOS, Android, Wearables)', 'Clean, distraction-free design'],
         cons: ['Team collaboration features are simpler than full Work OS platforms like Monday.com'],
         geoCompliance: ['EU / GDPR Compliant', 'SOC 2 Type II']

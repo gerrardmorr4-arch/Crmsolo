@@ -115,7 +115,7 @@ export default function AgentProfileQuiz({ reviews, onNavigate, className = '' }
       followupbossScore += 6;
       pipedriveScore += 2;
       streakScore += 1;
-      reasons.followupboss.push('Native integrations with Zillow, Realtor.com, Ylopo, and lead portals');
+      reasons.followupboss.push('Native integrations with the major portals, Ylopo, and lead portals');
       reasons.pipedrive.push('Integrates with Zapier for portal lead ingestion');
     }
 
@@ -124,7 +124,7 @@ export default function AgentProfileQuiz({ reviews, onNavigate, className = '' }
       pipedriveScore += 5;
       streakScore += 3;
       followupbossScore += 2;
-      reasons.pipedrive.push('Ideal for custom transaction milestones (Inspection, Appraisal, Escrow, Closing)');
+      reasons.pipedrive.push('Ideal for custom transaction milestones (Inspection, Appraisal, Closing, Closing)');
     } else if (businessFocus === 'buyer') {
       followupbossScore += 5;
       pipedriveScore += 3;
@@ -252,7 +252,7 @@ export default function AgentProfileQuiz({ reviews, onNavigate, className = '' }
                   </div>
                   <div>
                     <div className="text-sm font-bold text-white group-hover:text-accent transition">36+ Leads / Mo</div>
-                    <div className="text-xs text-slate-400 mt-1">High volume, Zillow/Realtor.com buyer leads</div>
+                    <div className="text-xs text-slate-400 mt-1">High volume, the major portals buyer leads</div>
                   </div>
                 </button>
               </div>
@@ -312,7 +312,7 @@ export default function AgentProfileQuiz({ reviews, onNavigate, className = '' }
                   </div>
                   <div>
                     <div className="text-sm font-bold text-white group-hover:text-accent transition">Portal &amp; Lead Auto-Responder</div>
-                    <div className="text-xs text-slate-400 mt-1">Instant Zillow/Realtor.com ingestion with automated SMS</div>
+                    <div className="text-xs text-slate-400 mt-1">Instant the major portals ingestion with automated SMS</div>
                   </div>
                 </button>
               </div>
@@ -354,7 +354,7 @@ export default function AgentProfileQuiz({ reviews, onNavigate, className = '' }
                     <Target className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-sm font-bold text-white group-hover:text-accent transition">Listing &amp; Escrow Control</div>
+                    <div className="text-sm font-bold text-white group-hover:text-accent transition">Listing &amp; Closing Control</div>
                     <div className="text-xs text-slate-400 mt-1">Stage-by-stage transaction tracking &amp; activity reminders</div>
                   </div>
                 </button>

@@ -1,5 +1,28 @@
 # CRMSolo repository notes
 
+## Voice and market framing
+
+The audience is worldwide, not US-only. Write for "agents" rather than
+"realtors", and prefer market-neutral terms over US jargon:
+
+| Avoid | Use |
+| --- | --- |
+| Realtor | agent |
+| MLS | listing service |
+| escrow | closing / completion |
+| earnest money | deposit |
+| contingency | condition |
+| brokerage | agency |
+| Zillow, Realtor.com, Trulia, Redfin | the major portals (name a specific portal only if the point is about that portal) |
+
+Keep platform names (Pipedrive, Streak, Follow Up Boss, HubSpot) as they are.
+`slug` and `id` values are live URLs and analytics keys: never rewrite them when
+globalising copy, even when they contain "realtor" or "escrow". Existing slugs
+such as `/blog/ultimate-guide-pipedrive-realtors` stay as they are.
+
+FSBO is kept but always glossed as "For Sale By Owner (FSBO)" on first use, since
+it has no equivalent term in several markets.
+
 ## Build and verification
 
 The build has three stages: `vite build`, then the prerenderer, then the
