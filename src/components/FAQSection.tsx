@@ -77,7 +77,7 @@ export default function FAQSection() {
           SOLO AGENT CRM QUESTIONS ANSWERED <Sparkles className="w-5 h-5 text-accent" />
         </h2>
         <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-          Unbiased answers to the most common queries independent realtors have when buying, configuring, or switching CRM pipelines.
+          Straightforward answers to the most common queries independent realtors have when buying, configuring, or switching CRM pipelines.
         </p>
       </div>
 

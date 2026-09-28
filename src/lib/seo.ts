@@ -266,12 +266,6 @@ export function updateMetaTags(options: SEOOptions) {
           '@type': 'Organization',
           'name': productSchema.authorName || 'CRMSolo Hub'
         }
-      },
-      'aggregateRating': {
-        '@type': 'AggregateRating',
-        'ratingValue': productSchema.ratingValue.toString(),
-        'reviewCount': (productSchema.reviewCount || 1).toString(),
-        'bestRating': (productSchema.bestRating || 10).toString()
       }
     });
   }

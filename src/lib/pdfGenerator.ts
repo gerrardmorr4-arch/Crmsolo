@@ -47,7 +47,7 @@ function addDocHeader(doc: jsPDF, title: string, subtitle?: string): number {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   doc.setTextColor(203, 213, 225);
-  doc.text('Independent Software Benchmark & Intelligence', 50, 15);
+  doc.text('Software Review & Analysis', 50, 15);
 
   // Date
   const dateStr = new Date().toLocaleDateString('en-US', {
@@ -90,7 +90,7 @@ function addDocFooter(doc: jsPDF, pageNum: number, totalPages: number) {
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   doc.setTextColor(148, 163, 184);
-  doc.text('CRMsolo.com — Verified Software Evaluation Report', 14, pageHeight - 8);
+  doc.text('CRMsolo.com — Software Review Report', 14, pageHeight - 8);
   doc.text(`Page ${pageNum} of ${totalPages}`, pageWidth - 14, pageHeight - 8, { align: 'right' });
 }
 
@@ -215,7 +215,7 @@ export function generateROICalculatorPDF(data: ROIPDFData): jsPDF {
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(15, 23, 42);
-  doc.text('Calculation Methodology & Benchmark Reference:', 14, y);
+  doc.text('How We Evaluate & Reference:', 14, y);
   y += 5;
 
   doc.setFont('helvetica', 'normal');
@@ -236,7 +236,7 @@ export function generateROICalculatorPDF(data: ROIPDFData): jsPDF {
 }
 
 /**
- * Generate and download Planning Category Software Benchmark PDF (e.g. Project Management 899, Task Management 673)
+ * Generate and download Planning Category software review PDF
  */
 export function generatePlanningCategoryPDF(category: PlanningCategory, tools?: PlanningToolItem[]): jsPDF {
   const toolsList = tools && tools.length > 0 ? tools : (category.topTools || []);
@@ -252,7 +252,7 @@ export function generatePlanningCategoryPDF(category: PlanningCategory, tools?: 
   let y = addDocHeader(
     doc,
     `${category.name} Software Evaluation (${category.toolCount})`,
-    `${category.description} Comprehensive audit of top platforms, pricing tiers, and capabilities.`
+    `${category.description} Editorial review of platforms, pricing tiers, and capabilities.`
   );
 
   // Category Meta Summary
@@ -263,7 +263,7 @@ export function generatePlanningCategoryPDF(category: PlanningCategory, tools?: 
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(8.5);
   doc.setTextColor(15, 23, 42);
-  doc.text(`Total Audited Platforms: ${category.toolCount}`, 20, y + 6);
+  doc.text(`Total Reviewed Platforms: ${category.toolCount}`, 20, y + 6);
   doc.text(`GEO Focus: ${category.geoFocus.regions.join(', ')}`, 100, y + 6);
 
   doc.setFont('helvetica', 'normal');

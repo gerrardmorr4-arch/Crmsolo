@@ -143,12 +143,12 @@ export default function ReviewPrintPreviewModal({
                       </span>
                     </div>
                     <p className="text-[10px] text-gray-500 font-mono mt-1">
-                      Independent CRM Evaluation Sheet • crmsolo.online/review/{crm.slug}
+                      CRM Evaluation Sheet • crmsolo.online/review/{crm.slug}
                     </p>
                   </div>
                   <div className="text-right sm:text-right space-y-0.5">
                     <div className="text-[10px] font-bold uppercase tracking-wider text-success flex items-center sm:justify-end gap-1">
-                      <Shield className="w-3 h-3 text-success" /> Independent Editorial Assessment
+                      <Shield className="w-3 h-3 text-success" /> Editorial Assessment
                     </div>
                     <div className="text-[10px] text-gray-400 font-mono">
                       Date Printed: {todayStr}
@@ -304,7 +304,7 @@ export default function ReviewPrintPreviewModal({
                 {/* 8. Report Footer Signoff */}
                 <div className="pt-6 border-t border-gray-200 text-[9px] text-gray-400 font-mono flex flex-col sm:flex-row justify-between items-center gap-2">
                   <div>
-                    © {new Date().getFullYear()} CRMsolo. Independent evaluation for solo real estate professionals.
+                    © {new Date().getFullYear()} CRMsolo. Editorial evaluation for solo real estate professionals.
                   </div>
                   <div className="flex items-center gap-1">
                     <Globe className="w-3 h-3 text-gray-400" /> Visit crmsolo.online for live ROI calculators &amp; side-by-side duels.

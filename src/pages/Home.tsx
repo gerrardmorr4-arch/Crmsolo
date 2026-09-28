@@ -7,7 +7,7 @@ import { ArrowRight, Calculator, CheckCircle2, ChevronRight, ChevronLeft, HelpCi
 import NewsletterSignup from '../components/NewsletterSignup';
 import FAQSection from '../components/FAQSection';
 import AgentTestimonials from '../components/AgentTestimonials';
-import VideoTestimonials from '../components/VideoTestimonials';
+import AgentCrmComparison from '../components/AgentCrmComparison';
 import AgentProfileQuiz from '../components/AgentProfileQuiz';
 import AdSenseAd from '../components/AdSenseAd';
 import faqData from '../data/faqs.json';
@@ -24,7 +24,7 @@ interface HomeProps {
 export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) {
   useSEO({
     title: 'Expert CRM Reviews for Solo Real Estate Agents',
-    description: 'Compare Pipedrive, Streak, and Follow Up Boss. Find the absolute best CRM for independent realtors with our independent reviews and ROI calculator.',
+    description: 'Compare Pipedrive, Streak, and Follow Up Boss. Find the absolute best CRM for independent realtors with our reviews and ROI calculator.',
     keywords: ['real estate crm', 'solo real estate agent crm', 'pipedrive vs streak', 'follow up boss', 'realtor tool'],
     ogType: 'website',
     faqSchema: faqData.map(f => ({ question: f.question, answer: f.answer.replace(/\*\*/g, '') }))
@@ -536,9 +536,9 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
               ['project-management', 'Project Mgmt'],
               ['time-tracking', 'Time Tracking'],
               ['task-management', 'Task Mgmt'],
-              ['time-and-expenses', 'Time & Expenses'],
-              ['project-planning', 'Project Planning'],
-              ['project-tracking', 'Project Tracking'],
+              ['kanban-tools', 'Kanban Tools'],
+              ['gantt-chart', 'Gantt Chart'],
+              ['product-management', 'Product Mgmt'],
               ['project-portfolio-management', 'PPM'],
               ['strategic-planning', 'Strategic Planning'],
               ['professional-services-automation', 'PSA'],
@@ -680,10 +680,10 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
         </div>
       </section>
 
-      {/* Real Estate Agent Video Testimonials Section */}
-      <VideoTestimonials />
+      {/* Verifiable CRM pricing and scoring comparison */}
+      <AgentCrmComparison />
 
-      {/* What Agents Are Saying Testimonial Carousel */}
+      {/* Editorial findings drawn from our published reviews */}
       <AgentTestimonials />
 
       {/* FAQ Hub Section */}

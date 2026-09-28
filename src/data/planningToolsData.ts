@@ -3,12 +3,11 @@ import { ALL_INDEXED_TOOLS, getToolsByCategorySlug, searchAllTools } from './ind
 
 export { ALL_INDEXED_TOOLS, getToolsByCategorySlug, searchAllTools };
 
-export const PLANNING_CATEGORIES: PlanningCategory[] = [
+const PLANNING_CATEGORY_DEFS: Omit<PlanningCategory, 'toolCount'>[] = [
   {
     id: 'agile-project-management',
     slug: 'agile-project-management',
     name: 'Agile Project Management',
-    toolCount: 193,
     tagline: 'Iterative sprint tracking, burndown metrics, and cross-functional team execution software.',
     description: 'Directory and expert evaluations of 8 Agile Project Management platforms. Built for engineering squads, Scrum teams, growth agencies, and agile real estate operations to track backlogs, user stories, velocity charts, and continuous delivery cycles.',
     evaluationCriteria: [
@@ -85,7 +84,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'flowchart',
     slug: 'flowchart',
     name: 'Flowchart',
-    toolCount: 36,
     tagline: 'Visual process mapping, architectural diagrams, decision trees, and workflow canvases.',
     description: 'Index and technical breakdown of 6 Flowchart and diagramming applications. Designed for systems architects, operations leads, real estate brokers mapping closing protocols, and compliance officers needing visual SOP blueprints.',
     evaluationCriteria: [
@@ -158,7 +156,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'gantt-chart',
     slug: 'gantt-chart',
     name: 'Gantt Chart',
-    toolCount: 147,
     tagline: 'Timeline visualization, critical path analysis, and milestone scheduling software.',
     description: 'Review and feature comparison of 5 Gantt Chart software solutions. Essential for construction management, capital infrastructure projects, marketing launches, and complex multi-party real estate development schedules.',
     evaluationCriteria: [
@@ -231,7 +228,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'it-project-management',
     slug: 'it-project-management',
     name: 'IT Project Management',
-    toolCount: 173,
     tagline: 'DevOps alignment, infrastructure deployment, ITIL incident workflows, and SLA tracking.',
     description: 'Curated directory and benchmarking of 3 IT Project Management suites. Built for CIOs, Systems Administrators, DevOps teams, and technical MSPs orchestrating server rollouts, security patching, and cloud infrastructure migrations.',
     evaluationCriteria: [
@@ -291,7 +287,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'job-costing',
     slug: 'job-costing',
     name: 'Job Costing',
-    toolCount: 173,
     tagline: 'Labor burden calculation, materials tracking, work-in-progress (WIP) accounting, and profitability analysis.',
     description: 'Directory of 3 Job Costing software systems. Engineered for general contractors, real estate developers, architectural firms, and field service contractors to prevent budget overruns and track actual vs. estimated project margins.',
     evaluationCriteria: [
@@ -351,7 +346,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'kanban-tools',
     slug: 'kanban-tools',
     name: 'Kanban Tools',
-    toolCount: 130,
     tagline: 'Visual column flow, Work-in-Progress (WIP) limits, lead-time metrics, and bottleneck elimination.',
     description: 'Explore 3 top-rated Kanban Tools designed for visual project organization, real estate listing-to-closing boards, marketing pipeline tracking, and continuous workflow optimization.',
     evaluationCriteria: [
@@ -411,7 +405,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'pim',
     slug: 'pim',
     name: 'PIM (Product Information Management)',
-    toolCount: 129,
     tagline: 'Centralized product data cataloging, digital asset management (DAM), and multi-channel syndication.',
     description: 'Directory of 3 Product Information Management (PIM) suites. Built for e-commerce brands, B2B distributors, and manufacturers managing large SKU catalogs, localized translations, and multi-marketplace feeds (Amazon, Shopify, Walmart).',
     evaluationCriteria: [
@@ -471,7 +464,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'production-scheduling',
     slug: 'production-scheduling',
     name: 'Production Scheduling',
-    toolCount: 164,
     tagline: 'Manufacturing capacity planning, finite machine loading, BOM routing, and shop floor sequencing.',
     description: 'Expert review of 2 Production Scheduling and Advanced Planning & Scheduling (APS) software systems. Designed for plant managers, supply chain directors, and precision manufacturers optimizing line throughput.',
     evaluationCriteria: [
@@ -531,7 +523,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'product-management',
     slug: 'product-management',
     name: 'Product Management',
-    toolCount: 162,
     tagline: 'Customer feedback aggregation, feature prioritization matrices, and product lifecycle management.',
     description: 'Directory and deep-dive evaluation of 2 Product Management software tools. Built for Chief Product Officers, Product Managers, and UX researchers to synthesize user feedback into high-impact product releases.',
     evaluationCriteria: [
@@ -591,7 +582,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'product-roadmap',
     slug: 'product-roadmap',
     name: 'Product Roadmap',
-    toolCount: 86,
     tagline: 'Visual timeline forecasting, strategic release plans, and stakeholder alignment portals.',
     description: 'Review of 2 dedicated Product Roadmap software platforms. Built for product executives, marketing teams, and client success leads to present real-time release schedules without manual slide updates.',
     evaluationCriteria: [
@@ -651,7 +641,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'professional-services-automation',
     slug: 'professional-services-automation',
     name: 'Professional Services Automation (PSA)',
-    toolCount: 239,
     tagline: 'Resource utilization, billing milestones, client portal management, and project accounting.',
     description: 'Directory of 2 Professional Services Automation (PSA) platforms. Designed for IT consulting firms, creative agencies, law practices, accounting groups, and engineering brokerages to manage the quote-to-cash lifecycle.',
     evaluationCriteria: [
@@ -711,7 +700,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'project-management',
     slug: 'project-management',
     name: 'Project Management',
-    toolCount: 899,
     tagline: 'Universal work orchestration, multi-view boards, cross-team collaboration, and enterprise portfolio oversight.',
     description: 'The directory and benchmark of 3 Project Management software solutions. Covering every tier from solo practitioner task managers to enterprise collaboration suites.',
     evaluationCriteria: [
@@ -781,70 +769,9 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     ]
   },
   {
-    id: 'project-planning',
-    slug: 'project-planning',
-    name: 'Project Planning',
-    toolCount: 313,
-    tagline: 'Work Breakdown Structures (WBS), resource capacity forecasting, and scope baseline modeling.',
-    description: 'Index of 2 Project Planning software tools. Built for program managers, engineering directors, and project directors constructing Work Breakdown Structures (WBS), risk registers, and scope baselines before execution starts.',
-    evaluationCriteria: [
-      'Hierarchical Work Breakdown Structure (WBS) leveling',
-      'Top-down vs. bottom-up resource capacity estimation',
-      'Risk matrix scoring and mitigation contingency logs',
-      'What-if budget and schedule scenario simulation',
-      'Project charter and governance approval sign-offs'
-    ],
-    marketOverview: 'Our Project Planning review covers a small set of tools focused on the pre-execution phase of capital investments, used in government contracts, infrastructure megaprojects, and enterprise ERP deployments.',
-    geoFocus: {
-      regions: ['North America', 'United Kingdom', 'European Union', 'Australia', 'Middle East'],
-      topComplianceStandards: ['PMI PMBOK Standards', 'PRINCE2 Methodology', 'SOC 2', 'ISO 21500'],
-      typicalCurrencySupport: ['USD ($)', 'EUR (€)', 'GBP (£)', 'AUD ($)', 'CAD ($)'],
-      regionalDeploymentNotes: 'Enterprise planning systems support multi-calendar project baselines incorporating public holidays and union shifts across 50+ countries.'
-    },
-    topTools: [
-      {
-        name: 'Smartsheet Project Planner',
-        rating: 4.8,
-        pricingStarting: '$7 / user / month',
-        bestFor: 'Enterprise WBS planning, automated status approvals, and executive roll-ups',
-        websiteUrl: 'https://www.smartsheet.com',
-        trialUrl: 'https://www.smartsheet.com/try-it',
-        featuredBadge: 'WBS & Grid Leader',
-        keyFeatures: ['WBS multi-tier hierarchy', 'Automated approval request forms', 'Resource capacity heatmaps', 'Control Center for multi-project blueprints'],
-        pros: ['Handles thousands of rows with instant recalculation', 'Pre-built PMBOK and agile project charters', 'Enterprise-grade permission controls'],
-        cons: ['Requires training to master complex cross-sheet formulas'],
-        geoCompliance: ['SOC 2 Type II', 'ISO 27001', 'EU / GDPR compliant']
-      },
-      {
-        name: 'Microsoft Project & Planner',
-        rating: 4.6,
-        pricingStarting: '$10 / user / month (Project Plan 1)',
-        bestFor: 'Organizations heavily invested in Microsoft 365, Power BI, and Azure ecosystem',
-        websiteUrl: 'https://www.microsoft.com/en-us/microsoft-365/project/project-management-software',
-        trialUrl: 'https://www.microsoft.com/en-us/microsoft-365/project/compare-microsoft-project-management-software',
-        featuredBadge: 'Microsoft Ecosystem Native',
-        keyFeatures: ['Deep Teams & Power BI integration', 'Resource leveling engine', 'Co-authoring project plans', 'Interactive Gantt and grid views'],
-        pros: ['Native integration with Microsoft 365 security & Active Directory', 'Powerful resource leveling logic', 'Trusted by government and enterprise PMOs'],
-        cons: ['Modern web version lacks some legacy desktop Project features', 'Steeper pricing for Project Plan 3/5'],
-        geoCompliance: ['FedRAMP High', 'HIPAA', 'SOC 1/2/3', 'EU / GDPR Sovereign']
-      }
-    ],
-    faqs: [
-      {
-        question: 'What is a Work Breakdown Structure (WBS) in project planning software?',
-        answer: 'A WBS decomposes a massive project into smaller, manageable deliverables and work packages, establishing the scope hierarchy before tasks, budgets, and milestones are assigned.'
-      }
-    ],
-    keyBuyerTakeaways: [
-      'Ensure the planning software allows saving and locking baseline snapshots to track project schedule drift over time.',
-      'Check if the tool supports both Agile backlogs and traditional PMBOK/PRINCE2 stage-gate governance.'
-    ]
-  },
-  {
     id: 'project-portfolio-management',
     slug: 'project-portfolio-management',
     name: 'Project Portfolio Management (PPM)',
-    toolCount: 285,
     tagline: 'Capital allocation, executive strategic alignment, portfolio scoring, and governance oversight.',
     description: 'Benchmarking 2 Project Portfolio Management (PPM) suites. Engineered for CIOs, PMO leaders, and enterprise steering committees prioritizing capital investments, resource bottlenecks, and strategic ROI across concurrent business initiatives.',
     evaluationCriteria: [
@@ -901,70 +828,9 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     ]
   },
   {
-    id: 'project-tracking',
-    slug: 'project-tracking',
-    name: 'Project Tracking',
-    toolCount: 305,
-    tagline: 'Deliverable tracking, milestone alerts, status health indicators, and variance monitoring.',
-    description: 'Directory of 2 Project Tracking tools. Built for operations managers, client success teams, and real estate coordinators needing real-time visual progress monitoring and milestone status updates.',
-    evaluationCriteria: [
-      'Real-time deliverable status tracking (On Track, At Risk, Off Track)',
-      'Automated milestone slippage notifications and escalation triggers',
-      'Client-facing progress portals with custom privacy views',
-      'Time-to-completion burn-up metrics and variance calculation',
-      'Mobile status updates with photo attachments and field notes'
-    ],
-    marketOverview: 'Project Tracking platforms bridge high-level project goals with daily tactical execution, adopted by marketing agencies, real estate transaction teams, and professional service shops. Our review covers a small representative set.',
-    geoFocus: {
-      regions: ['Global (Americas, Europe, UK, Australia, Asia)'],
-      topComplianceStandards: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR / UK DPA', 'CCPA'],
-      typicalCurrencySupport: ['USD ($)', 'EUR (€)', 'GBP (£)', 'CAD ($)', 'AUD ($)'],
-      regionalDeploymentNotes: 'Supports push notification delivery across iOS and Android with localized time-zone scheduling for international project teams.'
-    },
-    topTools: [
-      {
-        name: 'Asana Project Health Tracking',
-        rating: 4.8,
-        pricingStarting: '$10.99 / user / month',
-        bestFor: 'Cross-functional teams requiring visual status dashboards and automated progress updates',
-        websiteUrl: 'https://asana.com',
-        trialUrl: 'https://asana.com/create-account',
-        featuredBadge: 'Best Status Dashboard UX',
-        keyFeatures: ['Project Status health reports (On Track, At Risk, Blocked)', 'Automated milestone progress summaries', 'Custom executive portfolios', 'Workload tracking'],
-        pros: ['One-click executive status report generator saves hours every Friday', 'Clear visual milestone indicators', 'Intuitive interface encourages daily team check-ins'],
-        cons: ['Advanced portfolio views require Business/Enterprise plans'],
-        geoCompliance: ['US / SOC 2 Type II', 'ISO 27001', 'EU / GDPR Data Centers']
-      },
-      {
-        name: 'Wrike Project Progress Tracker',
-        rating: 4.7,
-        pricingStarting: '$9.80 / user / month',
-        bestFor: 'Operations departments managing complex multi-stage deliverable schedules',
-        websiteUrl: 'https://www.wrike.com',
-        trialUrl: 'https://www.wrike.com/free-trial/',
-        featuredBadge: 'Deep Audit Variance Tracking',
-        keyFeatures: ['Interactive project progress percentage calculations', 'Variance tracking against original baselines', 'Custom dashboard widgets', 'Automated email digests'],
-        pros: ['Calculates exact percentage completion based on completed subtasks and effort', 'Detailed audit logs track who changed dates and when', 'Great custom dashboards'],
-        cons: ['Interface can feel dense for casual users'],
-        geoCompliance: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR']
-      }
-    ],
-    faqs: [
-      {
-        question: 'How do automated project status reports save team time?',
-        answer: 'Instead of spending 3–5 hours manually assembling PowerPoint slides, project tracking tools pull live task completion data, milestone dates, and blocker logs into a formatted executive summary in one click.'
-      }
-    ],
-    keyBuyerTakeaways: [
-      'Prioritize platforms with automated reminder pings to task owners before milestones become overdue.',
-      'Check for shareable read-only dashboard links for external clients and senior executives.'
-    ]
-  },
-  {
     id: 'requirements-management',
     slug: 'requirements-management',
     name: 'Requirements Management',
-    toolCount: 76,
     tagline: 'Traceability matrix, compliance verification, functional specs, and audit trail verification.',
     description: 'Expert directory of 2 Requirements Management and Traceability software platforms. Essential for medical device developers, aerospace engineers, automotive systems architects, and defense contractors complying with strict regulatory verification standards (FDA, ISO 26262, DO-178C).',
     evaluationCriteria: [
@@ -1021,70 +887,9 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     ]
   },
   {
-    id: 'scrum',
-    slug: 'scrum',
-    name: 'Scrum',
-    toolCount: 81,
-    tagline: 'Sprint planning, backlog grooming, velocity tracking, and retrospective ceremonies.',
-    description: 'Directory of 2 dedicated Scrum software tools. Built for Scrum Masters, Agile Coaches, and engineering teams practicing the Scrum framework with sprint planning, daily scrums, burndown velocity, and sprint retrospectives.',
-    evaluationCriteria: [
-      'Sprint cadence modeling (1-week, 2-week, 4-week fixed timeboxes)',
-      'Story point estimation (Planning Poker, Fibonacci sequence)',
-      'Sprint burndown & burnup charts with real-time velocity calculations',
-      'Interactive sprint retrospective boards (What went well, What didn’t, Action items)',
-      'Impediment/blocker escalation workflows'
-    ],
-    marketOverview: 'Our Scrum review covers a small set of platforms built around the Scrum guide principles, used across software organizations, fintech, and digital agencies.',
-    geoFocus: {
-      regions: ['North America (US & Canada)', 'United Kingdom', 'European Union (DACH, Nordics, Benelux)', 'India & Singapore', 'Australia'],
-      topComplianceStandards: ['Scrum Alliance / Scrum.org Alignment', 'SOC 2 Type II', 'ISO 27001', 'EU GDPR'],
-      typicalCurrencySupport: ['USD ($)', 'EUR (€)', 'GBP (£)', 'CAD ($)', 'AUD ($)', 'INR (₹)'],
-      regionalDeploymentNotes: 'Optimized for distributed remote Scrum teams with integrated collaborative estimation lobbies and live retrospective sticky notes.'
-    },
-    topTools: [
-      {
-        name: 'Jira Software Scrum Boards',
-        rating: 4.8,
-        pricingStarting: '$7.75 / user / month (Free tier up to 10 users)',
-        bestFor: 'Agile software squads and Scrum teams wanting industry-standard metrics and reports',
-        websiteUrl: 'https://www.atlassian.com/software/jira',
-        trialUrl: 'https://www.atlassian.com/software/jira/try',
-        featuredBadge: '#1 Scrum Software Worldwide',
-        keyFeatures: ['Sprint planning & backlog refinement views', 'Real-time sprint burndown & velocity charts', 'Release hub with automated changelogs', 'Deep GitHub & Bitbucket integration'],
-        pros: ['The global benchmark for Scrum execution', 'Velocity charts predict exact sprint capacity with statistical precision', 'Huge library of Scrum workflow templates'],
-        cons: ['Initial configuration can feel complex for new Scrum Masters'],
-        geoCompliance: ['US / SOC 2', 'EU / GDPR Data Sovereign', 'ISO 27001']
-      },
-      {
-        name: 'Targetprocess by Apptio',
-        rating: 4.7,
-        pricingStarting: 'Custom Enterprise Quote',
-        bestFor: 'Large enterprises implementing Scaled Agile Framework (SAFe), LeSS, and multi-team Scrum',
-        websiteUrl: 'https://www.apptio.com/products/targetprocess/',
-        trialUrl: 'https://www.apptio.com/contact-us/',
-        featuredBadge: 'Scaled Agile (SAFe) Leader',
-        keyFeatures: ['Multi-team Program Increment (PI) planning', 'Custom visual dimension boards', 'Portfolio funding allocation', 'Scrum of Scrums coordination'],
-        pros: ['Exceptional visualization of cross-team Scrum dependencies', 'Native support for SAFe 6.0 and enterprise agile frameworks', 'Deep enterprise financial rollups'],
-        cons: ['Requires enterprise training investment'],
-        geoCompliance: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR']
-      }
-    ],
-    faqs: [
-      {
-        question: 'What is the role of a sprint burndown chart in Scrum software?',
-        answer: 'A sprint burndown chart plots the remaining work (in story points or hours) across the days of the sprint, providing an immediate visual early-warning if the team is falling behind their sprint commitment.'
-      }
-    ],
-    keyBuyerTakeaways: [
-      'Choose software with built-in Planning Poker to streamline sprint backlog estimation during refinement meetings.',
-      'Check for retrospective boards that automatically convert retros action items into sprint backlog tasks for the next sprint.'
-    ]
-  },
-  {
     id: 'strategic-planning',
     slug: 'strategic-planning',
     name: 'Strategic Planning',
-    toolCount: 240,
     tagline: 'Objectives and Key Results (OKRs), Balanced Scorecard, vision execution, and KPI tracking.',
     description: 'Benchmarking 2 Strategic Planning and Strategy Execution software suites. Designed for Chief Strategy Officers, CEOs, and corporate leadership teams executing multi-year business transformations, Balanced Scorecards, and OKR frameworks.',
     evaluationCriteria: [
@@ -1144,7 +949,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'task-management',
     slug: 'task-management',
     name: 'Task Management',
-    toolCount: 673,
     tagline: 'Checklist hierarchies, recurring task automation, priority tagging, and personal productivity.',
     description: 'Directory of 3 Task Management applications. Built for individual professionals, solo real estate agents, busy executives, and small teams seeking frictionless to-do lists, recurring reminder schedules, and keyboard-first productivity.',
     evaluationCriteria: [
@@ -1217,7 +1021,6 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     id: 'team-management',
     slug: 'team-management',
     name: 'Team Management',
-    toolCount: 158,
     tagline: 'Team capacity balancing, holiday calendars, 1-on-1 agendas, and employee performance tracking.',
     description: 'Curated directory of 2 Team Management and People Operations platforms. Designed for department heads, team leads, and HR managers overseeing employee capacity, 1-on-1 performance coaching, leave calendars, and team engagement.',
     evaluationCriteria: [
@@ -1274,70 +1077,9 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
     ]
   },
   {
-    id: 'time-and-expenses',
-    slug: 'time-and-expenses',
-    name: 'Time and Expenses',
-    toolCount: 357,
-    tagline: 'Receipt scanning, mileage tracking, corporate card reconciliation, and billable client approvals.',
-    description: 'Review of 2 Time and Expense management software solutions. Built for mobile workforces, traveling consultants, real estate agents tracking property tour mileage, and accounting teams managing corporate credit cards.',
-    evaluationCriteria: [
-      'AI-powered optical character recognition (OCR) receipt scanning',
-      'Automated GPS mileage tracking and IRS compliant standard rate calculation',
-      'Multi-level approval workflows (Manager -> Finance -> Payroll)',
-      'Direct credit card feed reconciliation (Visa, Mastercard, Amex)',
-      'Client billable expense markup and reimbursement processing'
-    ],
-    marketOverview: 'Time and expense tools streamline travel and billing reconciliation, particularly where tax authorities (IRS, HMRC, ATO, CRA) enforce strict expense deduction substantiation rules. Our review covers a small representative set.',
-    geoFocus: {
-      regions: ['United States & Canada', 'United Kingdom & Ireland', 'European Union', 'Australia & New Zealand'],
-      topComplianceStandards: ['IRS Tax Compliance (US)', 'HMRC Guidelines (UK)', 'ATO Regulations (AU)', 'SOC 1 / SOC 2 Type II', 'PCI-DSS Level 1'],
-      typicalCurrencySupport: ['USD ($)', 'GBP (£)', 'EUR (€)', 'CAD ($)', 'AUD ($)', 'All Global Currencies'],
-      regionalDeploymentNotes: 'Supports automated multi-currency conversion at daily spot rates for international business travel expense claims.'
-    },
-    topTools: [
-      {
-        name: 'Expensify',
-        rating: 4.7,
-        pricingStarting: '$5 / user / month (Free corporate card tier available)',
-        bestFor: 'Agile teams, real estate agents, and global companies needing instant SmartScan receipt capture',
-        websiteUrl: 'https://use.expensify.com',
-        trialUrl: 'https://use.expensify.com/signup',
-        featuredBadge: 'Most Popular Receipt Scanner',
-        keyFeatures: ['SmartScan patented receipt OCR', 'Automated corporate card reconciliation', 'Next-day direct deposit reimbursement', 'One-click QuickBooks/Xero/NetSuite export'],
-        pros: ['Snapping a photo of a receipt automatically extracts merchant, date, amount, and currency', 'Generates clean IRS-compliant tax deduction reports', 'Free Expensify card with 1-2% cash back'],
-        cons: ['Customer support is primarily in-app chat based'],
-        geoCompliance: ['PCI-DSS Level 1', 'SOC 1 / SOC 2 Type II', 'EU / GDPR']
-      },
-      {
-        name: 'Zoho Expense',
-        rating: 4.8,
-        pricingStarting: '$3 / user / month (Free tier for up to 3 users)',
-        bestFor: 'Cost-conscious businesses and existing Zoho ecosystem users',
-        websiteUrl: 'https://www.zoho.com/expense/',
-        trialUrl: 'https://www.zoho.com/expense/signup.html',
-        featuredBadge: 'Best Value for Small Business',
-        keyFeatures: ['Multi-stage approval hierarchies', 'GPS mileage tracking on mobile', 'Per diem rate management', 'Direct integration with Zoho Books and CRM'],
-        pros: ['Extremely affordable per-user pricing with no hidden fees', 'Comprehensive international tax handling (VAT, GST, Sales Tax)', 'Robust travel policy compliance rules'],
-        cons: ['Best experience when paired with Zoho Books rather than third-party ERPs'],
-        geoCompliance: ['ISO 27001', 'SOC 2 Type II', 'EU / GDPR compliant']
-      }
-    ],
-    faqs: [
-      {
-        question: 'How does automated expense tracking protect businesses during a tax audit?',
-        answer: 'Automated software stores digital, timestamped images of receipts linked directly to bank transactions, creating an immutable audit trail that satisfies IRS, HMRC, and CRA substantiation rules.'
-      }
-    ],
-    keyBuyerTakeaways: [
-      'Verify mobile GPS mileage tracking accuracy if your agents or technicians drive extensively for client visits.',
-      'Check for automated corporate credit card feed integration to eliminate manual spreadsheet reconciliation.'
-    ]
-  },
-  {
     id: 'time-tracking',
     slug: 'time-tracking',
     name: 'Time Tracking',
-    toolCount: 754,
     tagline: 'Automated background time capture, billable client timesheets, payroll export, and productivity analytics.',
     description: 'Directory of 5 Time Tracking software solutions. Built for client-billing agencies, freelancers, remote engineering squads, and legal practices to capture every billable minute and reduce timesheet leakage.',
     evaluationCriteria: [
@@ -1408,8 +1150,30 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = [
   }
 ];
 
+/**
+ * Every category with toolCount derived from the directory. Counts are computed
+ * here rather than authored in the entries above so titles, metadata, and copy
+ * cannot claim numbers the pages are unable to back up.
+ */
+export const PLANNING_CATEGORIES: PlanningCategory[] = PLANNING_CATEGORY_DEFS.map((category) => ({
+  ...category,
+  toolCount: getCategoryToolCount(category),
+}));
+
+/**
+ * Slugs retired by category consolidation. Tools from each were merged into the
+ * canonical category, so old URLs resolve there rather than 404ing.
+ */
+export const PLANNING_SLUG_ALIASES: Record<string, string> = {
+  'project-planning': 'project-management',
+  'project-tracking': 'project-management',
+  'scrum': 'agile-project-management',
+  'time-and-expenses': 'time-tracking',
+};
+
 export function getPlanningCategoryBySlug(slug: string): PlanningCategory | undefined {
-  const category = PLANNING_CATEGORIES.find((cat) => cat.slug === slug || cat.id === slug);
+  const resolved = PLANNING_SLUG_ALIASES[slug] ?? slug;
+  const category = PLANNING_CATEGORIES.find((cat) => cat.slug === resolved || cat.id === resolved);
   if (!category) return undefined;
   const indexed = getToolsByCategorySlug(category.slug || category.id);
   return {
@@ -1423,20 +1187,13 @@ export function getPlanningCategoryBySlug(slug: string): PlanningCategory | unde
  * directory plus any curated top tool not already present, deduped by name. This
  * mirrors the resolution used by PlanningCategoryDetail.
  */
-export function getCategoryToolCount(category: PlanningCategory): number {
+export function getCategoryToolCount(category: Omit<PlanningCategory, 'toolCount'>): number {
   const indexed = getToolsByCategorySlug(category.slug || category.id);
   const seen = new Set(indexed.map((t) => t.name.toLowerCase()));
   const extras = category.topTools.filter((t) => !seen.has(t.name.toLowerCase()));
   return indexed.length + extras.length;
 }
 
-// The toolCount literals in the entries above were aspirational and never matched
-// the directory, which made titles, metadata, and copy claim numbers the pages
-// could not back up. Normalize every category to what it can actually display so
-// all consumers (copy, JSON-LD, breadcrumbs, hub) stay honest.
-for (const category of PLANNING_CATEGORIES) {
-  category.toolCount = getCategoryToolCount(category);
-}
 
 export function getTotalPlanningToolsCount(): number {
   return PLANNING_CATEGORIES.reduce((acc, cat) => acc + cat.toolCount, 0);

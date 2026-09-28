@@ -65,20 +65,55 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.crmsolo.online" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.crmsolo.online"
+        }
+      ],
       "destination": "https://crmsolo.online/$1",
       "permanent": true
     },
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.crmsolo.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "www.crmsolo.com"
+        }
+      ],
       "destination": "https://crmsolo.online/$1",
       "permanent": true
     },
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "crmsolo.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "crmsolo.com"
+        }
+      ],
       "destination": "https://crmsolo.online/$1",
+      "permanent": true
+    },
+    {
+      "source": "/planning-tools/project-planning",
+      "destination": "/planning-tools/project-management",
+      "permanent": true
+    },
+    {
+      "source": "/planning-tools/project-tracking",
+      "destination": "/planning-tools/project-management",
+      "permanent": true
+    },
+    {
+      "source": "/planning-tools/scrum",
+      "destination": "/planning-tools/agile-project-management",
+      "permanent": true
+    },
+    {
+      "source": "/planning-tools/time-and-expenses",
+      "destination": "/planning-tools/time-tracking",
       "permanent": true
     },
     {

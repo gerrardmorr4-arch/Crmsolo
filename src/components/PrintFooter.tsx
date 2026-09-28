@@ -28,16 +28,16 @@ export default function PrintFooter({ currentPath = '' }: PrintFooterProps) {
             <div className="flex items-center gap-1.5 font-display font-black text-[12pt] uppercase tracking-tight text-primary">
               <span>🏆 CRMSOLO</span>
               <span className="text-[7pt] font-mono font-bold bg-primary text-white px-1.5 py-0.5 rounded-xs">
-                INDEPENDENT EVALUATION SUMMARY
+                EVALUATION SUMMARY
               </span>
             </div>
             <p className="text-[8pt] text-gray-600 font-mono mt-0.5">
-              The Independent CRM &amp; Software Intelligence Hub for Solo Real Estate Practitioners
+              The CRM &amp; Software Review Hub for Solo Real Estate Practitioners
             </p>
           </div>
           <div className="text-right text-[8pt] font-mono text-gray-600 space-y-0.5">
             <p className="font-bold text-primary flex items-center justify-end gap-1">
-              <Shield className="w-3 h-3 text-success inline" /> Independent Editorial Assessment
+              <Shield className="w-3 h-3 text-success inline" /> Editorial Assessment
             </p>
             <p>Printed: {printDate}</p>
             <p className="truncate max-w-[280px]">URL: {fullUrl}</p>

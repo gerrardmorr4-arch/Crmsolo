@@ -742,8 +742,8 @@ export const ALL_INDEXED_TOOLS: PlanningToolItem[] = [
   // 13. PROJECT PLANNING (313 Tools)
   {
     name: 'Smartsheet Project Planner',
-    categorySlug: 'project-planning',
-    categoryName: 'Project Planning',
+    categorySlug: 'project-management',
+    categoryName: 'Project Management',
     rating: 4.8,
     pricingStarting: '$7 / user / mo',
     pricingTier: 'Freemium',
@@ -759,8 +759,8 @@ export const ALL_INDEXED_TOOLS: PlanningToolItem[] = [
   },
   {
     name: 'Microsoft Project & Planner',
-    categorySlug: 'project-planning',
-    categoryName: 'Project Planning',
+    categorySlug: 'project-management',
+    categoryName: 'Project Management',
     rating: 4.6,
     pricingStarting: '$10 / user / mo (Plan 1)',
     pricingTier: 'Paid',
@@ -814,8 +814,8 @@ export const ALL_INDEXED_TOOLS: PlanningToolItem[] = [
   // 15. PROJECT TRACKING (305 Tools)
   {
     name: 'Asana Project Health Tracking',
-    categorySlug: 'project-tracking',
-    categoryName: 'Project Tracking',
+    categorySlug: 'project-management',
+    categoryName: 'Project Management',
     rating: 4.8,
     pricingStarting: '$10.99 / user / mo',
     pricingTier: 'Freemium',
@@ -831,8 +831,8 @@ export const ALL_INDEXED_TOOLS: PlanningToolItem[] = [
   },
   {
     name: 'Wrike Project Progress Tracker',
-    categorySlug: 'project-tracking',
-    categoryName: 'Project Tracking',
+    categorySlug: 'project-management',
+    categoryName: 'Project Management',
     rating: 4.7,
     pricingStarting: '$9.80 / user / mo',
     pricingTier: 'Freemium',
@@ -886,8 +886,8 @@ export const ALL_INDEXED_TOOLS: PlanningToolItem[] = [
   // 17. SCRUM (81 Tools)
   {
     name: 'Jira Software Scrum Boards',
-    categorySlug: 'scrum',
-    categoryName: 'Scrum',
+    categorySlug: 'agile-project-management',
+    categoryName: 'Agile Project Management',
     rating: 4.8,
     pricingStarting: '$7.75 / user / mo',
     pricingTier: 'Freemium',
@@ -903,8 +903,8 @@ export const ALL_INDEXED_TOOLS: PlanningToolItem[] = [
   },
   {
     name: 'Targetprocess by Apptio',
-    categorySlug: 'scrum',
-    categoryName: 'Scrum',
+    categorySlug: 'agile-project-management',
+    categoryName: 'Agile Project Management',
     rating: 4.7,
     pricingStarting: 'Custom Enterprise Quote',
     pricingTier: 'Enterprise Quote',
@@ -1047,8 +1047,8 @@ export const ALL_INDEXED_TOOLS: PlanningToolItem[] = [
   // 21. TIME AND EXPENSES (357 Tools)
   {
     name: 'Expensify',
-    categorySlug: 'time-and-expenses',
-    categoryName: 'Time and Expenses',
+    categorySlug: 'time-tracking',
+    categoryName: 'Time Tracking',
     rating: 4.7,
     pricingStarting: '$5 / user / mo (Free tier with Expensify Card)',
     pricingTier: 'Freemium',
@@ -1064,8 +1064,8 @@ export const ALL_INDEXED_TOOLS: PlanningToolItem[] = [
   },
   {
     name: 'Zoho Expense',
-    categorySlug: 'time-and-expenses',
-    categoryName: 'Time and Expenses',
+    categorySlug: 'time-tracking',
+    categoryName: 'Time Tracking',
     rating: 4.7,
     pricingStarting: '$3 / user / mo (Free tier for up to 3 users)',
     pricingTier: 'Freemium',

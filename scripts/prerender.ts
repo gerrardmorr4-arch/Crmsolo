@@ -18,7 +18,7 @@ import { JSDOM } from 'jsdom';
 import { initialReviews, initialComparisons, initialGuides, initialBlogPosts } from '../src/data/initialData';
 import { PLANNING_BLOG_ARTICLES } from '../src/data/planningBlogArticles';
 import { automationBlueprints } from '../src/data/blueprintsData';
-import { PLANNING_CATEGORIES } from '../src/data/planningToolsData';
+import { PLANNING_CATEGORIES, PLANNING_SLUG_ALIASES } from '../src/data/planningToolsData';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -83,6 +83,26 @@ const OFF_TOPIC_POST_SLUGS = new Set([
   'scrum-master-certifications-guide-2026'
 ]);
 
+/**
+ * Planning categories aimed at enterprise IT, product, and e-commerce buyers
+ * rather than solo real estate practitioners — the site's subject. They are a
+ * few tools deep and compete against far larger directories, so they are held
+ * out of the sitemap and marked noindex while staying live and reachable. The
+ * real-estate-adjacent categories (task, time, project tracking, job costing,
+ * kanban) remain indexed.
+ */
+const OFF_TOPIC_PLANNING_SLUGS = new Set([
+  'it-project-management',
+  'pim',
+  'production-scheduling',
+  'product-management',
+  'product-roadmap',
+  'professional-services-automation',
+  'requirements-management',
+  'strategic-planning',
+  'team-management'
+]);
+
 /** Strips markdown syntax and counts remaining word tokens. */
 function countWords(markdown: string): number {
   return markdown
@@ -114,7 +134,7 @@ function collectCanonicalRoutes(): RouteEntry[] {
   initialComparisons.forEach(c => add(`/compare/${c.slug}`));
   initialGuides.forEach(g => add(`/guides/${g.slug}`));
   automationBlueprints.forEach(b => add(`/blueprints/${b.slug}`));
-  PLANNING_CATEGORIES.forEach(c => add(`/planning-tools/${c.slug}`));
+  PLANNING_CATEGORIES.forEach(c => add(`/planning-tools/${c.slug}`, OFF_TOPIC_PLANNING_SLUGS.has(c.slug)));
 
   // Thin-content rule applies to blog detail pages generally. Both the CRM posts
   // and the planning articles are short; the planning set is the thinner of the
@@ -157,6 +177,13 @@ function collectAliasRoutes(): RouteEntry[] {
   initialGuides.forEach(g => {
     aliases.push({ path: `/guide/${g.slug}`, canonicalPath: `/guides/${g.slug}`, noindex: false });
   });
+  for (const [retired, canonical] of Object.entries(PLANNING_SLUG_ALIASES)) {
+    aliases.push({
+      path: `/planning-tools/${retired}`,
+      canonicalPath: `/planning-tools/${canonical}`,
+      noindex: false
+    });
+  }
   return aliases;
 }
 

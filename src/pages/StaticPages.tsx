@@ -15,12 +15,12 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
   const activeTab = pageType === 'methodology' ? 'methodology' : 'about';
 
   let seoTitle = 'About Us';
-  let seoDescription = 'Learn more about our independent testing methodology and team.';
-  let seoKeywords = ['about crmsolo', 'independent crm reviewers', 'realtor tool testing'];
+  let seoDescription = 'Learn more about our review methodology and team.';
+  let seoKeywords = ['about crmsolo', 'crm reviewers', 'realtor tool reviews'];
 
   if (pageType === 'contact') {
     seoTitle = 'Contact Us';
-    seoDescription = 'Get in touch with our team of independent CRM testers and brokers.';
+    seoDescription = 'Get in touch with our team of CRM reviewers and brokers.';
     seoKeywords = ['contact crmsolo', 'realtor crm questions', 'advertise'];
   } else if (pageType === 'privacy') {
     seoTitle = 'Privacy Policy';
@@ -36,7 +36,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
     seoKeywords = ['terms of service', 'website terms', 'affiliate links'];
   } else if (pageType === 'affiliate') {
     seoTitle = 'Affiliate & Advertising Disclosure';
-    seoDescription = 'How we finance our independent reviews. Read our transparency and advertising standards.';
+    seoDescription = 'How we finance our reviews. Read our transparency and advertising standards.';
     seoKeywords = ['affiliate disclosure', 'honest advertising', 'referral links'];
   }
 

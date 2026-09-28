@@ -410,7 +410,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
   const [blogExcerpt, setBlogExcerpt] = useState('');
   const [blogContent, setBlogContent] = useState('');
   const [blogCategory, setBlogCategory] = useState('Product Updates');
-  const [blogAuthor, setBlogAuthor] = useState('Sarah Jenkins');
+  const [blogAuthor, setBlogAuthor] = useState('CRMSolo Editorial Team');
   const [successMessage, setSuccessMessage] = useState('');
   const [editingBlogId, setEditingBlogId] = useState<string | null>(null);
 
@@ -991,7 +991,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
     setBlogExcerpt('');
     setBlogContent('');
     setBlogCategory('Product Updates');
-    setBlogAuthor('Sarah Jenkins');
+    setBlogAuthor('CRMSolo Editorial Team');
   };
 
   const handleStartEditBlog = (blog: BlogPost) => {
@@ -1011,7 +1011,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
     setBlogExcerpt('');
     setBlogContent('');
     setBlogCategory('Product Updates');
-    setBlogAuthor('Sarah Jenkins');
+    setBlogAuthor('CRMSolo Editorial Team');
   };
 
   const handleDeleteBlog = (id: string) => {
@@ -1958,7 +1958,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                   </div>
                   <ul className="space-y-3 text-xs text-gray-600 leading-relaxed list-disc pl-4">
                     <li>
-                      <strong>Unbiased Local Math:</strong> Providing honest ROI metrics based on real estate response speeds (which CRMsolo does natively!).
+                      <strong>Transparent Local Math:</strong> Showing the ROI arithmetic behind each estimate, based on real estate response speeds.
                     </li>
                     <li>
                       <strong>Instant Interactive Checklists:</strong> Choosing exact criteria (such as Gmail sync or escrow timers) instead of reading 3000-word feature lists.

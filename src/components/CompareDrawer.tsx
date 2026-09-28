@@ -139,11 +139,9 @@ export const CompareDrawer: React.FC<CompareDrawerProps> = ({
                           <span className="text-lg">{crm.overallScore}</span>
                           <span className="text-xs text-emerald-600">/ 10</span>
                         </div>
-                        {crm.recommendationRate && (
-                          <p className="text-[11px] text-slate-500 mt-1">
-                            {crm.recommendationRate}% user recommendation
-                          </p>
-                        )}
+                        <p className="text-[11px] text-slate-500 mt-1">
+                          Editorial score
+                        </p>
                       </td>
                     ))}
                   </tr>

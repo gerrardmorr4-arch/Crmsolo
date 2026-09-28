@@ -1,97 +1,134 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Star, ChevronLeft, ChevronRight, Quote, MessageSquare } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ClipboardCheck, ArrowUpRight } from 'lucide-react';
 
-interface Testimonial {
+/**
+ * Editorial findings, not testimonials. Every strength and trade-off below is
+ * taken from CRMSolo's own published review of the platform, so the section
+ * describes documented product behaviour instead of attributing quotes to
+ * customers who were never interviewed.
+ */
+interface EditorialFinding {
   id: string;
-  name: string;
-  role: string;
-  location: string;
-  quote: string;
-  rating: number;
-  crmUsed: 'Pipedrive' | 'Streak' | 'Follow Up Boss';
-  activeYears: string;
+  crmName: string;
+  slug: string;
+  score: number;
+  priceLabel: string;
+  bestFor: string;
+  strengths: string[];
+  tradeOffs: string[];
   bgColor: string;
   textColor: string;
 }
 
-const testimonials: Testimonial[] = [
+const FINDINGS: EditorialFinding[] = [
   {
-    id: '1',
-    name: "Sarah Jenkins",
-    role: "Solo Listing Agent, Compass",
-    location: "Austin, TX",
-    quote: "I tried enterprise platforms, but they felt like a full-time job just to update. Pipedrive lets me visualize my listing escrows like simple cards. I save at least 4 hours of administrative busywork every single week.",
-    rating: 5,
-    crmUsed: "Pipedrive",
-    activeYears: "8 years in industry",
-    bgColor: "bg-primary/5",
-    textColor: "text-primary"
+    id: 'pipedrive',
+    crmName: 'Pipedrive',
+    slug: 'pipedrive-for-real-estate-agents',
+    score: 9.2,
+    priceLabel: 'from $14/mo',
+    bestFor: 'Visual pipelines & habit-forming deal management',
+    strengths: [
+      'The clean, visual layout maps perfectly to real estate pipeline stages (e.g. Active Listing, Under Contract, Closing).',
+      'The mobile app is blazing fast — upload photo showing notes or schedule next check-in while sitting in your car.',
+      'Extremely custom-field-friendly: we added fields for listing date, contract expiration, and loan contingency deadlines in under 2 minutes.',
+      'No clunky legacy enterprise bloat. It gets out of your way.'
+    ],
+    tradeOffs: [
+      'There is no permanent free tier — after the 14-day trial, you must subscribe.',
+      'To get automated email follow-up templates, you must pay for the Advanced plan ($29/mo).',
+      'No native client-portal options, meaning you cannot share a direct deal checklist with your buyer.'
+    ],
+    bgColor: 'bg-primary/5',
+    textColor: 'text-primary'
   },
   {
-    id: '2',
-    name: "Marcus Vance",
-    role: "Independent Broker-Owner",
-    location: "Miami, FL",
-    quote: "As a solo broker, I live in my Gmail inbox. Setting up Streak was a game-changer because I didn't have to learn a new interface. It keeps my buyer pipelines perfectly synced right where I send emails.",
-    rating: 5,
-    crmUsed: "Streak",
-    activeYears: "12 years in industry",
-    bgColor: "bg-accent/10",
-    textColor: "text-accent"
+    id: 'streak',
+    crmName: 'Streak',
+    slug: 'streak-for-real-estate-agents',
+    score: 9.0,
+    priceLabel: 'free tier',
+    bestFor: 'Gmail-native workflow and zero-friction inbox organization',
+    strengths: [
+      'No separate web browser tab required — it lives entirely inside your standard Gmail inbox layout.',
+      'Unmatched ease of use: looks and feels like a beautiful spreadsheet layered on top of your email threads.',
+      'The Free tier is highly capable, letting you track unlimited deals and log emails with zero friction.',
+      'Excellent email open tracking tells you exactly who is reading your property sheets and when.'
+    ],
+    tradeOffs: [
+      'Completely dependent on Google Workspace ecosystem — if you use Outlook, Safari Mail, or Apple Mail, Streak is unusable.',
+      'Does not have a robust built-in meeting scheduler link, requiring you to use third-party tools like Calendly.',
+      "The mobile app relies on Gmail's native UI, which can feel less robust for advanced on-the-road CRM features."
+    ],
+    bgColor: 'bg-accent/10',
+    textColor: 'text-accent'
   },
   {
-    id: '3',
-    name: "Elena Rostova",
-    role: "Residential Sales Associate, RE/MAX",
-    location: "Denver, CO",
-    quote: "Follow Up Boss is unmatched when it comes to speed-to-lead. If a lead comes in from Zillow or Realtor.com, FUB triggers an automated follow-up sequence instantly. My conversion rate rose by 35% in six months.",
-    rating: 5,
-    crmUsed: "Follow Up Boss",
-    activeYears: "5 years in industry",
-    bgColor: "bg-gray-100",
-    textColor: "text-gray-800"
+    id: 'followupboss',
+    crmName: 'Follow Up Boss',
+    slug: 'followupboss-for-real-estate-agents',
+    score: 9.5,
+    priceLabel: 'from $69/mo',
+    bestFor: 'Active lead conversion & high-volume lead follow-up',
+    strengths: [
+      'Highly specialized for real estate out-of-the-box — hooks into Zillow, Realtor.com, and local MLS instantly with zero setup.',
+      'Action Plans are the best automated follow-up sequences in the industry, letting you nurture incoming leads on day one.',
+      'The mobile app is a powerhouse: dial contacts, send texts, log call recordings, and view listings in real-time.',
+      'Exceptional customer support team that understands the real estate transaction cycle inside and out.'
+    ],
+    tradeOffs: [
+      'No free tier — after the 14-day trial, the entry price is $69/mo, which is high for brand new agents on a strict budget.',
+      'Pricing can escalate quickly if you add assistants or want the built-in dialer plan.',
+      "Does not have a strict, visual stage-change checklist enforcement tool like Pipedrive's deal-stage locks."
+    ],
+    bgColor: 'bg-gray-100',
+    textColor: 'text-gray-800'
   },
   {
-    id: '4',
-    name: "Devon Carter",
-    role: "Luxury Solo Specialist",
-    location: "Los Angeles, CA",
-    quote: "Clients expect high-touch interaction. Streak keeps my email templates structured so I can send personal, professional escrow milestones with one tap on my phone during active showings.",
-    rating: 5,
-    crmUsed: "Streak",
-    activeYears: "7 years in industry",
-    bgColor: "bg-accent/10",
-    textColor: "text-accent"
+    id: 'wise-agent',
+    crmName: 'Wise Agent',
+    slug: 'wise-agent-crm-for-real-estate',
+    score: 8.9,
+    priceLabel: 'flat $49/mo',
+    bestFor: 'Transaction checklists & built-in marketing tools at a flat price',
+    strengths: [
+      'Flat pricing ($49/mo) includes transaction management, lead automation, and landing page creation with no hidden upcharges.',
+      'Native real estate date calculators automatically calculate closing deadlines and commission splits.',
+      'All-in-one scope means fewer separate subscriptions for a solo agent to manage.'
+    ],
+    tradeOffs: [
+      'The user interface feels slightly dated compared to modern sleek SaaS tools like Pipedrive.',
+      'The mobile app is functional but lacks the fluid animations and polished swipe gestures of Follow Up Boss.'
+    ],
+    bgColor: 'bg-primary/5',
+    textColor: 'text-primary'
   },
   {
-    id: '5',
-    name: "Amina Al-Mansoor",
-    role: "Independent Realtor",
-    location: "Chicago, IL",
-    quote: "With Pipedrive's mobile app, I can drag a deal to 'Under Contract' right from the curb of an open house. No lag, no clunky load times. It's the absolute leanest CRM workflow for agents on the go.",
-    rating: 4.8,
-    crmUsed: "Pipedrive",
-    activeYears: "4 years in industry",
-    bgColor: "bg-primary/5",
-    textColor: "text-primary"
+    id: 'copper',
+    crmName: 'Copper CRM',
+    slug: 'copper-crm-for-real-estate-agents',
+    score: 9.1,
+    priceLabel: 'from $29/mo',
+    bestFor: 'Google Workspace power users & automated contact scraping',
+    strengths: [
+      'Officially endorsed by Google: integrates so deeply into Gmail that you never have to leave your inbox to manage buyers.',
+      'Scrapes contact phone numbers, email addresses, and company details automatically, eliminating manual data entry.'
+    ],
+    tradeOffs: [
+      'Completely useless if your brokerage uses Microsoft Outlook or Office 365.',
+      'Starting price of $29/mo is higher than Streak, and the Starter tier limits you to 2,500 contacts.'
+    ],
+    bgColor: 'bg-accent/10',
+    textColor: 'text-accent'
   }
 ];
 
 export default function AgentTestimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0); // -1 for left, 1 for right
+  const [direction, setDirection] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const autoPlayTimerRef = useRef<NodeJS.Timeout | null>(null);
-
-  const startAutoPlay = () => {
-    stopAutoPlay();
-    if (isAutoPlaying) {
-      autoPlayTimerRef.current = setInterval(() => {
-        handleNext();
-      }, 6000); // cycle every 6 seconds
-    }
-  };
+  const autoPlayTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const stopAutoPlay = () => {
     if (autoPlayTimerRef.current) {
@@ -101,18 +138,24 @@ export default function AgentTestimonials() {
   };
 
   useEffect(() => {
-    startAutoPlay();
-    return () => stopAutoPlay();
+    stopAutoPlay();
+    if (isAutoPlaying) {
+      autoPlayTimerRef.current = setInterval(() => {
+        setDirection(1);
+        setCurrentIndex((prev) => (prev === FINDINGS.length - 1 ? 0 : prev + 1));
+      }, 8000);
+    }
+    return stopAutoPlay;
   }, [currentIndex, isAutoPlaying]);
 
   const handlePrev = () => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+    setCurrentIndex((prev) => (prev === 0 ? FINDINGS.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
     setDirection(1);
-    setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) => (prev === FINDINGS.length - 1 ? 0 : prev + 1));
   };
 
   const handleDotClick = (index: number) => {
@@ -120,134 +163,111 @@ export default function AgentTestimonials() {
     setCurrentIndex(index);
   };
 
-  const renderStars = (rating: number) => {
-    const stars = [];
-    const fullStars = Math.floor(rating);
-    for (let i = 1; i <= 5; i++) {
-      if (i <= fullStars) {
-        stars.push(<Star key={i} className="w-4 h-4 fill-accent text-accent" />);
-      } else {
-        // Render half star for fractions, otherwise grey
-        stars.push(
-          <div key={i} className="relative inline-block shrink-0">
-            <Star className="w-4 h-4 text-gray-300" />
-            <div className="absolute top-0 left-0 w-1/2 overflow-hidden">
-              <Star className="w-4 h-4 fill-accent text-accent" />
-            </div>
-          </div>
-        );
-      }
-    }
-    return <div className="flex gap-0.5">{stars}</div>;
-  };
+  const current = FINDINGS[currentIndex];
 
-  const currentTestimonial = testimonials[currentIndex];
-
-  // Motion Variants
   const slideVariants = {
-    enter: (dir: number) => ({
-      x: dir > 0 ? 100 : -100,
-      opacity: 0,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-    },
-    exit: (dir: number) => ({
-      x: dir < 0 ? 100 : -100,
-      opacity: 0,
-    }),
+    enter: (dir: number) => ({ x: dir > 0 ? 100 : -100, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (dir: number) => ({ x: dir < 0 ? 100 : -100, opacity: 0 })
   };
 
   return (
-    <section 
-      id="agent-testimonials"
+    <section
+      id="editorial-findings"
       className="bg-white border-y border-gray-100 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       onMouseEnter={stopAutoPlay}
-      onMouseLeave={startAutoPlay}
+      onMouseLeave={() => setIsAutoPlaying((v) => v)}
     >
       <div className="max-w-4xl mx-auto">
-        {/* Section Heading */}
         <div className="text-center space-y-3 mb-12">
           <div className="inline-flex items-center gap-1.5 bg-primary/5 text-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-xs">
-            <MessageSquare className="w-3.5 h-3.5 text-accent" />
-            Real Agent Consensus
+            <ClipboardCheck className="w-3.5 h-3.5 text-accent" />
+            CRMSolo Editorial Findings
           </div>
           <h2 className="text-3xl md:text-4xl font-black text-primary font-display uppercase tracking-tighter">
-            WHAT SOLO AGENTS ARE SAYING
+            WHAT OUR REVIEWS FOUND
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-            Real feedback from independent realtors, brokers, and solo facilitators who transitioned from clunky databases to streamlined platforms.
+            Strengths and trade-offs taken directly from our published reviews of each platform. These are editorial
+            assessments of documented product behaviour — not customer testimonials.
           </p>
         </div>
 
-        {/* Carousel Window */}
-        <div className="relative min-h-[340px] md:min-h-[260px] bg-gray-50 border-2 border-primary/10 rounded-xs p-6 sm:p-10 flex flex-col justify-between shadow-xs">
-          
-          {/* Quote Icon background watermark */}
-          <div className="absolute right-6 top-6 text-gray-200 pointer-events-none opacity-40">
-            <Quote className="w-24 h-24 stroke-[1px]" />
-          </div>
-
+        <div className="relative min-h-[460px] md:min-h-[380px] bg-gray-50 border-2 border-primary/10 rounded-xs p-6 sm:p-10 flex flex-col justify-between shadow-xs">
           <AnimatePresence mode="wait" custom={direction}>
             <motion.div
-              key={currentTestimonial.id}
+              key={current.id}
               custom={direction}
               variants={slideVariants}
               initial="enter"
               animate="center"
               exit="exit"
               transition={{ duration: 0.35, ease: 'easeInOut' }}
-              className="space-y-6 select-none relative z-10"
+              className="space-y-5 select-none relative z-10"
             >
-              {/* Stars & CRM Badge */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="flex items-center gap-3">
-                  {renderStars(currentTestimonial.rating)}
-                  <span className="text-xs font-mono font-black text-primary">
-                    {currentTestimonial.rating.toFixed(1)} / 5.0
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span className={`text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full border ${current.bgColor} ${current.textColor} border-current/10`}>
+                    {current.crmName}
                   </span>
-                </div>
-
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider">Verified Setup:</span>
-                  <span className={`text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full border ${currentTestimonial.bgColor} ${currentTestimonial.textColor} border-current/10`}>
-                    {currentTestimonial.crmUsed}
+                  <span className="text-xs font-mono font-black text-primary">
+                    {current.score.toFixed(1)} / 10 editorial score
+                  </span>
+                  <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider">
+                    {current.priceLabel}
                   </span>
                 </div>
               </div>
 
-              {/* Quote Block */}
-              <blockquote className="text-base sm:text-lg font-sans font-bold text-primary italic leading-relaxed text-left">
-                &ldquo;{currentTestimonial.quote}&rdquo;
-              </blockquote>
-
-              {/* Author Info */}
-              <div className="flex items-center justify-between pt-4 border-t border-gray-200/60">
-                <div className="space-y-0.5">
-                  <cite className="not-italic text-sm font-black text-primary uppercase tracking-tight">
-                    {currentTestimonial.name}
-                  </cite>
-                  <p className="text-xs text-gray-500 font-sans">
-                    {currentTestimonial.role} &middot; <span className="text-gray-400">{currentTestimonial.location}</span>
-                  </p>
+              <div className="grid sm:grid-cols-2 gap-5 text-left">
+                <div>
+                  <h3 className="text-[10px] font-mono uppercase tracking-widest font-black text-emerald-700 mb-2">
+                    What works
+                  </h3>
+                  <ul className="space-y-1.5">
+                    {current.strengths.map((item, i) => (
+                      <li key={i} className="text-sm text-primary leading-snug flex gap-2">
+                        <span className="text-emerald-600 shrink-0 font-bold">+</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-
-                <div className="hidden sm:block">
-                  <span className="text-[10px] font-mono uppercase font-black text-gray-400 bg-gray-200/50 px-2 py-1 rounded-xs">
-                    {currentTestimonial.activeYears}
-                  </span>
+                <div>
+                  <h3 className="text-[10px] font-mono uppercase tracking-widest font-black text-amber-700 mb-2">
+                    Trade-offs
+                  </h3>
+                  <ul className="space-y-1.5">
+                    {current.tradeOffs.map((item, i) => (
+                      <li key={i} className="text-sm text-gray-600 leading-snug flex gap-2">
+                        <span className="text-amber-600 shrink-0 font-bold">&minus;</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+              </div>
+
+              <div className="flex items-center justify-between gap-3 pt-4 border-t border-gray-200/60">
+                <span className="text-[10px] font-mono uppercase font-black text-gray-400 bg-gray-200/50 px-2 py-1 rounded-xs">
+                  Best for: {current.bestFor}
+                </span>
+                <a
+                  href={`/reviews/${current.slug}`}
+                  className="inline-flex items-center gap-1 text-[10px] font-mono uppercase font-black text-primary hover:text-accent transition shrink-0"
+                >
+                  Read full review
+                  <ArrowUpRight className="w-3 h-3" />
+                </a>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation Controls Overlay */}
           <div className="absolute top-1/2 -translate-y-1/2 -left-4 sm:-left-6 right-auto z-20">
             <button
               onClick={handlePrev}
               className="w-10 h-10 bg-white hover:bg-gray-100 text-primary border border-gray-200 hover:border-gray-400 rounded-full flex items-center justify-center shadow-md transition active:scale-95 cursor-pointer"
-              aria-label="Previous testimonial"
+              aria-label="Previous finding"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -257,26 +277,23 @@ export default function AgentTestimonials() {
             <button
               onClick={handleNext}
               className="w-10 h-10 bg-white hover:bg-gray-100 text-primary border border-gray-200 hover:border-gray-400 rounded-full flex items-center justify-center shadow-md transition active:scale-95 cursor-pointer"
-              aria-label="Next testimonial"
+              aria-label="Next finding"
             >
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        {/* Carousel Indicators / Dots & Play State */}
         <div className="flex items-center justify-center gap-6 mt-8">
           <div className="flex gap-2">
-            {testimonials.map((testimonial, idx) => (
+            {FINDINGS.map((finding, idx) => (
               <button
-                key={testimonial.id}
+                key={finding.id}
                 onClick={() => handleDotClick(idx)}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
-                  idx === currentIndex 
-                    ? 'w-8 bg-accent' 
-                    : 'w-2.5 bg-gray-300 hover:bg-gray-400'
+                  idx === currentIndex ? 'w-8 bg-accent' : 'w-2.5 bg-gray-300 hover:bg-gray-400'
                 }`}
-                aria-label={`Go to slide ${idx + 1}`}
+                aria-label={`Go to finding ${idx + 1}`}
               />
             ))}
           </div>

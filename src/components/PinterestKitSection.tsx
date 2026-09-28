@@ -183,7 +183,7 @@ export default function PinterestKitSection() {
 
     ctx.fillStyle = '#f8fafc';
     ctx.font = 'bold 36px sans-serif';
-    ctx.fillText('• 100% Free Unbiased Solo Realtor Reviews', 120, y + 130);
+    ctx.fillText('• 100% Free Solo Realtor Reviews', 120, y + 130);
     ctx.fillText('• Speed-to-Lead Automation Checklists', 120, y + 200);
     ctx.fillText('• Interactive Commission ROI Calculator', 120, y + 270);
 
