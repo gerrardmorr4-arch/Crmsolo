@@ -16,12 +16,12 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
 
   let seoTitle = 'About Us';
   let seoDescription = 'Learn how CRMsolo evaluates real estate CRM software, who writes our reviews, and the editorial standards behind every rating.';
-  let seoKeywords = ['about crmsolo', 'crm reviewers', 'realtor tool reviews'];
+  let seoKeywords = ['about crmsolo', 'crm reviewers', 'agent tool reviews'];
 
   if (pageType === 'contact') {
     seoTitle = 'Contact Us';
     seoDescription = 'Get in touch with the CRMsolo editorial team for review corrections, partnership questions, or advertising enquiries.';
-    seoKeywords = ['contact crmsolo', 'realtor crm questions', 'advertise'];
+    seoKeywords = ['contact crmsolo', 'agent crm questions', 'advertise'];
   } else if (pageType === 'privacy') {
     seoTitle = 'Privacy Policy';
     seoDescription = 'Our clear, transparent commitments to protecting your personal data and privacy.';
@@ -103,7 +103,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
             </div>
 
             <p className="text-gray-600 text-sm leading-relaxed">
-              Real estate is a high-volume, personal relationship business. But when newly licensed or established solo agents look for software to manage their leads, they are met with bloated, confusing enterprise tools built for 50-person brokerages. These systems require full-time administrators to configure and cost hundreds of dollars a month.
+              Real estate is a high-volume, personal relationship business. But when newly licensed or established solo agents look for software to manage their leads, they are met with bloated, confusing enterprise tools built for 50-person agencies. These systems require full-time administrators to configure and cost hundreds of dollars a month.
             </p>
 
             <div className="p-6 bg-gray-50 rounded-2xl border border-gray-100 flex flex-col md:flex-row gap-5 items-center">
@@ -164,7 +164,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
               <div className="py-4 space-y-1">
                 <h2 className="font-display font-bold text-primary text-sm">2. Real Estate Customization Fit (25% Weight)</h2>
                 <p className="text-xs text-gray-500">
-                  CRMs are built for corporate SaaS teams by default. We assess how easily you can add residential property variables (appraisal contingencies, MLS numbers, listing addresses) without paying for enterprise developer upgrades.
+                  CRMs are built for corporate SaaS teams by default. We assess how easily you can add residential property variables (appraisal conditions, listing references, listing addresses) without paying for enterprise developer upgrades.
                 </p>
               </div>
 
@@ -238,7 +238,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
                     value={contactEmail}
                     onChange={(e) => setContactEmail(e.target.value)}
                     className="w-full px-3 py-2 border rounded-xl text-sm bg-gray-50 focus:bg-white"
-                    placeholder="john@realtor.com"
+                    placeholder="john@agent.com"
                     required
                   />
                 </div>

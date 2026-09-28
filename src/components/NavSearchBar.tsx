@@ -23,7 +23,7 @@ export default function NavSearchBar({ onNavigate, className = '' }: NavSearchBa
     'Follow Up Boss',
     'Streak',
     'SEO Guide',
-    'Escrow Contingency',
+    'Closing Condition',
     'Speed to Lead',
     'Open House'
   ];
@@ -282,7 +282,7 @@ export default function NavSearchBar({ onNavigate, className = '' }: NavSearchBa
                 <div>
                   <h4 className="font-bold text-sm text-primary">No matching titles or articles found</h4>
                   <p className="text-xs text-gray-500 mt-1">
-                    Try searching for CRM names like "Pipedrive", keywords like "SEO" or "Escrow", or browse popular guides.
+                    Try searching for CRM names like "Pipedrive", keywords like "SEO" or "Closing", or browse popular guides.
                   </p>
                 </div>
                 <div className="pt-2 flex flex-wrap justify-center gap-1.5">

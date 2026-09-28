@@ -14,7 +14,7 @@ export interface AutomationBlueprint {
   title: string;
   metaTitle?: string;
   tagline: string;
-  category: 'Speed-to-Lead' | 'Listing & Escrow' | 'Client Retention' | 'Lead Generation' | 'Pinterest & Social';
+  category: 'Speed-to-Lead' | 'Listing & Closing' | 'Client Retention' | 'Lead Generation' | 'Pinterest & Social';
   difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
   timeToDeploy: string;
   roiImpact: string;
@@ -40,14 +40,14 @@ export const automationBlueprints: AutomationBlueprint[] = [
     slug: 'speed-to-lead-5-minute-auto-responder',
     title: 'The 5-Minute Speed-to-Lead Auto-Responder Protocol',
     metaTitle: '5-Minute Speed-to-Lead Auto-Responder Blueprint',
-    tagline: 'Connect Zillow, Realtor.com, and Meta ads to instant SMS within 120 seconds.',
+    tagline: 'Connect the major portals, and Meta ads to instant SMS within 120 seconds.',
     category: 'Speed-to-Lead',
     difficulty: 'Beginner',
     timeToDeploy: '15 Minutes',
     roiImpact: '+391% conversion probability vs 30-minute response',
     targetCrms: ['Follow Up Boss', 'Pipedrive', 'Streak', 'Wise Agent'],
     summary: 'A streamlined webhook automation blueprint that captures incoming portal leads, validates phone numbers, and sends a non-robotic text message to start a real conversation within 2 minutes.',
-    triggerEvent: 'New lead submitted on Zillow, Realtor.com, or Meta Lead Ad form.',
+    triggerEvent: 'New lead submitted on the major portals, or Meta Lead Ad form.',
     steps: [
       {
         stepNumber: 1,
@@ -55,7 +55,7 @@ export const automationBlueprints: AutomationBlueprint[] = [
         action: 'Route the portal lead email or webhook directly into your CRM inbox using Zapier or native CRM parsing.',
         tools: ['Zapier / Make', 'CRM Webhook Parser'],
         timeframe: '0 - 30 seconds',
-        proTip: 'Ensure lead source tags (e.g. #Zillow-Buyer) are attached automatically to avoid manual segmenting.'
+        proTip: 'Ensure lead source tags (e.g. #the major portals-Buyer) are attached automatically to avoid manual segmenting.'
       },
       {
         stepNumber: 2,
@@ -88,7 +88,7 @@ export const automationBlueprints: AutomationBlueprint[] = [
         title: 'Instant Casual SMS (High Response)',
         description: 'Copy and paste into your CRM auto-responder rule.',
         type: 'sms',
-        content: `Hi {{firstName}}! I just received your inquiry about {{propertyStreet}}. Are you looking to walk through the home this week, or are you just exploring the market for now? - {{agentName}}, {{brokerage}}`
+        content: `Hi {{firstName}}! I just received your inquiry about {{propertyStreet}}. Are you looking to walk through the home this week, or are you just exploring the market for now? - {{agentName}}, {{agency}}`
       },
       {
         title: '24-Hour Follow-up Email (Neighborhood Comps)',
@@ -108,7 +108,7 @@ Would it be helpful if I sent you upcoming open house times or a video walk-thro
 
 Best regards,
 {{agentName}} | {{agentPhone}}
-{{brokerage}}`
+{{agency}}`
       },
       {
         title: 'Zapier Webhook JSON Payload Schema',
@@ -116,7 +116,7 @@ Best regards,
         type: 'zapier',
         content: `{
   "event": "lead.created",
-  "lead_source": "Zillow_Premier",
+  "lead_source": "the major portals_Premier",
   "contact": {
     "first_name": "{{1.first_name}}",
     "last_name": "{{1.last_name}}",
@@ -146,24 +146,24 @@ Best regards,
   {
     id: 'kanban-escrow-contingency',
     slug: 'kanban-listing-escrow-contingency-engine',
-    title: 'Visual Kanban Escrow & Contingency Pipeline Engine',
-    metaTitle: 'Kanban Escrow & Contingency Pipeline Blueprint',
-    tagline: 'Never miss an earnest money deposit, home inspection, or appraisal contingency deadline.',
-    category: 'Listing & Escrow',
+    title: 'Visual Kanban Closing & Condition Pipeline Engine',
+    metaTitle: 'Kanban Closing & Condition Pipeline Blueprint',
+    tagline: 'Never miss an deposit deposit, home inspection, or appraisal condition deadline.',
+    category: 'Listing & Closing',
     difficulty: 'Beginner',
     timeToDeploy: '20 Minutes',
-    roiImpact: 'Eliminates contract fallout and costly escrow dispute penalties',
+    roiImpact: 'Eliminates contract fallout and costly closing dispute penalties',
     targetCrms: ['Pipedrive', 'Streak', 'Copper', 'Zoho CRM'],
-    summary: 'A standard 7-stage visual deal board specifically formatted for solo realtors to track property escrows from executed contract to commission disbursement.',
+    summary: 'A standard 7-stage visual deal board specifically formatted for solo agents to track property closings from executed contract to commission disbursement.',
     triggerEvent: 'Purchase agreement executed by buyer and seller.',
     steps: [
       {
         stepNumber: 1,
-        title: 'Stage 1: Contract Executed & Earnest Money Verification',
-        action: 'Create deal card with MLS #, purchase price, commission split, and earnest deposit due date (within 72 hours).',
+        title: 'Stage 1: Contract Signed & Deposit Verification',
+        action: 'Create deal card with listing reference, purchase price, commission split, and deposit due date (within 72 hours).',
         tools: ['CRM Deal Board', 'Calendar Sync'],
         timeframe: 'Hour 1',
-        proTip: 'Set a hard deadline alert 24 hours before earnest money is due to title.'
+        proTip: 'Set a hard deadline alert 24 hours before deposit is due to title.'
       },
       {
         stepNumber: 2,
@@ -192,7 +192,7 @@ Best regards,
     ],
     copyableTemplates: [
       {
-        title: 'Buyer Escrow Milestones Email',
+        title: 'Buyer Closing Milestones Email',
         description: 'Send immediately after contract mutual execution.',
         type: 'email',
         content: `Subject: 🎉 Congratulations! Next Steps & Important Deadlines for {{propertyAddress}}
@@ -202,12 +202,12 @@ Hi {{firstName}},
 We are officially under contract! Here is your roadmap and crucial calendar deadlines for the next 30 days:
 
 📅 KEY MILESTONES:
-1. Earnest Money Deposit ($ {{earnestAmount}}): Due by {{earnestDate}} to {{titleCompany}}
+1. Deposit ($ {{depositAmount}}): Due by {{depositDate}} to {{conveyancer}}
 2. Home Inspection Period: Completed by {{inspectionDeadline}}
 3. Appraisal & Financing Commitment: Due by {{loanCommitmentDate}}
 4. Final Walkthrough & Closing Day: Scheduled for {{closingDate}} at {{titleCompany}}
 
-Attached is our "Buyer Escrow Checklist" and wiring instructions security advisory.
+Attached is our "Buyer Closing Checklist" and wiring instructions security advisory.
 
 Let's get this to the finish line!
 {{agentName}} | {{agentPhone}}`
@@ -216,15 +216,15 @@ Let's get this to the finish line!
         title: 'Pipedrive / Streak Custom Field Schema',
         description: 'Recommended custom fields to create in your CRM deal settings.',
         type: 'checklist',
-        content: `[ ] MLS_Number (Text)
+        content: `[ ] listing service_Number (Text)
 [ ] Contract_Price (Monetary Currency)
 [ ] Commission_Split_Pct (Percentage, e.g. 2.5%)
 [ ] Net_Agent_Commission (Auto-calculated formula)
-[ ] Earnest_Money_DueDate (Date)
-[ ] Inspection_Contingency_Date (Date)
-[ ] Appraisal_Contingency_Date (Date)
+[ ] Deposit_DueDate (Date)
+[ ] Inspection_Condition_Date (Date)
+[ ] Appraisal_Condition_Date (Date)
 [ ] Loan_Commitment_Date (Date)
-[ ] Title_Company_Escrow_Officer (Contact Link)
+[ ] Title_Company_Closing_Officer (Contact Link)
 [ ] Co_Broke_Agent_Name_Phone (Text)`
       }
     ],
@@ -291,7 +291,7 @@ Let's get this to the finish line!
 25 CRM Automation Workflows Every Solo Real Estate Agent Needs in 2026
 
 PIN DESCRIPTION:
-Struggling to track buyer leads, open house visitors, and escrow closing deadlines? Discover the 25 essential CRM automation workflows, speed-to-lead scripts, and ROI calculator hacks for independent realtors and solo brokers. Click through to explore the free step-by-step blueprint and compare top realtor CRMs (Pipedrive, Streak, Follow Up Boss). #RealEstateCRM #RealtorTools #RealEstateMarketing #SoloAgent #Pipedrive #FollowUpBoss`
+Struggling to track buyer leads, open house visitors, and closing deadlines? Discover the 25 essential CRM automation workflows, speed-to-lead scripts, and ROI calculator hacks for independent agents and solo brokers. Click through to explore the free step-by-step blueprint and compare top agent CRMs (Pipedrive, Streak, Follow Up Boss). #RealEstateCRM #AgentTools #RealEstateMarketing #SoloAgent #Pipedrive #FollowUpBoss`
       },
       {
         title: 'Lead Magnet Delivery Email Template',
@@ -309,7 +309,7 @@ As promised, here is your direct access link to the Complete 2026 Solo Agent Blu
 
 INSIDE THIS BLUEPRINT:
 • 5-Minute Speed-to-Lead Webhook setup
-• 7-Stage Kanban Escrow & Contingency Pipeline
+• 7-Stage Kanban Closing & Condition Pipeline
 • Past-Client 365-Day Homeversary Referral Engine
 • Free Commission Split & ROI Calculator
 
@@ -397,7 +397,7 @@ I'd love to drop by this week with a little anniversary treat to say hello. Will
 Thank you again for trusting me with your purchase, and congratulations on 1 year of homeownership!
 
 Warmly,
-{{agentName}} | {{brokerage}}
+{{agentName}} | {{agency}}
 {{agentPhone}}`
       }
     ],
@@ -475,15 +475,15 @@ Warmly,
   {
     id: 'ai-prompt-lead-nurture',
     slug: 'ai-prompt-formula-listing-descriptions-client-nurture',
-    title: 'The Solo Realtor AI Prompt & Follow-Up Formula',
-    metaTitle: 'Solo Realtor AI Prompt & Follow-Up Formula',
-    tagline: 'High-converting Claude & Gemini prompts for MLS descriptions, objection handling, and cold buyer re-engagement.',
+    title: 'The Solo Agent AI Prompt & Follow-Up Formula',
+    metaTitle: 'Solo Agent AI Prompt & Follow-Up Formula',
+    tagline: 'High-converting Claude & Gemini prompts for listing service descriptions, objection handling, and cold buyer re-engagement.',
     category: 'Lead Generation',
     difficulty: 'Beginner',
     timeToDeploy: '5 Minutes',
     roiImpact: 'Saves 5+ weekly hours of copywriting and drafting emails',
     targetCrms: ['All CRMs', 'Gemini', 'Claude', 'ChatGPT'],
-    summary: 'A curated library of structured AI prompting formulas engineered for independent realtors to write emotional MLS property descriptions, objection rebuttals, and cold lead wake-up emails.',
+    summary: 'A curated library of structured AI prompting formulas engineered for independent agents to write emotional listing service property descriptions, objection rebuttals, and cold lead wake-up emails.',
     triggerEvent: 'Drafting new listing marketing or reviving cold database leads.',
     steps: [
       {
@@ -497,7 +497,7 @@ Warmly,
       {
         stepNumber: 2,
         title: 'Generate 3 Headline & Description Variations',
-        action: 'Output 1 MLS character-compliant description, 1 Instagram caption, and 1 email newsletter blurb.',
+        action: 'Output 1 listing service character-compliant description, 1 Instagram caption, and 1 email newsletter blurb.',
         tools: ['AI Copy Engine'],
         timeframe: '60 Seconds',
         proTip: 'Instruct the AI to ban real estate clichés like "boasts", "nestled", and "rare gem".'
@@ -505,10 +505,10 @@ Warmly,
     ],
     copyableTemplates: [
       {
-        title: 'Master MLS Listing Description Prompt',
+        title: 'Master listing service Listing Description Prompt',
         description: 'Copy and paste directly into Gemini / Claude / ChatGPT.',
         type: 'ai_prompt',
-        content: `You are an elite luxury real estate copywriter. Write a compelling, emotion-driven MLS listing description for the following property.
+        content: `You are an elite luxury real estate copywriter. Write a compelling, emotion-driven listing description for the following property.
 
 PROPERTY DETAILS:
 - Address / City: [Insert Address / Neighborhood]
@@ -518,7 +518,7 @@ PROPERTY DETAILS:
 - Target Buyer: [e.g., Young family needing fenced backyard, close to top elementary schools]
 
 CONSTRAINTS:
-1. Limit to under 1,000 characters for MLS compatibility.
+1. Limit to under 1,000 characters for listing service compatibility.
 2. BANNED CLICHÉS: Do NOT use "boasts", "nestled", "rare gem", "oasis", "must-see", or "pride of ownership".
 3. Write in an active, sensory voice focusing on how daily life feels in this home.
 4. Include an inviting closing call-to-action.`

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Star, ArrowUpRight, SlidersHorizontal } from 'lucide-react';
 
 /**
- * Replaces the previous "realtor video walkthrough" carousel, which paired
+ * Replaces the previous "agent video walkthrough" carousel, which paired
  * invented agent names and transcripts with Google sample video clips and stock
  * photography. Every value below comes from CRMSolo's published reviews, so the
  * section now presents verifiable pricing and scoring instead of fabricated
@@ -38,7 +38,7 @@ const ROWS: ComparisonRow[] = [
     strengths: [
       'The clean, visual layout maps perfectly to real estate pipeline stages (e.g. Active Listing, Under Contract, Closing).',
       'The mobile app is blazing fast — upload photo showing notes or schedule next check-in while sitting in your car.',
-      'Extremely custom-field-friendly: we added fields for listing date, contract expiration, and loan contingency deadlines in under 2 minutes.',
+      'Extremely custom-field-friendly: we added fields for listing date, contract expiration, and loan condition deadlines in under 2 minutes.',
       'No clunky legacy enterprise bloat. It gets out of your way.'
     ],
     tradeOffs: [
@@ -82,7 +82,7 @@ const ROWS: ComparisonRow[] = [
     googleWorkspaceNative: false,
     builtForRealEstate: true,
     strengths: [
-      'Highly specialized for real estate out-of-the-box — hooks into Zillow, Realtor.com, and local MLS instantly with zero setup.',
+      'Highly specialized for real estate out-of-the-box — hooks into the major portals and local listing services instantly with zero setup.',
       'Action Plans are the best automated follow-up sequences in the industry, letting you nurture incoming leads on day one.',
       'The mobile app is a powerhouse: dial contacts, send texts, log call recordings, and view listings in real-time.',
       'Exceptional customer support team that understands the real estate transaction cycle inside and out.'
@@ -130,7 +130,7 @@ const ROWS: ComparisonRow[] = [
       'Scrapes contact phone numbers, email addresses, and company details automatically, eliminating manual data entry.'
     ],
     tradeOffs: [
-      'Completely useless if your brokerage uses Microsoft Outlook or Office 365.',
+      'Completely useless if your agency uses Microsoft Outlook or Office 365.',
       'Starting price of $29/mo is higher than Streak, and the Starter tier limits you to 2,500 contacts.'
     ]
   },

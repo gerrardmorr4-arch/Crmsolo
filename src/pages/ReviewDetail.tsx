@@ -33,7 +33,7 @@ export default function ReviewDetail({ crm, onNavigate }: ReviewDetailProps) {
     },
     {
       question: `How well does ${crm.name} work on mobile devices?`,
-      answer: `${crm.name} scores ${crm.ratingBreakdown.mobileApp}/10 for mobile app functionality. Solo realtors can log showing notes, call buyers, and track deal stages directly from their smartphone.`
+      answer: `${crm.name} scores ${crm.ratingBreakdown.mobileApp}/10 for mobile app functionality. Solo agents can log showing notes, call buyers, and track deal stages directly from their smartphone.`
     },
     {
       question: `Does ${crm.name} offer a free trial or money-back guarantee?`,
@@ -44,7 +44,7 @@ export default function ReviewDetail({ crm, onNavigate }: ReviewDetailProps) {
   useSEO({
     title: `${crm.name} CRM Review: Real Estate Agent Verdict`,
     description: `Our review of ${crm.name} for solo real estate agents, rated ${crm.overallScore}/10: pricing, best features, and who it fits.`,
-    keywords: [crm.name.toLowerCase(), `${crm.name.toLowerCase()} crm`, `${crm.name.toLowerCase()} review`, 'real estate crm', 'solo realtor crm'],
+    keywords: [crm.name.toLowerCase(), `${crm.name.toLowerCase()} crm`, `${crm.name.toLowerCase()} review`, 'real estate crm', 'solo agent crm'],
     ogType: 'article',
     category: 'CRM Comparisons',
     faqSchema: reviewFaqs,

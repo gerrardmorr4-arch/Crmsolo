@@ -24,8 +24,8 @@ interface HomeProps {
 export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) {
   useSEO({
     title: 'Expert CRM Reviews for Solo Real Estate Agents',
-    description: 'Compare Pipedrive, Streak, and Follow Up Boss. Find the absolute best CRM for independent realtors with our reviews and ROI calculator.',
-    keywords: ['real estate crm', 'solo real estate agent crm', 'pipedrive vs streak', 'follow up boss', 'realtor tool'],
+    description: 'Compare Pipedrive, Streak, and Follow Up Boss. Find the absolute best CRM for independent agents with our reviews and ROI calculator.',
+    keywords: ['real estate crm', 'solo real estate agent crm', 'pipedrive vs streak', 'follow up boss', 'agent tool'],
     ogType: 'website',
     faqSchema: faqData.map(f => ({ question: f.question, answer: f.answer.replace(/\*\*/g, '') }))
   });
@@ -417,7 +417,7 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
             
             <div className="flex flex-wrap gap-2 pt-2">
               <span className="text-[9px] bg-primary/5 text-primary border border-primary/10 font-bold uppercase tracking-wider px-2.5 py-1 rounded-xs">✓ Gmail Sync</span>
-              <span className="text-[9px] bg-primary/5 text-primary border border-primary/10 font-bold uppercase tracking-wider px-2.5 py-1 rounded-xs">✓ Escrow Checklists</span>
+              <span className="text-[9px] bg-primary/5 text-primary border border-primary/10 font-bold uppercase tracking-wider px-2.5 py-1 rounded-xs">✓ Closing Checklists</span>
               <span className="text-[9px] bg-primary/5 text-primary border border-primary/10 font-bold uppercase tracking-wider px-2.5 py-1 rounded-xs">✓ E-Signatures</span>
               <span className="text-[9px] bg-primary/5 text-primary border border-primary/10 font-bold uppercase tracking-wider px-2.5 py-1 rounded-xs">✓ Permanent Free Plan</span>
             </div>
@@ -445,7 +445,7 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
               SOLO AGENT CRM AUTOMATION BLUEPRINTS
             </h2>
             <p className="text-gray-500 text-sm max-w-2xl mt-1">
-              Tested webhook workflows, 2-minute speed-to-lead scripts, and escrow Kanban boards you can deploy into your CRM today.
+              Tested webhook workflows, 2-minute speed-to-lead scripts, and closing Kanban boards you can deploy into your CRM today.
             </p>
           </div>
 

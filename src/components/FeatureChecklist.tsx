@@ -41,7 +41,7 @@ export const FEATURES_DATA: Feature[] = [
     category: 'Sales & Pipelines',
     description: 'Visual stages representing buyer/seller status (e.g., Active Listing, Under Contract).',
     ratings: { pipedrive: 10, streak: 9, followupboss: 8 },
-    whyItMatters: 'Enables you to see all active escrows and listing stages at a single glance with zero clicks.'
+    whyItMatters: 'Enables you to see all active closings and listing stages at a single glance with zero clicks.'
   },
   {
     id: 'multiple_pipelines',
@@ -49,15 +49,15 @@ export const FEATURES_DATA: Feature[] = [
     category: 'Sales & Pipelines',
     description: 'Ability to keep separate pipelines for buyers, listings, and rental deals.',
     ratings: { pipedrive: 9, streak: 6, followupboss: 10 },
-    whyItMatters: 'Essential for tracking listings and active buyer escrows separately without mixing cards.'
+    whyItMatters: 'Essential for tracking listings and active buyer closings separately without mixing cards.'
   },
   {
     id: 'custom_property_fields',
     name: 'Custom Property Fields',
     category: 'Sales & Pipelines',
-    description: 'Create custom fields for real estate specs: MLS #, Budget, contingency dates, etc.',
+    description: 'Create custom fields for real estate specs: listing reference, Budget, condition dates, etc.',
     ratings: { pipedrive: 10, streak: 7, followupboss: 10 },
-    whyItMatters: 'Allows you to track appraisal deadlines, commission splits, and earnest money receipts directly.'
+    whyItMatters: 'Allows you to track appraisal deadlines, commission splits, and deposit receipts directly.'
   },
   {
     id: 'required_fields',
@@ -65,7 +65,7 @@ export const FEATURES_DATA: Feature[] = [
     category: 'Sales & Pipelines',
     description: 'Force entry of specific data (e.g., contract price) before moving a card forward.',
     ratings: { pipedrive: 9, streak: 4, followupboss: 8 },
-    whyItMatters: 'Guarantees you never forget to note escrow details or contract deadlines before closing.'
+    whyItMatters: 'Guarantees you never forget to note closing details or contract deadlines before closing.'
   },
 
   // Category 2: Email & Outreach
@@ -109,7 +109,7 @@ export const FEATURES_DATA: Feature[] = [
     category: 'Workflows & Automation',
     description: 'Connect third-party apps and capture real estate leads instantly via automated API webhooks and Zapier.',
     ratings: { pipedrive: 10, streak: 8, followupboss: 10 },
-    whyItMatters: 'Automatically transfers new lead submissions from Facebook, Zillow, or landing pages into your CRM without manual data entry.'
+    whyItMatters: 'Automatically transfers new lead submissions from Facebook, the major portals, or landing pages into your CRM without manual data entry.'
   },
   {
     id: 'lead_routing',
@@ -129,11 +129,11 @@ export const FEATURES_DATA: Feature[] = [
   },
   {
     id: 'compliance_blueprints',
-    name: 'Compliance Escrow Blueprints',
+    name: 'Compliance Closing Blueprints',
     category: 'Workflows & Automation',
     description: 'Rigid, secure step-by-step transaction pipelines to enforce local disclosure laws.',
     ratings: { pipedrive: 4, streak: 2, followupboss: 9 },
-    whyItMatters: 'Acts like a digital escrow manager, protecting you from missing critical regulatory dates.'
+    whyItMatters: 'Acts like a digital closing manager, protecting you from missing critical regulatory dates.'
   },
   {
     id: 'anniversary_triggers',
@@ -211,7 +211,7 @@ export const TECHNICAL_TERMS_GLOSSARY: Record<string, TechnicalTermInfo> = {
   'api_webhooks': {
     term: 'API Webhooks & Zapier Sync',
     shortLabel: 'API Webhooks',
-    definition: 'Real-time HTTP event notifications that push new leads from landing pages, Zillow, or Facebook Ads straight into your CRM instantly without manual entry.',
+    definition: 'Real-time HTTP event notifications that push new leads from landing pages, the major portals, or Facebook Ads straight into your CRM instantly without manual entry.',
     category: 'Workflows & Automation',
     example: 'A buyer fills out a form on your website; webhooks instantly create a new contact card in your CRM in under 1 second.'
   },
@@ -225,7 +225,7 @@ export const TECHNICAL_TERMS_GLOSSARY: Record<string, TechnicalTermInfo> = {
   'kanban_pipeline': {
     term: 'Kanban Drag-and-Drop Pipeline',
     shortLabel: 'Kanban Pipeline',
-    definition: 'A visual card column layout showing active listings and buyer deals across sequential stages (e.g. Showing -> Offer -> Escrow -> Closed).',
+    definition: 'A visual card column layout showing active listings and buyer deals across sequential stages (e.g. Showing -> Offer -> Closing -> Closed).',
     category: 'Sales & Pipelines',
     example: 'Drag a buyer card from "Property Viewing" to "Offer Submitted" with one click.'
   },
@@ -241,12 +241,12 @@ export const TECHNICAL_TERMS_GLOSSARY: Record<string, TechnicalTermInfo> = {
     shortLabel: 'Stage Enforcement',
     definition: 'Strict workflow guardrails requiring specific data fields (like inspection dates or contract price) before a card can be moved to the next stage.',
     category: 'Sales & Pipelines',
-    example: 'Prevents moving a deal to "Under Contract" until earnest money verification is recorded.'
+    example: 'Prevents moving a deal to "Under Contract" until deposit verification is recorded.'
   },
   'compliance_blueprints': {
-    term: 'Compliance Escrow Blueprints',
+    term: 'Compliance Closing Blueprints',
     shortLabel: 'Compliance Blueprints',
-    definition: 'Pre-configured regulatory checklists enforcing state disclosure forms, appraisal contingencies, and audit trails during escrow.',
+    definition: 'Pre-configured regulatory checklists enforcing state disclosure forms, appraisal conditions, and audit trails during closing.',
     category: 'Workflows & Automation',
     example: 'Automatically flags missing lead-based paint disclosures before closing day.'
   },
@@ -262,7 +262,7 @@ export const TECHNICAL_TERMS_GLOSSARY: Record<string, TechnicalTermInfo> = {
     shortLabel: 'Pipedrive (PD)',
     definition: 'Visual sales pipeline CRM known for fast deal card drag-and-drop, custom property fields, and activity automation.',
     category: 'CRM Platform',
-    example: 'Scored 10/10 for visual escrow pipeline management.'
+    example: 'Scored 10/10 for visual closing pipeline management.'
   },
   'st_streak': {
     term: 'Streak CRM (ST)',
@@ -721,7 +721,7 @@ export default function FeatureChecklist({ onNavigateToCRM, reviews }: FeatureCh
                         className="bg-accent/5 border-l-4 border-l-accent p-3.5 rounded-xs text-xs space-y-2 text-primary overflow-hidden font-sans"
                       >
                         <div className="flex items-center gap-1.5 font-bold uppercase tracking-wide text-[10px] text-accent">
-                          <Sparkles className="w-3.5 h-3.5" /> Realtor Impact Value:
+                          <Sparkles className="w-3.5 h-3.5" /> Agent Impact Value:
                         </div>
                         <p className="leading-relaxed font-medium">
                           {feature.whyItMatters}

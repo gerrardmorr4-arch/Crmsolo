@@ -33,7 +33,7 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
   const currentGuide = guides.find(g => g.slug === guideSlug);
 
   const seoTitle = isListView 
-    ? 'Solo Realtor CRM Playbooks & Setup Guides' 
+    ? 'Solo Agent CRM Playbooks & Setup Guides' 
     : currentGuide 
       ? (currentGuide.metaTitle || currentGuide.title)
       : 'CRM Playbooks';
@@ -45,7 +45,7 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
       : 'Step-by-step real estate CRM playbook.';
 
   const seoKeywords = isListView
-    ? ['real estate guides', 'crm setup playbooks', 'realtor workflow blueprint']
+    ? ['real estate guides', 'crm setup playbooks', 'agent workflow blueprint']
     : currentGuide
       ? [currentGuide.category.toLowerCase(), `${currentGuide.slug.replace(/-/g, ' ')}`, 'crm playbook', 'real estate crm guide']
       : ['real estate guides'];
@@ -85,7 +85,7 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
         {/* Guides List Header */}
         <div className="text-center space-y-3 max-w-2xl mx-auto">
           <h1 className="text-3xl md:text-5xl font-extrabold text-primary font-display tracking-tight">
-            Solo Realtor Guides &amp; Playbooks
+            Solo Agent Guides &amp; Playbooks
           </h1>
           <p className="text-gray-500 text-sm">
             Practical strategies, system setup blueprints, and worksheets written for busy solo brokers. No marketing fluff.

@@ -314,7 +314,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
                     <Sparkles className="w-3.5 h-3.5 text-accent" /> Essential Solo Tools
                   </div>
                   <p className="text-[11px] text-gray-600 leading-relaxed font-medium">
-                    Simulate net commission growth with our free 2026 Solo Realtor ROI Calculator.
+                    Simulate net commission growth with our free 2026 Solo Agent ROI Calculator.
                   </p>
                   <button
                     onClick={() => {
@@ -486,7 +486,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
               CRM<span className="text-accent">SOLO</span>
             </span>
             <p className="leading-relaxed">
-              CRMsolo is an independent resource focused on solo real estate practitioners. Founded by Eugene Boniface, we build tools, review CRM software packages, and write guides that help realtors cut through marketing jargon.
+              CRMsolo is an independent resource focused on solo real estate practitioners. Founded by Eugene Boniface, we build tools, review CRM software packages, and write guides that help agents cut through marketing jargon.
             </p>
             <div className="pt-2 text-[11px] text-gray-400 space-y-1 font-mono">
               <p>📍 Avenida de Esteiro 161 Ferrol, Spain</p>

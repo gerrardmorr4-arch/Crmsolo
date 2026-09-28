@@ -40,7 +40,7 @@ export default function BlueprintsPage({ blueprintSlug, onNavigate }: Blueprints
   );
 
   // Filter blueprints
-  const categories = ['All', 'Speed-to-Lead', 'Listing & Escrow', 'Pinterest & Social', 'Client Retention', 'Lead Generation'];
+  const categories = ['All', 'Speed-to-Lead', 'Listing & Closing', 'Pinterest & Social', 'Client Retention', 'Lead Generation'];
 
   const filteredBlueprints = useMemo(() => {
     if (selectedCategory === 'All') return automationBlueprints;
@@ -60,8 +60,8 @@ export default function BlueprintsPage({ blueprintSlug, onNavigate }: Blueprints
       : 'Real Estate CRM Automation Blueprints (2026)',
     description: blueprintSlug && activeBlueprint
       ? activeBlueprint.tagline
-      : 'Actionable, step-by-step CRM automation workflows, speed-to-lead scripts, Kanban escrow tracking, and Pinterest traffic blueprints for solo realtors.',
-    keywords: ['real estate crm blueprint', 'speed to lead automation', 'realtor workflow templates', 'pipedrive blueprint', 'follow up boss scripts', 'real estate lead funnel'],
+      : 'Actionable, step-by-step CRM automation workflows, speed-to-lead scripts, Kanban closing tracking, and Pinterest traffic blueprints for solo agents.',
+    keywords: ['real estate crm blueprint', 'speed to lead automation', 'agent workflow templates', 'pipedrive blueprint', 'follow up boss scripts', 'real estate lead funnel'],
     ogType: 'article'
   }, [activeBlueprintId, blueprintSlug]);
 
@@ -122,7 +122,7 @@ export default function BlueprintsPage({ blueprintSlug, onNavigate }: Blueprints
             Real Estate CRM <span className="text-accent">Automation Blueprints</span>
           </h1>
           <p className="text-gray-300 text-sm md:text-base leading-relaxed">
-            Eliminate lead leakage and save 10+ hours every week. Plug these battle-tested Zapier webhooks, 2-minute speed-to-lead scripts, escrow Kanban boards, and Pinterest traffic funnels directly into your CRM.
+            Eliminate lead leakage and save 10+ hours every week. Plug these battle-tested Zapier webhooks, 2-minute speed-to-lead scripts, closing Kanban boards, and Pinterest traffic funnels directly into your CRM.
           </p>
         </div>
       </div>

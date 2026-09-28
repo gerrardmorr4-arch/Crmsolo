@@ -15,7 +15,7 @@ export const initialBacklinks: BacklinkPartner[] = [
     id: 'pipedrive-official',
     crmName: 'Pipedrive CRM Portal',
     portalUrl: 'https://www.pipedrive.com/taf/WHY0MH',
-    anchorText: 'Pipedrive for Realtors & Solo Agents',
+    anchorText: 'Pipedrive for Agents & Solo Agents',
     category: 'Pipeline Management',
     status: 'Active',
     dateAdded: '2026-07-01'

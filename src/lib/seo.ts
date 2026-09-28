@@ -153,7 +153,7 @@ export function updateMetaTags(options: SEOOptions) {
     setMetaTag('name', 'keywords', keywords.join(', '));
   } else {
     // Fallback standard real estate SEO keywords
-    setMetaTag('name', 'keywords', 'real estate crm, solo agent crm, pipedrive, streak, follow up boss, lead management, realtor productivity, local seo');
+    setMetaTag('name', 'keywords', 'real estate crm, solo agent crm, pipedrive, streak, follow up boss, lead management, agent productivity, local seo');
   }
 
   if (author) {

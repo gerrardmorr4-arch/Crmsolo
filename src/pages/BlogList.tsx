@@ -78,7 +78,7 @@ export default function BlogList({ blogSlug, blogs, onNavigate }: BlogListProps)
             Real Estate CRM &amp; Automation Blog for Solo Agents
           </h1>
           <p className="text-gray-600 text-base max-w-2xl mx-auto leading-relaxed">
-            Hands-on CRM workflows, pipeline setup, lead automation, and cost breakdowns for independent realtors working in Pipedrive, Streak, and Follow Up Boss.
+            Hands-on CRM workflows, pipeline setup, lead automation, and cost breakdowns for independent agents working in Pipedrive, Streak, and Follow Up Boss.
           </p>
         </div>
 
