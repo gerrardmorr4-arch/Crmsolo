@@ -62,7 +62,7 @@ const ROUTE_FALLBACKS: RouteFallback[] = [
   {
     match: p => p === '/reviews',
     title: 'Tested CRM Reviews for Solo Realtors',
-    description: 'Read our honest verdicts and hands-on reviews of Pipedrive, Streak, Follow Up Boss, Copper, and Wise Agent.',
+    description: 'Read our honest verdicts and detailed reviews of Pipedrive, Streak, Follow Up Boss, Copper, and Wise Agent.',
     keywords: ['tested crm reviews', 'honest crm review', 'pipedrive review', 'streak review', 'follow up boss review']
   },
   {

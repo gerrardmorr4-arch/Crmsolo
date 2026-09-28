@@ -112,7 +112,7 @@ export default function ReviewDetail({ crm, onNavigate }: ReviewDetailProps) {
               <Award className="w-3.5 h-3.5 text-accent" /> Best for: {crm.bestFor}
             </span>
             <span className="text-xs font-bold text-gray-500 px-3 py-1 bg-gray-100 rounded-full flex items-center gap-1 border border-gray-200">
-              <Shield className="w-3.5 h-3.5 text-success" /> Independently Verified
+              <Shield className="w-3.5 h-3.5 text-success" /> Editorial Assessment
             </span>
             <button
               onClick={() => setIsPrintPreviewOpen(true)}
