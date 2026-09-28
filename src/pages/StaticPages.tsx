@@ -113,7 +113,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
               <div className="space-y-1 text-center md:text-left">
                 <h4 className="font-bold text-primary font-display text-base">Eugene Boniface, Founder &amp; Chief Analyst</h4>
                 <p className="text-xs text-gray-600 leading-relaxed">
-                  Eugene Boniface is an independent real estate technology practitioner and founder of CRMsolo. Based in Ferrol, Spain, Eugene tests sales management tools, CRM automation platforms, and lead pipeline software to help solo brokers streamline daily workflows without corporate clutter.
+                  Eugene Boniface is an independent real estate technology practitioner and founder of CRMsolo. Based in Ferrol, Spain, Eugene reviews sales management tools, CRM automation platforms, and lead pipeline software to help solo brokers streamline daily workflows without corporate clutter.
                 </p>
                 <div className="pt-2 text-[11px] text-gray-500 font-mono flex flex-wrap justify-center md:justify-start gap-4">
                   <span>📍 Avenida de Esteiro 161, Ferrol, Spain</span>
@@ -208,7 +208,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
               <span className="text-4xl">📬</span>
               <h3 className="text-lg font-bold text-primary font-display">Message Sent Successfully!</h3>
               <p className="text-xs text-gray-600 max-w-sm mx-auto">
-                Thank you for reaching out. Sarah reads every email and will get back to your broker address within 24 hours.
+                Thank you for reaching out. Eugene reads every email and will get back to your broker address within 24 hours.
               </p>
               <button 
                 onClick={() => setFormSubmitted(false)}
@@ -326,7 +326,7 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
 
           <h3 className="font-display font-bold text-primary text-base mt-4">Our Affiliate Partnerships</h3>
           <p>
-            CRMsolo operates as an independent, authority review platform. To fund our research, server operations, and free diagnostic tools, we participate in several software referral programs:
+            CRMsolo operates as an independent editorial review platform. To fund our research, server operations, and free diagnostic tools, we participate in several software referral programs:
           </p>
 
           <ul className="list-disc pl-5 space-y-1.5 text-xs text-gray-500">
