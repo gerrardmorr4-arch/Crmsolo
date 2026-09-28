@@ -35,7 +35,7 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
   const seoTitle = isListView 
     ? 'Solo Realtor CRM Playbooks & Setup Guides' 
     : currentGuide 
-      ? currentGuide.title 
+      ? (currentGuide.metaTitle || currentGuide.title)
       : 'CRM Playbooks';
 
   const seoDescription = isListView 
@@ -138,7 +138,7 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
                     {guide.readTime}
                   </span>
                 </div>
-                <h3 className="text-xl font-bold text-primary font-display leading-snug">
+                <h2 className="text-xl font-bold text-primary font-display leading-snug">
                   <NavLink
                     to={`/guides/${guide.slug}`}
                     onNavigate={onNavigate}
@@ -146,7 +146,7 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
                   >
                     {guide.title}
                   </NavLink>
-                </h3>
+                </h2>
                 <p className="text-xs text-gray-500 leading-relaxed line-clamp-3">
                   {guide.excerpt}
                 </p>
@@ -278,9 +278,9 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
       {/* Downloads Panel & CRM Price Overview */}
       <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-xs grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
         <div>
-          <h3 className="text-sm font-bold text-primary font-display uppercase tracking-wider mb-1 flex items-center gap-1.5">
+          <h2 className="text-sm font-bold text-primary font-display uppercase tracking-wider mb-1 flex items-center gap-1.5">
             <Download className="w-4 h-4 text-accent" /> Playbook Downloads
-          </h3>
+          </h2>
           <p className="text-xs text-gray-500 mb-4 leading-normal">
             Download this training guide as a vector-formatted PDF worksheet or clean offline markdown blueprint.
           </p>
@@ -302,9 +302,9 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
         </div>
 
         <div className="bg-gray-50 p-4 rounded-xl border border-gray-100 space-y-3">
-          <h4 className="text-xs font-bold text-primary font-display uppercase tracking-wider flex items-center gap-1.5">
+          <h3 className="text-xs font-bold text-primary font-display uppercase tracking-wider flex items-center gap-1.5">
             <DollarSign className="w-4 h-4 text-accent" /> Active CRM Price Index (2026)
-          </h4>
+          </h3>
           <div className="space-y-2">
             <div className="flex justify-between items-center text-xs border-b border-gray-200/50 pb-1.5">
               <span className="font-semibold text-primary">Pipedrive Essential:</span>

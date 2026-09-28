@@ -56,8 +56,8 @@ export default function BlueprintsPage({ blueprintSlug, onNavigate }: Blueprints
     // The hub (/blueprints, no slug) and its detail pages must not share a
     // title; only a slug-selected blueprint gets the per-item title.
     title: blueprintSlug && activeBlueprint
-      ? `${activeBlueprint.title} (Step-by-Step Blueprint)`
-      : 'Real Estate CRM Automation Blueprints (2026 Free Workflows)',
+      ? (activeBlueprint.metaTitle || activeBlueprint.title)
+      : 'Real Estate CRM Automation Blueprints (2026)',
     description: blueprintSlug && activeBlueprint
       ? activeBlueprint.tagline
       : 'Actionable, step-by-step CRM automation workflows, speed-to-lead scripts, Kanban escrow tracking, and Pinterest traffic blueprints for solo realtors.',
@@ -179,7 +179,7 @@ export default function BlueprintsPage({ blueprintSlug, onNavigate }: Blueprints
                     </span>
                   </div>
 
-                  <h3 className="text-sm font-bold text-primary font-display leading-snug">
+                  <h2 className="text-sm font-bold text-primary font-display leading-snug">
                     <a
                       href={`/blueprints/${bp.slug}`}
                       className="hover:text-accent transition-colors"
@@ -192,7 +192,7 @@ export default function BlueprintsPage({ blueprintSlug, onNavigate }: Blueprints
                     >
                       {bp.title}
                     </a>
-                  </h3>
+                  </h2>
 
                   <p className="text-xs text-gray-500 mt-1 line-clamp-2 leading-relaxed">
                     {bp.tagline}
@@ -216,9 +216,9 @@ export default function BlueprintsPage({ blueprintSlug, onNavigate }: Blueprints
             <div className="w-8 h-8 rounded-lg bg-accent/20 text-accent flex items-center justify-center font-bold">
               $
             </div>
-            <h4 className="text-sm font-black font-display text-white uppercase">
+            <h3 className="text-sm font-black font-display text-white uppercase">
               Want to see your specific dollar savings?
-            </h4>
+            </h3>
             <p className="text-xs text-gray-300 leading-relaxed">
               Use our interactive commission & time-recovery calculator to model your exact deal volume.
             </p>
@@ -326,9 +326,9 @@ export default function BlueprintsPage({ blueprintSlug, onNavigate }: Blueprints
                         <div className="w-7 h-7 rounded-full bg-primary text-accent flex items-center justify-center font-mono font-bold text-xs shrink-0 shadow-xs">
                           {step.stepNumber}
                         </div>
-                        <h4 className="text-sm font-bold text-primary font-display">
+                        <h3 className="text-sm font-bold text-primary font-display">
                           {step.title}
-                        </h4>
+                        </h3>
                       </div>
                       <span className="text-[11px] font-mono font-semibold text-gray-500 bg-white px-2 py-0.5 rounded border border-gray-200 shrink-0">
                         {step.timeframe}

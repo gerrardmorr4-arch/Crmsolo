@@ -53,6 +53,8 @@ export interface CRMComparison {
   overallWinnerId: string;
   isPillarHub?: boolean;
   title: string;
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
 export interface CRMGuide {
@@ -68,6 +70,8 @@ export interface CRMGuide {
   budgetTier: 'free' | 'budget' | 'low' | 'mid' | 'premium' | 'all';
   primaryNeed: 'lead-gen' | 'follow-up' | 'transactions' | 'mobile' | 'crm-selection' | 'marketing' | 'productivity' | 'all';
   lastUpdated: string;
+  metaTitle?: string;
+  metaDescription?: string;
 }
 
 export interface BlogPost {

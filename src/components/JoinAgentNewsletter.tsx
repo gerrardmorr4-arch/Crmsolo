@@ -101,7 +101,7 @@ export default function JoinAgentNewsletter({ className = '', source = 'Footer N
               <Gift className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-white">Exclusive Discounts</h4>
+              <h3 className="text-xs font-bold text-white">Exclusive Discounts</h3>
               <p className="text-[11px] text-slate-400">Save up to 30% on top CRMs</p>
             </div>
           </div>
@@ -111,7 +111,7 @@ export default function JoinAgentNewsletter({ className = '', source = 'Footer N
               <Award className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-white">Solo Workflows</h4>
+              <h3 className="text-xs font-bold text-white">Solo Workflows</h3>
               <p className="text-[11px] text-slate-400">Real stage templates for solo brokers</p>
             </div>
           </div>
@@ -121,7 +121,7 @@ export default function JoinAgentNewsletter({ className = '', source = 'Footer N
               <ShieldCheck className="w-4 h-4" />
             </div>
             <div>
-              <h4 className="text-xs font-bold text-white">Zero Spam Guarantee</h4>
+              <h3 className="text-xs font-bold text-white">Zero Spam Guarantee</h3>
               <p className="text-[11px] text-slate-400">1-click unsubscribe anytime</p>
             </div>
           </div>

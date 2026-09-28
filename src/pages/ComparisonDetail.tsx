@@ -17,15 +17,15 @@ export default function ComparisonDetail({ comparisonSlug, comparisons, reviews,
   const currentComp = comparisons.find(c => c.slug === comparisonSlug);
 
   const seoTitle = isPillarPage 
-    ? 'Best CRM for Solo Real Estate Agents (Pipedrive vs Streak vs Follow Up Boss)' 
+    ? 'Best CRM for Solo Real Estate Agents (2026)'
     : currentComp 
-      ? currentComp.title 
+      ? (currentComp.metaTitle || currentComp.title)
       : 'CRM Comparison Hub';
 
   const seoDescription = isPillarPage 
     ? 'Compare the only 3 platforms that deserve your attention as a solo agent: Pipedrive, Streak, and Follow Up Boss. Head-to-head scorecards and verdicts.' 
     : currentComp 
-      ? currentComp.verdictSummary 
+      ? (currentComp.metaDescription || currentComp.verdictSummary)
       : 'In-depth real estate CRM comparison matrix.';
 
   const seoKeywords = isPillarPage
@@ -154,7 +154,7 @@ export default function ComparisonDetail({ comparisonSlug, comparisons, reviews,
               <span className="text-[10px] bg-blue-50 text-blue-600 font-bold px-2 py-0.5 rounded-full uppercase">Editor's Pick</span>
               <span className="text-sm font-mono font-bold text-gray-500">9.2 / 10</span>
             </div>
-            <h3 className="font-display font-bold text-lg text-primary">Pipedrive CRM</h3>
+            <h2 className="font-display font-bold text-lg text-primary">Pipedrive CRM</h2>
             <p className="text-xs text-gray-500 leading-relaxed">
               Best for agents who want simple, beautiful visual pipelines to manage listing transactions with zero configurations.
             </p>
@@ -168,7 +168,7 @@ export default function ComparisonDetail({ comparisonSlug, comparisons, reviews,
               <span className="text-[10px] bg-orange-50 text-orange-600 font-bold px-2 py-0.5 rounded-full uppercase">Best Budget/Free</span>
               <span className="text-sm font-mono font-bold text-gray-500">9.0 / 10</span>
             </div>
-            <h3 className="font-display font-bold text-lg text-primary">Streak CRM</h3>
+            <h2 className="font-display font-bold text-lg text-primary">Streak CRM</h2>
             <p className="text-xs text-gray-500 leading-relaxed">
               Best for newly licensed agents who want elite email tracking, pipelines built inside Gmail, and zero subscription overhead.
             </p>
@@ -182,7 +182,7 @@ export default function ComparisonDetail({ comparisonSlug, comparisons, reviews,
               <span className="text-[10px] bg-yellow-50 text-yellow-600 font-bold px-2 py-0.5 rounded-full uppercase">Best for Leads</span>
               <span className="text-sm font-mono font-bold text-gray-500">8.8 / 10</span>
             </div>
-            <h3 className="font-display font-bold text-lg text-primary">Follow Up Boss</h3>
+            <h2 className="font-display font-bold text-lg text-primary">Follow Up Boss</h2>
             <p className="text-xs text-gray-500 leading-relaxed">
               Best for tech-savvy brokers who want elite call/text dialers, fast contact lookup, and professional lead source integrations.
             </p>
@@ -238,7 +238,7 @@ export default function ComparisonDetail({ comparisonSlug, comparisons, reviews,
             {pillarCriteria.map((crit, idx) => (
               <div key={idx} className="bg-white p-5 rounded-2xl border border-gray-100 shadow-xs space-y-3">
                 <div className="flex justify-between items-center pb-2 border-b border-gray-50">
-                  <h4 className="font-bold text-sm text-primary">{crit.category}</h4>
+                  <h3 className="font-bold text-sm text-primary">{crit.category}</h3>
                   <span className="text-[10px] bg-accent/25 text-primary font-bold px-2 py-0.5 rounded">
                     Winner: {crit.winner}
                   </span>
@@ -397,7 +397,7 @@ export default function ComparisonDetail({ comparisonSlug, comparisons, reviews,
             return (
               <div key={category} className="bg-white p-5 rounded-2xl border border-gray-100 shadow-xs space-y-3">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 pb-2 border-b border-gray-50">
-                  <h4 className="font-bold text-primary font-display">{category}</h4>
+                  <h3 className="font-bold text-primary font-display">{category}</h3>
                   <span className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1 ${
                     isDraw ? 'bg-gray-100 text-gray-600' : 'bg-success/10 text-success border border-success/20'
                   }`}>

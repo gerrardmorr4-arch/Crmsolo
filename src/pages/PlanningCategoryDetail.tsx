@@ -38,7 +38,7 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
 
   // Dynamic SEO & GEO
   useSEO({
-    title: `Best ${category.name} Software (${category.toolCount}) - 2026 Reviews & Pricing`,
+    title: `Best ${category.name} Software (${category.toolCount}) - 2026`,
     description: `Compare ${category.name} platforms with ${category.toolCount} tools reviewed. Pricing, deployment, compliance notes (${category.geoFocus.regions.join(', ')}), and features.`,
     keywords: [
       category.name.toLowerCase(),
@@ -409,9 +409,9 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
                 <div className="space-y-2.5">
                   <div className="flex items-start justify-between gap-2">
                     <div>
-                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
+                      <h3 className="text-sm font-bold text-slate-900 group-hover:text-emerald-600 transition-colors">
                         {tool.name}
-                      </h4>
+                      </h3>
                       <div className="flex items-center gap-2 mt-0.5">
                         <span className="flex items-center gap-1 text-[11px] font-bold text-amber-600">
                           <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
@@ -492,7 +492,7 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
                   {idx + 1}
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900 mb-0.5">{criterion}</h4>
+                  <h3 className="text-xs font-bold text-slate-900 mb-0.5">{criterion}</h3>
                   <p className="text-[11px] text-slate-500">
                     Assessed for high-concurrency workflows, user permission tiers, and automated notification triggers.
                   </p>
@@ -513,27 +513,27 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs leading-relaxed text-emerald-100">
             <div className="space-y-2">
-              <h4 className="font-bold text-white uppercase font-mono tracking-wider">
+              <h3 className="font-bold text-white uppercase font-mono tracking-wider">
                 1. Supported Jurisdictions
-              </h4>
+              </h3>
               <p>
                 {category.geoFocus.regions.join(', ')} data centers ensuring low-latency database queries and local residency compliance.
               </p>
             </div>
 
             <div className="space-y-2">
-              <h4 className="font-bold text-white uppercase font-mono tracking-wider">
+              <h3 className="font-bold text-white uppercase font-mono tracking-wider">
                 2. Security Standards
-              </h4>
+              </h3>
               <p>
                 Enforces {category.geoFocus.topComplianceStandards.join(', ')} with end-to-end encryption at rest (AES-256) and in transit (TLS 1.3).
               </p>
             </div>
 
             <div className="space-y-2">
-              <h4 className="font-bold text-white uppercase font-mono tracking-wider">
+              <h3 className="font-bold text-white uppercase font-mono tracking-wider">
                 3. Currency Billing
-              </h4>
+              </h3>
               <p>
                 {category.geoFocus.typicalCurrencySupport.join(' • ')} localized billing without non-domestic exchange fee surcharges.
               </p>

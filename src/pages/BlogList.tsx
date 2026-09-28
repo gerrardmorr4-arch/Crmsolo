@@ -38,7 +38,7 @@ export default function BlogList({ blogSlug, blogs, onNavigate }: BlogListProps)
   }, [blogs, selectedCategory, searchQuery]);
 
   const seoTitle = isListView 
-    ? 'Planning Software & Productivity Blog: In-Depth Reviews & Architecture Guides' 
+    ? 'Planning Software & PM Blog: Reviews & Guides' 
     : currentPost 
       ? (currentPost.metaTitle || currentPost.title)
       : 'Software & Strategy Blog';
@@ -253,9 +253,9 @@ export default function BlogList({ blogSlug, blogs, onNavigate }: BlogListProps)
       {currentPost.featuredTools && currentPost.featuredTools.length > 0 && (
         <section className="bg-slate-900 text-white p-5 rounded-2xl shadow-sm space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono">
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-300 font-mono">
               Featured Platforms Evaluated in this Article:
-            </h3>
+            </h2>
             <span className="text-[10px] text-slate-400 font-mono">Direct Official Portals</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

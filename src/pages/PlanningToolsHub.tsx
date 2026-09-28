@@ -56,7 +56,7 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
 
   // SEO & GEO Optimization
   useSEO({
-    title: `Best Planning Tools & Project Management Software Directory (${totalTools.toLocaleString()} Tools Indexed)`,
+    title: `Best Planning Tools & PM Software Directory (2026)`,
     description: `Compare ${totalTools} closely reviewed planning tools across 22 categories, from Project Management and Time Tracking to Agile and Gantt Charts. Compare pricing, deployment model, compliance posture (US, UK, EU, CA, AU), and ratings.`,
     keywords: [
       'planning tools',
@@ -552,28 +552,28 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4 border-t border-slate-100">
               <div>
-                <h4 className="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <h3 className="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                   1. Execution Precision
-                </h4>
+                </h3>
                 <p className="text-xs text-slate-600 leading-relaxed">
                   We review each tool's documented support for methods such as Critical Path Method (CPM), Earned Value Management (EVM), and finite machine scheduling.
                 </p>
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <h3 className="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2">
                   <Globe2 className="w-4 h-4 text-cyan-600" />
                   2. Regional GEO Compliance
-                </h4>
+                </h3>
                 <p className="text-xs text-slate-600 leading-relaxed">
                   Every category reviews data residency options, GDPR/UK DPA sovereignty, and multi-currency billing in USD, EUR, GBP, CAD, and AUD.
                 </p>
               </div>
               <div>
-                <h4 className="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <h3 className="text-sm font-bold text-slate-900 mb-2 flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-purple-600" />
                   3. Total Cost & Lock-in
-                </h4>
+                </h3>
                 <p className="text-xs text-slate-600 leading-relaxed">
                   We analyze hidden per-seat licensing tiers, guest account policies, and data export portability so buyers avoid vendor lock-in.
                 </p>

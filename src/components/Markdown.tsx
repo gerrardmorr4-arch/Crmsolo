@@ -16,25 +16,29 @@ export default function Markdown({ content }: MarkdownProps) {
         const trimmed = block.trim();
         if (!trimmed) return null;
 
-        // Header h3
+        // Header h2. Content authors use `###` for a post's top-level sections,
+        // so it maps to h2 to sit directly under the page h1 and avoid a
+        // heading-level skip. `####` maps to h3 for nested subsections. The
+        // className is kept from the previous mapping so the visual weight is
+        // unchanged; only the semantics move.
         if (trimmed.startsWith('### ')) {
           const text = trimmed.replace('### ', '');
           const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
           return (
-            <h3 id={id} key={blockIdx} className="font-display font-bold text-xl text-primary mt-6 mb-2 scroll-mt-28">
+            <h2 id={id} key={blockIdx} className="font-display font-bold text-xl text-primary mt-6 mb-2 scroll-mt-28">
               {text}
-            </h3>
+            </h2>
           );
         }
 
-        // Header h4
+        // Header h3
         if (trimmed.startsWith('#### ')) {
           const text = trimmed.replace('#### ', '');
           const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
           return (
-            <h4 id={id} key={blockIdx} className="font-display font-semibold text-lg text-primary mt-4 mb-2 scroll-mt-28">
+            <h3 id={id} key={blockIdx} className="font-display font-semibold text-lg text-primary mt-4 mb-2 scroll-mt-28">
               {text}
-            </h4>
+            </h3>
           );
         }
 
