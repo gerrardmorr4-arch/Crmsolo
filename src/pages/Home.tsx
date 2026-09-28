@@ -712,7 +712,7 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
               The CRMsolo Review Methodology
             </h3>
             <p className="text-gray-600 text-sm leading-relaxed">
-              We do not copy-paste features or compile reviews with AI generators. Our team creates real test accounts and configures active listing pipelines from an independent solo agent perspective. We score systems based on mobile speed, easy custom property fields, email sync reliability, and cost-per-feature value.
+              We do not copy-paste features or compile reviews with AI generators. We assess each system from a solo agent perspective, working from vendor documentation, published pricing, and hands-on use where we have it. We score systems based on mobile speed, easy custom property fields, email sync reliability, and cost-per-feature value.
             </p>
             <div className="flex gap-6 pt-2">
               <button

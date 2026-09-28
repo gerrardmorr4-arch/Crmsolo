@@ -486,7 +486,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
               CRM<span className="text-accent">SOLO</span>
             </span>
             <p className="leading-relaxed">
-              CRMsolo is the premier independent resource focused purely on solo real estate practitioners. Founded by Eugene Boniface, we build tools, review CRM software packages, and write guides that help realtors cut through marketing jargon.
+              CRMsolo is an independent resource focused on solo real estate practitioners. Founded by Eugene Boniface, we build tools, review CRM software packages, and write guides that help realtors cut through marketing jargon.
             </p>
             <div className="pt-2 text-[11px] text-gray-400 space-y-1 font-mono">
               <p>📍 Avenida de Esteiro 161 Ferrol, Spain</p>

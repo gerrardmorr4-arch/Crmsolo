@@ -33,8 +33,6 @@ export interface CRMReview {
   pricingModel?: 'free-tier' | 'free-trial' | 'paid-subscription';
   startingPrice?: number;
   freeTrialDays?: number;
-  recommendationRate?: number; // e.g. 96 for 96%
-  userRatingCount?: number;
   featuresList?: string[];
   deployments?: string[];
   targetAgents?: string[];

@@ -147,8 +147,6 @@ export function getReviews(): CRMReview[] {
         categoryBadge: reviews[idx].categoryBadge || initRev.categoryBadge,
         pricingModel: reviews[idx].pricingModel || initRev.pricingModel,
         startingPrice: reviews[idx].startingPrice ?? initRev.startingPrice,
-        recommendationRate: reviews[idx].recommendationRate ?? initRev.recommendationRate,
-        userRatingCount: reviews[idx].userRatingCount ?? initRev.userRatingCount
       };
     }
   }
