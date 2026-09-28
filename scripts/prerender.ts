@@ -18,7 +18,7 @@ import { JSDOM } from 'jsdom';
 import { initialReviews, initialComparisons, initialGuides, initialBlogPosts } from '../src/data/initialData';
 import { PLANNING_BLOG_ARTICLES } from '../src/data/planningBlogArticles';
 import { automationBlueprints } from '../src/data/blueprintsData';
-import { PLANNING_CATEGORIES } from '../src/data/planningToolsData';
+import { PLANNING_CATEGORIES, PLANNING_SLUG_ALIASES } from '../src/data/planningToolsData';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = path.join(ROOT, 'dist');
@@ -157,6 +157,13 @@ function collectAliasRoutes(): RouteEntry[] {
   initialGuides.forEach(g => {
     aliases.push({ path: `/guide/${g.slug}`, canonicalPath: `/guides/${g.slug}`, noindex: false });
   });
+  for (const [retired, canonical] of Object.entries(PLANNING_SLUG_ALIASES)) {
+    aliases.push({
+      path: `/planning-tools/${retired}`,
+      canonicalPath: `/planning-tools/${canonical}`,
+      noindex: false
+    });
+  }
   return aliases;
 }
 

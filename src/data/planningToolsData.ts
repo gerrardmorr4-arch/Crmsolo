@@ -769,65 +769,6 @@ const PLANNING_CATEGORY_DEFS: Omit<PlanningCategory, 'toolCount'>[] = [
     ]
   },
   {
-    id: 'project-planning',
-    slug: 'project-planning',
-    name: 'Project Planning',
-    tagline: 'Work Breakdown Structures (WBS), resource capacity forecasting, and scope baseline modeling.',
-    description: 'Index of 2 Project Planning software tools. Built for program managers, engineering directors, and project directors constructing Work Breakdown Structures (WBS), risk registers, and scope baselines before execution starts.',
-    evaluationCriteria: [
-      'Hierarchical Work Breakdown Structure (WBS) leveling',
-      'Top-down vs. bottom-up resource capacity estimation',
-      'Risk matrix scoring and mitigation contingency logs',
-      'What-if budget and schedule scenario simulation',
-      'Project charter and governance approval sign-offs'
-    ],
-    marketOverview: 'Our Project Planning review covers a small set of tools focused on the pre-execution phase of capital investments, used in government contracts, infrastructure megaprojects, and enterprise ERP deployments.',
-    geoFocus: {
-      regions: ['North America', 'United Kingdom', 'European Union', 'Australia', 'Middle East'],
-      topComplianceStandards: ['PMI PMBOK Standards', 'PRINCE2 Methodology', 'SOC 2', 'ISO 21500'],
-      typicalCurrencySupport: ['USD ($)', 'EUR (€)', 'GBP (£)', 'AUD ($)', 'CAD ($)'],
-      regionalDeploymentNotes: 'Enterprise planning systems support multi-calendar project baselines incorporating public holidays and union shifts across 50+ countries.'
-    },
-    topTools: [
-      {
-        name: 'Smartsheet Project Planner',
-        rating: 4.8,
-        pricingStarting: '$7 / user / month',
-        bestFor: 'Enterprise WBS planning, automated status approvals, and executive roll-ups',
-        websiteUrl: 'https://www.smartsheet.com',
-        trialUrl: 'https://www.smartsheet.com/try-it',
-        featuredBadge: 'WBS & Grid Leader',
-        keyFeatures: ['WBS multi-tier hierarchy', 'Automated approval request forms', 'Resource capacity heatmaps', 'Control Center for multi-project blueprints'],
-        pros: ['Handles thousands of rows with instant recalculation', 'Pre-built PMBOK and agile project charters', 'Enterprise-grade permission controls'],
-        cons: ['Requires training to master complex cross-sheet formulas'],
-        geoCompliance: ['SOC 2 Type II', 'ISO 27001', 'EU / GDPR compliant']
-      },
-      {
-        name: 'Microsoft Project & Planner',
-        rating: 4.6,
-        pricingStarting: '$10 / user / month (Project Plan 1)',
-        bestFor: 'Organizations heavily invested in Microsoft 365, Power BI, and Azure ecosystem',
-        websiteUrl: 'https://www.microsoft.com/en-us/microsoft-365/project/project-management-software',
-        trialUrl: 'https://www.microsoft.com/en-us/microsoft-365/project/compare-microsoft-project-management-software',
-        featuredBadge: 'Microsoft Ecosystem Native',
-        keyFeatures: ['Deep Teams & Power BI integration', 'Resource leveling engine', 'Co-authoring project plans', 'Interactive Gantt and grid views'],
-        pros: ['Native integration with Microsoft 365 security & Active Directory', 'Powerful resource leveling logic', 'Trusted by government and enterprise PMOs'],
-        cons: ['Modern web version lacks some legacy desktop Project features', 'Steeper pricing for Project Plan 3/5'],
-        geoCompliance: ['FedRAMP High', 'HIPAA', 'SOC 1/2/3', 'EU / GDPR Sovereign']
-      }
-    ],
-    faqs: [
-      {
-        question: 'What is a Work Breakdown Structure (WBS) in project planning software?',
-        answer: 'A WBS decomposes a massive project into smaller, manageable deliverables and work packages, establishing the scope hierarchy before tasks, budgets, and milestones are assigned.'
-      }
-    ],
-    keyBuyerTakeaways: [
-      'Ensure the planning software allows saving and locking baseline snapshots to track project schedule drift over time.',
-      'Check if the tool supports both Agile backlogs and traditional PMBOK/PRINCE2 stage-gate governance.'
-    ]
-  },
-  {
     id: 'project-portfolio-management',
     slug: 'project-portfolio-management',
     name: 'Project Portfolio Management (PPM)',
@@ -887,65 +828,6 @@ const PLANNING_CATEGORY_DEFS: Omit<PlanningCategory, 'toolCount'>[] = [
     ]
   },
   {
-    id: 'project-tracking',
-    slug: 'project-tracking',
-    name: 'Project Tracking',
-    tagline: 'Deliverable tracking, milestone alerts, status health indicators, and variance monitoring.',
-    description: 'Directory of 2 Project Tracking tools. Built for operations managers, client success teams, and real estate coordinators needing real-time visual progress monitoring and milestone status updates.',
-    evaluationCriteria: [
-      'Real-time deliverable status tracking (On Track, At Risk, Off Track)',
-      'Automated milestone slippage notifications and escalation triggers',
-      'Client-facing progress portals with custom privacy views',
-      'Time-to-completion burn-up metrics and variance calculation',
-      'Mobile status updates with photo attachments and field notes'
-    ],
-    marketOverview: 'Project Tracking platforms bridge high-level project goals with daily tactical execution, adopted by marketing agencies, real estate transaction teams, and professional service shops. Our review covers a small representative set.',
-    geoFocus: {
-      regions: ['Global (Americas, Europe, UK, Australia, Asia)'],
-      topComplianceStandards: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR / UK DPA', 'CCPA'],
-      typicalCurrencySupport: ['USD ($)', 'EUR (€)', 'GBP (£)', 'CAD ($)', 'AUD ($)'],
-      regionalDeploymentNotes: 'Supports push notification delivery across iOS and Android with localized time-zone scheduling for international project teams.'
-    },
-    topTools: [
-      {
-        name: 'Asana Project Health Tracking',
-        rating: 4.8,
-        pricingStarting: '$10.99 / user / month',
-        bestFor: 'Cross-functional teams requiring visual status dashboards and automated progress updates',
-        websiteUrl: 'https://asana.com',
-        trialUrl: 'https://asana.com/create-account',
-        featuredBadge: 'Best Status Dashboard UX',
-        keyFeatures: ['Project Status health reports (On Track, At Risk, Blocked)', 'Automated milestone progress summaries', 'Custom executive portfolios', 'Workload tracking'],
-        pros: ['One-click executive status report generator saves hours every Friday', 'Clear visual milestone indicators', 'Intuitive interface encourages daily team check-ins'],
-        cons: ['Advanced portfolio views require Business/Enterprise plans'],
-        geoCompliance: ['US / SOC 2 Type II', 'ISO 27001', 'EU / GDPR Data Centers']
-      },
-      {
-        name: 'Wrike Project Progress Tracker',
-        rating: 4.7,
-        pricingStarting: '$9.80 / user / month',
-        bestFor: 'Operations departments managing complex multi-stage deliverable schedules',
-        websiteUrl: 'https://www.wrike.com',
-        trialUrl: 'https://www.wrike.com/free-trial/',
-        featuredBadge: 'Deep Audit Variance Tracking',
-        keyFeatures: ['Interactive project progress percentage calculations', 'Variance tracking against original baselines', 'Custom dashboard widgets', 'Automated email digests'],
-        pros: ['Calculates exact percentage completion based on completed subtasks and effort', 'Detailed audit logs track who changed dates and when', 'Great custom dashboards'],
-        cons: ['Interface can feel dense for casual users'],
-        geoCompliance: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR']
-      }
-    ],
-    faqs: [
-      {
-        question: 'How do automated project status reports save team time?',
-        answer: 'Instead of spending 3–5 hours manually assembling PowerPoint slides, project tracking tools pull live task completion data, milestone dates, and blocker logs into a formatted executive summary in one click.'
-      }
-    ],
-    keyBuyerTakeaways: [
-      'Prioritize platforms with automated reminder pings to task owners before milestones become overdue.',
-      'Check for shareable read-only dashboard links for external clients and senior executives.'
-    ]
-  },
-  {
     id: 'requirements-management',
     slug: 'requirements-management',
     name: 'Requirements Management',
@@ -1002,65 +884,6 @@ const PLANNING_CATEGORY_DEFS: Omit<PlanningCategory, 'toolCount'>[] = [
     keyBuyerTakeaways: [
       'Ensure the software provides tamper-proof audit trails with FDA 21 CFR Part 11 compliant electronic signatures.',
       'Verify two-way sync with your developer tracking system (Jira or Azure DevOps) to keep hardware and software requirements aligned.'
-    ]
-  },
-  {
-    id: 'scrum',
-    slug: 'scrum',
-    name: 'Scrum',
-    tagline: 'Sprint planning, backlog grooming, velocity tracking, and retrospective ceremonies.',
-    description: 'Directory of 2 dedicated Scrum software tools. Built for Scrum Masters, Agile Coaches, and engineering teams practicing the Scrum framework with sprint planning, daily scrums, burndown velocity, and sprint retrospectives.',
-    evaluationCriteria: [
-      'Sprint cadence modeling (1-week, 2-week, 4-week fixed timeboxes)',
-      'Story point estimation (Planning Poker, Fibonacci sequence)',
-      'Sprint burndown & burnup charts with real-time velocity calculations',
-      'Interactive sprint retrospective boards (What went well, What didn’t, Action items)',
-      'Impediment/blocker escalation workflows'
-    ],
-    marketOverview: 'Our Scrum review covers a small set of platforms built around the Scrum guide principles, used across software organizations, fintech, and digital agencies.',
-    geoFocus: {
-      regions: ['North America (US & Canada)', 'United Kingdom', 'European Union (DACH, Nordics, Benelux)', 'India & Singapore', 'Australia'],
-      topComplianceStandards: ['Scrum Alliance / Scrum.org Alignment', 'SOC 2 Type II', 'ISO 27001', 'EU GDPR'],
-      typicalCurrencySupport: ['USD ($)', 'EUR (€)', 'GBP (£)', 'CAD ($)', 'AUD ($)', 'INR (₹)'],
-      regionalDeploymentNotes: 'Optimized for distributed remote Scrum teams with integrated collaborative estimation lobbies and live retrospective sticky notes.'
-    },
-    topTools: [
-      {
-        name: 'Jira Software Scrum Boards',
-        rating: 4.8,
-        pricingStarting: '$7.75 / user / month (Free tier up to 10 users)',
-        bestFor: 'Agile software squads and Scrum teams wanting industry-standard metrics and reports',
-        websiteUrl: 'https://www.atlassian.com/software/jira',
-        trialUrl: 'https://www.atlassian.com/software/jira/try',
-        featuredBadge: '#1 Scrum Software Worldwide',
-        keyFeatures: ['Sprint planning & backlog refinement views', 'Real-time sprint burndown & velocity charts', 'Release hub with automated changelogs', 'Deep GitHub & Bitbucket integration'],
-        pros: ['The global benchmark for Scrum execution', 'Velocity charts predict exact sprint capacity with statistical precision', 'Huge library of Scrum workflow templates'],
-        cons: ['Initial configuration can feel complex for new Scrum Masters'],
-        geoCompliance: ['US / SOC 2', 'EU / GDPR Data Sovereign', 'ISO 27001']
-      },
-      {
-        name: 'Targetprocess by Apptio',
-        rating: 4.7,
-        pricingStarting: 'Custom Enterprise Quote',
-        bestFor: 'Large enterprises implementing Scaled Agile Framework (SAFe), LeSS, and multi-team Scrum',
-        websiteUrl: 'https://www.apptio.com/products/targetprocess/',
-        trialUrl: 'https://www.apptio.com/contact-us/',
-        featuredBadge: 'Scaled Agile (SAFe) Leader',
-        keyFeatures: ['Multi-team Program Increment (PI) planning', 'Custom visual dimension boards', 'Portfolio funding allocation', 'Scrum of Scrums coordination'],
-        pros: ['Exceptional visualization of cross-team Scrum dependencies', 'Native support for SAFe 6.0 and enterprise agile frameworks', 'Deep enterprise financial rollups'],
-        cons: ['Requires enterprise training investment'],
-        geoCompliance: ['SOC 2 Type II', 'ISO 27001', 'EU GDPR']
-      }
-    ],
-    faqs: [
-      {
-        question: 'What is the role of a sprint burndown chart in Scrum software?',
-        answer: 'A sprint burndown chart plots the remaining work (in story points or hours) across the days of the sprint, providing an immediate visual early-warning if the team is falling behind their sprint commitment.'
-      }
-    ],
-    keyBuyerTakeaways: [
-      'Choose software with built-in Planning Poker to streamline sprint backlog estimation during refinement meetings.',
-      'Check for retrospective boards that automatically convert retros action items into sprint backlog tasks for the next sprint.'
     ]
   },
   {
@@ -1254,65 +1077,6 @@ const PLANNING_CATEGORY_DEFS: Omit<PlanningCategory, 'toolCount'>[] = [
     ]
   },
   {
-    id: 'time-and-expenses',
-    slug: 'time-and-expenses',
-    name: 'Time and Expenses',
-    tagline: 'Receipt scanning, mileage tracking, corporate card reconciliation, and billable client approvals.',
-    description: 'Review of 2 Time and Expense management software solutions. Built for mobile workforces, traveling consultants, real estate agents tracking property tour mileage, and accounting teams managing corporate credit cards.',
-    evaluationCriteria: [
-      'AI-powered optical character recognition (OCR) receipt scanning',
-      'Automated GPS mileage tracking and IRS compliant standard rate calculation',
-      'Multi-level approval workflows (Manager -> Finance -> Payroll)',
-      'Direct credit card feed reconciliation (Visa, Mastercard, Amex)',
-      'Client billable expense markup and reimbursement processing'
-    ],
-    marketOverview: 'Time and expense tools streamline travel and billing reconciliation, particularly where tax authorities (IRS, HMRC, ATO, CRA) enforce strict expense deduction substantiation rules. Our review covers a small representative set.',
-    geoFocus: {
-      regions: ['United States & Canada', 'United Kingdom & Ireland', 'European Union', 'Australia & New Zealand'],
-      topComplianceStandards: ['IRS Tax Compliance (US)', 'HMRC Guidelines (UK)', 'ATO Regulations (AU)', 'SOC 1 / SOC 2 Type II', 'PCI-DSS Level 1'],
-      typicalCurrencySupport: ['USD ($)', 'GBP (£)', 'EUR (€)', 'CAD ($)', 'AUD ($)', 'All Global Currencies'],
-      regionalDeploymentNotes: 'Supports automated multi-currency conversion at daily spot rates for international business travel expense claims.'
-    },
-    topTools: [
-      {
-        name: 'Expensify',
-        rating: 4.7,
-        pricingStarting: '$5 / user / month (Free corporate card tier available)',
-        bestFor: 'Agile teams, real estate agents, and global companies needing instant SmartScan receipt capture',
-        websiteUrl: 'https://use.expensify.com',
-        trialUrl: 'https://use.expensify.com/signup',
-        featuredBadge: 'Most Popular Receipt Scanner',
-        keyFeatures: ['SmartScan patented receipt OCR', 'Automated corporate card reconciliation', 'Next-day direct deposit reimbursement', 'One-click QuickBooks/Xero/NetSuite export'],
-        pros: ['Snapping a photo of a receipt automatically extracts merchant, date, amount, and currency', 'Generates clean IRS-compliant tax deduction reports', 'Free Expensify card with 1-2% cash back'],
-        cons: ['Customer support is primarily in-app chat based'],
-        geoCompliance: ['PCI-DSS Level 1', 'SOC 1 / SOC 2 Type II', 'EU / GDPR']
-      },
-      {
-        name: 'Zoho Expense',
-        rating: 4.8,
-        pricingStarting: '$3 / user / month (Free tier for up to 3 users)',
-        bestFor: 'Cost-conscious businesses and existing Zoho ecosystem users',
-        websiteUrl: 'https://www.zoho.com/expense/',
-        trialUrl: 'https://www.zoho.com/expense/signup.html',
-        featuredBadge: 'Best Value for Small Business',
-        keyFeatures: ['Multi-stage approval hierarchies', 'GPS mileage tracking on mobile', 'Per diem rate management', 'Direct integration with Zoho Books and CRM'],
-        pros: ['Extremely affordable per-user pricing with no hidden fees', 'Comprehensive international tax handling (VAT, GST, Sales Tax)', 'Robust travel policy compliance rules'],
-        cons: ['Best experience when paired with Zoho Books rather than third-party ERPs'],
-        geoCompliance: ['ISO 27001', 'SOC 2 Type II', 'EU / GDPR compliant']
-      }
-    ],
-    faqs: [
-      {
-        question: 'How does automated expense tracking protect businesses during a tax audit?',
-        answer: 'Automated software stores digital, timestamped images of receipts linked directly to bank transactions, creating an immutable audit trail that satisfies IRS, HMRC, and CRA substantiation rules.'
-      }
-    ],
-    keyBuyerTakeaways: [
-      'Verify mobile GPS mileage tracking accuracy if your agents or technicians drive extensively for client visits.',
-      'Check for automated corporate credit card feed integration to eliminate manual spreadsheet reconciliation.'
-    ]
-  },
-  {
     id: 'time-tracking',
     slug: 'time-tracking',
     name: 'Time Tracking',
@@ -1396,8 +1160,20 @@ export const PLANNING_CATEGORIES: PlanningCategory[] = PLANNING_CATEGORY_DEFS.ma
   toolCount: getCategoryToolCount(category),
 }));
 
+/**
+ * Slugs retired by category consolidation. Tools from each were merged into the
+ * canonical category, so old URLs resolve there rather than 404ing.
+ */
+export const PLANNING_SLUG_ALIASES: Record<string, string> = {
+  'project-planning': 'project-management',
+  'project-tracking': 'project-management',
+  'scrum': 'agile-project-management',
+  'time-and-expenses': 'time-tracking',
+};
+
 export function getPlanningCategoryBySlug(slug: string): PlanningCategory | undefined {
-  const category = PLANNING_CATEGORIES.find((cat) => cat.slug === slug || cat.id === slug);
+  const resolved = PLANNING_SLUG_ALIASES[slug] ?? slug;
+  const category = PLANNING_CATEGORIES.find((cat) => cat.slug === resolved || cat.id === resolved);
   if (!category) return undefined;
   const indexed = getToolsByCategorySlug(category.slug || category.id);
   return {

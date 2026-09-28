@@ -45,12 +45,12 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
 
     return {
       all: totalTools,
-      agile: getSum(['agile-project-management', 'scrum', 'kanban-tools']),
-      scheduling: getSum(['gantt-chart', 'production-scheduling', 'project-planning', 'flowchart']),
-      time: getSum(['time-tracking', 'time-and-expenses', 'task-management']),
-      financial: getSum(['job-costing', 'time-and-expenses', 'professional-services-automation']),
+      agile: getSum(['agile-project-management', 'kanban-tools']),
+      scheduling: getSum(['gantt-chart', 'production-scheduling', 'flowchart']),
+      time: getSum(['time-tracking', 'task-management']),
+      financial: getSum(['job-costing', 'time-tracking', 'professional-services-automation']),
       product: getSum(['product-management', 'product-roadmap', 'pim', 'requirements-management']),
-      enterprise: getSum(['project-management', 'project-portfolio-management', 'strategic-planning', 'it-project-management', 'project-tracking', 'team-management'])
+      enterprise: getSum(['project-management', 'project-portfolio-management', 'strategic-planning', 'it-project-management', 'team-management'])
     };
   }, [totalTools]);
 
@@ -86,12 +86,12 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
 
       // Group tag filter
       if (selectedTag === 'all') return true;
-      if (selectedTag === 'agile' && ['agile-project-management', 'scrum', 'kanban-tools'].includes(cat.id)) return true;
-      if (selectedTag === 'scheduling' && ['gantt-chart', 'production-scheduling', 'project-planning', 'flowchart'].includes(cat.id)) return true;
-      if (selectedTag === 'financial' && ['job-costing', 'time-and-expenses', 'professional-services-automation'].includes(cat.id)) return true;
-      if (selectedTag === 'time' && ['time-tracking', 'time-and-expenses', 'task-management'].includes(cat.id)) return true;
+      if (selectedTag === 'agile' && ['agile-project-management', 'kanban-tools'].includes(cat.id)) return true;
+      if (selectedTag === 'scheduling' && ['gantt-chart', 'production-scheduling', 'flowchart'].includes(cat.id)) return true;
+      if (selectedTag === 'financial' && ['job-costing', 'time-tracking', 'professional-services-automation'].includes(cat.id)) return true;
+      if (selectedTag === 'time' && ['time-tracking', 'task-management'].includes(cat.id)) return true;
       if (selectedTag === 'product' && ['product-management', 'product-roadmap', 'pim', 'requirements-management'].includes(cat.id)) return true;
-      if (selectedTag === 'enterprise' && ['project-management', 'project-portfolio-management', 'strategic-planning', 'it-project-management', 'project-tracking', 'team-management'].includes(cat.id)) return true;
+      if (selectedTag === 'enterprise' && ['project-management', 'project-portfolio-management', 'strategic-planning', 'it-project-management', 'team-management'].includes(cat.id)) return true;
 
       return true;
     });
