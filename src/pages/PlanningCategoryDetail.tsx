@@ -89,12 +89,6 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
       'name': tool.name,
       'applicationCategory': category.name,
       'operatingSystem': tool.deployment || 'Web, Cloud, iOS, Android',
-      'aggregateRating': {
-        '@type': 'AggregateRating',
-        'ratingValue': tool.rating,
-        'bestRating': '5.0',
-        'ratingCount': 1000
-      },
       'offers': {
         '@type': 'Offer',
         'price': tool.pricingStarting.replace(/[^0-9.]/g, '') || '0',
@@ -488,7 +482,7 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
             How We Evaluate {category.name} ({category.toolCount})
           </h2>
           <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-            Each platform in the {category.name} category is assessed against the criteria below, using vendor documentation, published pricing, and hands-on use where we have it. Ratings reflect that editorial assessment rather than a controlled or independently audited benchmark.
+            Each platform in the {category.name} category is assessed against the criteria below, using vendor documentation, published pricing, and release notes. Ratings reflect that editorial assessment rather than a controlled or independently audited benchmark.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -175,7 +175,7 @@ export default function JoinAgentNewsletter({ className = '', source = 'Footer N
                       type="text"
                       value={agentName}
                       onChange={(e) => setAgentName(e.target.value)}
-                      placeholder="e.g. Sarah Jenkins"
+                      placeholder="Your name"
                       className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-700 rounded-xs text-white placeholder-slate-500 text-xs focus:outline-none focus:border-accent"
                     />
                   </div>

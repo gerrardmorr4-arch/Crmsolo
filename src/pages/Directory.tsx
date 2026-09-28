@@ -43,7 +43,7 @@ export const Directory: React.FC<DirectoryPageProps> = ({
   });
 
   // Sort state
-  const [sortBy, setSortBy] = useState<'score' | 'price-asc' | 'reviews' | 'name'>('score');
+  const [sortBy, setSortBy] = useState<'score' | 'price-asc' | 'name'>('score');
 
   // Compare tray state
   const [selectedForCompare, setSelectedForCompare] = useState<CRMReview[]>([]);
@@ -136,9 +136,6 @@ export const Directory: React.FC<DirectoryPageProps> = ({
         const priceA = a.startingPrice ?? a.pricingTiers[0]?.price ?? 0;
         const priceB = b.startingPrice ?? b.pricingTiers[0]?.price ?? 0;
         return priceA - priceB;
-      }
-      if (sortBy === 'reviews') {
-        return (b.userRatingCount || 0) - (a.userRatingCount || 0);
       }
       if (sortBy === 'name') return a.name.localeCompare(b.name);
       return 0;
@@ -282,7 +279,6 @@ export const Directory: React.FC<DirectoryPageProps> = ({
               >
                 <option value="score">Highest Overall Score</option>
                 <option value="price-asc">Lowest Starting Price</option>
-                <option value="reviews">Most User Reviews</option>
                 <option value="name">Alphabetical (A-Z)</option>
               </select>
             </div>

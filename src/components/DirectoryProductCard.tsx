@@ -112,14 +112,8 @@ export const DirectoryProductCard: React.FC<DirectoryProductCardProps> = ({
                     <span>{review.overallScore}</span>
                   </div>
                   <span className="text-xs text-slate-500 font-medium">
-                    ({review.userRatingCount?.toLocaleString() || '1,400+'} user reviews)
+                    Editorial score &mdash; see our <a href="/methodology" className="underline hover:text-slate-700">methodology</a>
                   </span>
-                  {review.recommendationRate && (
-                    <span className="flex items-center gap-1 text-xs text-emerald-700 font-medium">
-                      <ThumbsUp className="w-3 h-3" />
-                      <span>{review.recommendationRate}% Recommend</span>
-                    </span>
-                  )}
                 </div>
               </div>
             </div>

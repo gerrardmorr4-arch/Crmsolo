@@ -51,16 +51,16 @@ export const initialSubscribers: EmailSubscriber[] = [
   },
   {
     id: 'sub-2',
-    email: 'sarah.jenkins@realtybroker.com',
-    name: 'Sarah Jenkins',
+    email: 'sample.subscriber@example.com',
+    name: 'Sample Subscriber',
     subscribedAt: '2026-07-20 14:22',
     source: 'ROI Calculator',
     status: 'Active'
   },
   {
     id: 'sub-3',
-    email: 'marcus.vance@solorealtors.com',
-    name: 'Marcus Vance',
+    email: 'sample.agent@example.com',
+    name: 'Sample Agent',
     subscribedAt: '2026-07-18 09:40',
     source: 'Guide Footer',
     status: 'Active'

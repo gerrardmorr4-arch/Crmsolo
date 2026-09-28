@@ -7,7 +7,7 @@ import { ArrowRight, Calculator, CheckCircle2, ChevronRight, ChevronLeft, HelpCi
 import NewsletterSignup from '../components/NewsletterSignup';
 import FAQSection from '../components/FAQSection';
 import AgentTestimonials from '../components/AgentTestimonials';
-import VideoTestimonials from '../components/VideoTestimonials';
+import AgentCrmComparison from '../components/AgentCrmComparison';
 import AgentProfileQuiz from '../components/AgentProfileQuiz';
 import AdSenseAd from '../components/AdSenseAd';
 import faqData from '../data/faqs.json';
@@ -680,10 +680,10 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
         </div>
       </section>
 
-      {/* Real Estate Agent Video Testimonials Section */}
-      <VideoTestimonials />
+      {/* Verifiable CRM pricing and scoring comparison */}
+      <AgentCrmComparison />
 
-      {/* What Agents Are Saying Testimonial Carousel */}
+      {/* Editorial findings drawn from our published reviews */}
       <AgentTestimonials />
 
       {/* FAQ Hub Section */}
