@@ -1,14 +1,18 @@
+import NavLink from '../components/NavLink';
 import React, { useState } from 'react';
 import { Mail, Shield, ShieldCheck, Heart, User, Sparkles, Send, Check } from 'lucide-react';
 import { useSEO } from '../lib/seo';
 
 interface StaticPagesProps {
-  pageType: 'about' | 'methodology' | 'contact' | 'privacy' | 'affiliate';
+  pageType: 'about' | 'methodology' | 'contact' | 'privacy' | 'affiliate' | 'terms';
   onUpdateCMS: () => void;
+  onNavigate: (path: string) => void;
 }
 
-export default function StaticPages({ pageType, onUpdateCMS }: StaticPagesProps) {
-  const [activeTab, setActiveTab] = useState<'about' | 'methodology'>('about');
+export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: StaticPagesProps) {
+  // Derived from the route, not component state: each tab is its own indexable
+  // URL, so its content has to be present in the prerendered HTML.
+  const activeTab = pageType === 'methodology' ? 'methodology' : 'about';
 
   let seoTitle = 'About Us';
   let seoDescription = 'Learn more about our independent testing methodology and team.';
@@ -22,6 +26,14 @@ export default function StaticPages({ pageType, onUpdateCMS }: StaticPagesProps)
     seoTitle = 'Privacy Policy';
     seoDescription = 'Our clear, transparent commitments to protecting your personal data and privacy.';
     seoKeywords = ['privacy policy', 'data protection', 'GDPR compliance'];
+  } else if (pageType === 'methodology') {
+    seoTitle = 'Review Methodology & Editorial Standards';
+    seoDescription = 'How CRMsolo evaluates real estate CRM software: the scoring criteria, the weighting, and what our ratings do and do not claim to be.';
+    seoKeywords = ['crm review methodology', 'editorial standards', 'how we rate crm software'];
+  } else if (pageType === 'terms') {
+    seoTitle = 'Terms of Service';
+    seoDescription = 'The terms governing your use of crmsolo.online, including our content, affiliate links, and limitations of liability.';
+    seoKeywords = ['terms of service', 'website terms', 'affiliate links'];
   } else if (pageType === 'affiliate') {
     seoTitle = 'Affiliate & Advertising Disclosure';
     seoDescription = 'How we finance our independent reviews. Read our transparency and advertising standards.';
@@ -56,28 +68,26 @@ export default function StaticPages({ pageType, onUpdateCMS }: StaticPagesProps)
     return (
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         
-        {/* Tab Buttons */}
+        {/* Tab Buttons: separate indexable routes, so rendered as real links */}
         <div className="flex border-b border-gray-200">
-          <button
-            onClick={() => setActiveTab('about')}
+          <NavLink
+            to="/about"
+            onNavigate={onNavigate}
             className={`px-6 py-3 text-sm font-bold border-b-2 transition ${
-              activeTab === 'about' 
-                ? 'border-accent text-primary' 
-                : 'border-transparent text-gray-400 hover:text-gray-600'
+              activeTab === 'about' ? 'border-accent text-primary' : 'border-transparent text-gray-400 hover:text-gray-600'
             }`}
           >
             👤 About CRMsolo
-          </button>
-          <button
-            onClick={() => setActiveTab('methodology')}
+          </NavLink>
+          <NavLink
+            to="/methodology"
+            onNavigate={onNavigate}
             className={`px-6 py-3 text-sm font-bold border-b-2 transition ${
-              activeTab === 'methodology' 
-                ? 'border-accent text-primary' 
-                : 'border-transparent text-gray-400 hover:text-gray-600'
+              activeTab === 'methodology' ? 'border-accent text-primary' : 'border-transparent text-gray-400 hover:text-gray-600'
             }`}
           >
-            ⚖️ Scoring Methodology (E-E-A-T)
-          </button>
+            ⚖️ Scoring Methodology
+          </NavLink>
         </div>
 
         {/* Tab 1: About */}
@@ -117,7 +127,7 @@ export default function StaticPages({ pageType, onUpdateCMS }: StaticPagesProps)
               <ul className="space-y-2.5 text-xs text-gray-600">
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
-                  <span><strong>We actually test tools:</strong> We purchase standard subscriptions, configure pipelines, and use the mobile apps in our cars between showings.</span>
+                  <span><strong>We research tools directly:</strong> We work from vendor documentation, published pricing, and hands-on use where we have it, rather than from second-hand summaries.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-accent shrink-0 mt-0.5" />
@@ -140,21 +150,21 @@ export default function StaticPages({ pageType, onUpdateCMS }: StaticPagesProps)
             </h1>
             
             <p className="text-gray-600 text-sm leading-relaxed">
-              Google demands Experience, Expertise, Authoritativeness, and Trustworthiness (E-E-A-T) for product reviews. CRMsolo was constructed specifically to exceed these guidelines. We determine our 0-10 ratings using four strict criteria weighted specifically for solo agents:
+              CRMsolo ratings are an editorial assessment, not a controlled or independently audited benchmark. We determine each 0-10 score by weighing four criteria for how well a tool fits a solo real estate agent:
             </p>
 
             <div className="divide-y divide-gray-100">
               <div className="py-4 space-y-1">
-                <h3 className="font-display font-bold text-primary text-sm">1. Mobile Utility Speed (30% Weight)</h3>
+                <h3 className="font-display font-bold text-primary text-sm">1. Mobile Utility (30% Weight)</h3>
                 <p className="text-xs text-gray-500">
-                  Solo agents close deals on the move. We test mobile app latency, offline note synchronization, and how many taps are required to log a buyer call outcome.
+                  Solo agents close deals on the move. We look at mobile app latency, offline note synchronization, and how many taps it takes to log a buyer call outcome.
                 </p>
               </div>
 
               <div className="py-4 space-y-1">
                 <h3 className="font-display font-bold text-primary text-sm">2. Real Estate Customization Fit (25% Weight)</h3>
                 <p className="text-xs text-gray-500">
-                  CRMs are built for corporate SaaS teams by default. We measure how easily you can add residential property variables (Appraisal contingencies, MLS numbers, listing addresses) without paying for enterprise developer upgrades.
+                  CRMs are built for corporate SaaS teams by default. We assess how easily you can add residential property variables (appraisal contingencies, MLS numbers, listing addresses) without paying for enterprise developer upgrades.
                 </p>
               </div>
 
@@ -316,7 +326,7 @@ export default function StaticPages({ pageType, onUpdateCMS }: StaticPagesProps)
 
           <h3 className="font-display font-bold text-primary text-base mt-4">Our Affiliate Partnerships</h3>
           <p>
-            CRMsolo operates as an independent, authority review platform. To fund our detailed tests, server operations, and free diagnostic tools, we participate in several software referral programs:
+            CRMsolo operates as an independent, authority review platform. To fund our research, server operations, and free diagnostic tools, we participate in several software referral programs:
           </p>
 
           <ul className="list-disc pl-5 space-y-1.5 text-xs text-gray-500">
@@ -327,15 +337,72 @@ export default function StaticPages({ pageType, onUpdateCMS }: StaticPagesProps)
 
           <h3 className="font-display font-bold text-primary text-base mt-4">Why This Does Not Affect Rankings</h3>
           <p>
-            We maintain total editorial integrity. Our overall scores, rating scorecard breakdowns, and dynamic CRM ROI Calculator results are driven entirely by mathematical formulas and objective software properties — NOT by partnership status. The ROI calculations utilize the exact same formulas and pricing tiers for all systems regardless of who pays referral splits. We always warn readers of the "HubSpot professional trap" and openly document Zoho's setup complexity.
+            Partnership status does not determine our scores. Overall ratings and scorecard breakdowns reflect the editorial judgement described on our methodology page, and the CRM ROI Calculator applies the same formulas and pricing tiers to every system regardless of who pays referral splits. We always warn readers of the "HubSpot professional trap" and openly document Zoho's setup complexity.
           </p>
 
           <div className="p-4 bg-accent/5 border border-accent/20 rounded-xl flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-accent shrink-0" />
             <span className="text-xs text-primary font-semibold">
-              Thank you for supporting our independent tests by choosing to click our tracking links!
+              Thank you for supporting our research by choosing to click our tracking links!
             </span>
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (pageType === 'terms') {
+    return (
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6">
+        <div className="bg-white p-6 md:p-8 rounded-3xl border border-gray-100 shadow-xs space-y-5 text-xs text-gray-600 leading-relaxed">
+          <h1 className="text-3xl font-extrabold text-primary font-display">Terms of Service</h1>
+          <p className="text-gray-400 text-[11px] font-mono">LAST UPDATED: SEPTEMBER 2026</p>
+
+          <p>
+            These terms govern your use of crmsolo.online (the "site"). By using the site you accept them. If you do not accept them, please do not use the site.
+          </p>
+
+          <h3 className="font-display font-bold text-primary text-base mt-4">Content and accuracy</h3>
+          <p>
+            The site publishes editorial assessments of real estate software. Our ratings and comparisons reflect our own judgement against the criteria described on our{' '}
+            <NavLink to="/methodology" onNavigate={onNavigate} className="text-accent font-bold hover:underline">methodology page</NavLink>. They are opinions, not statements of fact, and they are not a controlled or independently audited benchmark.
+          </p>
+          <p>
+            Software pricing, features and terms change frequently and are set by the vendors, not by us. Information here may become out of date, and we do not warrant that it is accurate, complete or current. Always confirm pricing and feature availability with the vendor before purchasing.
+          </p>
+
+          <h3 className="font-display font-bold text-primary text-base mt-4">Affiliate links</h3>
+          <p>
+            Some outbound links are affiliate links, and we may earn a commission if you sign up through them. This does not change what you pay. See our{' '}
+            <NavLink to="/affiliate-disclosure" onNavigate={onNavigate} className="text-accent font-bold hover:underline">affiliate disclosure</NavLink>{' '}
+            for detail on how the site is funded.
+          </p>
+
+          <h3 className="font-display font-bold text-primary text-base mt-4">Third-party names</h3>
+          <p>
+            Product and company names mentioned on the site are trademarks of their respective owners. Their use here is for identification and editorial comment only, and does not imply any affiliation with or endorsement by those owners.
+          </p>
+
+          <h3 className="font-display font-bold text-primary text-base mt-4">Acceptable use</h3>
+          <p>
+            You may read, cite and link to the site. You may not scrape it at scale, republish substantial portions as your own, attempt to disrupt it, or use it in a way that breaks applicable law.
+          </p>
+
+          <h3 className="font-display font-bold text-primary text-base mt-4">Limitation of liability</h3>
+          <p>
+            The site is provided "as is" and without warranties of any kind. To the extent permitted by law, we are not liable for any loss arising from your use of the site or from decisions you make based on it, including software purchasing decisions. Nothing here limits liability that cannot lawfully be limited.
+          </p>
+
+          <h3 className="font-display font-bold text-primary text-base mt-4">Changes</h3>
+          <p>
+            We may update these terms. The current version is always the one published on this page.
+          </p>
+
+          <h3 className="font-display font-bold text-primary text-base mt-4">Contact</h3>
+          <p>
+            Questions about these terms: <a href="mailto:Eugeneboniface4@yahoo.com" className="text-accent font-bold hover:underline">Eugeneboniface4@yahoo.com</a>, or see our{' '}
+            <NavLink to="/contact" onNavigate={onNavigate} className="text-accent font-bold hover:underline">contact page</NavLink>.
+          </p>
         </div>
       </div>
     );

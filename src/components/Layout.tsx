@@ -137,9 +137,9 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
           <div>
             <span className="font-semibold text-accent inline-flex items-center gap-1 mr-1">
-              <Sparkles className="w-3.5 h-3.5" /> E-E-A-T Certified Real Estate Resource:
+              <Sparkles className="w-3.5 h-3.5" /> Independent Real Estate Software Reviews:
             </span>
-            We test every CRM independently. CRMsolo may earn affiliate commissions when you sign up.
+            We research every CRM independently. CRMsolo may earn affiliate commissions when you sign up.
           </div>
           <button
             onClick={() => onNavigate('/admin')}
@@ -501,7 +501,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
               <li><NavLink to='/calculator' onNavigate={onNavigate} className="hover:text-white transition">ROI Calculator</NavLink></li>
               <li><NavLink to='/checklist' onNavigate={onNavigate} className="hover:text-white transition">Feature Checklist</NavLink></li>
               <li><NavLink to='/compare/best-crm-for-solo-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Solo Pillar comparison</NavLink></li>
-              <li><NavLink to='/about' onNavigate={onNavigate} className="hover:text-white transition">E-E-A-T Methodology</NavLink></li>
+              <li><NavLink to='/methodology' onNavigate={onNavigate} className="hover:text-white transition">Review Methodology</NavLink></li>
             </ul>
           </div>
 
@@ -523,6 +523,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
               <li><NavLink to='/admin' onNavigate={onNavigate} className="text-accent font-bold hover:underline flex items-center gap-1"><Lock className="w-3 h-3" /> Admin Portal</NavLink></li>
               <li><NavLink to='/privacy-policy' onNavigate={onNavigate} className="hover:text-white transition">Privacy Policy</NavLink></li>
               <li><NavLink to='/affiliate-disclosure' onNavigate={onNavigate} className="hover:text-white transition">Affiliate Disclosure</NavLink></li>
+              <li><NavLink to='/terms' onNavigate={onNavigate} className="hover:text-white transition">Terms of Service</NavLink></li>
               <li><NavLink to='/contact' onNavigate={onNavigate} className="hover:text-white transition">Contact Us</NavLink></li>
             </ul>
           </div>

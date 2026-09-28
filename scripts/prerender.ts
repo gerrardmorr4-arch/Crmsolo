@@ -53,8 +53,10 @@ const STATIC_ROUTES = [
   '/blueprints',
   '/planning-tools',
   '/about',
+  '/methodology',
   '/contact',
   '/privacy-policy',
+  '/terms',
   '/affiliate-disclosure'
 ];
 
@@ -143,6 +145,7 @@ function collectAliasRoutes(): RouteEntry[] {
     { path: '/guide', canonicalPath: '/guides', noindex: false },
     { path: '/buyers-guide', canonicalPath: '/buyer-guide', noindex: false },
     { path: '/privacy', canonicalPath: '/privacy-policy', noindex: false },
+    { path: '/terms-of-service', canonicalPath: '/terms', noindex: false },
     { path: '/affiliate', canonicalPath: '/affiliate-disclosure', noindex: false },
     { path: '/category', canonicalPath: '/directory', noindex: false },
     { path: '/category/crm', canonicalPath: '/directory', noindex: false },
