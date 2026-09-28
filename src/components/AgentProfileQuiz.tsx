@@ -497,7 +497,7 @@ export default function AgentProfileQuiz({ reviews, onNavigate, className = '' }
                         onClick={() => onNavigate(`/reviews/${topMatch.review?.slug || 'pipedrive-for-real-estate-agents'}`)}
                         className="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold uppercase tracking-wider rounded-xs transition cursor-pointer text-center"
                       >
-                        Read Full Independent Review
+                        Read Full Review
                       </button>
                     </div>
                   </div>

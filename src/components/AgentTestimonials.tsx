@@ -177,7 +177,7 @@ export default function AgentTestimonials() {
             WHAT SOLO AGENTS ARE SAYING
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-            Real feedback from independent realtors, brokers, and solo facilitators who transitioned from clunky databases to streamlined platforms.
+            Illustrative feedback reflecting the workflows independent realtors, brokers, and solo facilitators bring when moving from clunky databases to streamlined platforms.
           </p>
         </div>
 
@@ -210,7 +210,7 @@ export default function AgentTestimonials() {
                 </div>
 
                 <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider">Verified Setup:</span>
+                  <span className="text-[10px] font-mono text-gray-400 uppercase tracking-wider">CRM Setup:</span>
                   <span className={`text-[10px] font-black uppercase tracking-widest px-2.5 py-0.5 rounded-full border ${currentTestimonial.bgColor} ${currentTestimonial.textColor} border-current/10`}>
                     {currentTestimonial.crmUsed}
                   </span>

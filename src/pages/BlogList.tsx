@@ -47,7 +47,7 @@ export default function BlogList({ blogSlug, blogs, onNavigate }: BlogListProps)
     ? 'Comprehensive technical guides, vendor benchmarks, and tactical workflows for agile project management, Gantt charts, job costing, and time tracking.' 
     : currentPost 
       ? (currentPost.metaDescription || currentPost.excerpt)
-      : 'In-depth software strategy and productivity benchmark reports.';
+      : 'In-depth software strategy and productivity analysis.';
 
   const seoKeywords = isListView
     ? ['project management blog', 'agile tools benchmarks', 'gantt chart guides', 'software reviews', 'productivity workflows']
@@ -72,7 +72,7 @@ export default function BlogList({ blogSlug, blogs, onNavigate }: BlogListProps)
         {/* Blog Header */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-accent/10 text-accent font-mono text-xs rounded-full font-bold">
-            <span>Verified Technical Analysis</span>
+            <span>Technical Analysis</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-extrabold text-primary font-display tracking-tight">
             Real Estate CRM &amp; Automation Blog for Solo Agents

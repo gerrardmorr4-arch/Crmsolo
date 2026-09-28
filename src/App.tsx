@@ -30,7 +30,7 @@ interface RouteFallback {
 
 const DEFAULT_ROUTE_FALLBACK: Omit<RouteFallback, 'match'> = {
   title: 'Best Real Estate CRM Software Directory (2026 Reviews & Pricing)',
-  description: 'Browse, compare, and filter top Real Estate Customer Relationship Management (CRM) tools. Read verified buyer reviews, pricing models, and feature checklists.',
+  description: 'Browse, compare, and filter top Real Estate Customer Relationship Management (CRM) tools. Read our buyer reviews, pricing models, and feature checklists.',
   keywords: ['real estate crm', 'real estate software directory', 'realtor crm reviews', 'crm pricing', 'pipedrive', 'follow up boss', 'streak']
 };
 
@@ -44,7 +44,7 @@ const ROUTE_FALLBACKS: RouteFallback[] = [
   {
     match: p => p === '/buyer-guide' || p === '/buyers-guide',
     title: "Real Estate CRM Buyer's Guides & Frameworks (2026)",
-    description: 'In-depth procurement guides, pricing audits, speed-to-lead automation workflows, and CRM checklists for independent agents.',
+    description: 'In-depth procurement guides, pricing breakdowns, speed-to-lead automation workflows, and CRM checklists for independent agents.',
     keywords: ['crm buyer guide', 'real estate software guide', 'crm pricing evaluation', 'speed to lead automation']
   },
   {
@@ -74,7 +74,7 @@ const ROUTE_FALLBACKS: RouteFallback[] = [
   {
     match: p => p === '/guides' || p === '/guide',
     title: 'Real Estate CRM Guides & Workbooks for Solo Agents',
-    description: 'Practical CRM selection guides, pricing audits, onboarding workbooks, and lead automation playbooks written for independent agents.',
+    description: 'Practical CRM selection guides, pricing breakdowns, onboarding workbooks, and lead automation playbooks written for independent agents.',
     keywords: ['real estate crm guide', 'crm selection guide', 'realtor workflow guide', 'crm onboarding workbook']
   },
   {

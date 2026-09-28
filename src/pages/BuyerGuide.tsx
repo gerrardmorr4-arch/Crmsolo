@@ -193,7 +193,7 @@ export const BuyerGuide: React.FC<BuyerGuidePageProps> = ({
             Ready to evaluate CRM tools with live pricing and filters?
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
-            Browse our complete 2026 directory with side-by-side comparison tables, verified user reviews, and instant feature search.
+            Browse our complete 2026 directory with side-by-side comparison tables, user reviews, and instant feature search.
           </p>
           <button
             id="guide-hub-open-directory-cta"

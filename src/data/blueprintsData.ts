@@ -309,7 +309,7 @@ INSIDE THIS BLUEPRINT:
 • Past-Client 365-Day Homeversary Referral Engine
 • Free Commission Split & ROI Calculator
 
-If you'd like an unbiased recommendation on which CRM fits your current annual transaction volume, feel free to reply to this email!
+If you'd like a straight recommendation on which CRM fits your current annual transaction volume, feel free to reply to this email!
 
 To your closing success,
 {{authorName}} | CRMsolo Editorial Team`

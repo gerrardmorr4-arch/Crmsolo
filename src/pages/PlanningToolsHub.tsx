@@ -170,7 +170,7 @@ export const PlanningToolsHub: React.FC<PlanningToolsHubProps> = ({ onNavigate }
             </div>
             <div className="bg-slate-800/60 border border-slate-700/80 rounded-xl p-4">
               <div className="text-2xl sm:text-3xl font-extrabold text-amber-400">100%</div>
-              <div className="text-xs text-slate-300 mt-1">Unbiased Methodologies</div>
+              <div className="text-xs text-slate-300 mt-1">Published Methodologies</div>
             </div>
             <div className="bg-slate-800/60 border border-slate-700/80 rounded-xl p-4">
               <div className="text-2xl sm:text-3xl font-extrabold text-purple-400">5+</div>

@@ -328,13 +328,13 @@ export default function VideoTestimonials() {
           <div className="space-y-3 max-w-2xl">
             <div className="inline-flex items-center gap-2 bg-accent/15 border border-accent/30 text-accent text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-xs">
               <Video className="w-3.5 h-3.5" />
-              Verified Agent Video &amp; Voice Reviews
+              Agent Video &amp; Voice Walkthroughs
             </div>
             <h2 className="text-3xl md:text-4xl font-black font-display uppercase tracking-tighter text-white">
-              Watch &amp; Listen to Real Realtors Share Their Workflows
+              Watch &amp; Listen to Realtor Workflow Walkthroughs
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed">
-              Listen to AI-narrated transcript speech in real-time or watch unedited video walkthroughs from top solo agents and independent brokers.
+              Listen to AI-narrated transcript speech in real-time or watch our illustrated video walkthroughs of common solo-agent workflows.
             </p>
           </div>
 
@@ -572,7 +572,7 @@ export default function VideoTestimonials() {
                       <div className="flex items-center gap-2">
                         <span className="text-[10px] font-mono bg-accent/20 border border-accent/40 text-accent font-black px-2.5 py-1 rounded-xs uppercase flex items-center gap-1">
                           <Radio className="w-3 h-3 animate-pulse" />
-                          Verified Real-Time Voice Engine
+                          Real-Time Voice Narration
                         </span>
                       </div>
                     </div>
@@ -764,7 +764,7 @@ export default function VideoTestimonials() {
                       <MessageSquareText className="w-4 h-4 text-accent" />
                       <div>
                         <h4 className="text-xs font-mono font-bold uppercase text-accent tracking-wider flex items-center gap-1.5">
-                          Verified Transcript &middot; Live Synchronized Text
+                          Transcript &middot; Live Synchronized Text
                         </h4>
                         <p className="text-[11px] text-slate-400">
                           {activeVideo.agentName} &middot; {activeVideo.role} ({activeVideo.brokerage}, {activeVideo.location})

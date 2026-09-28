@@ -194,7 +194,7 @@ export const Directory: React.FC<DirectoryPageProps> = ({
             <div className="max-w-3xl space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
                 <Award className="w-3.5 h-3.5 text-emerald-600" />
-                <span>2026 Category Directory • Verified Buyer Evaluations</span>
+                <span>2026 Category Directory • Buyer Evaluations</span>
               </div>
 
               <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
@@ -202,7 +202,7 @@ export const Directory: React.FC<DirectoryPageProps> = ({
               </h1>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                Discover, compare, and filter the top Customer Relationship Management (CRM) software for independent realtors, solo brokers, and high-velocity real estate practitioners. Browse verified reviews, pricing models, and feature checklists.
+                Discover, compare, and filter the top Customer Relationship Management (CRM) software for independent realtors, solo brokers, and high-velocity real estate practitioners. Browse our reviews, pricing models, and feature checklists.
               </p>
 
               {/* Trust & Methodology Badges */}
@@ -213,11 +213,11 @@ export const Directory: React.FC<DirectoryPageProps> = ({
                 </span>
                 <span className="flex items-center gap-1.5 font-medium text-slate-700">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>100% Unbiased E-E-A-T Scoring</span>
+                  <span>Consistent Editorial Scoring</span>
                 </span>
                 <span className="flex items-center gap-1.5 font-medium text-slate-700">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>Verified Pricing & Feature Breakdown</span>
+                  <span>Pricing & Feature Breakdown</span>
                 </span>
               </div>
             </div>

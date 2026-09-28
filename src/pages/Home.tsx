@@ -24,7 +24,7 @@ interface HomeProps {
 export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) {
   useSEO({
     title: 'Expert CRM Reviews for Solo Real Estate Agents',
-    description: 'Compare Pipedrive, Streak, and Follow Up Boss. Find the absolute best CRM for independent realtors with our independent reviews and ROI calculator.',
+    description: 'Compare Pipedrive, Streak, and Follow Up Boss. Find the absolute best CRM for independent realtors with our reviews and ROI calculator.',
     keywords: ['real estate crm', 'solo real estate agent crm', 'pipedrive vs streak', 'follow up boss', 'realtor tool'],
     ogType: 'website',
     faqSchema: faqData.map(f => ({ question: f.question, answer: f.answer.replace(/\*\*/g, '') }))
