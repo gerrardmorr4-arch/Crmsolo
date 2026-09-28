@@ -83,6 +83,26 @@ const OFF_TOPIC_POST_SLUGS = new Set([
   'scrum-master-certifications-guide-2026'
 ]);
 
+/**
+ * Planning categories aimed at enterprise IT, product, and e-commerce buyers
+ * rather than solo real estate practitioners — the site's subject. They are a
+ * few tools deep and compete against far larger directories, so they are held
+ * out of the sitemap and marked noindex while staying live and reachable. The
+ * real-estate-adjacent categories (task, time, project tracking, job costing,
+ * kanban) remain indexed.
+ */
+const OFF_TOPIC_PLANNING_SLUGS = new Set([
+  'it-project-management',
+  'pim',
+  'production-scheduling',
+  'product-management',
+  'product-roadmap',
+  'professional-services-automation',
+  'requirements-management',
+  'strategic-planning',
+  'team-management'
+]);
+
 /** Strips markdown syntax and counts remaining word tokens. */
 function countWords(markdown: string): number {
   return markdown
@@ -114,7 +134,7 @@ function collectCanonicalRoutes(): RouteEntry[] {
   initialComparisons.forEach(c => add(`/compare/${c.slug}`));
   initialGuides.forEach(g => add(`/guides/${g.slug}`));
   automationBlueprints.forEach(b => add(`/blueprints/${b.slug}`));
-  PLANNING_CATEGORIES.forEach(c => add(`/planning-tools/${c.slug}`));
+  PLANNING_CATEGORIES.forEach(c => add(`/planning-tools/${c.slug}`, OFF_TOPIC_PLANNING_SLUGS.has(c.slug)));
 
   // Thin-content rule applies to blog detail pages generally. Both the CRM posts
   // and the planning articles are short; the planning set is the thinner of the
