@@ -8,6 +8,7 @@
     "build": "vite build && tsx scripts/prerender.ts && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "prerender": "tsx scripts/prerender.ts",
     "verify:seo": "node scripts/verify-prerender.mjs",
+    "check:seo": "node scripts/check-seo-limits.mjs",
     "preview": "vite preview",
     "clean": "rm -rf dist server.cjs",
     "lint": "tsc --noEmit",
