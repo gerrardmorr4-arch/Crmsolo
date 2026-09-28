@@ -46,6 +46,24 @@ static `dist/` output. Two consequences to keep in mind:
   comparisons, Product on review details, BlogPosting on blog and guide detail
   pages. Guide pages must pass `author` to `useSEO` to get article markup.
 
+## Content integrity
+
+CRMSolo publishes editorial assessments, not first-hand lab testing. Keep new
+copy consistent with that:
+
+- Do not add customer testimonials, named personas, or aggregate ratings
+  (`aggregateRating`, review counts, recommendation percentages) unless they
+  come from a real, verifiable source. The site previously shipped invented
+  testimonials, a fake video carousel, hardcoded rating schema, and expert
+  bylines carrying credentials such as CPA — all of which were removed.
+- `/methodology` states ratings are an editorial assessment and not
+  independently audited. Do not describe reviews as "tested", "verified",
+  "unbiased", or "independently audited".
+- Platform scores, prices, and pros/cons live in `initialReviews`
+  (`src/data/initialData.ts`) and are the only sanctioned source for homepage
+  comparisons. Blog bylines use `CRMSolo Editorial Team`; only Eugene Boniface
+  is a real author.
+
 ## Lockfile
 
 `bun.lock` is the source of truth. Regenerate it with `bun install` after
