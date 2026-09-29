@@ -167,7 +167,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
                 CRM<span className="text-accent">SOLO</span>
               </span>
               <span className="text-[8px] text-gray-500 font-mono tracking-widest uppercase block mt-1 font-bold">
-                FOR INDEPENDENT REALTORS
+                FOR INDEPENDENT AGENTS
               </span>
             </div>
           </div>
@@ -254,7 +254,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
                       CRM<span className="text-accent">SOLO</span>
                     </span>
                     <span className="text-[7.5pt] text-gray-300 font-mono tracking-widest uppercase block mt-1 font-bold">
-                      SOLO REALTOR HUB
+                      SOLO AGENT HUB
                     </span>
                   </div>
                 </div>
