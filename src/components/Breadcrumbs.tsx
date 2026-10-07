@@ -170,6 +170,33 @@ export function resolveBreadcrumbs(currentPath: string, customCrumbs?: Breadcrum
       crumbs.push({ label: 'Admin Portal', path: '/admin' });
       break;
 
+    // Legacy alias hubs must resolve their breadcrumb to the canonical URL so
+    // alias pages never link to another alias (or to the bare /comparison path,
+    // which is not prerendered and 404s).
+    case 'guide':
+      crumbs.push({ label: 'Guides & Workbooks', path: '/guides' });
+      if (secondSeg) {
+        const guides = getGuides();
+        const guide = guides.find(g => g.slug === secondSeg || g.id === secondSeg);
+        crumbs.push({
+          label: guide ? guide.title : secondSeg.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+          path: `/guides/${secondSeg}`
+        });
+      }
+      break;
+
+    case 'comparison':
+      crumbs.push({ label: 'CRM Comparisons', path: '/compare' });
+      if (secondSeg) {
+        const comparisons = getComparisons();
+        const comp = comparisons.find(c => c.slug === secondSeg || c.id === secondSeg);
+        crumbs.push({
+          label: comp ? comp.title : secondSeg.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+          path: `/compare/${secondSeg}`
+        });
+      }
+      break;
+
     default:
       crumbs.push({
         label: firstSeg.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),

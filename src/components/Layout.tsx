@@ -500,7 +500,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
               <li><NavLink to='/planning-tools' onNavigate={onNavigate} className="text-accent font-bold hover:text-white transition">Planning Directory (22)</NavLink></li>
               <li><NavLink to='/calculator' onNavigate={onNavigate} className="hover:text-white transition">ROI Calculator</NavLink></li>
               <li><NavLink to='/checklist' onNavigate={onNavigate} className="hover:text-white transition">Feature Checklist</NavLink></li>
-              <li><NavLink to='/compare/best-crm-for-solo-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Solo Pillar comparison</NavLink></li>
+              <li><NavLink to='/compare' onNavigate={onNavigate} className="hover:text-white transition">Solo Pillar comparison</NavLink></li>
               <li><NavLink to='/methodology' onNavigate={onNavigate} className="hover:text-white transition">Review Methodology</NavLink></li>
             </ul>
           </div>
