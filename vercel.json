@@ -102,6 +102,11 @@
       "permanent": true
     },
     {
+      "source": "/compare/best-crm-for-solo-real-estate-agents",
+      "destination": "/compare",
+      "permanent": true
+    },
+    {
       "source": "/planning-tools/project-tracking",
       "destination": "/planning-tools/project-management",
       "permanent": true

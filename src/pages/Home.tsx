@@ -141,7 +141,7 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
               <Calculator className="w-4 h-4" /> Try Free CRM ROI Calculator
             </button>
             <button
-              onClick={() => onNavigate('/compare/best-crm-for-solo-real-estate-agents')}
+              onClick={() => onNavigate('/compare')}
               className="w-full sm:w-auto px-6 py-4 bg-white/10 hover:bg-white/15 border-2 border-white/20 text-white font-black uppercase tracking-widest text-xs rounded-xs transition duration-150 flex items-center justify-center gap-1.5 cursor-pointer"
             >
               See Solo Pillar Comparison <ArrowRight className="w-4 h-4" />
@@ -669,7 +669,7 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
               </div>
 
               <button
-                onClick={() => onNavigate('/compare/best-crm-for-solo-real-estate-agents')}
+                onClick={() => onNavigate('/compare')}
                 className="w-full py-3 bg-primary hover:bg-primary/95 text-white text-xs font-black uppercase tracking-widest rounded-xs text-center shadow-xs block transition cursor-pointer"
               >
                 Read 2026 Pillar Hub Comparison &rarr;
