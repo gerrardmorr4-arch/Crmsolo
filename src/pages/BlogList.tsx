@@ -5,7 +5,7 @@ import Markdown from '../components/Markdown';
 import { Calendar, User, FileText, ArrowLeft, ExternalLink, Tag, Clock, Search } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
 import { useSEO } from '../lib/seo';
-import AdSenseAd from '../components/AdSenseAd';
+import SponsorBanner from '../components/SponsorBanner';
 import PinterestKitSection from '../components/PinterestKitSection';
 
 interface BlogListProps {
@@ -313,7 +313,7 @@ export default function BlogList({ blogSlug, blogs, onNavigate }: BlogListProps)
       <PinterestKitSection />
 
       {/* Inline dynamic content ad block */}
-      <AdSenseAd slot="inContentAd" className="w-full" />
+      <SponsorBanner slot="inContentAd" className="w-full" />
 
       {/* Newsletter Signup in Article Footer */}
       <div className="pt-6 border-t border-gray-100">

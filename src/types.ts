@@ -117,21 +117,18 @@ export interface CalculatorResults {
   }>;
 }
 
-export interface AdSenseSlotSettings {
+export interface SponsorSlotSettings {
   enabled: boolean;
-  code: string;
   fallbackImage: string;
   fallbackLink: string;
 }
 
-export interface AdSenseSettings {
+export interface SponsorAdSettings {
   globalEnabled: boolean;
-  publisherId: string;
-  headScript: string;
-  headerBanner: AdSenseSlotSettings;
-  sidebarAd: AdSenseSlotSettings;
-  inContentAd: AdSenseSlotSettings;
-  footerBanner?: AdSenseSlotSettings;
+  headerBanner: SponsorSlotSettings;
+  sidebarAd: SponsorSlotSettings;
+  inContentAd: SponsorSlotSettings;
+  footerBanner?: SponsorSlotSettings;
 }
 
 export interface BacklinkPartner {

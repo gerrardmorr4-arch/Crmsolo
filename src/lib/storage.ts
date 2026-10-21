@@ -1,4 +1,4 @@
-import { CRMReview, CRMComparison, CRMGuide, BlogPost, AdSenseSettings, BacklinkPartner, EmailSubscriber } from '../types';
+import { CRMReview, CRMComparison, CRMGuide, BlogPost, SponsorAdSettings, BacklinkPartner, EmailSubscriber } from '../types';
 import { initialReviews, initialComparisons, initialGuides, initialBlogPosts } from '../data/initialData';
 import { PLANNING_BLOG_ARTICLES } from '../data/planningBlogArticles';
 
@@ -6,7 +6,7 @@ const REVIEWS_KEY = 'crmsolo_reviews';
 const COMPARISONS_KEY = 'crmsolo_comparisons';
 const GUIDES_KEY = 'crmsolo_guides';
 const BLOG_POSTS_KEY = 'crmsolo_blog_posts';
-const ADSENSE_KEY = 'crmsolo_adsense_settings';
+const SPONSOR_ADS_KEY = 'crmsolo_sponsor_settings';
 const BACKLINKS_KEY = 'crmsolo_backlinks';
 const SUBSCRIBERS_KEY = 'crmsolo_subscribers';
 
@@ -67,57 +67,46 @@ export const initialSubscribers: EmailSubscriber[] = [
   }
 ];
 
-export const defaultAdSenseSettings: AdSenseSettings = {
+export const defaultSponsorAdSettings: SponsorAdSettings = {
   globalEnabled: false,
-  publisherId: 'ca-pub-1587039209512710',
-  headScript: '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1587039209512710" crossorigin="anonymous"></script>',
   headerBanner: {
     enabled: false,
-    code: '',
     fallbackImage: '',
     fallbackLink: '/calculator'
   },
   sidebarAd: {
     enabled: false,
-    code: '',
     fallbackImage: '',
     fallbackLink: '/'
   },
   inContentAd: {
     enabled: false,
-    code: '',
     fallbackImage: '',
     fallbackLink: '/about'
   },
   footerBanner: {
     enabled: false,
-    code: '',
     fallbackImage: '',
     fallbackLink: '/'
   }
 };
 
-export function getAdSenseSettings(): AdSenseSettings {
-  const data = localStorage.getItem(ADSENSE_KEY);
+export function getSponsorAdSettings(): SponsorAdSettings {
+  const data = localStorage.getItem(SPONSOR_ADS_KEY);
   if (!data) {
-    localStorage.setItem(ADSENSE_KEY, JSON.stringify(defaultAdSenseSettings));
-    return defaultAdSenseSettings;
+    localStorage.setItem(SPONSOR_ADS_KEY, JSON.stringify(defaultSponsorAdSettings));
+    return defaultSponsorAdSettings;
   }
   try {
-    const parsed: AdSenseSettings = JSON.parse(data);
-    if (parsed.publisherId === 'ca-pub-1234567890123456') {
-      parsed.publisherId = 'ca-pub-1587039209512710';
-      parsed.globalEnabled = false;
-      localStorage.setItem(ADSENSE_KEY, JSON.stringify(parsed));
-    }
+    const parsed: SponsorAdSettings = JSON.parse(data);
     return parsed;
   } catch (e) {
-    return defaultAdSenseSettings;
+    return defaultSponsorAdSettings;
   }
 }
 
-export function saveAdSenseSettings(settings: AdSenseSettings): void {
-  localStorage.setItem(ADSENSE_KEY, JSON.stringify(settings));
+export function saveSponsorAdSettings(settings: SponsorAdSettings): void {
+  localStorage.setItem(SPONSOR_ADS_KEY, JSON.stringify(settings));
 }
 
 

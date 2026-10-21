@@ -5,7 +5,7 @@ import Markdown from '../components/Markdown';
 import { BookOpen, User, Calendar, List, ChevronRight, HelpCircle, ArrowLeft, Filter, Download, DollarSign, Printer, Check, FileText } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
 import { useSEO } from '../lib/seo';
-import AdSenseAd from '../components/AdSenseAd';
+import SponsorBanner from '../components/SponsorBanner';
 import { useCRMFilterPreferences } from '../lib/useCRMFilterPreferences';
 import TableOfContents, { TocItem } from '../components/TableOfContents';
 import { generateGuidePDF } from '../lib/pdfGenerator';
@@ -342,8 +342,8 @@ export default function GuideDetail({ guideSlug, guides, onNavigate }: GuideDeta
             <Markdown content={currentGuide.content} />
           </div>
 
-          {/* In-content Google AdSense Spot */}
-          <AdSenseAd slot="inContentAd" className="w-full" />
+          {/* In-content Sponsor Spot */}
+          <SponsorBanner slot="inContentAd" className="w-full" />
         </div>
 
       </div>
