@@ -9,7 +9,7 @@ import FAQSection from '../components/FAQSection';
 import AgentTestimonials from '../components/AgentTestimonials';
 import AgentCrmComparison from '../components/AgentCrmComparison';
 import AgentProfileQuiz from '../components/AgentProfileQuiz';
-import AdSenseAd from '../components/AdSenseAd';
+import SponsorBanner from '../components/SponsorBanner';
 import faqData from '../data/faqs.json';
 import { PLANNING_CATEGORIES } from '../data/planningToolsData';
 import { automationBlueprints } from '../data/blueprintsData';
@@ -389,9 +389,9 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
         )}
       </section>
 
-      {/* Google AdSense Sponsored Unit */}
+      {/* Sponsored Unit */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <AdSenseAd slot="inContentAd" className="w-full" />
+        <SponsorBanner slot="inContentAd" className="w-full" />
       </div>
 
       {/* Interactive Agent Profile Matchmaker Quiz */}

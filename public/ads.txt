@@ -1,1 +1,2 @@
-google.com, pub-1587039209512710, DIRECT, f08c47fec0942fa0
+# No authorized digital sellers.
+# CRMsolo does not currently serve programmatic advertising inventory.
