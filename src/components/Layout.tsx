@@ -540,6 +540,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
           </div>
           <div className="flex gap-4 shrink-0 text-gray-400">
             <NavLink to='/' onNavigate={onNavigate} className="hover:text-white">Home</NavLink>
+            <a href="https://araplhn.org/4/b779be47c3f1d8bd0456e9684451d5ca" className="hover:text-white transition">Partner Resources</a>
           </div>
         </div>
       </footer>
