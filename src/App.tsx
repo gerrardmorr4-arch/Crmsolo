@@ -103,6 +103,11 @@ const ROUTE_FALLBACKS: RouteFallback[] = [
   }
 ];
 
+/**
+ * Renders the browser-routed site using content from local storage and fallback
+ * SEO metadata. Navigation updates browser history and scrolls to the top;
+ * browser back/forward navigation also updates the rendered route.
+ */
 export default function App() {
   // Routing state
   const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
@@ -207,6 +212,7 @@ export default function App() {
   };
 
   // Routing Logic
+  /** Returns the page for the current path, or a not-found view for unmatched routes. */
   const renderContent = () => {
     // 1. Home
     if (currentPath === '/' || currentPath === '/index.html') {
