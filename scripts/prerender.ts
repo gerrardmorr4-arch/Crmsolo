@@ -123,7 +123,12 @@ interface RouteEntry {
   noindex: boolean;
 }
 
-/** Canonical content routes: hubs plus every dynamic detail page. */
+/**
+ * Returns canonical content routes: hubs plus every dynamic detail page, sorted
+ * by path with duplicate paths collapsed. Includes noindex entries for admin,
+ * off-topic content, and blog posts below the 150-word threshold so they can
+ * still be prerendered while being excluded from the sitemap.
+ */
 function collectCanonicalRoutes(): RouteEntry[] {
   const entries = new Map<string, RouteEntry>();
   const add = (route: string, noindex = false) => {

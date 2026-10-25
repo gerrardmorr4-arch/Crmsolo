@@ -22,6 +22,12 @@ interface LayoutProps {
   } | null;
 }
 
+/**
+ * Wraps page content with site navigation, breadcrumbs, ads, and the footer.
+ * A non-null stickyCta becomes visible after scrolling more than 350 pixels.
+ * Enabled AdSense settings may inject an external script into the document head;
+ * failures in that injection are caught without interrupting the layout.
+ */
 export default function Layout({ children, currentPath, onNavigate, stickyCta = null }: LayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolledPast, setScrolledPast] = useState(false);
