@@ -94,6 +94,12 @@ const ROUTE_FALLBACKS: RouteFallback[] = [
     title: 'Top Planning Tools & Project Management Software Directory (2026 Index)',
     description: 'Explore 22 verified planning tool categories including Agile, Gantt, Time Tracking, Job Costing, and PPM. Compare 5,900+ software tools with GEO compliance.',
     keywords: ['planning tools', 'project management directory', 'agile tools', 'gantt chart software', 'time tracking software']
+  },
+  {
+    match: p => p === '/resources',
+    title: 'Agent Resources & Further Reading',
+    description: 'Official vendor pricing pages, data protection regulators, and integration platform documentation for independent agents.',
+    keywords: ['agent resources', 'crm documentation', 'data protection regulators', 'integration platforms']
   }
 ];
 
@@ -382,6 +388,9 @@ export default function App() {
     }
     if (currentPath === '/affiliate-disclosure' || currentPath === '/affiliate') {
       return <StaticPages pageType="affiliate" onUpdateCMS={reloadCmsData} onNavigate={handleNavigate} />;
+    }
+    if (currentPath === '/resources') {
+      return <StaticPages pageType="resources" onUpdateCMS={reloadCmsData} onNavigate={handleNavigate} />;
     }
 
     // 404 Fallback

@@ -1,6 +1,7 @@
 import { CRMReview, CRMComparison, CRMGuide, BlogPost, AdSenseSettings, BacklinkPartner, EmailSubscriber } from '../types';
 import { initialReviews, initialComparisons, initialGuides, initialBlogPosts } from '../data/initialData';
 import { PLANNING_BLOG_ARTICLES } from '../data/planningBlogArticles';
+import { SEO_EXPANSION_POSTS } from '../data/seoExpansionPosts';
 
 const REVIEWS_KEY = 'crmsolo_reviews';
 const COMPARISONS_KEY = 'crmsolo_comparisons';
@@ -237,7 +238,7 @@ export function saveGuides(guides: CRMGuide[]): void {
 }
 
 export function getBlogPosts(): BlogPost[] {
-  const allBaselinePosts = [...initialBlogPosts, ...PLANNING_BLOG_ARTICLES];
+  const allBaselinePosts = [...initialBlogPosts, ...PLANNING_BLOG_ARTICLES, ...SEO_EXPANSION_POSTS];
   const data = localStorage.getItem(BLOG_POSTS_KEY);
   if (!data) {
     localStorage.setItem(BLOG_POSTS_KEY, JSON.stringify(allBaselinePosts));

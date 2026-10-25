@@ -514,6 +514,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
               <li><NavLink to='/reviews/pipedrive-for-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Pipedrive Review</NavLink></li>
               <li><NavLink to='/reviews/streak-for-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Streak Review</NavLink></li>
               <li><NavLink to='/reviews/followupboss-for-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Follow Up Boss Review</NavLink></li>
+              <li><NavLink to='/resources' onNavigate={onNavigate} className="hover:text-white transition">Agent Resources</NavLink></li>
             </ul>
           </div>
 
