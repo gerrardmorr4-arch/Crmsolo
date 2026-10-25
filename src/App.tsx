@@ -94,9 +94,20 @@ const ROUTE_FALLBACKS: RouteFallback[] = [
     title: 'Top Planning Tools & Project Management Software Directory (2026 Index)',
     description: 'Explore 22 verified planning tool categories including Agile, Gantt, Time Tracking, Job Costing, and PPM. Compare 5,900+ software tools with GEO compliance.',
     keywords: ['planning tools', 'project management directory', 'agile tools', 'gantt chart software', 'time tracking software']
+  },
+  {
+    match: p => p === '/resources',
+    title: 'Agent Resources & Further Reading',
+    description: 'Official vendor pricing pages, data protection regulators, and integration platform documentation for independent agents.',
+    keywords: ['agent resources', 'crm documentation', 'data protection regulators', 'integration platforms']
   }
 ];
 
+/**
+ * Renders the current browser route within the shared layout using CMS data
+ * loaded from localStorage. Manages history navigation and fallback SEO metadata.
+ * Storage initialization errors propagate during rendering.
+ */
 export default function App() {
   // Routing state
   const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
@@ -201,6 +212,7 @@ export default function App() {
   };
 
   // Routing Logic
+  /** Returns content for the current route, or a not-found view if unmatched. */
   const renderContent = () => {
     // 1. Home
     if (currentPath === '/' || currentPath === '/index.html') {
@@ -382,6 +394,9 @@ export default function App() {
     }
     if (currentPath === '/affiliate-disclosure' || currentPath === '/affiliate') {
       return <StaticPages pageType="affiliate" onUpdateCMS={reloadCmsData} onNavigate={handleNavigate} />;
+    }
+    if (currentPath === '/resources') {
+      return <StaticPages pageType="resources" onUpdateCMS={reloadCmsData} onNavigate={handleNavigate} />;
     }
 
     // 404 Fallback

@@ -17,6 +17,7 @@ import React from 'react';
 import { JSDOM } from 'jsdom';
 import { initialReviews, initialComparisons, initialGuides, initialBlogPosts } from '../src/data/initialData';
 import { PLANNING_BLOG_ARTICLES } from '../src/data/planningBlogArticles';
+import { SEO_EXPANSION_POSTS } from '../src/data/seoExpansionPosts';
 import { automationBlueprints } from '../src/data/blueprintsData';
 import { PLANNING_CATEGORIES, PLANNING_SLUG_ALIASES } from '../src/data/planningToolsData';
 
@@ -57,7 +58,8 @@ const STATIC_ROUTES = [
   '/contact',
   '/privacy-policy',
   '/terms',
-  '/affiliate-disclosure'
+  '/affiliate-disclosure',
+  '/resources'
 ];
 
 /** Routes that must never be indexed. */
@@ -121,7 +123,11 @@ interface RouteEntry {
   noindex: boolean;
 }
 
-/** Canonical content routes: hubs plus every dynamic detail page. */
+/**
+ * Returns canonical hubs and detail routes, deduplicated and sorted by path.
+ * Includes noindex entries for admin, off-topic content, and blog posts with
+ * fewer than 150 words after countWords stripping; these remain prerenderable.
+ */
 function collectCanonicalRoutes(): RouteEntry[] {
   const entries = new Map<string, RouteEntry>();
   const add = (route: string, noindex = false) => {
@@ -146,6 +152,10 @@ function collectCanonicalRoutes(): RouteEntry[] {
     add(`/blog/${b.slug}`, thin || OFF_TOPIC_POST_SLUGS.has(b.slug));
   });
   PLANNING_BLOG_ARTICLES.forEach(b => {
+    const thin = countWords(b.content) < THIN_CONTENT_WORDS;
+    add(`/blog/${b.slug}`, thin);
+  });
+  SEO_EXPANSION_POSTS.forEach(b => {
     const thin = countWords(b.content) < THIN_CONTENT_WORDS;
     add(`/blog/${b.slug}`, thin);
   });

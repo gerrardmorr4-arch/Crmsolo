@@ -22,6 +22,12 @@ interface LayoutProps {
   } | null;
 }
 
+/**
+ * Wraps page content with navigation, breadcrumbs, ads, newsletter, and footers.
+ * Uses currentPath to mark active links and onNavigate for internal navigation.
+ * An optional stickyCta appears after a scroll event beyond 350 pixels and can
+ * be collapsed. Loads the configured external AdSense script when enabled.
+ */
 export default function Layout({ children, currentPath, onNavigate, stickyCta = null }: LayoutProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolledPast, setScrolledPast] = useState(false);
@@ -514,6 +520,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
               <li><NavLink to='/reviews/pipedrive-for-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Pipedrive Review</NavLink></li>
               <li><NavLink to='/reviews/streak-for-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Streak Review</NavLink></li>
               <li><NavLink to='/reviews/followupboss-for-real-estate-agents' onNavigate={onNavigate} className="hover:text-white transition">Follow Up Boss Review</NavLink></li>
+              <li><NavLink to='/resources' onNavigate={onNavigate} className="hover:text-white transition">Agent Resources</NavLink></li>
             </ul>
           </div>
 

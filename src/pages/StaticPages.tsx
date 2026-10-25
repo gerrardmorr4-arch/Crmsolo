@@ -4,11 +4,17 @@ import { Mail, Shield, ShieldCheck, Heart, User, Sparkles, Send, Check } from 'l
 import { useSEO } from '../lib/seo';
 
 interface StaticPagesProps {
-  pageType: 'about' | 'methodology' | 'contact' | 'privacy' | 'affiliate' | 'terms';
+  pageType: 'about' | 'methodology' | 'contact' | 'privacy' | 'affiliate' | 'terms' | 'resources';
   onUpdateCMS: () => void;
   onNavigate: (path: string) => void;
 }
 
+/**
+ * Renders the informational page selected by pageType and sets its SEO metadata.
+ * About and methodology tabs navigate to separate routes through onNavigate;
+ * resources lists external reference links. The contact form only updates local
+ * component state to show confirmation; it does not send a message.
+ */
 export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: StaticPagesProps) {
   // Derived from the route, not component state: each tab is its own indexable
   // URL, so its content has to be present in the prerendered HTML.
@@ -38,6 +44,10 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
     seoTitle = 'Affiliate & Advertising Disclosure';
     seoDescription = 'How we finance our reviews. Read our transparency and advertising standards.';
     seoKeywords = ['affiliate disclosure', 'honest advertising', 'referral links'];
+  } else if (pageType === 'resources') {
+    seoTitle = 'Agent Resources & Further Reading';
+    seoDescription = 'A curated reference list of official software documentation, data protection regulators, and integration platforms for independent agents.';
+    seoKeywords = ['agent resources', 'crm documentation', 'data protection regulators', 'integration platforms'];
   }
 
   useSEO({
@@ -402,6 +412,123 @@ export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: Stati
           <p>
             Questions about these terms: <a href="mailto:Eugeneboniface4@yahoo.com" className="text-accent font-bold hover:underline">Eugeneboniface4@yahoo.com</a>, or see our{' '}
             <NavLink to="/contact" onNavigate={onNavigate} className="text-accent font-bold hover:underline">contact page</NavLink>.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (pageType === 'resources') {
+    return (
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+        <div className="text-center space-y-3 max-w-3xl mx-auto">
+          <span className="text-accent text-xs font-bold tracking-wider uppercase px-3 py-1 bg-accent/10 border border-accent/25 rounded-full inline-block">
+            Reference List
+          </span>
+          <h1 className="text-3xl md:text-4xl font-extrabold text-primary font-display tracking-tight">
+            Agent Resources &amp; Further Reading
+          </h1>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            The sources we check when reviewing software, plus the regulators and integration platforms an independent agent is most likely to need. Every link below points to an official or primary source.
+          </p>
+        </div>
+
+        <div className="bg-white p-6 md:p-8 rounded-3xl border border-gray-100 shadow-xs space-y-6">
+          <h2 className="font-display font-bold text-primary text-lg border-b border-gray-100 pb-3">
+            Vendor Documentation &amp; Pricing Pages
+          </h2>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Pricing and feature availability are set by vendors and change without notice. These are the pages we check when verifying a claim in one of our reviews.
+          </p>
+          <ul className="space-y-3 text-sm">
+            <li>
+              <a href="https://www.pipedrive.com/en/pricing" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">Pipedrive pricing</a>
+              <span className="text-gray-500"> — current tier structure and per-seat costs.</span>
+            </li>
+            <li>
+              <a href="https://www.followupboss.com/pricing/" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">Follow Up Boss pricing</a>
+              <span className="text-gray-500"> — lead-volume-based plans for real estate teams and solo agents.</span>
+            </li>
+            <li>
+              <a href="https://www.hubspot.com/pricing/crm" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">HubSpot CRM pricing</a>
+              <span className="text-gray-500"> — free tier limits and the paid professional tiers.</span>
+            </li>
+            <li>
+              <a href="https://www.zoho.com/crm/pricing.html" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">Zoho CRM pricing</a>
+              <span className="text-gray-500"> — edition comparison for the CRM suite.</span>
+            </li>
+            <li>
+              <a href="https://www.copper.com/pricing" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">Copper pricing</a>
+              <span className="text-gray-500"> — Google Workspace-native CRM plans.</span>
+            </li>
+            <li>
+              <a href="https://streak.com/pricing" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">Streak pricing</a>
+              <span className="text-gray-500"> — the Gmail-based CRM and its permanent free tier.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="bg-white p-6 md:p-8 rounded-3xl border border-gray-100 shadow-xs space-y-6">
+          <h2 className="font-display font-bold text-primary text-lg border-b border-gray-100 pb-3">
+            Data Protection Regulators
+          </h2>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            A CRM holds personal data about clients and prospects, and the rules differ by market. These are the official regulators and guidance bodies for the regions most of our readers work in.
+          </p>
+          <ul className="space-y-3 text-sm">
+            <li>
+              <a href="https://ico.org.uk/for-organisations/" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">UK Information Commissioner&apos;s Office</a>
+              <span className="text-gray-500"> — guidance for organisations on UK data protection.</span>
+            </li>
+            <li>
+              <a href="https://www.edpb.europa.eu/" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">European Data Protection Board</a>
+              <span className="text-gray-500"> — the body that coordinates GDPR application across the EU.</span>
+            </li>
+            <li>
+              <a href="https://www.oaic.gov.au/privacy" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">Office of the Australian Information Commissioner</a>
+              <span className="text-gray-500"> — Australian Privacy Principles and guidance.</span>
+            </li>
+            <li>
+              <a href="https://www.ftc.gov/business-guidance/privacy-security" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">US Federal Trade Commission</a>
+              <span className="text-gray-500"> — business guidance on privacy and data security.</span>
+            </li>
+            <li>
+              <a href="https://www.priv.gc.ca/en/" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">Office of the Privacy Commissioner of Canada</a>
+              <span className="text-gray-500"> — guidance under PIPEDA.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="bg-white p-6 md:p-8 rounded-3xl border border-gray-100 shadow-xs space-y-6">
+          <h2 className="font-display font-bold text-primary text-lg border-b border-gray-100 pb-3">
+            Integration &amp; Automation Platforms
+          </h2>
+          <p className="text-gray-600 text-sm leading-relaxed">
+            Most agents end up connecting their CRM to at least one other service. These are the platforms that appear most often in the workflows we document.
+          </p>
+          <ul className="space-y-3 text-sm">
+            <li>
+              <a href="https://zapier.com/apps" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">Zapier app directory</a>
+              <span className="text-gray-500"> — searchable list of the services each connector supports.</span>
+            </li>
+            <li>
+              <a href="https://developers.hubspot.com/" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">HubSpot developer documentation</a>
+              <span className="text-gray-500"> — API reference for custom integrations.</span>
+            </li>
+            <li>
+              <a href="https://developers.pipedrive.com/" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">Pipedrive developer documentation</a>
+              <span className="text-gray-500"> — API and marketplace reference.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="bg-slate-900 text-white p-6 md:p-8 rounded-3xl space-y-3">
+          <h2 className="font-display font-bold text-lg">How to Use This Page</h2>
+          <p className="text-slate-300 text-sm leading-relaxed">
+            If a claim in one of our reviews matters to your decision, check it against the vendor page above before you buy. If you are handling client data across borders, start with the regulator for the market your clients are in. Both habits will save you more than any comparison table.
+          </p>
+          <p className="text-slate-400 text-xs leading-relaxed">
+            This page lists primary sources only. We do not accept payment for placement here, and inclusion is not an endorsement.
           </p>
         </div>
       </div>
