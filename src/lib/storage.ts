@@ -237,6 +237,17 @@ export function saveGuides(guides: CRMGuide[]): void {
   localStorage.setItem(GUIDES_KEY, JSON.stringify(guides));
 }
 
+/**
+ * Returns stored blog posts, seeding defaults or appending missing baseline IDs
+ * from the initial, planning, and SEO expansion posts as needed.
+ * For posts matching a baseline ID, fewer than 250 whitespace-delimited content
+ * words or an excerpt outside 80–160 characters triggers replacement of content,
+ * excerpt, SEO metadata, keywords, and featured tools with baseline values.
+ * Persists additions and replacements to localStorage before returning.
+ *
+ * @throws If storage access or writes fail, JSON parsing fails, or stored data
+ * cannot be processed as blog posts. These errors propagate without a fallback.
+ */
 export function getBlogPosts(): BlogPost[] {
   const allBaselinePosts = [...initialBlogPosts, ...PLANNING_BLOG_ARTICLES, ...SEO_EXPANSION_POSTS];
   const data = localStorage.getItem(BLOG_POSTS_KEY);

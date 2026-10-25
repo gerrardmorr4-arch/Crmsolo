@@ -103,6 +103,11 @@ const ROUTE_FALLBACKS: RouteFallback[] = [
   }
 ];
 
+/**
+ * Renders the current browser route within the shared layout using CMS data
+ * loaded from localStorage. Manages history navigation and fallback SEO metadata.
+ * Storage initialization errors propagate during rendering.
+ */
 export default function App() {
   // Routing state
   const [currentPath, setCurrentPath] = useState<string>(window.location.pathname);
@@ -207,6 +212,7 @@ export default function App() {
   };
 
   // Routing Logic
+  /** Returns content for the current route, or a not-found view if unmatched. */
   const renderContent = () => {
     // 1. Home
     if (currentPath === '/' || currentPath === '/index.html') {

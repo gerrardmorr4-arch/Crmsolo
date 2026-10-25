@@ -9,6 +9,12 @@ interface StaticPagesProps {
   onNavigate: (path: string) => void;
 }
 
+/**
+ * Renders the informational page selected by pageType and sets its SEO metadata.
+ * About and methodology tabs navigate to separate routes through onNavigate;
+ * resources lists external reference links. The contact form only updates local
+ * component state to show confirmation; it does not send a message.
+ */
 export default function StaticPages({ pageType, onUpdateCMS, onNavigate }: StaticPagesProps) {
   // Derived from the route, not component state: each tab is its own indexable
   // URL, so its content has to be present in the prerendered HTML.
