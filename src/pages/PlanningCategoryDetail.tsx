@@ -29,14 +29,14 @@ import {
  */
 const REAL_ESTATE_CROSS_REF: Record<string, { heading: string; body: React.ReactNode }> = {
   'time-tracking': {
-    heading: 'Do Solo Real Estate Agents Need Time Tracking?',
+    heading: 'Do Solo Real Estate Agents Need Time Tracking Software?',
     body: (
       <>
-        If you bill flat commissions rather than hourly, skip timesheets entirely and see how{' '}
+        If you bill flat commissions instead of hourly, skip the timesheets. Track deals, not minutes, with the{' '}
         <a href="/directory" className="font-semibold text-emerald-700 underline hover:text-emerald-800">
-          solo real estate agents compare CRMs
-        </a>{' '}
-        that track deals instead of minutes.
+          best real estate CRM for a single agent
+        </a>
+        , where every listing and buyer moves through a visual transaction pipeline for independent brokers.
       </>
     )
   },
@@ -44,10 +44,11 @@ const REAL_ESTATE_CROSS_REF: Record<string, { heading: string; body: React.React
     heading: 'Gantt Charts vs a Real Estate Deal Pipeline',
     body: (
       <>
-        A Gantt chart is overkill for a single listing pipeline — most solo agents get more from a visual deal-stage board, compared side by side in our{' '}
+        A Gantt chart is overkill for a single listing pipeline. Most solo listing specialists get more from a drag-and-drop deal board — compare the{' '}
         <a href="/directory" className="font-semibold text-emerald-700 underline hover:text-emerald-800">
-          real estate CRM comparison for independent brokers
-        </a>.
+          best CRM for solo real estate agents
+        </a>{' '}
+        side by side in our one-seat buyer comparison.
       </>
     )
   },
@@ -55,10 +56,11 @@ const REAL_ESTATE_CROSS_REF: Record<string, { heading: string; body: React.React
     heading: 'Kanban Boards for a Solo Listing Pipeline',
     body: (
       <>
-        Kanban is the closest fit here to real estate work: if you want a pipeline you can drag from lead to closing on your phone, start with the{' '}
+        Kanban is the closest fit here to real estate work. If you want a pipeline you can drag from lead to closing on your phone, start with the{' '}
         <a href="/directory" className="font-semibold text-emerald-700 underline hover:text-emerald-800">
-          best CRM for a solo real estate agent
-        </a>.
+          best real estate CRM for a single agent
+        </a>{' '}
+        and skip the admin team entirely.
       </>
     )
   }

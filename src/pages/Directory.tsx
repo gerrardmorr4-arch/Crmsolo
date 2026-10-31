@@ -3,6 +3,8 @@ import { CRMReview } from '../types';
 import { DirectoryFilterSidebar, FilterState } from '../components/DirectoryFilterSidebar';
 import { DirectoryProductCard } from '../components/DirectoryProductCard';
 import { CompareDrawer } from '../components/CompareDrawer';
+import NavLink from '../components/NavLink';
+import { useSEO } from '../lib/seo';
 import { 
   Building2, 
   Search, 
@@ -15,7 +17,8 @@ import {
   Layers, 
   SlidersHorizontal,
   ShieldCheck,
-  Award
+  Award,
+  Calculator
 } from 'lucide-react';
 
 interface DirectoryPageProps {
@@ -23,14 +26,42 @@ interface DirectoryPageProps {
   onNavigateToReview: (slug: string) => void;
   onNavigateToGuide: (slug: string) => void;
   onNavigateToComparisons: () => void;
+  onNavigate: (path: string) => void;
+  /**
+   * Snippet override for non-pillar routes that reuse this component (the
+   * /reviews hub). Defaults to the solo-agent buyer-intent pillar copy.
+   */
+  seoTitle?: string;
+  seoDescription?: string;
 }
 
 export const Directory: React.FC<DirectoryPageProps> = ({
   reviews,
   onNavigateToReview,
   onNavigateToGuide,
-  onNavigateToComparisons
+  onNavigateToComparisons,
+  onNavigate,
+  seoTitle,
+  seoDescription
 }) => {
+  // Page-level metadata. This overrides the app-shell route fallback so the
+  // pillar's snippet stays buyer-intent even if the fallback map changes.
+  useSEO({
+    title: seoTitle ?? 'Best CRM for Solo Real Estate Agents (2026 Picks)',
+    description:
+      seoDescription ??
+      'Compare the best real estate CRM for a single agent. One-seat pricing, zero tech setup, no admin team needed. See 2026 picks and choose yours today.',
+    keywords: [
+      'best real estate crm for single agent',
+      'best crm for solo real estate agent',
+      'visual transaction pipeline for independent brokers',
+      'crm without admin team',
+      'one seat crm pricing',
+      'independent broker crm comparison'
+    ],
+    ogType: 'website'
+  }, [seoTitle, seoDescription]);
+
   // Filter state
   const [filters, setFilters] = useState<FilterState>({
     pricingModel: 'all',
@@ -195,11 +226,15 @@ export const Directory: React.FC<DirectoryPageProps> = ({
               </div>
 
               <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                The Best CRM for Solo Real Estate Agents (2026)
+                Best CRM for Solo Real Estate Agents: The 2026 Buyer Comparison
               </h1>
 
+              <h2 className="text-lg sm:text-xl font-bold text-slate-800">
+                A Visual Transaction Pipeline Built for Independent Brokers and Single Agents
+              </h2>
+
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                You list, negotiate, and close on your own — there is no operations manager to configure a pipeline for you and no IT team to migrate your database. Every CRM below was scored on what one agent can realistically set up in a single weekend: speed-to-lead on a live inquiry, monthly cost at one seat, and whether a deal moves forward from your phone between showings.
+                If you are a solo real estate agent, an independent broker, or a listing specialist with no administrative or IT team, this is the best real estate CRM for a single agent: a shortlist you can set up in one weekend and run from your phone. We ranked every one-seat platform on three buyer questions — one-seat monthly cost, speed-to-lead on a live inquiry, and whether a visual transaction pipeline actually moves a deal forward between showings. No enterprise bloat, no admin to configure it, no IT team to migrate your database. Here is the best CRM for a solo real estate agent in 2026.
               </p>
 
               {/* Trust & Methodology Badges */}
@@ -348,6 +383,69 @@ export const Directory: React.FC<DirectoryPageProps> = ({
                 />
               ))
             )}
+
+            {/* Page-1 keyword block: buyer-intent questions this page answers */}
+            <section
+              id="directory-buyer-keywords"
+              className="bg-slate-900 text-white rounded-2xl border border-slate-800 p-6 sm:p-8 mt-12 space-y-6"
+            >
+              <div>
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">
+                  <Sparkles className="w-4 h-4" />
+                  <span>What Solo Agents Ask Before Buying</span>
+                </div>
+                <h2 className="text-xl sm:text-2xl font-bold">
+                  How to Choose a Real Estate CRM for a Single Agent
+                </h2>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-emerald-300">
+                    Best real estate CRM for a single agent without an admin team
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    You have no operations manager, so setup has to be near zero. We score each platform on how quickly one person can import a sphere, publish a pipeline, and send a first follow-up — with no consultant and no IT ticket.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-emerald-300">
+                    Visual transaction pipeline for independent brokers
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    A drag-and-drop board from lead to closing beats a spreadsheet. Every listing or buyer deal moves one stage at a time, and stalled cards are obvious at a glance, even from your phone between showings.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-emerald-300">
+                    One-seat CRM pricing and free tiers that stay free
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    Solo agents pay per seat, not per enterprise licence. We list the real one-seat monthly price and flag which free plans quietly cap contacts or automation once your database grows.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-base font-bold text-emerald-300">
+                    Speed-to-lead automation for a solo listing specialist
+                  </h3>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    With no team to pick up the phone, an instant auto-response is your only safety net. We compare the built-in text and email triggers each CRM fires the moment a new portal inquiry lands.
+                  </p>
+                </div>
+              </div>
+
+              <p className="text-xs text-slate-300 leading-relaxed border-t border-slate-800 pt-5">
+                Not sure which tier pays for itself? Run the numbers with our{' '}
+                <NavLink
+                  to="/calculator"
+                  onNavigate={onNavigate}
+                  className="inline-flex items-center gap-1 font-semibold text-emerald-400 underline hover:text-emerald-300"
+                >
+                  <Calculator className="w-3.5 h-3.5" /> CRM ROI calculator for solo agents
+                </NavLink>{' '}
+                before you buy.
+              </p>
+            </section>
 
             {/* In-Directory SEO FAQ & Buyer Guide Section (GetApp style) */}
             <section 

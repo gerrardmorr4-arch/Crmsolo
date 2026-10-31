@@ -258,6 +258,7 @@ export default function App() {
           onNavigateToReview={(slug) => handleNavigate(`/reviews/${slug}`)}
           onNavigateToGuide={(slug) => handleNavigate(`/guides/${slug}`)}
           onNavigateToComparisons={() => handleNavigate('/compare')}
+          onNavigate={handleNavigate}
         />
       );
     }
@@ -313,6 +314,9 @@ export default function App() {
           onNavigateToReview={(slug) => handleNavigate(`/reviews/${slug}`)}
           onNavigateToGuide={(slug) => handleNavigate(`/guides/${slug}`)}
           onNavigateToComparisons={() => handleNavigate('/compare')}
+          onNavigate={handleNavigate}
+          seoTitle="Real Estate CRM Reviews for Solo Agents (2026)"
+          seoDescription="Read our honest verdicts on Pipedrive, Streak, Follow Up Boss, Copper, and Wise Agent, scored for one-seat use by independent agents."
         />
       );
     }
