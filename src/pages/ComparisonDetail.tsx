@@ -3,7 +3,7 @@ import { CRMReview, CRMComparison } from '../types';
 import { Check, X, ShieldAlert, Award, Star, HelpCircle, ArrowUpRight, ArrowRight, Sparkles, AlertCircle, ChevronRight, Download, Printer } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
 import { useSEO } from '../lib/seo';
-import AdSenseAd from '../components/AdSenseAd';
+import SponsorBanner from '../components/SponsorBanner';
 
 interface ComparisonDetailProps {
   comparisonSlug: string | null;
@@ -262,8 +262,8 @@ export default function ComparisonDetail({ comparisonSlug, comparisons, reviews,
           </div>
         </div>
 
-        {/* Dynamic AdSense In-Content Slot */}
-        <AdSenseAd slot="inContentAd" className="w-full my-6" />
+        {/* Dynamic In-Content Sponsor Slot */}
+        <SponsorBanner slot="inContentAd" className="w-full my-6" />
 
         {/* 3. Reusable comparison slug references linking to individual head-to-heads */}
         <div className="bg-gray-100/50 p-6 rounded-2xl border border-gray-200 space-y-4">
@@ -413,8 +413,8 @@ export default function ComparisonDetail({ comparisonSlug, comparisons, reviews,
         </div>
       </div>
 
-      {/* Dynamic AdSense In-Content Slot */}
-      <AdSenseAd slot="inContentAd" className="w-full" />
+      {/* Dynamic In-Content Sponsor Slot */}
+      <SponsorBanner slot="inContentAd" className="w-full" />
 
       {/* 3. Overall Verdict Banner */}
       <div className="bg-primary text-white p-6 md:p-8 rounded-3xl relative overflow-hidden shadow-md">

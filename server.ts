@@ -271,7 +271,7 @@ For agents seeking immediate performance lifts, we recommend selecting a platfor
     if (adsPath) {
       res.sendFile(adsPath);
     } else {
-      res.send("google.com, pub-1587039209512710, DIRECT, f08c47fec0942fa0\n");
+      res.status(404).send('# No authorized sellers\n');
     }
   });
 

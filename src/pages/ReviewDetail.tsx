@@ -4,7 +4,7 @@ import Markdown from '../components/Markdown';
 import { Check, X, Star, Calendar, DollarSign, ArrowUpRight, Shield, Award, Sparkles, Printer, HelpCircle, ChevronDown } from 'lucide-react';
 import NewsletterSignup from '../components/NewsletterSignup';
 import { useSEO } from '../lib/seo';
-import AdSenseAd from '../components/AdSenseAd';
+import SponsorBanner from '../components/SponsorBanner';
 import ReviewPrintPreviewModal from '../components/ReviewPrintPreviewModal';
 import TableOfContents, { TocItem } from '../components/TableOfContents';
 
@@ -336,7 +336,7 @@ export default function ReviewDetail({ crm, onNavigate }: ReviewDetailProps) {
           </div>
 
           {/* Dynamic inline sponsor / article display ad */}
-          <AdSenseAd slot="inContentAd" className="w-full" />
+          <SponsorBanner slot="inContentAd" className="w-full" />
 
           {/* 7. Verdict Conclusion Banner */}
           <div id="verdict" className="scroll-mt-28 bg-primary text-white p-6 md:p-8 rounded-3xl relative overflow-hidden shadow-md">

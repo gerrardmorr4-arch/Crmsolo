@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { List, ChevronRight, ChevronDown, AlignLeft } from 'lucide-react';
-import AdSenseAd from './AdSenseAd';
+import SponsorBanner from './SponsorBanner';
 
 export interface TocItem {
   id: string;
@@ -172,7 +172,7 @@ export default function TableOfContents({
 
         {showAd && (
           <div className="pt-3 border-t border-gray-100">
-            <AdSenseAd slot="sidebarAd" className="w-full" />
+            <SponsorBanner slot="sidebarAd" className="w-full" />
           </div>
         )}
       </aside>

@@ -2,8 +2,7 @@ import NavLink from './NavLink';
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Mail, BookOpen, Calculator, Layers, Info, Check, Sparkles, Star, ChevronRight, ChevronUp, ChevronDown, Lock, Search, FileText, ArrowRight, Award, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { getAdSenseSettings } from '../lib/storage';
-import AdSenseAd from './AdSenseAd';
+import SponsorBanner from './SponsorBanner';
 import JoinAgentNewsletter from './JoinAgentNewsletter';
 import NavSearchBar from './NavSearchBar';
 import PrintFooter from './PrintFooter';
@@ -26,43 +25,6 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolledPast, setScrolledPast] = useState(false);
   const [ctaCollapsed, setCtaCollapsed] = useState(false);
-
-  // Load and inject Google AdSense headScript dynamically when enabled
-  useEffect(() => {
-    try {
-      const stored = getAdSenseSettings();
-      if (stored && stored.globalEnabled && stored.headScript) {
-        // Extract src or script parameters if the user pasted <script src="..."></script>
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(stored.headScript, 'text/html');
-        const scriptElement = doc.querySelector('script');
-        
-        if (scriptElement) {
-          const src = scriptElement.getAttribute('src');
-          if (src) {
-            const existing = document.querySelector(`script[src="${src}"]`);
-            if (!existing) {
-              const script = document.createElement('script');
-              script.src = src;
-              script.async = true;
-              script.crossOrigin = 'anonymous';
-              
-              // Forward any custom attributes like data-ad-client, client, etc.
-              for (let i = 0; i < scriptElement.attributes.length; i++) {
-                const attr = scriptElement.attributes[i];
-                if (attr.name !== 'src' && attr.name !== 'async') {
-                  script.setAttribute(attr.name, attr.value);
-                }
-              }
-              document.head.appendChild(script);
-            }
-          }
-        }
-      }
-    } catch (e) {
-      console.error('Failed to inject Google AdSense script:', e);
-    }
-  }, [currentPath]);
 
   // Reset collapse state when sticky CTA content changes so new offers start visible
   useEffect(() => {
@@ -351,7 +313,7 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
 
       {/* Main Content Stage */}
       <main className="flex-grow">
-        <AdSenseAd slot="headerBanner" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6" />
+        <SponsorBanner slot="headerBanner" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6" />
         {children}
       </main>
 
@@ -469,9 +431,9 @@ export default function Layout({ children, currentPath, onNavigate, stickyCta = 
         )}
       </AnimatePresence>
 
-      {/* Footer Leaderboard Google AdSense Slot */}
+      {/* Footer Leaderboard Sponsor Slot */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-6 no-print">
-        <AdSenseAd slot="footerBanner" className="w-full" />
+        <SponsorBanner slot="footerBanner" className="w-full" />
       </div>
 
       {/* Join Agent Newsletter Section */}

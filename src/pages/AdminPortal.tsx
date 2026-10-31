@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BlogPost, CRMGuide, CRMReview, AdSenseSettings } from '../types';
-import { getBlogPosts, saveBlogPosts, getGuides, saveGuides, getReviews, saveReviews, getAdSenseSettings, saveAdSenseSettings } from '../lib/storage';
+import { BlogPost, CRMGuide, CRMReview, SponsorAdSettings } from '../types';
+import { getBlogPosts, saveBlogPosts, getGuides, saveGuides, getReviews, saveReviews, getSponsorAdSettings, saveSponsorAdSettings } from '../lib/storage';
 import { 
   Plus, Trash2, Save, Users, BookOpen, FileText, Award, ShieldAlert, 
   DollarSign, Check, Mail, Settings, Activity, ClipboardList, Info, Sparkles,
@@ -373,28 +373,22 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
   const [seoAuditType, setSeoAuditType] = useState<'all' | 'blog' | 'guide' | 'review'>('all');
   const [seoAuditSearch, setSeoAuditSearch] = useState('');
 
-  // AdSense configuration states
+  // Sponsor banner configuration states
   const [adsGlobalEnabled, setAdsGlobalEnabled] = useState(false);
-  const [adsPublisherId, setAdsPublisherId] = useState('');
-  const [adsHeadScript, setAdsHeadScript] = useState('');
 
   const [adsHeaderEnabled, setAdsHeaderEnabled] = useState(true);
-  const [adsHeaderCode, setAdsHeaderCode] = useState('');
   const [adsHeaderFallbackImage, setAdsHeaderFallbackImage] = useState('');
   const [adsHeaderFallbackLink, setAdsHeaderFallbackLink] = useState('');
 
   const [adsSidebarEnabled, setAdsSidebarEnabled] = useState(true);
-  const [adsSidebarCode, setAdsSidebarCode] = useState('');
   const [adsSidebarFallbackImage, setAdsSidebarFallbackImage] = useState('');
   const [adsSidebarFallbackLink, setAdsSidebarFallbackLink] = useState('');
 
   const [adsInContentEnabled, setAdsInContentEnabled] = useState(true);
-  const [adsInContentCode, setAdsInContentCode] = useState('');
   const [adsInContentFallbackImage, setAdsInContentFallbackImage] = useState('');
   const [adsInContentFallbackLink, setAdsInContentFallbackLink] = useState('');
 
   const [adsFooterEnabled, setAdsFooterEnabled] = useState(true);
-  const [adsFooterCode, setAdsFooterCode] = useState('');
   const [adsFooterFallbackImage, setAdsFooterFallbackImage] = useState('');
   const [adsFooterFallbackLink, setAdsFooterFallbackLink] = useState('');
 
@@ -533,29 +527,23 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
       setFollowupbossProPrice(parsed.followupbossPro || 129);
     }
 
-    // Load AdSense settings
-    const ads = getAdSenseSettings();
+    // Load sponsor banner settings
+    const ads = getSponsorAdSettings();
     setAdsGlobalEnabled(ads.globalEnabled);
-    setAdsPublisherId(ads.publisherId);
-    setAdsHeadScript(ads.headScript);
 
     setAdsHeaderEnabled(ads.headerBanner?.enabled ?? true);
-    setAdsHeaderCode(ads.headerBanner?.code ?? '');
     setAdsHeaderFallbackImage(ads.headerBanner?.fallbackImage ?? '');
     setAdsHeaderFallbackLink(ads.headerBanner?.fallbackLink ?? '');
 
     setAdsSidebarEnabled(ads.sidebarAd?.enabled ?? true);
-    setAdsSidebarCode(ads.sidebarAd?.code ?? '');
     setAdsSidebarFallbackImage(ads.sidebarAd?.fallbackImage ?? '');
     setAdsSidebarFallbackLink(ads.sidebarAd?.fallbackLink ?? '');
 
     setAdsInContentEnabled(ads.inContentAd?.enabled ?? true);
-    setAdsInContentCode(ads.inContentAd?.code ?? '');
     setAdsInContentFallbackImage(ads.inContentAd?.fallbackImage ?? '');
     setAdsInContentFallbackLink(ads.inContentAd?.fallbackLink ?? '');
 
     setAdsFooterEnabled(ads.footerBanner?.enabled ?? true);
-    setAdsFooterCode(ads.footerBanner?.code ?? '');
     setAdsFooterFallbackImage(ads.footerBanner?.fallbackImage ?? '');
     setAdsFooterFallbackLink(ads.footerBanner?.fallbackLink ?? '');
   }, []);
@@ -1140,43 +1128,37 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
     triggerNotification('💰 Custom pricing indices stored and loaded across all comparison structures!');
   };
 
-  // 4. Save Google AdSense & Partner Ads configuration
-  const handleSaveAdSense = () => {
-    const updated: AdSenseSettings = {
+  // 4. Save sponsor banner configuration
+  const handleSaveSponsorAds = () => {
+    const updated: SponsorAdSettings = {
       globalEnabled: adsGlobalEnabled,
-      publisherId: adsPublisherId.trim(),
-      headScript: adsHeadScript,
       headerBanner: {
         enabled: adsHeaderEnabled,
-        code: adsHeaderCode,
         fallbackImage: adsHeaderFallbackImage.trim(),
         fallbackLink: adsHeaderFallbackLink.trim()
       },
       sidebarAd: {
         enabled: adsSidebarEnabled,
-        code: adsSidebarCode,
         fallbackImage: adsSidebarFallbackImage.trim(),
         fallbackLink: adsSidebarFallbackLink.trim()
       },
       inContentAd: {
         enabled: adsInContentEnabled,
-        code: adsInContentCode,
         fallbackImage: adsInContentFallbackImage.trim(),
         fallbackLink: adsInContentFallbackLink.trim()
       },
       footerBanner: {
         enabled: adsFooterEnabled,
-        code: adsFooterCode,
         fallbackImage: adsFooterFallbackImage.trim(),
         fallbackLink: adsFooterFallbackLink.trim()
       }
     };
 
-    saveAdSenseSettings(updated);
+    saveSponsorAdSettings(updated);
 
     // Trigger update across app components
-    window.dispatchEvent(new Event('crmsolo_adsense_updated'));
-    triggerNotification('🚀 Google AdSense & Partner Ads settings saved and activated globally!');
+    window.dispatchEvent(new Event('crmsolo_sponsor_updated'));
+    triggerNotification('🚀 Sponsor banner settings saved and activated globally!');
   };
 
   const handleLogin = (e: React.FormEvent) => {
@@ -1291,7 +1273,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
           { id: 'guides', label: 'Price & Guide Manager', icon: DollarSign, count: guides.length },
           { id: 'competitors', label: 'Competitor Gap Audit', icon: ClipboardList, count: 4 },
           { id: 'seo-audit', label: 'SEO Diagnostic Audit', icon: Activity, count: `${seoSummary.avgScore}% SEO` },
-          { id: 'adsense', label: 'Google AdSense', icon: Globe, count: adsGlobalEnabled ? 'ON' : 'OFF' }
+          { id: 'adsense', label: 'Sponsor Banners', icon: Globe, count: adsGlobalEnabled ? 'ON' : 'OFF' }
         ].map(tab => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -2019,16 +2001,16 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
           </div>
         )}
 
-        {/* 5. TAB: GOOGLE ADSENSE & SPONSOR ADS SETTINGS */}
+        {/* 5. TAB: SPONSOR BANNER SETTINGS */}
         {activeTab === 'adsense' && (
           <div className="space-y-8 animate-in fade-in duration-200">
             <div className="border-b border-gray-100 pb-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
               <div>
                 <h2 className="text-xl font-bold text-primary font-display flex items-center gap-2">
-                  <Globe className="w-5 h-5 text-accent" /> Google AdSense &amp; Partner Banner Settings
+                  <Globe className="w-5 h-5 text-accent" /> Sponsor Banner Settings
                 </h2>
                 <p className="text-xs text-gray-500">
-                  Configure your Google AdSense integration, custom banner slots, and dynamic sponsor offers to generate passive revenue across your reviews and blog posts.
+                  Configure direct sponsor banner slots to display partner offers across your reviews and blog posts.
                 </p>
               </div>
               <span className="text-[10px] bg-accent/15 text-accent font-black uppercase px-2.5 py-1 rounded">
@@ -2053,7 +2035,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                   Global Ad Serving Master Switch
                 </h3>
                 <p className="text-xs text-gray-600 leading-relaxed">
-                  When enabled, this app will append your primary Google AdSense script inside the global website head and display active slots. Disable this switch to instantly turn off all ads across the site.
+                  When enabled, this site will display any active sponsor banner slots. Disable this switch to instantly turn off all sponsor banners across the site.
                 </p>
               </div>
               <button
@@ -2073,41 +2055,6 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
               {/* Left Column: Script configuration */}
               <div className="lg:col-span-8 space-y-6">
                 
-                {/* Section: Publisher Identity */}
-                <div className="bg-gray-50/50 border border-gray-100 p-6 rounded-2xl space-y-4">
-                  <h3 className="text-xs font-black uppercase tracking-wider text-primary border-b border-gray-100 pb-2">
-                    AdSense Publisher Credentials
-                  </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                    <div className="md:col-span-4 space-y-1.5">
-                      <label className="text-xs font-bold text-primary uppercase tracking-wider block">Publisher ID (ca-pub-)</label>
-                      <input
-                        type="text"
-                        placeholder="ca-pub-1234567890123456"
-                        value={adsPublisherId}
-                        onChange={(e) => setAdsPublisherId(e.target.value)}
-                        className="w-full px-4 py-2.5 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent text-xs font-mono font-bold text-primary"
-                      />
-                    </div>
-                    <div className="md:col-span-8 space-y-1.5">
-                      <label className="text-xs font-bold text-primary uppercase tracking-wider block">Head Auto-Ads Script Code</label>
-                      <textarea
-                        rows={3}
-                        placeholder="Paste your AdSense auto-ads script tag here..."
-                        value={adsHeadScript}
-                        onChange={(e) => setAdsHeadScript(e.target.value)}
-                        className="w-full p-3 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent text-xs font-mono text-primary"
-                      />
-                    </div>
-                  </div>
-                  <div className="p-4 bg-accent/5 rounded-xl border border-accent/15 space-y-1.5">
-                    <span className="text-[10px] font-bold text-primary uppercase tracking-wider block">💡 Integration Guide</span>
-                    <p className="text-[11px] text-gray-600 leading-relaxed">
-                      AdSense Auto Ads are designed to automatically place advertisements across optimal spots on your site. Once approved, copy the script containing your <code className="text-primary font-mono font-bold">ca-pub-</code> parameter from AdSense, paste it in the script field above, and click save.
-                    </p>
-                  </div>
-                </div>
-
                 {/* Section: Specific Ad Slots */}
                 <div className="space-y-6">
                   <h3 className="text-sm font-bold text-primary uppercase tracking-wider">
@@ -2140,18 +2087,8 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                      <div className="md:col-span-6 space-y-1.5">
-                        <label className="text-[10px] font-bold text-primary uppercase tracking-wider block">AdSense Unit HTML Code</label>
-                        <textarea
-                          rows={4}
-                          placeholder="Paste the raw <ins> tag code for this specific ad unit..."
-                          value={adsHeaderCode}
-                          onChange={(e) => setAdsHeaderCode(e.target.value)}
-                          className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent text-[11px] font-mono text-primary"
-                        />
-                      </div>
-                      <div className="md:col-span-6 space-y-4">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block border-b border-gray-50 pb-1">Direct Sponsor / Fallback Ad</span>
+                                            <div className="md:col-span-12 space-y-4">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block border-b border-gray-50 pb-1">Direct Sponsor Banner</span>
                         <div className="space-y-2">
                           <div className="space-y-1">
                             <span className="text-[10px] font-bold text-gray-500 uppercase block">Fallback Image URL</span>
@@ -2204,18 +2141,8 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                      <div className="md:col-span-6 space-y-1.5">
-                        <label className="text-[10px] font-bold text-primary uppercase tracking-wider block">AdSense Unit HTML Code</label>
-                        <textarea
-                          rows={4}
-                          placeholder="Paste the raw <ins> tag code for this specific ad unit..."
-                          value={adsSidebarCode}
-                          onChange={(e) => setAdsSidebarCode(e.target.value)}
-                          className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent text-[11px] font-mono text-primary"
-                        />
-                      </div>
-                      <div className="md:col-span-6 space-y-4">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block border-b border-gray-50 pb-1">Direct Sponsor / Fallback Ad</span>
+                                            <div className="md:col-span-12 space-y-4">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block border-b border-gray-50 pb-1">Direct Sponsor Banner</span>
                         <div className="space-y-2">
                           <div className="space-y-1">
                             <span className="text-[10px] font-bold text-gray-500 uppercase block">Fallback Image URL</span>
@@ -2268,18 +2195,8 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                      <div className="md:col-span-6 space-y-1.5">
-                        <label className="text-[10px] font-bold text-primary uppercase tracking-wider block">AdSense Unit HTML Code</label>
-                        <textarea
-                          rows={4}
-                          placeholder="Paste the raw <ins> tag code for this specific ad unit..."
-                          value={adsInContentCode}
-                          onChange={(e) => setAdsInContentCode(e.target.value)}
-                          className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent text-[11px] font-mono text-primary"
-                        />
-                      </div>
-                      <div className="md:col-span-6 space-y-4">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block border-b border-gray-50 pb-1">Direct Sponsor / Fallback Ad</span>
+                                            <div className="md:col-span-12 space-y-4">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block border-b border-gray-50 pb-1">Direct Sponsor Banner</span>
                         <div className="space-y-2">
                           <div className="space-y-1">
                             <span className="text-[10px] font-bold text-gray-500 uppercase block">Fallback Image URL</span>
@@ -2332,18 +2249,8 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-                      <div className="md:col-span-6 space-y-1.5">
-                        <label className="text-[10px] font-bold text-primary uppercase tracking-wider block">AdSense Unit HTML Code</label>
-                        <textarea
-                          rows={4}
-                          placeholder="Paste the raw <ins> tag code for this specific ad unit..."
-                          value={adsFooterCode}
-                          onChange={(e) => setAdsFooterCode(e.target.value)}
-                          className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-accent text-[11px] font-mono text-primary"
-                        />
-                      </div>
-                      <div className="md:col-span-6 space-y-4">
-                        <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block border-b border-gray-50 pb-1">Direct Sponsor / Fallback Ad</span>
+                                            <div className="md:col-span-12 space-y-4">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block border-b border-gray-50 pb-1">Direct Sponsor Banner</span>
                         <div className="space-y-2">
                           <div className="space-y-1">
                             <span className="text-[10px] font-bold text-gray-500 uppercase block">Fallback Image URL</span>
@@ -2376,10 +2283,10 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                 <div className="flex justify-end pt-4">
                   <button
                     type="button"
-                    onClick={handleSaveAdSense}
+                    onClick={handleSaveSponsorAds}
                     className="px-8 py-4 bg-primary hover:bg-primary/95 text-accent font-black uppercase tracking-widest text-xs rounded-xl flex items-center gap-2 cursor-pointer shadow-md transition hover:scale-101 duration-150"
                   >
-                    <Save className="w-4.5 h-4.5 text-accent" /> Save &amp; Live Deploy Ad Units
+                    <Save className="w-4.5 h-4.5 text-accent" /> Save &amp; Live Deploy Sponsor Banners
                   </button>
                 </div>
 
@@ -2418,7 +2325,7 @@ export default function AdminPortal({ onUpdateCMS, onNavigate }: AdminPortalProp
                   </div>
 
                   <p className="text-[11px] text-gray-400">
-                    If you haven&apos;t been approved for Google AdSense yet, fill out the Fallback Image URL to display highly refined banner ads instantly!
+                    Fill out the image and target link for each slot to display sponsor banners instantly.
                   </p>
 
                   <div className="bg-gray-50 border border-gray-150 rounded-lg p-4 text-center text-xs space-y-2">
