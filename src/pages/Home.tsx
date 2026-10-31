@@ -113,7 +113,7 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-7xl font-black font-display uppercase tracking-tighter leading-[0.9] text-white"
           >
-            STOP WASTING HOURS ON SPREADSHEETS. CHOOSE THE <span className="text-accent">RIGHT CRM</span>.
+            STOP WASTING HOURS ON SPREADSHEETS. FIND THE <span className="text-accent">BEST CRM FOR A SOLO AGENT</span>.
           </motion.h1>
 
           <motion.p 
@@ -157,10 +157,10 @@ export default function Home({ reviews, guides, blogs, onNavigate }: HomeProps) 
             Curated Selection
           </div>
           <h2 className="text-3xl md:text-4xl font-black text-primary font-display uppercase tracking-tighter">
-            WHICH CRM FITS YOUR BUSINESS STYLE?
+            THE BEST REAL ESTATE CRM FOR A SINGLE AGENT
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm leading-relaxed">
-            We analyzed dozens of solutions to select the top three most reliable systems for independent, solo producers.
+            We scored dozens of real estate CRMs for one-seat use, then kept the three that a solo agent can run alone — from first lead alert to closed commission.
           </p>
         </div>
 
