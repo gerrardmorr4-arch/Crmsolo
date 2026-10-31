@@ -22,6 +22,48 @@ import {
   Download
 } from 'lucide-react';
 
+/**
+ * Some categories in this silo attract broad "software" queries from buyers well
+ * outside the site's subject. Each carries a contextual pointer back to the real
+ * estate pillar so the topical signal stays anchored to solo agents.
+ */
+const REAL_ESTATE_CROSS_REF: Record<string, { heading: string; body: React.ReactNode }> = {
+  'time-tracking': {
+    heading: 'Do Solo Real Estate Agents Need Time Tracking?',
+    body: (
+      <>
+        If you bill flat commissions rather than hourly, skip timesheets entirely and see how{' '}
+        <a href="/directory" className="font-semibold text-emerald-700 underline hover:text-emerald-800">
+          solo real estate agents compare CRMs
+        </a>{' '}
+        that track deals instead of minutes.
+      </>
+    )
+  },
+  'gantt-chart': {
+    heading: 'Gantt Charts vs a Real Estate Deal Pipeline',
+    body: (
+      <>
+        A Gantt chart is overkill for a single listing pipeline — most solo agents get more from a visual deal-stage board, compared side by side in our{' '}
+        <a href="/directory" className="font-semibold text-emerald-700 underline hover:text-emerald-800">
+          real estate CRM comparison for independent brokers
+        </a>.
+      </>
+    )
+  },
+  'kanban-tools': {
+    heading: 'Kanban Boards for a Solo Listing Pipeline',
+    body: (
+      <>
+        Kanban is the closest fit here to real estate work: if you want a pipeline you can drag from lead to closing on your phone, start with the{' '}
+        <a href="/directory" className="font-semibold text-emerald-700 underline hover:text-emerald-800">
+          best CRM for a solo real estate agent
+        </a>.
+      </>
+    )
+  }
+};
+
 interface PlanningCategoryDetailProps {
   category: PlanningCategory;
   allCategories: PlanningCategory[];
@@ -540,6 +582,18 @@ export const PlanningCategoryDetail: React.FC<PlanningCategoryDetailProps> = ({
             </div>
           </div>
         </section>
+
+        {/* Real Estate Cross-Reference (keeps topical signal on solo agents) */}
+        {REAL_ESTATE_CROSS_REF[category.slug] && (
+          <section className="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-6 md:p-8">
+            <h3 className="text-lg font-bold text-slate-900 font-display mb-2">
+              {REAL_ESTATE_CROSS_REF[category.slug].heading}
+            </h3>
+            <p className="text-sm text-slate-700 leading-relaxed">
+              {REAL_ESTATE_CROSS_REF[category.slug].body}
+            </p>
+          </section>
+        )}
 
         {/* Explore Other Planning Categories */}
         <section className="space-y-4">

@@ -37,9 +37,9 @@ const DEFAULT_ROUTE_FALLBACK: Omit<RouteFallback, 'match'> = {
 const ROUTE_FALLBACKS: RouteFallback[] = [
   {
     match: p => p === '/directory' || p === '/category/crm' || p === '/category',
-    title: 'Best Real Estate CRM Software Directory (2026)',
-    description: 'Explore top verified real estate CRM software with side-by-side comparison tables, filter by price and deployment, and read expert ratings.',
-    keywords: ['best real estate crm', 'real estate crm directory', 'agent software comparison', 'getapp real estate crm']
+    title: 'Best CRM for Solo Real Estate Agents (2026 Comparison)',
+    description: 'Compare the best CRMs for solo real estate agents — no team bloat, zero tech setup. See 2026 pricing, speed-to-lead scores, and pick yours in minutes.',
+    keywords: ['best crm for solo real estate agent', 'real estate crm for single agent', 'independent broker crm comparison', 'solo agent crm pricing', 'crm without admin team']
   },
   {
     match: p => p === '/buyer-guide' || p === '/buyers-guide',

@@ -191,15 +191,15 @@ export const Directory: React.FC<DirectoryPageProps> = ({
             <div className="max-w-3xl space-y-3">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
                 <Award className="w-3.5 h-3.5 text-emerald-600" />
-                <span>2026 Category Directory • Buyer Evaluations</span>
+                <span>2026 Solo Agent Buyer Evaluations • No Admin Team Required</span>
               </div>
 
               <h1 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-                Best Real Estate CRM Software of 2026
+                The Best CRM for Solo Real Estate Agents (2026)
               </h1>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                Discover, compare, and filter the top Customer Relationship Management (CRM) software for independent agents, solo brokers, and high-velocity real estate practitioners. Browse our reviews, pricing models, and feature checklists.
+                You list, negotiate, and close on your own — there is no operations manager to configure a pipeline for you and no IT team to migrate your database. Every CRM below was scored on what one agent can realistically set up in a single weekend: speed-to-lead on a live inquiry, monthly cost at one seat, and whether a deal moves forward from your phone between showings.
               </p>
 
               {/* Trust & Methodology Badges */}
@@ -210,11 +210,11 @@ export const Directory: React.FC<DirectoryPageProps> = ({
                 </span>
                 <span className="flex items-center gap-1.5 font-medium text-slate-700">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>Consistent Editorial Scoring</span>
+                  <span>Scored for Single-Seat Use</span>
                 </span>
                 <span className="flex items-center gap-1.5 font-medium text-slate-700">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                  <span>Pricing & Feature Breakdown</span>
+                  <span>One-Seat Monthly Cost</span>
                 </span>
               </div>
             </div>
@@ -225,9 +225,9 @@ export const Directory: React.FC<DirectoryPageProps> = ({
                 <BookOpen className="w-4 h-4" />
                 <span>Buyer's Resource</span>
               </div>
-              <h2 className="text-base font-bold mb-1.5">New to Real Estate CRMs?</h2>
+              <h2 className="text-base font-bold mb-1.5">Never Set Up a CRM Before?</h2>
               <p className="text-xs text-slate-300 mb-4 leading-relaxed">
-                Read our in-depth 2026 Buyer's Guide to understand core features, pricing structures, and speed-to-lead benchmarks.
+                Read our in-depth 2026 Buyer's Guide to understand what to expect at one seat, how pricing structures differ, and the speed-to-lead benchmarks that matter.
               </p>
               <button
                 id="hero-read-buyers-guide-cta"
@@ -360,7 +360,7 @@ export const Directory: React.FC<DirectoryPageProps> = ({
                   <span>Frequently Asked Questions</span>
                 </div>
                 <h3 className="text-xl font-bold text-slate-900">
-                  Real Estate CRM Software Buyer's FAQ
+                  Real Estate CRM Pricing &amp; Buyer's FAQ for Solo Agents
                 </h3>
               </div>
 
